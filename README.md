@@ -20,7 +20,7 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init
 ```
 
-### 3. Configure Tailwind CSS
+### 3. Configure Tailwind SCSS
 Configure the `tailwind.config.js` file to include the paths to your Angular template files.
 
 ```javascript
@@ -37,7 +37,7 @@ module.exports = {
 ```
 
 ### 4. Add Tailwind Directives
-Add the Tailwind CSS directives to your main CSS file, typically `src/styles.css`.
+Add the Tailwind CSS directives to your main SCSS/CSS file, typically `src/styles.scss`.
 
 ```css
 @tailwind base;
