@@ -7,8 +7,10 @@ import {initFlowbite} from "flowbite";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'danilojezernik-app';
 
+  /*
+  * Imported and initialization of Flowbite in main component to enable its interactive features
+  */
   ngOnInit(): void {
     initFlowbite();
   }
