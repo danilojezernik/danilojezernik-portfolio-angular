@@ -8,7 +8,7 @@ describe('GithubComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [GithubComponent]
+      imports: [ GithubComponent ]
     });
     fixture = TestBed.createComponent(GithubComponent);
     component = fixture.componentInstance;

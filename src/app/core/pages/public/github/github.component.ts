@@ -1,14 +1,14 @@
-import {Component, inject} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {GithubService} from "../../../../services/api/github/github.service";
-import {map} from "rxjs";
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GithubService } from "../../../../services/api/github/github.service";
+import { map } from "rxjs";
 
 @Component({
   selector: 'app-github',
   standalone: true,
-  imports: [CommonModule],
+  imports: [ CommonModule ],
   templateUrl: './github.component.html',
-  styleUrls: ['./github.component.scss']
+  styleUrls: [ './github.component.scss' ]
 })
 export class GithubComponent {
 

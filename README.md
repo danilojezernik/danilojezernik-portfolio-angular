@@ -5,6 +5,7 @@ This README provides a step-by-step guide to set up an Angular project and integ
 ## Getting Started with Angular
 
 ### 1. Create Your Angular Project
+
 Start by creating a new Angular project using the Angular CLI.
 
 ```bash
@@ -13,6 +14,7 @@ cd my-project
 ```
 
 ### 2. Install Tailwind CSS
+
 Install Tailwind CSS along with PostCSS and Autoprefixer.
 
 ```bash
@@ -21,6 +23,7 @@ npx tailwindcss init
 ```
 
 ### 3. Configure Tailwind SCSS
+
 Configure the `tailwind.config.js` file to include the paths to your Angular template files.
 
 ```javascript
@@ -37,6 +40,7 @@ module.exports = {
 ```
 
 ### 4. Add Tailwind Directives
+
 Add the Tailwind CSS directives to your main SCSS/CSS file, typically `src/styles.scss`.
 
 ```css
@@ -46,6 +50,7 @@ Add the Tailwind CSS directives to your main SCSS/CSS file, typically `src/style
 ```
 
 ### 5. Start Your Angular Project
+
 Run your Angular project to start the build process.
 
 ```bash
@@ -53,6 +58,7 @@ ng serve
 ```
 
 ### 6. Use Tailwind in Your Project
+
 You can now use Tailwind’s utility classes in your Angular components.
 
 ```html
@@ -65,6 +71,7 @@ You can now use Tailwind’s utility classes in your Angular components.
 ## Adding Flowbite to Your Angular Project
 
 ### 1. Install Flowbite
+
 Install Flowbite to add interactive UI components to your project.
 
 ```bash
@@ -72,6 +79,7 @@ npm install flowbite
 ```
 
 ### 2. Configure Tailwind to Include Flowbite
+
 Update your `tailwind.config.js` to require the Flowbite plugin and include Flowbite's template paths.
 
 ```javascript
@@ -91,6 +99,7 @@ module.exports = {
 ```
 
 ### 3. Initialize Flowbite in Angular
+
 Import and initialize Flowbite in your main component to enable its interactive features.
 
 ```typescript
