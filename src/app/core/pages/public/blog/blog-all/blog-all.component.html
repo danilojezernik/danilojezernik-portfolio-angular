@@ -1,0 +1,7 @@
+<p>blog-all works!</p>
+<ng-container *ngIf="blog$ | async as blogs">
+  <div *ngFor="let blog of blogs">
+    {{blog.naslov}} <br>
+    {{blog.datum_vnosa | date}}
+  </div>
+</ng-container>
