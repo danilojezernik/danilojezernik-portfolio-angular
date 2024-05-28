@@ -2,7 +2,7 @@
 
 /* eslint-disable */
 
-export interface Blog {
+export interface BlogModel {
   '_id'?: string;
   naslov: string;
   kategorija: string;
