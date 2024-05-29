@@ -6,6 +6,11 @@ import { GithubComponent } from "./core/pages/public/github/github.component";
 import { BiographyComponent } from "./core/pages/public/biography/biography.component";
 import { ExperiencesComponent } from "./core/pages/public/experiences/experiences.component";
 import { NotFoundComponent } from "./core/pages/public/not-found/not-found.component";
+import { ProjectsComponent } from "./core/pages/public/projects/projects.component";
+import { MediaComponent } from "./core/pages/public/media/media.component";
+import { BookComponent } from "./core/pages/public/book/book.component";
+import { LinksComponent } from "./core/pages/public/links/links.component";
+import { ContactComponent } from "./core/pages/public/contact/contact.component";
 
 const routes: Routes = [
   {
@@ -21,6 +26,10 @@ const routes: Routes = [
     component: ExperiencesComponent
   },
   {
+    path: 'projects',
+    component: ProjectsComponent
+  },
+  {
     path: 'blog',
     component: BlogAllComponent
   },
@@ -29,8 +38,20 @@ const routes: Routes = [
     component: GithubComponent
   },
   {
-    path: 'github',
-    component: GithubComponent
+    path: 'media',
+    component: MediaComponent
+  },
+  {
+    path: 'books',
+    component: BookComponent
+  },
+  {
+    path: 'links',
+    component: LinksComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
   },
   {
     path: '**',
