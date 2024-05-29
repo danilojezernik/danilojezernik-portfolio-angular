@@ -56,7 +56,7 @@ const routes: Routes = [
   {
     path: '**',
     component: NotFoundComponent,
-    title: 'Hypnosis studio Alen - Stran ne obstaja ali ni najdena',
+    title: 'DaniloJezernik.com - Page does not exist',
     data: {
       shouldRedirect: true
     }
