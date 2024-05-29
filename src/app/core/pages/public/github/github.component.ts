@@ -8,8 +8,7 @@ import { Repo } from "../../../../models/github.model";
   selector: 'app-github',
   standalone: true,
   imports: [ CommonModule ],
-  templateUrl: './github.component.html',
-  styleUrls: [ './github.component.scss' ]
+  templateUrl: './github.component.html'
 })
 export class GithubComponent {
 

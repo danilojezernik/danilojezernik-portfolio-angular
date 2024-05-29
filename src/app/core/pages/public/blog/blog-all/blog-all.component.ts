@@ -6,8 +6,7 @@ import { BlogService } from "../../../../../services/api/blog/blog.service";
   selector: 'app-blog-all',
   standalone: true,
   imports: [ CommonModule ],
-  templateUrl: './blog-all.component.html',
-  styleUrls: [ './blog-all.component.scss' ]
+  templateUrl: './blog-all.component.html'
 })
 export class BlogAllComponent {
 
