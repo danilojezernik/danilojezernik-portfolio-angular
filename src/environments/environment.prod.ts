@@ -1,1 +1,3 @@
-export const environment = {};
+export const environment = {
+  backUrl: 'https://portfolio.api.danilojezernik.com'
+};
