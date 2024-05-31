@@ -11,6 +11,11 @@ import { MediaComponent } from "./core/pages/public/media/media.component";
 import { BookComponent } from "./core/pages/public/book/book.component";
 import { LinksComponent } from "./core/pages/public/links/links.component";
 import { ContactComponent } from "./core/pages/public/contact/contact.component";
+import { BlogByIdComponent } from "./core/pages/public/blog/blog-by-id/blog-by-id.component";
+import {
+  BlogEditByIdAdminComponent
+} from "./core/pages/private/blog/blog-edit-by-id-admin/blog-edit-by-id-admin.component";
+import { BlogAllAdminComponent } from "./core/pages/private/blog/blog-all-admin/blog-all-admin.component";
 
 const routes: Routes = [
   {
@@ -32,6 +37,18 @@ const routes: Routes = [
   {
     path: 'blog',
     component: BlogAllComponent
+  },
+  {
+    path: 'blog-admin',
+    component: BlogAllAdminComponent
+  },
+  {
+    path: 'blog/:id',
+    component: BlogByIdComponent
+  },
+  {
+    path: 'blog-admin/edit/:id',
+    component: BlogEditByIdAdminComponent
   },
   {
     path: 'github',
