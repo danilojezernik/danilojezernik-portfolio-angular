@@ -1,1 +1,6 @@
 <p>blog-by-id works!</p>
+<ng-container *ngIf="blogId$ | async as blog">
+  <div>
+    Naslov: {{blog.naslov}}
+  </div>
+</ng-container>

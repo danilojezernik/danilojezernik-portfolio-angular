@@ -14,4 +14,8 @@ export class BlogService {
   getAllBlogs(): Observable<BlogModel[]> {
     return this._http.get<BlogModel[]>(`${environment.localUrl}blog`)
   }
+
+  getBlogById(id: string): Observable<BlogModel> {
+    return this._http.get<BlogModel>(`${environment.localUrl}blog/${id}`)
+  }
 }
