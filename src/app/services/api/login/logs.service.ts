@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {catchError, Observable, throwError} from "rxjs";
-import {environment} from "../../../../environments/environment.development";
-import {Logging} from "../../models/logs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { catchError, Observable, throwError } from "rxjs";
+import { environment } from "../../../../environments/environment.development";
+import { Logging } from "../../../models/logs";
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +58,7 @@ export class LogsService {
    */
   getBackendLogAdmin(path: string): Observable<any> {
     // Using Angular HttpClient to make a GET request to the correct API endpoint
-    return this.http.get<any>(`${environment.backUrl}/${path}`).pipe(
+    return this.http.get<any>(`${environment.backLogUrl}/${path}`).pipe(
       catchError(error => {
         // Log an error message if an error occurs during the API call
         console.error("Error fetching backend logs:", error);

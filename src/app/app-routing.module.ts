@@ -16,7 +16,6 @@ import {
   BlogEditByIdAdminComponent
 } from "./core/pages/private/blog/blog-edit-by-id-admin/blog-edit-by-id-admin.component";
 import { BlogAllAdminComponent } from "./core/pages/private/blog/blog-all-admin/blog-all-admin.component";
-import { SysInfoComponent } from "./core/pages/public/sys-info/sys-info.component";
 
 const routes: Routes = [
   {
@@ -66,10 +65,6 @@ const routes: Routes = [
   {
     path: 'links',
     component: LinksComponent
-  },
-  {
-    path: 'sys',
-    component: SysInfoComponent
   },
   {
     path: 'contact',

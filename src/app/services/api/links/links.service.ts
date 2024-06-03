@@ -1,18 +1,17 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { SysInfo } from "../../../models/sys-info.model";
+import { Links } from "../../../models/links";
 import { environment } from "../../../../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SysInfoService {
+export class LinksService {
 
   _http = inject(HttpClient)
 
-  getSysData(): Observable<SysInfo> {
-    return this._http.get<SysInfo>(`${environment.localUrl}interesting/sysinfo`)
+  getAllLinks(): Observable<Links[]> {
+    return this._http.get<Links[]>(`${environment.localUrl}links`)
   }
-
 }

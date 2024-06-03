@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SysInfoService } from './sys-info.service';
+import { LinksService } from './links.service';
 
-describe('SysInfoService', () => {
-  let service: SysInfoService;
+describe('LinksService', () => {
+  let service: LinksService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SysInfoService);
+    service = TestBed.inject(LinksService);
   });
 
   it('should be created', () => {
