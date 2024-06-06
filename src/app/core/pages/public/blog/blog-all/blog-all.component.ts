@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BlogService } from "../../../../../services/api/blog/blog.service";
+import { BlogService } from "../../../../../services/api/blog.service";
 import { RouterLink } from "@angular/router";
 
 @Component({

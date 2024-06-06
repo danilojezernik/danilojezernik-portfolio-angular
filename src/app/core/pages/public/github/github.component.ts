@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GithubService } from "../../../../services/api/github/github.service";
+import { GithubService } from "../../../../services/api/github.service";
 import { map, Observable } from "rxjs";
 import { Repo } from "../../../../models/github.model";
 

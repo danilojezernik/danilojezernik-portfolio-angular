@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExperiencesService } from "../../../../services/api/experiences/experiences.service";
+import { ExperiencesService } from "../../../../services/api/experiences.service";
 import { map } from "rxjs";
 
 @Component({

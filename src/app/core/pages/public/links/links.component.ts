@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LinksService } from "../../../../services/api/links/links.service";
+import { LinksService } from "../../../../services/api/links.service";
 
 @Component({
   selector: 'app-links',

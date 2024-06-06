@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from "@angular/router";
-import { BlogService } from "../../../../../services/api/blog/blog.service";
+import { BlogService } from "../../../../../services/api/blog.service";
 import { Observable } from "rxjs";
 import { BlogModel } from "../../../../../models/blog.model";
 
