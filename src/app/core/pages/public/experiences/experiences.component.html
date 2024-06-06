@@ -1,1 +1,17 @@
-<p>experiences works!</p>
+<p class="py-5 text-2xl">experiences works!</p>
+<ng-container *ngIf="experiences$ | async as experiences">
+
+  <div *ngFor="let experience of experiences">
+    {{experience.title}}<br>
+    {{experience.stack}}<br>
+    {{experience.framework}}<br>
+    {{experience.programming_language}}<br>
+    {{experience.company}}<br>
+    {{experience.employee}}<br>
+    {{experience.tasks}}<br>
+    {{experience.company_start | date}}<br>
+    {{experience.company_end}}<br>
+    {{experience.datum_vnosa | date}}<br>
+  </div>
+
+</ng-container>
