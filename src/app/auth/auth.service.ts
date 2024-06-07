@@ -75,6 +75,6 @@ export class AuthService {
     formData.append('password', password);
 
     // Send a POST request to the login endpoint with the form data
-    return this._http.post<any>(`${environment.localUrl}/login`, formData);
+    return this._http.post<any>(`${environment.localUrl}login`, formData);
   }
 }

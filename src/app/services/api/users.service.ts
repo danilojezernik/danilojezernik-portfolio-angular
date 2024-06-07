@@ -14,4 +14,8 @@ export class UsersService {
   getAllUsers(): Observable<User[]> {
     return this._http.get<User[]>(`${environment.localUrl}user`)
   }
+
+  getAllUsersPrivate(): Observable<User[]> {
+    return this._http.get<User[]>(`${environment.localUrl}user/private/`)
+  }
 }

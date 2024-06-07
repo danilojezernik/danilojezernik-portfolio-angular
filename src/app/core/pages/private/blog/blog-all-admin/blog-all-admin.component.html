@@ -1,6 +1,6 @@
 <p>blog-all-admin works!</p>
 <ng-container *ngIf="blogs$ | async as blogs">
-  <div *ngFor="let blog of blogs" [routerLink]="['/blog/', blog._id]">
+  <div *ngFor="let blog of blogs" [routerLink]="['/blog-admin/', blog._id]">
     {{blog.naslov}} <br>
     {{blog.datum_vnosa | date}}
   </div>

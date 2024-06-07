@@ -13,8 +13,8 @@ import { BlogModel } from "../../../../../models/blog.model";
 })
 export class BlogByIdComponent implements OnInit {
 
-  _route = inject(ActivatedRoute)
-  _blogService = inject(BlogService)
+  private _route = inject(ActivatedRoute)
+  private _blogService = inject(BlogService)
 
   blogId$!: Observable<BlogModel>
 

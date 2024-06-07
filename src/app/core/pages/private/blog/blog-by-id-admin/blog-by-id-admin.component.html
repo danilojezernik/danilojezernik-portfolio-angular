@@ -1,1 +1,6 @@
 <p>blog-by-id-admin works!</p>
+<ng-container *ngIf="blogById$ | async as blog">
+  <div>
+    Naslov: {{blog.naslov}}
+  </div>
+</ng-container>

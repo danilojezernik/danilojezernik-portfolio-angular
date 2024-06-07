@@ -21,6 +21,11 @@ import { AuthGuardService } from "./auth/auth-guard.service";
 import { AdminComponent } from "./core/pages/private/admin/admin.component";
 import { RegisterUserComponent } from "./core/pages/public/register-user/register-user.component";
 import { UsersComponent } from "./core/pages/public/users/users.component";
+import { BlogByIdAdminComponent } from "./core/pages/private/blog/blog-by-id-admin/blog-by-id-admin.component";
+import { UsersAdminComponent } from "./core/pages/private/users-admin/users-admin.component";
+import { EmailsAdminComponent } from "./core/pages/private/emails-admin/emails-admin.component";
+import { ExperiencesAdminComponent } from "./core/pages/private/experiences-admin/experiences-admin.component";
+import { ProjectsAdminComponent } from "./core/pages/private/projects-admin/projects-admin.component";
 
 const routes: Routes = [
   {
@@ -35,13 +40,35 @@ const routes: Routes = [
   // ---------------------------
   //     EXPERIENCES ROUTES
   // ---------------------------
+
+  // PUBLIC
   {
     path: 'experiences',
     component: ExperiencesComponent
   },
+
+  // PRIVATE
+  {
+    path: 'experiences-admin',
+    component: ExperiencesAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+
+  // ---------------------------
+  //     PROJECTS ROUTES
+  // ---------------------------
+
+  // PUBLIC
   {
     path: 'projects',
     component: ProjectsComponent
+  },
+
+  // PRIVATE
+  {
+    path: 'projects-admin',
+    component: ProjectsAdminComponent,
+    canActivate: [ AuthGuardService ]
   },
 
   // --------------------
@@ -62,6 +89,11 @@ const routes: Routes = [
   {
     path: 'blog-admin',
     component: BlogAllAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'blog-admin/:id',
+    component: BlogByIdAdminComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -132,12 +164,29 @@ const routes: Routes = [
   },
 
   // ---------------------------
+  //     EMAILS ROUTES
+  // ---------------------------
+  {
+    path: 'emails-admin',
+    component: EmailsAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+
+  // ---------------------------
   //     USERS ROUTES
   // ---------------------------
 
+  // PUBLIC
   {
     path: 'users',
     component: UsersComponent
+  },
+
+  // PRIVATE
+  {
+    path: 'users-admin',
+    component: UsersAdminComponent,
+    canActivate: [ AuthGuardService ]
   },
 
   // ---------------------------

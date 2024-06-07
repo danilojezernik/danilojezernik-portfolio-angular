@@ -1,0 +1,14 @@
+<p>users-admin works!</p>
+<ng-container *ngIf="users$ | async as users">
+  <div style="padding-bottom: 20px" *ngFor="let user of users; let i = index">
+
+    {{i + 1}}. {{user.full_name}}<br>
+    {{user.username}}<br>
+    {{user.email}}<br>
+    {{user.disabled}}<br>
+    {{user.confirmed}}<br>
+
+  </div>
+</ng-container>
+
+<app-go-back></app-go-back>
