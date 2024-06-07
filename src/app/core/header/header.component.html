@@ -8,3 +8,9 @@
 <a class="pe-3" routerLink="/books">Books</a>
 <a class="pe-3" routerLink="/links">Links</a>
 <a class="pe-3" routerLink="/contact">Contact</a>
+<ng-container *ngIf="!isLoggedIn">
+  <a class="pe-3" routerLink="/login">Login</a>
+</ng-container>
+<ng-container *ngIf="isLoggedIn">
+  <a (click)="logOut()" class="pe-3" routerLink="/login">LogOut</a>
+</ng-container>

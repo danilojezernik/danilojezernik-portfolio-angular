@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { LoggedInService } from "../communication/logged-in.service";
+import { environment } from "../../environments/environment.prod";
+import { LoggedInService } from "../services/communication/logged-in.service";
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,7 @@ export class AuthService {
     formData.append('username', username);
     formData.append('password', password);
 
-    return this.http.post<any>(`${environment.backUrl}/login`, formData);
+    return this.http.post<any>(`${environment.localUrl}/login`, formData);
   }
 
 }

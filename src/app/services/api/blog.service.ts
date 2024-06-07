@@ -11,6 +11,9 @@ export class BlogService {
 
   _http = inject(HttpClient)
 
+  /**
+   * PUBLIC SERVICES
+   */
   getAllBlogs(): Observable<BlogModel[]> {
     return this._http.get<BlogModel[]>(`${environment.localUrl}blog`)
   }
@@ -18,4 +21,17 @@ export class BlogService {
   getBlogById(id: string): Observable<BlogModel> {
     return this._http.get<BlogModel>(`${environment.localUrl}blog/${id}`)
   }
+
+  /**
+   * PRIVATE SERVICES
+   */
+  getAllBlogsAdmin(): Observable<BlogModel[]> {
+    return this._http.get<BlogModel[]>(`${environment.localUrl}blog/admin`)
+  }
+
+  getBlogByIdAdmin(id: string): Observable<BlogModel> {
+    return this._http.get<BlogModel>(`${environment.localUrl}blog/admin/${id}`)
+  }
+
+
 }

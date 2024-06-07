@@ -17,6 +17,8 @@ import {
 } from "./core/pages/private/blog/blog-edit-by-id-admin/blog-edit-by-id-admin.component";
 import { BlogAllAdminComponent } from "./core/pages/private/blog/blog-all-admin/blog-all-admin.component";
 import { LoginComponent } from "./core/pages/public/login/login.component";
+import { AuthGuardService } from "./auth/auth-guard.service";
+import { AdminComponent } from "./core/pages/private/admin/admin.component";
 
 const routes: Routes = [
   {
@@ -57,11 +59,13 @@ const routes: Routes = [
   // PRIVATE
   {
     path: 'blog-admin',
-    component: BlogAllAdminComponent
+    component: BlogAllAdminComponent,
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'blog-admin/edit/:id',
-    component: BlogEditByIdAdminComponent
+    component: BlogEditByIdAdminComponent,
+    canActivate: [ AuthGuardService ]
   },
 
   // ---------------------------
@@ -110,6 +114,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [ AuthGuardService ]
   },
 
   // ---------------------------
