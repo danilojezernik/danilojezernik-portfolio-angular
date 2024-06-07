@@ -16,6 +16,7 @@ import {
   BlogEditByIdAdminComponent
 } from "./core/pages/private/blog/blog-edit-by-id-admin/blog-edit-by-id-admin.component";
 import { BlogAllAdminComponent } from "./core/pages/private/blog/blog-all-admin/blog-all-admin.component";
+import { LoginComponent } from "./core/pages/public/login/login.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
     path: 'biography',
     component: BiographyComponent
   },
+
+  // ---------------------------
+  //     EXPERIENCES ROUTES
+  // ---------------------------
   {
     path: 'experiences',
     component: ExperiencesComponent
@@ -34,42 +39,82 @@ const routes: Routes = [
     path: 'projects',
     component: ProjectsComponent
   },
+
+  // --------------------
+  //     BLOG ROUTES
+  // --------------------
+
+  // PUBLIC
   {
     path: 'blog',
     component: BlogAllComponent
   },
   {
-    path: 'blog-admin',
-    component: BlogAllAdminComponent
-  },
-  {
     path: 'blog/:id',
     component: BlogByIdComponent
+  },
+
+  // PRIVATE
+  {
+    path: 'blog-admin',
+    component: BlogAllAdminComponent
   },
   {
     path: 'blog-admin/edit/:id',
     component: BlogEditByIdAdminComponent
   },
+
+  // ---------------------------
+  //     GITHUB ROUTE
+  // ---------------------------
   {
     path: 'github',
     component: GithubComponent
   },
+
+  // ---------------------------
+  //     MEDIA ROUTES
+  // ---------------------------
   {
     path: 'media',
     component: MediaComponent
   },
+
+  // ---------------------------
+  //     BOOKS ROUTES
+  // ---------------------------
   {
     path: 'books',
     component: BookComponent
   },
+
+  // ---------------------------
+  //     LINKS ROUTES
+  // ---------------------------
   {
     path: 'links',
     component: LinksComponent
   },
+
+  // ---------------------------
+  //     CONTACT ROUTES
+  // ---------------------------
   {
     path: 'contact',
     component: ContactComponent
   },
+
+  // ---------------------------
+  //     LOGIN ROUTES
+  // ---------------------------
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+
+  // ---------------------------
+  //     404 ROUTE
+  // ---------------------------
   {
     path: '**',
     component: NotFoundComponent,
