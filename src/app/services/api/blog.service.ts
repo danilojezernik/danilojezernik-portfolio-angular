@@ -26,7 +26,7 @@ export class BlogService {
    * PRIVATE SERVICES
    */
   getAllBlogsAdmin(): Observable<BlogModel[]> {
-    return this._http.get<BlogModel[]>(`${environment.localUrl}blog/admin`)
+    return this._http.get<BlogModel[]>(`${environment.localUrl}blog/admin/`)
   }
 
   getBlogByIdAdmin(id: string): Observable<BlogModel> {

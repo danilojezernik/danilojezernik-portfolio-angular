@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {AuthService} from "./auth.service";
+import { inject, Injectable } from '@angular/core';
+import { AuthService } from "./auth.service";
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -12,8 +12,8 @@ import {
 })
 export class AuthGuardService implements CanActivate {
 
-  constructor(private auth: AuthService, private router: Router) {
-  }
+  private _auth = inject(AuthService)
+  private _router = inject(Router)
 
   // Implementing CanActivate interface method
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
@@ -22,10 +22,10 @@ export class AuthGuardService implements CanActivate {
 
   // Private method to handle authentication logic
   private async authGuard(): Promise<boolean> {
-    const token = this.auth.getAccessToken(); // Retrieve the access token
+    const token = this._auth.getAccessToken(); // Retrieve the access token
     // If no token, redirect to log in and resolve to false
     if (!token) {
-      await this.router.navigate(['/login']);
+      await this._router.navigate([ '/login' ]);
       return Promise.resolve(false);
     }
 
