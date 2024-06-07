@@ -21,7 +21,7 @@ export class LogsService {
    */
   addNewPrivateLogAdmin(newPrivateLog: Logging): Observable<Logging> {
     // Using Angular HttpClient to make a POST request to the specified API endpoint
-    return this.http.post<Logging>(`${environment.backLogUrl}/private`, newPrivateLog).pipe(
+    return this.http.post<Logging>(`${environment.backLogUrl}private`, newPrivateLog).pipe(
       catchError(error => {
         // Log an error message if an error occurs during the API call
         console.error("Error adding a new post:", error);
@@ -40,7 +40,7 @@ export class LogsService {
    */
   addNewPublicLogAdmin(newPublicLog: Logging): Observable<Logging> {
     // Using Angular HttpClient to make a POST request to the specified API endpoint
-    return this.http.post<Logging>(`${environment.backLogUrl}/public`, newPublicLog).pipe(
+    return this.http.post<Logging>(`${environment.backLogUrl}public`, newPublicLog).pipe(
       catchError(error => {
         // Log an error message if an error occurs during the API call
         console.error("Error adding a new post:", error);
@@ -58,7 +58,7 @@ export class LogsService {
    */
   getBackendLogAdmin(path: string): Observable<any> {
     // Using Angular HttpClient to make a GET request to the correct API endpoint
-    return this.http.get<any>(`${environment.backLogUrl}/${path}`).pipe(
+    return this.http.get<any>(`${environment.backLogUrl}${path}`).pipe(
       catchError(error => {
         // Log an error message if an error occurs during the API call
         console.error("Error fetching backend logs:", error);

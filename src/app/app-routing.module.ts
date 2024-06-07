@@ -19,6 +19,8 @@ import { BlogAllAdminComponent } from "./core/pages/private/blog/blog-all-admin/
 import { LoginComponent } from "./core/pages/public/login/login.component";
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { AdminComponent } from "./core/pages/private/admin/admin.component";
+import { RegisterUserComponent } from "./core/pages/public/register-user/register-user.component";
+import { UsersComponent } from "./core/pages/public/users/users.component";
 
 const routes: Routes = [
   {
@@ -119,6 +121,23 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     canActivate: [ AuthGuardService ]
+  },
+
+  // ---------------------------
+  //     REGISTER ROUTES
+  // ---------------------------
+  {
+    path: 'register',
+    component: RegisterUserComponent
+  },
+
+  // ---------------------------
+  //     USERS ROUTES
+  // ---------------------------
+
+  {
+    path: 'users',
+    component: UsersComponent
   },
 
   // ---------------------------

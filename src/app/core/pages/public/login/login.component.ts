@@ -17,8 +17,8 @@ export class LoginComponent {
   private _logService = inject(LoginService)
   private _router = inject(Router)
 
-  getUsername = 'danilojezernik'
-  getPassword = 'Kaulamarga777.'
+  getUsername = ''
+  getPassword = ''
 
   logIn() {
     this._authService.login(this.getUsername, this.getPassword)
