@@ -13,14 +13,5 @@ export class LoggedInService {
 
   // Creating an observable to allow components to subscribe to changes in the login status.
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
-
-  /**
-   * Method to update the login status and notify subscribers.
-   * @param value {boolean} - The new login status (true if logged in, false if not).
-   */
-  isLoggedIn(value: boolean) {
-    this.isLoggedInSubject.next(value);
-  }
-
-
+  
 }
