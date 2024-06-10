@@ -23,6 +23,7 @@ export class AddBlogAdminComponent {
   addImage: string = ''
 
   addNewBlog() {
+    
     const newData: BlogModel = {
       naslov: this.addNaslov,
       podnaslov: this.addPodnaslov,
@@ -32,8 +33,8 @@ export class AddBlogAdminComponent {
       datum_vnosa: new Date().toISOString()
     }
 
-    if ((newData.naslov || newData.podnaslov || newData.vsebina) === '')
-      this._snackBar.open('Vnesi nekaj')
+    if ((newData.naslov && newData.vsebina) === '')
+      this._snackBar.open('Insert naslov and vsebino')
     else
       this._blogService.addBlog(newData).subscribe()
   }

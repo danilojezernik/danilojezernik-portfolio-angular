@@ -26,6 +26,10 @@ export class BlogService {
     return this._http.post<BlogModel>(`${environment.localUrl}blog/`, newBlog)
   }
 
+  editBlogById(id: string, newData: BlogModel) {
+    return this._http.put<BlogModel>(`${environment.localUrl}blog/${id}`, newData)
+  }
+
   /**
    * PRIVATE SERVICES
    */
