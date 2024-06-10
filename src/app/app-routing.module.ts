@@ -26,6 +26,7 @@ import { UsersAdminComponent } from "./core/pages/private/users-admin/users-admi
 import { EmailsAdminComponent } from "./core/pages/private/emails-admin/emails-admin.component";
 import { ExperiencesAdminComponent } from "./core/pages/private/experiences-admin/experiences-admin.component";
 import { ProjectsAdminComponent } from "./core/pages/private/projects-admin/projects-admin.component";
+import { AddBlogAdminComponent } from "./core/pages/private/blog/add-blog-admin/add-blog-admin.component";
 
 const routes: Routes = [
   {
@@ -99,6 +100,11 @@ const routes: Routes = [
   {
     path: 'blog-admin/edit/:id',
     component: BlogEditByIdAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'add-blog-admin',
+    component: AddBlogAdminComponent,
     canActivate: [ AuthGuardService ]
   },
 

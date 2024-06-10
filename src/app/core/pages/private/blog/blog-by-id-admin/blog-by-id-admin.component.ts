@@ -4,11 +4,12 @@ import { ActivatedRoute } from "@angular/router";
 import { BlogService } from "../../../../../services/api/blog.service";
 import { Observable } from "rxjs";
 import { BlogModel } from "../../../../../models/blog.model";
+import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 
 @Component({
   selector: 'app-blog-by-id-admin',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [ CommonModule, GoBackComponent ],
   templateUrl: './blog-by-id-admin.component.html'
 })
 export class BlogByIdAdminComponent implements OnInit {

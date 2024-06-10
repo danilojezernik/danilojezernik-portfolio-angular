@@ -1,8 +1,12 @@
 <p>blog-all-admin works!</p>
+
+<button style="background-color: brown; color: white; padding: 10px" routerLink="/add-blog-admin">Add blog</button>
+
 <ng-container *ngIf="blogs$ | async as blogs">
-  <div *ngFor="let blog of blogs" [routerLink]="['/blog-admin/', blog._id]">
-    {{blog.naslov}} <br>
+  <div class="mb-2 border-b-2" *ngFor="let blog of blogs; let i = index" [routerLink]="['/blog-admin/', blog._id]">
+    {{i + 1}}. {{blog.naslov}} <br>
     {{blog.datum_vnosa | date}}
   </div>
 </ng-container>
+
 <app-go-back/>

@@ -22,6 +22,10 @@ export class BlogService {
     return this._http.get<BlogModel>(`${environment.localUrl}blog/${id}`)
   }
 
+  addBlog(newBlog: BlogModel): Observable<BlogModel> {
+    return this._http.post<BlogModel>(`${environment.localUrl}blog/`, newBlog)
+  }
+
   /**
    * PRIVATE SERVICES
    */

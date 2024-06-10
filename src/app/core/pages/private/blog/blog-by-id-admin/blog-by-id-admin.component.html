@@ -1,6 +1,9 @@
 <p>blog-by-id-admin works!</p>
 <ng-container *ngIf="blogById$ | async as blog">
   <div>
-    Naslov: {{blog.naslov}}
+    Naslov: {{blog.naslov}}<br>
+    Podnaslov: {{blog.podnaslov}}<br>
+    Datum Vnosa: {{blog.datum_vnosa | date}}<br>
   </div>
 </ng-container>
+<app-go-back></app-go-back>
