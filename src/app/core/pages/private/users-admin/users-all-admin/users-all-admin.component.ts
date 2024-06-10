@@ -7,9 +7,9 @@ import { GoBackComponent } from "../../../../../shared/components/go-back/go-bac
   selector: 'app-users-admin',
   standalone: true,
   imports: [ CommonModule, GoBackComponent ],
-  templateUrl: './users-admin.component.html'
+  templateUrl: './users-all-admin.component.html'
 })
-export class UsersAdminComponent {
+export class UsersAllAdminComponent {
 
 
   private _userService = inject(UsersService)

@@ -1,7 +1,10 @@
 <p>login works!</p>
 
-Username: <input style="border: 1px solid black" [(ngModel)]="getUsername"><br>
-Password: <input style="border: 1px solid black" [(ngModel)]="getPassword"><br>
+Username: <input #firstInput style="border: 1px solid black" [(ngModel)]="getUsername"
+                 (keypress)="checkEnter($event, 'firstInput')"><br>
+Password: <input #secondInput style="border: 1px solid black" [(ngModel)]="getPassword"
+                 (keypress)="checkEnter($event, 'secondInput')">
+<br>
 
 <button style="background-color: orange; padding: 10px" (click)="logIn()">
   Login

@@ -1,0 +1,14 @@
+<p>user-by-id works!</p>
+<ng-container *ngIf="userId$ | async as users">
+
+  <div>
+    Username: {{ users.username}}<br>
+    Full name: {{ users.full_name}}<br>
+    Technology: {{ users.technology}}<br>
+    Description: {{ users.description}}<br>
+    Created at: {{ users.datum_vnosa}}<br>
+  </div>
+
+</ng-container>
+
+<app-go-back></app-go-back>

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from "@angular/forms";
 import { AuthService } from "../../../../auth/auth.service";
@@ -17,8 +17,26 @@ export class LoginComponent {
   private _logService = inject(LoginService)
   private _router = inject(Router)
 
+  @ViewChild('firstInput') firstInput!: ElementRef<any>
+  @ViewChild('secondInput') secondInput!: ElementRef<any>
+
   getUsername = ''
   getPassword = ''
+
+
+  /**
+   * If user is in first input and when he types in username, he can hit enter, and it will move him to the second field
+   * where he can type in his password and when he hits enter this time, he is logged in
+   */
+  checkEnter(event: KeyboardEvent, inputName: string) {
+    if (event.key === 'Enter') {
+      if (inputName === 'firstInput') {
+        this.secondInput.nativeElement.focus()
+      } else if (inputName === 'secondInput') {
+        this.logIn()
+      }
+    }
+  }
 
   logIn() {
     this._authService.login(this.getUsername, this.getPassword)

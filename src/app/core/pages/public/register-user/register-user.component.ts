@@ -16,6 +16,9 @@ export class RegisterUserComponent {
   getUsername: string = ''
   getEmail: string = ''
   getFullName: string = ''
+  getProfession: string = ''
+  getTechnology: string = ''
+  getDescription: string = ''
   chosePassword: string = ''
 
   registerNewUser() {
@@ -24,9 +27,13 @@ export class RegisterUserComponent {
       username: this.getUsername,
       email: this.getEmail,
       full_name: this.getFullName,
+      profession: this.getProfession,
       hashed_password: this.chosePassword,
+      technology: this.getTechnology,
+      description: this.getDescription,
       confirmed: false,
       disabled: true,
+      blog_notification: false,
       datum_vnosa: new Date().toISOString()
     }
 

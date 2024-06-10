@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-users-by-id-admin',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './users-by-id-admin.component.html'
+  imports: [ CommonModule ],
+  templateUrl: './user-by-id-admin.component.html'
 })
-export class UsersByIdAdminComponent {
+export class UserByIdAdminComponent {
 
 }
