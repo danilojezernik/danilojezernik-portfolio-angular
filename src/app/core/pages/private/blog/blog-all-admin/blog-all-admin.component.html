@@ -8,7 +8,7 @@
     {{blog.datum_vnosa | date}} <br>
     <button [routerLink]="['/blog-admin/', blog._id]" class="me-1.5 bg-amber-400 p-2">Read blog</button>
     <button [routerLink]="['/blog-admin/edit', blog._id]" class="me-1.5 bg-blue-500 p-2">Edit blog</button>
-    <button class="bg-red-500 p-2">Delete blog - Not working</button>
+    <button *ngIf="blog._id" (click)="deleteById(blog._id)" class="bg-red-500 p-2">Delete blog - Not working</button>
   </div>
 </ng-container>
 

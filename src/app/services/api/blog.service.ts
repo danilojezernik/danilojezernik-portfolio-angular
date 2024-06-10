@@ -22,14 +22,6 @@ export class BlogService {
     return this._http.get<BlogModel>(`${environment.localUrl}blog/${id}`)
   }
 
-  addBlog(newBlog: BlogModel): Observable<BlogModel> {
-    return this._http.post<BlogModel>(`${environment.localUrl}blog/`, newBlog)
-  }
-
-  editBlogById(id: string, newData: BlogModel) {
-    return this._http.put<BlogModel>(`${environment.localUrl}blog/${id}`, newData)
-  }
-
   /**
    * PRIVATE SERVICES
    */
@@ -41,5 +33,16 @@ export class BlogService {
     return this._http.get<BlogModel>(`${environment.localUrl}blog/admin/${id}`)
   }
 
+  addBlog(newBlog: BlogModel): Observable<BlogModel> {
+    return this._http.post<BlogModel>(`${environment.localUrl}blog/`, newBlog)
+  }
+
+  editBlogById(id: string, newData: BlogModel) {
+    return this._http.put<BlogModel>(`${environment.localUrl}blog/${id}`, newData)
+  }
+
+  deleteBlogById(id: string): Observable<any> {
+    return this._http.delete<any>(`${environment.localUrl}blog/${id}`)
+  }
 
 }
