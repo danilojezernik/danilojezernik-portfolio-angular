@@ -11,11 +11,29 @@ export class UsersService {
 
   _http = inject(HttpClient)
 
-  getAllUsers(): Observable<User[]> {
+
+  /**
+   * PUBLIC SERVICES
+   */
+
+  getAllUsersPublic(): Observable<User[]> {
     return this._http.get<User[]>(`${environment.localUrl}user`)
   }
 
+  getUSerByIdPublic(id: string): Observable<User> {
+    return this._http.get<User>(`${environment.localUrl}user/${id}`)
+  }
+
+
+  /**
+   * PRIVATE SERVICES
+   */
+
   getAllUsersPrivate(): Observable<User[]> {
     return this._http.get<User[]>(`${environment.localUrl}user/private/`)
+  }
+
+  getUserByIdPrivate(id: string): Observable<User> {
+    return this._http.get<User>(`${environment.localUrl}user/admin/${id}`)
   }
 }

@@ -22,7 +22,7 @@ import { AdminComponent } from "./core/pages/private/admin/admin.component";
 import { RegisterUserComponent } from "./core/pages/public/register-user/register-user.component";
 import { UsersComponent } from "./core/pages/public/users/users.component";
 import { BlogByIdAdminComponent } from "./core/pages/private/blog/blog-by-id-admin/blog-by-id-admin.component";
-import { UsersAdminComponent } from "./core/pages/private/users-admin/users-admin.component";
+import { UsersAdminComponent } from "./core/pages/private/users-admin/users-all-admin/users-admin.component";
 import { EmailsAdminComponent } from "./core/pages/private/emails-admin/emails-admin.component";
 import { ExperiencesAdminComponent } from "./core/pages/private/experiences-admin/experiences-admin.component";
 import { ProjectsAdminComponent } from "./core/pages/private/projects-admin/projects-admin.component";

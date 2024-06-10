@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsersService } from "../../../../services/api/users.service";
-import { GoBackComponent } from "../../../../shared/components/go-back/go-back.component";
+import { UsersService } from "../../../../../services/api/users.service";
+import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 
 @Component({
   selector: 'app-users-admin',

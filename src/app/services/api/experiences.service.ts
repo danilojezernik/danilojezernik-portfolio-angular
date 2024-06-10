@@ -11,8 +11,20 @@ export class ExperiencesService {
 
   _http = inject(HttpClient)
 
+  /**
+   * PUBLIC SERVICES
+   */
 
   getAllExperiences(): Observable<Experiences[]> {
     return this._http.get<Experiences[]>(`${environment.localUrl}experiences`)
   }
+
+  /**
+   * PRIVATE SERVICES
+   */
+
+  getAllExperiencesAdmin(): Observable<Experiences[]> {
+    return this._http.get<Experiences[]>(`${environment.localUrl}experiences/admin/`)
+  }
+
 }

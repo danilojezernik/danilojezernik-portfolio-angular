@@ -13,7 +13,7 @@ export class UsersComponent {
 
   private _userService = inject(UsersService)
 
-  users$ = this._userService.getAllUsers().pipe(
+  users$ = this._userService.getAllUsersPublic().pipe(
     map(user => user.map(data => ({
       username: data.username,
       datum_vnosa: data.datum_vnosa
