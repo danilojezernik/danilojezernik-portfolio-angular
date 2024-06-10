@@ -5,8 +5,9 @@
     {{i + 1}}. {{user.full_name}}<br>
     {{user.username}}<br>
     {{user.email}}<br>
-    {{user.technology}}<br>
-    {{user.description}}<br>
+    <span *ngIf="!user.description" class="text-red-400">{{user.technology || 'Ni opisa'}}</span><br>
+    <span *ngIf="!user.description" class="text-red-400">{{user.description || 'Ni opisa'}}</span><br>
+
     {{user.blog_notification}}<br>
     {{user.disabled}}<br>
     {{user.confirmed}}<br>
@@ -15,4 +16,3 @@
 </ng-container>
 
 <app-go-back></app-go-back>
-<

@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterService } from "../../../../services/api/register.service";
 import { User } from "../../../../models/user";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-register-user',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [ CommonModule, FormsModule ],
   templateUrl: './register-user.component.html'
 })
 export class RegisterUserComponent {
@@ -20,9 +21,12 @@ export class RegisterUserComponent {
   getTechnology: string = ''
   getDescription: string = ''
   chosePassword: string = ''
+  getConfirmed!: boolean
+  getBlogNotification!: boolean
 
   registerNewUser() {
 
+    console.log(this.getConfirmed)
     const newUser: User = {
       username: this.getUsername,
       email: this.getEmail,
@@ -31,13 +35,13 @@ export class RegisterUserComponent {
       hashed_password: this.chosePassword,
       technology: this.getTechnology,
       description: this.getDescription,
-      confirmed: false,
+      confirmed: this.getConfirmed,
       disabled: true,
-      blog_notification: false,
+      blog_notification: this.getBlogNotification,
       datum_vnosa: new Date().toISOString()
     }
-
-    this._registerUser.registerNewUser(newUser).subscribe()
+    console.log(newUser.confirmed)
+    this._registerUser.registerNewUser(newUser).subscribe(data => console.log(data.confirmed))
 
   }
 
