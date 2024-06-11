@@ -21,10 +21,13 @@ export class RegisterUserComponent {
   getTechnology: string = ''
   getDescription: string = ''
   chosePassword: string = ''
-  getConfirmed!: boolean
-  getBlogNotification!: boolean
+  getConfirmed: boolean = false
+  getBlogNotification: boolean = false
 
   registerNewUser() {
+
+    console.log('Get blog notification', this.getBlogNotification)
+    console.log('Get newsletter', this.getConfirmed)
 
     const newUser: User = {
       username: this.getUsername,
@@ -40,7 +43,10 @@ export class RegisterUserComponent {
       datum_vnosa: new Date().toISOString()
     }
 
-    this._registerUser.registerNewUser(newUser).subscribe(data => console.log(data.confirmed))
+    console.log(newUser.confirmed)
+    console.log(newUser.blog_notification)
+
+    this._registerUser.registerNewUser(newUser).subscribe()
 
   }
 
