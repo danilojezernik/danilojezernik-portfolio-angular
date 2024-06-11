@@ -33,7 +33,11 @@ export class UsersService {
     return this._http.get<User[]>(`${environment.localUrl}user/private/`)
   }
 
-  getUserByIdPrivate(id: string): Observable<User> {
+  getUserByIdAdmin(id: string): Observable<User> {
     return this._http.get<User>(`${environment.localUrl}user/admin/${id}`)
+  }
+
+  editUserByIdAdmin(id: string, newUser: User): Observable<User> {
+    return this._http.put<User>(`${environment.localUrl}user/admin/${id}`, newUser)
   }
 }

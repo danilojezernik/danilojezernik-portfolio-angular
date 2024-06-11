@@ -1,17 +1,24 @@
 <p>users-admin works!</p>
 <ng-container *ngIf="users$ | async as users">
-  <div style="padding-bottom: 20px" *ngFor="let user of users; let i = index">
+  <div style="padding-bottom: 20px" *ngFor="let user of users; let i = index" [routerLink]="">
 
     {{i + 1}}. {{user.full_name}}<br>
+    {{user._id}}<br>
     {{user.username}}<br>
     {{user.email}}<br>
     <span *ngIf="!user.description" class="text-red-400">{{user.technology || 'Ni opisa'}}</span><br>
     <span *ngIf="!user.description" class="text-red-400">{{user.description || 'Ni opisa'}}</span><br>
 
-    {{user.blog_notification}}<br>
-    {{user.disabled}}<br>
-    {{user.confirmed}}<br>
+    Blog notification is set to: <span class="font-bold">{{user.blog_notification}}</span><br>
+    Newsletter confirmed: <span class="font-bold">{{user.confirmed}}</span><br>
+    <span class="font-bold">Registered</span> confirmed: <span class="font-bold">{{user.registered}}</span><br>
 
+    <button class="me-1.5 bg-blue-500 p-1" [routerLink]="['/user-admin', user._id]">
+      Get user
+    </button>
+    <button class="me-1.5 bg-yellow-500 p-1" [routerLink]="['/user-admin/edit', user._id]">
+      Edit user
+    </button>
   </div>
 </ng-container>
 

@@ -38,7 +38,7 @@ export class RegisterUserComponent {
       technology: this.getTechnology,
       description: this.getDescription,
       confirmed: this.getConfirmed,
-      disabled: true,
+      registered: false,
       blog_notification: this.getBlogNotification,
       datum_vnosa: new Date().toISOString()
     }

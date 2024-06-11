@@ -30,6 +30,10 @@ import {
 } from "./core/pages/private/projects-admin/projects-all-admin/projects-all-admin.component";
 import { AddBlogAdminComponent } from "./core/pages/private/blog/add-blog-admin/add-blog-admin.component";
 import { UserByIdComponent } from "./core/pages/public/users/user-by-id/user-by-id.component";
+import {
+  UserEditByIdAdminComponent
+} from "./core/pages/private/users-admin/user-edit-by-id-admin/user-edit-by-id-admin.component";
+import { UserByIdAdminComponent } from "./core/pages/private/users-admin/user-by-id-admin/user-by-id-admin.component";
 
 const routes: Routes = [
   {
@@ -199,6 +203,16 @@ const routes: Routes = [
   {
     path: 'users-admin',
     component: UsersAllAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'user-admin/edit/:id',
+    component: UserEditByIdAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'user-admin/:id',
+    component: UserByIdAdminComponent,
     canActivate: [ AuthGuardService ]
   },
 

@@ -10,8 +10,8 @@ export interface User {
   technology: string;
   description: string;
   hashed_password: string;
-  disabled: boolean;
   confirmed: boolean;
+  registered?: boolean;
   blog_notification: boolean;
   datum_vnosa: string;
 }

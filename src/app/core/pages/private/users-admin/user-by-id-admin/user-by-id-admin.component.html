@@ -1,1 +1,17 @@
 <p>users-by-id-admin works!</p>
+<p>blog-by-id-admin works!</p>
+<ng-container *ngIf="user$ | async as user">
+  <div>
+    Polno ime: {{user.full_name}}<br>
+    Username: {{user.username}}<br>
+    Email: {{user.email}}<br>
+    Profession: {{user.profession}}<br>
+    Technology: {{user.technology}}<br>
+    Description: {{user.description}}<br>
+    Confirmed: {{user.confirmed}}<br>
+    Registered: {{user.registered}}<br>
+    Blog notification: {{user.blog_notification}}<br>
+    Datum Vnosa: {{user.datum_vnosa | date}}<br>
+  </div>
+</ng-container>
+<app-go-back></app-go-back>
