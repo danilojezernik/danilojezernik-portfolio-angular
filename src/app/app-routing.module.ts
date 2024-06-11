@@ -25,7 +25,9 @@ import { BlogByIdAdminComponent } from "./core/pages/private/blog/blog-by-id-adm
 import { UsersAllAdminComponent } from "./core/pages/private/users-admin/users-all-admin/users-all-admin.component";
 import { EmailsAdminComponent } from "./core/pages/private/emails-admin/emails-admin.component";
 import { ExperiencesAdminComponent } from "./core/pages/private/experiences-admin/experiences-admin.component";
-import { ProjectsAdminComponent } from "./core/pages/private/projects-admin/projects-admin.component";
+import {
+  ProjectsAllAdminComponent
+} from "./core/pages/private/projects-admin/projects-all-admin/projects-all-admin.component";
 import { AddBlogAdminComponent } from "./core/pages/private/blog/add-blog-admin/add-blog-admin.component";
 import { UserByIdComponent } from "./core/pages/public/users/user-by-id/user-by-id.component";
 
@@ -69,7 +71,7 @@ const routes: Routes = [
   // PRIVATE
   {
     path: 'projects-admin',
-    component: ProjectsAdminComponent,
+    component: ProjectsAllAdminComponent,
     canActivate: [ AuthGuardService ]
   },
 

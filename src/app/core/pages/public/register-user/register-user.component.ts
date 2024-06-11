@@ -26,7 +26,6 @@ export class RegisterUserComponent {
 
   registerNewUser() {
 
-    console.log(this.getConfirmed)
     const newUser: User = {
       username: this.getUsername,
       email: this.getEmail,
@@ -40,7 +39,7 @@ export class RegisterUserComponent {
       blog_notification: this.getBlogNotification,
       datum_vnosa: new Date().toISOString()
     }
-    console.log(newUser.confirmed)
+
     this._registerUser.registerNewUser(newUser).subscribe(data => console.log(data.confirmed))
 
   }
