@@ -4,11 +4,12 @@ import { BlogService } from "../../../../../services/api/blog.service";
 import { RouterLink } from "@angular/router";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { Observable, of } from "rxjs";
+import { ShowDataTestComponent } from "../../../../../shared/components/show-data-test/show-data-test.component";
 
 @Component({
   selector: 'app-blog-all-admin',
   standalone: true,
-  imports: [ CommonModule, RouterLink, GoBackComponent ],
+  imports: [ CommonModule, RouterLink, GoBackComponent, ShowDataTestComponent ],
   templateUrl: './blog-all-admin.component.html'
 })
 export class BlogAllAdminComponent implements OnInit {

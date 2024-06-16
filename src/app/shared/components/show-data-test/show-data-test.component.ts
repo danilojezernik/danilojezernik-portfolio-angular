@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from "@angular/router";
 
 /**
  * This component is for easy adding any kind of data inputs and displaying them.
@@ -9,7 +10,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-show-data-test',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [ CommonModule, RouterLink ],
   templateUrl: './show-data-test.component.html'
 })
 export class ShowDataTestComponent {
