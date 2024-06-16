@@ -38,6 +38,6 @@ export class UsersService {
   }
 
   editUserByIdAdmin(id: string, newUser: User): Observable<User> {
-    return this._http.put<User>(`${environment.localUrl}user/admin/${id}`, newUser)
+    return this._http.put<User>(`${environment.localUrl}user/${id}`, newUser)
   }
 }
