@@ -6,7 +6,7 @@ import { GetDeviceService } from "../get-device/get-device.service";
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LogFrontendService {
 
   _logService = inject(LogsService)
   _deviceInfo = inject(GetDeviceService)

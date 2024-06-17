@@ -12,6 +12,6 @@ export class RegisterService {
   private _http = inject(HttpClient)
 
   registerNewUser(newUser: User): Observable<User> {
-    return this._http.post<User>(`${environment.localUrl}register/`, newUser)
+    return this._http.post<User>(`${environment.registerUrl}`, newUser)
   }
 }

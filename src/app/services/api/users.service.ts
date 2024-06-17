@@ -17,11 +17,11 @@ export class UsersService {
    */
 
   getAllUsersPublic(): Observable<User[]> {
-    return this._http.get<User[]>(`${environment.localUrl}user`)
+    return this._http.get<User[]>(`${environment.usersUrl}`)
   }
 
   getUSerByIdPublic(id: string): Observable<User> {
-    return this._http.get<User>(`${environment.localUrl}user/${id}`)
+    return this._http.get<User>(`${environment.usersUrl}/${id}`)
   }
 
 
@@ -30,14 +30,14 @@ export class UsersService {
    */
 
   getAllUsersPrivate(): Observable<User[]> {
-    return this._http.get<User[]>(`${environment.localUrl}user/private/`)
+    return this._http.get<User[]>(`${environment.usersUrl.admin}`)
   }
 
   getUserByIdAdmin(id: string): Observable<User> {
-    return this._http.get<User>(`${environment.localUrl}user/admin/${id}`)
+    return this._http.get<User>(`${environment.usersUrl.admin}/${id}`)
   }
 
   editUserByIdAdmin(id: string, newUser: User): Observable<User> {
-    return this._http.put<User>(`${environment.localUrl}user/${id}`, newUser)
+    return this._http.put<User>(`${environment.usersUrl}/${id}`, newUser)
   }
 }

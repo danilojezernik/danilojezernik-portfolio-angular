@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from "@angular/forms";
 import { AuthService } from "../../../../auth/auth.service";
 import { Router } from "@angular/router";
-import { LoginService } from "../../../../services/api/login.service";
+import { LogFrontendService } from "../../../../services/api/log-frontend.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ import { LoginService } from "../../../../services/api/login.service";
 export class LoginComponent {
 
   private _authService = inject(AuthService)
-  private _logService = inject(LoginService)
+  private _logService = inject(LogFrontendService)
   private _router = inject(Router)
 
   @ViewChild('firstInput') firstInput!: ElementRef<any>
