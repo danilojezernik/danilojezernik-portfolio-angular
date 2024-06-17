@@ -1,0 +1,18 @@
+<p>emails-admin works!</p>
+<ng-container *ngIf="emails$ | async as emails">
+
+  <div style="padding-bottom: 20px" *ngFor="let email of emails">
+
+    <app-show-data-test
+      [_id]="email._id"
+      [name]="email.name"
+      [surname]="email.surname"
+      [email]="email.email"
+      [datum_vnosa]="email.datum_vnosa"
+    />
+
+  </div>
+
+</ng-container>
+
+<app-go-back></app-go-back>

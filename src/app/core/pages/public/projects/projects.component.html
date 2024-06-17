@@ -1,1 +1,18 @@
 <p>projects works!</p>
+
+
+<ng-container *ngIf="projects$ | async as projects">
+
+  <div *ngFor="let project of projects">
+
+    {{project.title}}<br>
+    {{project.subtitle}}<br>
+    {{project.content}}<br>
+    <ng-container *ngIf="project.website">{{project.website}}<br></ng-container>
+    <ng-container *ngIf="project.github">{{project.github}}<br></ng-container>
+    {{project.category}}<br>
+    {{project.datum_vnosa | date }}<br>
+
+  </div>
+
+</ng-container>

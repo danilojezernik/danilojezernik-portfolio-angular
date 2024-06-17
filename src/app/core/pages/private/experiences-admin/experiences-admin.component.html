@@ -1,0 +1,26 @@
+<p>experiences-admin works!</p>
+
+<ng-container *ngIf="experiences$ | async as experiences">
+
+  <div *ngFor="let experience of experiences">
+
+    <app-show-data-test
+      [_id]="experience._id"
+      [company]="experience.company"
+      [framework]="experience.framework"
+      [title]="experience.title"
+      [stack]="experience.stack"
+      [tasks]="experience.tasks"
+      [programming_language]="experience.programming_language"
+      [employee]="experience.employee"
+      [company_start]="experience.company_start"
+      [company_end]="experience.company_end"
+      [datum_vnosa]="experience.datum_vnosa"
+    />
+
+  </div>
+
+</ng-container>
+
+
+<app-go-back></app-go-back>

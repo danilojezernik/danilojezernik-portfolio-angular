@@ -1,0 +1,6 @@
+<p>project-edit-admin works!</p>
+<ng-container *ngIf="project$ | async as projects">
+
+  <app-show-data-test [title]="projects.title"/>
+
+</ng-container>

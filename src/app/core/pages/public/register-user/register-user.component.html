@@ -1,0 +1,12 @@
+<p>register-user works!</p>
+
+Username: <input class="border mb-1" type="text" [(ngModel)]="getUsername"><br>
+Password: <input class="border mb-1" type="text" [(ngModel)]="chosePassword"><br>
+Full name: <input class="border mb-1" type="text" [(ngModel)]="getFullName"><br>
+Email: <input class="border mb-1" type="text" [(ngModel)]="getEmail"><br>
+You want to subscribe to newsletter: <input class="border mb-1" type="checkbox" [(ngModel)]="getConfirmed"><br>
+Do you want to be notified about blog: <input class="border mb-1" type="checkbox" [(ngModel)]="getBlogNotification"><br>
+
+<button (click)="registerNewUser()">
+  Registriraj se
+</button>

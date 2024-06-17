@@ -1,6 +1,6 @@
 <p>blog-all works!</p>
 <ng-container *ngIf="blog$ | async as blogs">
-  <div *ngFor="let blog of blogs">
+  <div *ngFor="let blog of blogs" [routerLink]="['/blog/', blog._id]">
     {{blog.naslov}} <br>
     {{blog.datum_vnosa | date}}
   </div>

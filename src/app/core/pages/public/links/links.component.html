@@ -1,1 +1,10 @@
 <p>links works!</p>
+<ng-container *ngIf="links$ | async as links">
+
+  <div *ngFor="let link of links">
+
+    <a [href]="link.link" target="_blank">{{link.title}}</a><br>
+
+  </div>
+
+</ng-container>
