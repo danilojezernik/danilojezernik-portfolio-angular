@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule } from "@angular/material/dialog";
 
 /**
- * This component is used as a reusable dialog that can display various types of data.
- * The data structure is expected to have a title and a list of data items.
- * @o
+ * @Component declaration for DialogGlobalAdminComponent.
+ *
+ * This component serves as a reusable dialog component designed to display various types of data.
+ * It expects input data with a title and either an array of objects or a string.
  */
 
 @Component({
@@ -23,16 +24,24 @@ export class DialogGlobalAdminComponent {
    */
   constructor(@Inject(MAT_DIALOG_DATA) public data: { title: string, allData: any[] }) {
     // The data object is injected using MAT_DIALOG_DATA token, making it available for use in the component
-    console.log(data)
   }
 
   /**
-   * Helper method to get the keys of an object.
-   * @param obj - The object from which to get the keys.
-   * @returns An array of strings representing the keys of the object.
+   * Method to determine if a given value is an object.
+   * @param val - The value to check.
+   * @returns true if 'val' is an object (excluding null); otherwise, returns false.
+   */
+  isObject(val: any): boolean {
+    return typeof val === 'object' && val !== null; // Checks if 'val' is an object (excluding null)
+  }
+
+  /**
+   * Helper method to retrieve the keys of an object.
+   * @param obj - The object for which to retrieve keys.
+   * @returns An array of strings representing the keys of 'obj'.
    */
   getObjectKeys(obj: any): any[] {
-    return Object.keys(obj); // Return the keys of the object
+    return Object.keys(obj); // Returns an array of strings representing the keys of 'obj'
   }
 
 }

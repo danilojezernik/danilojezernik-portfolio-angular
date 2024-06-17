@@ -12,6 +12,12 @@ import {
 import { DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
 import { ShowDataTestComponent } from "../../../../../shared/components/show-data-test/show-data-test.component";
 
+/**
+ * @Component UsersAllAdminComponent
+ * Component for managing users in the admin interface.
+ * Displays a list of users and allows viewing details of individual users.
+ */
+
 @Component({
   selector: 'app-users-admin',
   standalone: true,
@@ -20,15 +26,17 @@ import { ShowDataTestComponent } from "../../../../../shared/components/show-dat
 })
 export class UsersAllAdminComponent {
 
+  // Injected instances: MatDialog for opening dialogs, UsersService for fetching user data
   private _dialog = inject(MatDialog); // Injecting MatDialog for opening dialogs
-
   private _userService = inject(UsersService); // Injecting UsersService for fetching user data
 
+  // Observable to hold list of private users
   users$ = this._userService.getAllUsersPrivate(); // Observable that fetches all private users
   userById$!: Observable<User>; // Observable that holds a specific user's data
 
   /**
-   * Method to fetch a specific user's data by ID.
+   * @method getUserById
+   * Fetches a specific user's data by ID from the UsersService.
    * @param id - The ID of the user to fetch
    */
   getUserById(id: string) {
@@ -36,7 +44,8 @@ export class UsersAllAdminComponent {
   }
 
   /**
-   * Method to open a dialog showing user details based on ID.
+   * @method openDialog
+   * Opens a dialog showing details of a specific user based on their ID.
    * @param id - Optional ID of the user for whom details are displayed
    */
   openDialog(id?: string) {
@@ -55,4 +64,5 @@ export class UsersAllAdminComponent {
       console.error('No id'); // Log an error message
     }
   }
+
 }

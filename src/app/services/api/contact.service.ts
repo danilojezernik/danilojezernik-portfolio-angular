@@ -17,4 +17,8 @@ export class ContactService {
   getAllEmailsAdmin(): Observable<Contact[]> {
     return this._http.get<Contact[]>(`${environment.contactUrl.public}`)
   }
+
+  getEmailByIdAdmin(id: string): Observable<Contact> {
+    return this._http.get<Contact>(`${environment.contactUrl.public}/${id}`)
+  }
 }

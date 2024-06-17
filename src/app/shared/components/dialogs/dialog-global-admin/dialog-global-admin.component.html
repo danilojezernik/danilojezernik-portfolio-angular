@@ -1,38 +1,50 @@
-<!-- ng-container is a structural directive that doesn't render an extra element in the DOM -->
+<!-- START: Conditional Rendering based on data.allData existence -->
 <ng-container *ngIf="data.allData; else noData">
 
   <!-- Display the title fetched from data -->
   <h2>{{ data.title }}</h2>
 
-  <!-- Container for displaying data -->
+  <!-- START: Container for displaying data -->
   <div>
 
-    <!-- Unordered list to display key-value pairs from data.allData -->
-    <ul>
+    <!-- START: Check if data.allData is a string -->
+    <ng-container *ngIf="!isObject(data.allData)">
+      <!-- Display the single data item -->
+      <p>{{ data.allData }}</p>
+    </ng-container>
+    <!-- END: Check if data.allData is a string -->
 
-      <!-- Loop through each key in data.allData using *ngFor -->
-      <li *ngFor="let key of getObjectKeys(data.allData)">
+    <!-- START: Check if data.allData is an object -->
+    <ng-container *ngIf="isObject(data.allData)">
 
-        <!-- Display only key that has value -->
-        <ng-container *ngIf="data.allData[key]">
+      <!-- START: Unordered list to display key-value pairs from data.allData -->
+      <ul>
+        <!-- Loop through each key in data.allData using *ngFor -->
+        <li *ngFor="let key of getObjectKeys(data.allData)">
 
-          <!-- Display each key and its corresponding value -->
-          <strong>{{ key }}:</strong> {{ data.allData[key] }}
-          
-        </ng-container>
+          <!-- Display only key that has value -->
+          <ng-container *ngIf="data.allData[key]">
 
-      </li>
+            <!-- Display each key and its corresponding value -->
+            <strong>{{ key }}:</strong> {{ data.allData[key] }}
 
-    </ul>
+          </ng-container>
+        </li>
+
+      </ul>
+      <!-- END: Unordered list to display key-value pairs from data.allData -->
+
+    </ng-container>
+    <!-- END: Check if data.allData is an object -->
 
   </div>
+  <!-- END: Container for displaying data -->
 
 </ng-container>
+<!-- END: Conditional Rendering based on data.allData existence -->
 
 <!-- ng-template defines a template for displaying when data.allData is falsy -->
 <ng-template #noData>
-
   <!-- Display a message when no data is available -->
-  <p>Ni podatkov...</p> <!-- Replace with appropriate message in your language -->
-
+  <p>Ni podatkov...</p>
 </ng-template>
