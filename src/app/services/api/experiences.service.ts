@@ -18,6 +18,10 @@ export class ExperiencesService {
     return this._http.get<Experiences[]>(`${environment.experiencesUrl.public}`)
   }
 
+  getExperienceById(id: string): Observable<Experiences> {
+    return this._http.get<Experiences>(`${environment.experiencesUrl.public}/${id}`)
+  }
+
   /**
    * PRIVATE SERVICES
    */
