@@ -14,17 +14,15 @@ export class ExperiencesService {
   /**
    * PUBLIC SERVICES
    */
-
   getAllExperiences(): Observable<Experiences[]> {
-    return this._http.get<Experiences[]>(`${environment.localUrl}experiences`)
+    return this._http.get<Experiences[]>(`${environment.experiencesUrl.public}`)
   }
 
   /**
    * PRIVATE SERVICES
    */
-
   getAllExperiencesAdmin(): Observable<Experiences[]> {
-    return this._http.get<Experiences[]>(`${environment.localUrl}experiences/admin/`)
+    return this._http.get<Experiences[]>(`${environment.experiencesUrl.admin}`)
   }
 
 }

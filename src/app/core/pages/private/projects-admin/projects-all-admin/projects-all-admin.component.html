@@ -1,2 +1,23 @@
 <p>projects-admin works!</p>
+
+<ng-container *ngIf="projects$ | async as projects">
+
+  <div *ngFor="let project of projects">
+
+    <app-show-data-test
+      [title]="project.title"
+      [subtitle]="project.subtitle"
+      [category]="project.category"
+      [content]="project.content"
+      [github]="project.github"
+      [website]="project.website"
+      [datum_vnosa]="project.datum_vnosa"
+    />
+
+    <button (click)="openDialog()">Read</button>
+
+  </div>
+
+</ng-container>
+
 <app-go-back></app-go-back>

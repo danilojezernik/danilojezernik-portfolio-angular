@@ -15,7 +15,7 @@ export class GithubService {
   getGitHubRepo(): Observable<Repo[]> {
 
     // Make an HTTP GET request to the backend API endpoint that returns an object with a 'repos' array
-    return this._http.get<{ repos: Repo[] }>(`${environment.localUrl}github`).pipe(
+    return this._http.get<{ repos: Repo[] }>(`${environment.githubUrl}`).pipe(
       // Use the 'map' operator to transform the response object into just the 'repos' array
       map(response => response.repos)
     )

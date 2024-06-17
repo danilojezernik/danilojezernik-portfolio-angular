@@ -1,0 +1,24 @@
+<!-- Display the title of the dialog -->
+<h2>{{ data.title }}</h2>
+
+<!-- Check if allData exists and has items, otherwise display the noData template -->
+<div *ngIf="data.allData && data.allData.length; else noData">
+  <!-- Loop through each item in allData -->
+  <ul>
+    <li *ngFor="let item of data.allData">
+      <!-- Nested list to display key-value pairs of each item -->
+      <ul>
+        <!-- Loop through each key of the item using the getObjectKeys method -->
+        <li *ngFor="let key of getObjectKeys(item)">
+          <!-- Display the key and its corresponding value -->
+          <strong>{{ key }}:</strong> {{ item[key] }}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<!-- Template to display when no data is available -->
+<ng-template #noData>
+  <p>Ni podatkov..</p>
+</ng-template>

@@ -5,16 +5,19 @@ import { RouterLink } from "@angular/router";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { Observable, of } from "rxjs";
 import { ShowDataTestComponent } from "../../../../../shared/components/show-data-test/show-data-test.component";
+import { MatDialog, MatDialogModule } from "@angular/material/dialog";
+import { DialogComponent } from "../../../../../shared/components/dialogs/dialog/dialog.component";
 
 @Component({
   selector: 'app-blog-all-admin',
   standalone: true,
-  imports: [ CommonModule, RouterLink, GoBackComponent, ShowDataTestComponent ],
+  imports: [ CommonModule, RouterLink, GoBackComponent, ShowDataTestComponent, MatDialogModule ],
   templateUrl: './blog-all-admin.component.html'
 })
 export class BlogAllAdminComponent implements OnInit {
 
-  _blogService = inject(BlogService)
+  private _blogService = inject(BlogService)
+  public dialog = inject(MatDialog)
 
   blogs$: Observable<any> = of([])
 
@@ -33,6 +36,19 @@ export class BlogAllAdminComponent implements OnInit {
     } else {
       console.error('Blog by id doesnt exist')
     }
+  }
+
+  openDialog() {
+    this.blogs$.subscribe(data => {
+      this.dialog.open(DialogComponent, {
+        data: {
+          title: 'Blog Admin',
+          allData: data
+        },
+        width: '300px',
+        height: '300px'
+      })
+    })
   }
 
 }

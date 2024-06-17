@@ -15,6 +15,6 @@ export class ContactService {
    * Get emails that were sent to you
    * */
   getAllEmailsAdmin(): Observable<Contact[]> {
-    return this._http.get<Contact[]>(`${environment.localUrl}contact`)
+    return this._http.get<Contact[]>(`${environment.contactUrl.public}`)
   }
 }

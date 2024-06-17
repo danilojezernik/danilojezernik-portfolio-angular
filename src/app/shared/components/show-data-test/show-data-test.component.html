@@ -4,7 +4,7 @@
 <div *ngIf="podnaslov">Podnaslov: {{ podnaslov }}</div>
 <div *ngIf="vsebina">Vsebina: {{ vsebina }}</div>
 <div *ngIf="image">Image: <img [src]="image" alt="Image"></div>
-<div *ngIf="datum_vnosa">Datum vnosa: {{ datum_vnosa }}</div>
+<div *ngIf="datum_vnosa">Datum vnosa: {{ datum_vnosa | date }}</div>
 <div *ngIf="title">Title: {{ title }}</div>
 <div *ngIf="stack">Stack: {{ stack }}</div>
 <div *ngIf="framework">Framework: {{ framework }}</div>
@@ -12,8 +12,8 @@
 <div *ngIf="company">Company: {{ company }}</div>
 <div *ngIf="employee !== undefined">Employee: {{ employee }}</div>
 <div *ngIf="tasks">Tasks: {{ tasks }}</div>
-<div *ngIf="company_start">Company Start: {{ company_start }}</div>
-<div *ngIf="company_end">Company End: {{ company_end }}</div>
+<div *ngIf="company_start">Company Start: {{ company_start | date }}</div>
+<div *ngIf="company_end">Company End: {{ company_end | date }}</div>
 <div *ngIf="blog_id">Blog ID: {{ blog_id }}</div>
 <div *ngIf="content">Content: {{ content }}</div>
 <div *ngIf="author">Author: {{ author }}</div>

@@ -11,10 +11,10 @@
       [podnaslov]="blog['podnaslov']"
     />
 
-    <button [routerLink]="['/blog-admin/', blog._id]" class="me-1.5 bg-amber-400 p-2">Read</button>
+    <button (click)="openDialog()" class="me-1.5 bg-amber-400 p-2">Read</button>
     <button [routerLink]="['/blog-admin/edit', blog._id]" class="me-1.5 bg-blue-500 p-2">Edit</button>
     <button *ngIf="blog._id" (click)="deleteById(blog._id)" class="bg-red-500 p-2">Delete</button>
-    
+
   </div>
 </ng-container>
 
