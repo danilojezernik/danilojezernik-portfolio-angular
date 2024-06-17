@@ -1,0 +1,33 @@
+<!-- ng-container is a structural directive that doesn't render an extra element in the DOM -->
+<ng-container *ngIf="data.allData; else noData">
+
+  <!-- Display the title fetched from data -->
+  <h2>{{ data.title }}</h2>
+
+  <!-- Container for displaying data -->
+  <div>
+
+    <!-- Unordered list to display key-value pairs from data.allData -->
+    <ul>
+
+      <!-- Loop through each key in data.allData using *ngFor -->
+      <li *ngFor="let key of getObjectKeys(data.allData)">
+
+        <!-- Display each key and its corresponding value -->
+        <strong>{{ key }}:</strong> {{ data.allData[key] }}
+
+      </li>
+
+    </ul>
+
+  </div>
+
+</ng-container>
+
+<!-- ng-template defines a template for displaying when data.allData is falsy -->
+<ng-template #noData>
+
+  <!-- Display a message when no data is available -->
+  <p>Ni podatkov...</p> <!-- Replace with appropriate message in your language -->
+
+</ng-template>

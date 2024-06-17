@@ -12,9 +12,9 @@ import { MAT_DIALOG_DATA, MatDialogModule } from "@angular/material/dialog";
   selector: 'app-dialog',
   standalone: true,
   imports: [ CommonModule, MatDialogModule ],
-  templateUrl: './dialog.component.html'
+  templateUrl: './dialog-global-admin.component.html'
 })
-export class DialogComponent {
+export class DialogGlobalAdminComponent {
 
 
   /**

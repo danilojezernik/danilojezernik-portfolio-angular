@@ -6,9 +6,15 @@ import { GoBackComponent } from "../../../../../shared/components/go-back/go-bac
 import { Observable } from "rxjs";
 import { ShowDataTestComponent } from "../../../../../shared/components/show-data-test/show-data-test.component";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { DialogComponent } from "../../../../../shared/components/dialogs/dialog/dialog.component";
+import {
+  DialogGlobalAdminComponent
+} from "../../../../../shared/components/dialogs/dialog-global-admin/dialog-global-admin.component";
 import { BlogModel } from "../../../../../models/blog.model";
 
+/**
+ * Component for managing blog administration.
+ * Displays a list of blogs and allows viewing and deleting individual blog posts.
+ */
 @Component({
   selector: 'app-blog-all-admin',
   standalone: true,
@@ -17,50 +23,81 @@ import { BlogModel } from "../../../../../models/blog.model";
 })
 export class BlogAllAdminComponent implements OnInit {
 
+  // Inject BlogService for retrieving blog data and MatDialog for displaying dialogs
+  private _blogService = inject(BlogService); // Injected BlogService instance
+  public dialog = inject(MatDialog); // Injected MatDialog instance for dialogs
 
-  private _blogService = inject(BlogService);
-  public dialog = inject(MatDialog);
+  // Observable to hold list of blogs and a single blog item
+  blogs$!: Observable<BlogModel[]>; // Observable to store list of blogs
+  blogById$!: Observable<BlogModel>; // Observable to store a single blog item
 
-  blogs$!: Observable<BlogModel[]>;
-  blogById$!: Observable<BlogModel>;
-
+  /**
+   * Lifecycle hook that runs when the component initializes.
+   * Calls getAllBlogs() to fetch all blogs from the service.
+   */
   ngOnInit() {
-    this.getAllBlogs();
+    this.getAllBlogs(); // Initialize component by fetching all blogs
   }
 
+  /**
+   * Fetches all blogs from the BlogService and assigns them to blogs$.
+   */
   getAllBlogs() {
     this.blogs$ = this._blogService.getAllBlogsAdmin();
   }
 
+  /**
+   * Fetches a single blog post by its ID from the BlogService and assigns it to blogById$.
+   * @param id - ID of the blog post to fetch
+   */
   getBlogById(id: string) {
     this.blogById$ = this._blogService.getBlogById(id);
   }
 
+  /**
+   * Deletes a blog post by its ID.
+   * After deletion, refreshes the list of blogs by calling getAllBlogs().
+   * @param id - ID of the blog post to delete
+   */
   deleteById(id: string | undefined) {
     if (id) {
-      this._blogService.deleteBlogById(id).subscribe(() => {
-        this.getAllBlogs(); // Refresh the list of blogs after deletion
-      });
+      // Call BlogService to delete the blog post by ID
+      this._blogService.deleteBlogById(id).subscribe(
+        () => {
+          this.getAllBlogs(); // Refresh the list of blogs after successful deletion
+        },
+        (error) => {
+          console.error('Failed to delete blog:', error); // Log error message if deletion fails
+        }
+      );
     } else {
-      console.error('Blog by id doesn\'t exist');
+      console.error('Blog by id doesn\'t exist'); // Log error if ID is undefined
     }
   }
 
+  /**
+   * Opens a dialog to display details of a specific blog post.
+   * Fetches the blog post details by ID and passes them to the DialogGlobalAdminComponent.
+   * @param id - ID of the blog post to display in the dialog
+   */
   openDialog(id: string) {
     if (id) {
+      // Fetch blog details by ID from BlogService
       this.getBlogById(id);
+      // Subscribe to blogById$ Observable to get blog data
       this.blogById$.subscribe(data => {
-        this.dialog.open(DialogComponent, {
+        // Open a dialog component to display blog details
+        this.dialog.open(DialogGlobalAdminComponent, {
           data: {
-            title: data.naslov,
-            allData: data
+            title: data.naslov, // Set dialog title to blog title
+            allData: data // Pass all blog data to the dialog
           },
-          width: '300px',
-          height: '300px'
+          width: '300px', // Set dialog width
+          height: '300px' // Set dialog height
         });
       });
     } else {
-      console.error('Blog ID is undefined');
+      console.error('Blog ID is undefined'); // Log error if ID is undefined
     }
   }
 

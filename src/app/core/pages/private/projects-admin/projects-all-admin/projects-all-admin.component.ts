@@ -5,7 +5,9 @@ import { ProjectsService } from "../../../../../services/api/projects.service";
 import { ShowDataTestComponent } from "../../../../../shared/components/show-data-test/show-data-test.component";
 import { RouterLink } from "@angular/router";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { DialogComponent } from "../../../../../shared/components/dialogs/dialog/dialog.component";
+import {
+  DialogGlobalAdminComponent
+} from "../../../../../shared/components/dialogs/dialog-global-admin/dialog-global-admin.component";
 
 @Component({
   selector: 'app-projects-admin',
@@ -22,7 +24,7 @@ export class ProjectsAllAdminComponent {
 
   openDialog() {
     this.projects$.subscribe(data => {
-      this.dialog.open(DialogComponent, {
+      this.dialog.open(DialogGlobalAdminComponent, {
         data: {
           title: 'Projects Admin',
           allData: data
