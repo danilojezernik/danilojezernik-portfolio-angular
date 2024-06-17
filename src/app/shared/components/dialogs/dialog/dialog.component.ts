@@ -23,6 +23,7 @@ export class DialogComponent {
    */
   constructor(@Inject(MAT_DIALOG_DATA) public data: { title: string, allData: any[] }) {
     // The data object is injected using MAT_DIALOG_DATA token, making it available for use in the component
+    console.log(data)
   }
 
   /**
@@ -30,8 +31,7 @@ export class DialogComponent {
    * @param obj - The object from which to get the keys.
    * @returns An array of strings representing the keys of the object.
    */
-  getObjectKeys(obj: any): string[] {
-    console.log(obj)
+  getObjectKeys(obj: any): any[] {
     return Object.keys(obj); // Return the keys of the object
   }
 
