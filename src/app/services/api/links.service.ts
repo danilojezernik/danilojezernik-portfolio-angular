@@ -12,6 +12,6 @@ export class LinksService {
   _http = inject(HttpClient)
 
   getAllLinks(): Observable<Links[]> {
-    return this._http.get<Links[]>(`${environment.localUrl}links`)
+    return this._http.get<Links[]>(`${environment.linksUrl.public}`)
   }
 }
