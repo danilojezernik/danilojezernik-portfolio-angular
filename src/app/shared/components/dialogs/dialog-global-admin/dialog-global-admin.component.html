@@ -13,8 +13,13 @@
       <!-- Loop through each key in data.allData using *ngFor -->
       <li *ngFor="let key of getObjectKeys(data.allData)">
 
-        <!-- Display each key and its corresponding value -->
-        <strong>{{ key }}:</strong> {{ data.allData[key] }}
+        <!-- Display only key that has value -->
+        <ng-container *ngIf="data.allData[key]">
+
+          <!-- Display each key and its corresponding value -->
+          <strong>{{ key }}:</strong> {{ data.allData[key] }}
+          
+        </ng-container>
 
       </li>
 

@@ -34,7 +34,7 @@ export class UsersService {
   }
 
   getUserByIdAdmin(id: string): Observable<User> {
-    return this._http.get<User>(`${environment.usersUrl.admin}/${id}`)
+    return this._http.get<User>(`${environment.usersUrl.admin}${id}`)
   }
 
   editUserByIdAdmin(id: string, newUser: User): Observable<User> {
