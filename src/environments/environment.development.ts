@@ -25,6 +25,12 @@ export const environment = {
     admin: 'http://localhost:3000/experiences/admin/',
   },
 
+  // EXPERIENCES API
+  linksUrl: {
+    public: 'http://localhost:3000/links',
+    admin: 'http://localhost:3000/links/admin/',
+  },
+
   githubUrl: 'http://localhost:3000/github',
 
   backLogUrl: 'http://localhost:8080/portfolio_dj/'
