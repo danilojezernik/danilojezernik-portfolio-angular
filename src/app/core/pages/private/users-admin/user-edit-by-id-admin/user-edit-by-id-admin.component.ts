@@ -41,6 +41,7 @@ export class UserEditByIdAdminComponent implements OnInit {
         this.changeDescription = data.description
         this.changeProfession = data.profession
         this.changeTechnology = data.technology
+        this.hashedPassword = ''
         this.changeConfirmed = data.confirmed
         this.changeRegistered = data.registered
         this.changeBlogNotification = data.blog_notification
@@ -60,7 +61,7 @@ export class UserEditByIdAdminComponent implements OnInit {
       confirmed: this.changeConfirmed,
       registered: this.changeRegistered,
       blog_notification: this.changeBlogNotification,
-      hashed_password: '',
+      hashed_password: this.hashedPassword,
       datum_vnosa: new Date().toISOString()
     }
 

@@ -15,20 +15,18 @@ export class UsersService {
   /**
    * PUBLIC SERVICES
    */
-
   getAllUsersPublic(): Observable<User[]> {
-    return this._http.get<User[]>(`${environment.usersUrl}`)
+    return this._http.get<User[]>(`${environment.usersUrl.public}`)
   }
 
   getUSerByIdPublic(id: string): Observable<User> {
-    return this._http.get<User>(`${environment.usersUrl}/${id}`)
+    return this._http.get<User>(`${environment.usersUrl.public}/${id}`)
   }
 
 
   /**
    * PRIVATE SERVICES
    */
-
   getAllUsersPrivate(): Observable<User[]> {
     return this._http.get<User[]>(`${environment.usersUrl.admin}`)
   }
@@ -38,6 +36,6 @@ export class UsersService {
   }
 
   editUserByIdAdmin(id: string, newUser: User): Observable<User> {
-    return this._http.put<User>(`${environment.usersUrl}/${id}`, newUser)
+    return this._http.put<User>(`${environment.usersUrl.public}/${id}`, newUser)
   }
 }
