@@ -35,6 +35,7 @@ import {
 import {
   ProjectEditAdminComponent
 } from "./core/pages/private/projects-admin/project-edit-admin/project-edit-admin.component";
+import { UserAddAdminComponent } from "./core/pages/private/users-admin/user-add-admin/user-add-admin.component";
 
 const routes: Routes = [
   {
@@ -204,6 +205,11 @@ const routes: Routes = [
   {
     path: 'users-admin',
     component: UsersAllAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'user-admin/add',
+    component: UserAddAdminComponent,
     canActivate: [ AuthGuardService ]
   },
   {

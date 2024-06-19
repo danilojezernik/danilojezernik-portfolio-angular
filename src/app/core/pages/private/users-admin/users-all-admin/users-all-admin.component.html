@@ -1,4 +1,7 @@
 <p>users-admin works!</p>
+
+<button style="background-color: brown; color: white; padding: 10px" routerLink="/user-admin/add">Add user</button>
+
 <ng-container *ngIf="users$ | async as users">
   <div style="padding-bottom: 20px" *ngFor="let user of users; let i = index" [routerLink]="">
 
@@ -14,10 +17,10 @@
       [registered]="user.registered"
     />
 
-    <button (click)="openDialog(user._id)" class="me-1.5 bg-blue-500 p-1">
+    <button (click)="openDialog(user._id)" class="me-1.5 bg-amber-400 p-2">
       Get user
     </button>
-    <button class="me-1.5 bg-yellow-500 p-1" [routerLink]="['/user-admin/edit', user._id]">
+    <button class="me-1.5 bg-blue-500 p-2" [routerLink]="['/user-admin/edit', user._id]">
       Edit user
     </button>
 
