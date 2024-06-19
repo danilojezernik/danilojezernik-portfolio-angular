@@ -48,9 +48,6 @@ export class ErrorHandleService {
       }
     }
 
-    // Log the final error message to the console
-    console.log(errorMessage);
-
     // Return an observable with an error message
     return throwError(() => new Error(errorMessage));
   }
