@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { UsersService } from "../../../../../services/api/users.service";
 import { Router } from "@angular/router";
 import { User } from "../../../../../models/user";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-user-add-admin',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [ CommonModule, FormsModule ],
   templateUrl: './user-add-admin.component.html'
 })
 export class UserAddAdminComponent {
@@ -25,8 +26,13 @@ export class UserAddAdminComponent {
   addConfirmed: boolean = false
   addRegistered: boolean = false
   addBlogNotification: boolean = false
+  userAddStatus: string = ''
+
 
   addUser() {
+
+    if (!this.addFullName)
+      return
 
     const newUser: User = {
       full_name: this.addFullName,
@@ -42,5 +48,13 @@ export class UserAddAdminComponent {
       datum_vnosa: new Date().toISOString()
     }
 
+    this._usersService.addUserAdmin(newUser).subscribe(
+      () => {
+        this._router.navigate([ 'users-admin' ])
+      },
+      (error) => {
+        this.userAddStatus = error.message;
+      }
+    )
   }
 }

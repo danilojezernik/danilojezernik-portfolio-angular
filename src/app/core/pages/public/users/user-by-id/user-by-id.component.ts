@@ -28,7 +28,7 @@ export class UserByIdComponent implements OnInit {
   }
 
   getUserById(id: string) {
-    this.userId$ = this._userService.getUSerByIdPublic(id)
+    this.userId$ = this._userService.getUserByIdPublic(id)
   }
 
 }
