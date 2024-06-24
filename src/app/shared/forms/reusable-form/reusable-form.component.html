@@ -1,0 +1,29 @@
+<!-- Binds the form to the formGroup instance and handles form submission. -->
+<form class="flex flex-col" style="width: 400px" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <!-- Iterates over each field in the config input property. -->
+  <div *ngFor="let field of config">
+
+    <!-- Label for the form control with dynamic 'for' attribute and content. -->
+    <label [for]="field.name">{{ field.label }}</label>
+
+    <!-- Conditionally renders input elements based on the field type. -->
+    <input class="w-full"
+           *ngIf="field.type === 'text'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
+    >
+    <input class="w-full"
+           *ngIf="field.type === 'email'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
+    >
+    <input class="w-full"
+           *ngIf="field.type === 'number'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
+    >
+
+    <!-- Renders a textarea element if the field type is 'textarea'. -->
+    <textarea class="w-full"
+              *ngIf="field.type === 'textarea'" [id]="field.name" [formControlName]="field.name"></textarea>
+
+  </div>
+
+  <!-- Submit button with dynamic label and disabled state based on form validity. -->
+  <button class="p-2 bg-green-600 text-white" type="submit" [disabled]="form.invalid">{{ submitLabel }}</button>
+</form>

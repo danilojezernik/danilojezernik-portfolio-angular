@@ -11,6 +11,16 @@ export class ContactService {
 
   _http = inject(HttpClient)
 
+
+  /**
+   * Client sending emails to contact
+   * */
+
+  sendEmailContact(newEmail: Contact): Observable<Contact> {
+    return this._http.post<Contact>(`${environment.contactUrl.public}`, newEmail)
+  }
+
+
   /**
    * Get emails that were sent to you
    * */
