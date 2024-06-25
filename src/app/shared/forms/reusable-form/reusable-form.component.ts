@@ -67,6 +67,10 @@ export class ReusableFormComponent implements OnInit {
        * - field.name: The name of the form field.
        * - [ '', field.validators || [] ]: Array containing the initial value (empty string) and the validators.
        * - field.validators || []: If validators are provided in the field configuration, use them; otherwise, use an empty array.
+       *
+       * acc returns the accumulated object that represents the form controls configuration.
+       * field.name returns the name of the current form field being processed.
+       * this.config returns the entire configuration array passed from the parent component.
        */
       acc[field.name] = [ '', field.validators || [] ]
       return acc
