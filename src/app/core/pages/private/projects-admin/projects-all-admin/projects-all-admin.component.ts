@@ -51,7 +51,7 @@ export class ProjectsAllAdminComponent implements OnInit {
     this.projectById$ = this._projectService.getProjectById(id);
   }
 
-  deleteProject(id: string) {
+  deleteProject(id?: string) {
     if (id) {
       this._projectService.deleteProjectByIdAdmin(id).subscribe(() => {
         this.getAllProjects()

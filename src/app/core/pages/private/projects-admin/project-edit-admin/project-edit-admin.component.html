@@ -1,6 +1,9 @@
 <p>project-edit-admin works!</p>
-<ng-container *ngIf="project$ | async as projects">
 
-  <app-show-data-test [title]="projects.title"/>
+<app-reusable-form-edit
+  [formConfig]="formProjectsConfig"
+  [formData]="formData"
+  (formSubmit)="editProject($event)"
+></app-reusable-form-edit>
 
-</ng-container>
+<app-go-back/>

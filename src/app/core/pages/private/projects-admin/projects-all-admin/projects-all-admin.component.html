@@ -25,9 +25,11 @@
     <!-- Button to open the dialog for reading the project details -->
     <button class="me-1.5 bg-amber-400 p-2" (click)="openDialog(project._id)">{{ BUTTONS.read }}</button>
 
+    <button [routerLink]="['/projects-admin/edit', project._id]"
+            class="me-1.5 bg-blue-500 p-2">{{ BUTTONS.edit }}</button>
+
     <!-- Button to delete the project, shown only if the project has an ID -->
-    <button *ngIf="project._id" class="me-1.5 bg-red-500 p-2"
-            (click)="deleteProject(project._id)">{{ BUTTONS.delete }}</button>
+    <button class="me-1.5 bg-red-500 p-2" (click)="deleteProject(project._id)">{{ BUTTONS.delete }}</button>
 
   </div>
 

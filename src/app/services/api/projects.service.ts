@@ -41,6 +41,13 @@ export class ProjectsService {
     )
   }
 
+  editProjectByIdAdmin(projectId: string, newProject: Projects): Observable<Projects> {
+    return this._http.put<Projects>(`${environment.projectsUrl.public}/${projectId}`, newProject).pipe(
+      // Handling any errors that occur during the HTTP request
+      catchError(this._errorHandleService.handleError)
+    )
+  }
+
   deleteProjectByIdAdmin(id: string): Observable<Projects> {
     return this._http.delete<Projects>(`${environment.projectsUrl.public}/${id}`).pipe(
       // Handling any errors that occur during the HTTP request

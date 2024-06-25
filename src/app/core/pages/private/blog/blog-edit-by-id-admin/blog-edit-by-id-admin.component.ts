@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { BlogService } from "../../../../../services/api/blog.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { map } from "rxjs";
-import { FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
-import { FormFieldConfig } from "../../../../../models/form-field-config.model";
 import { ReusableFormEditComponent } from "../../../../../shared/forms/reusable-form-edit/reusable-form-edit.component";
+import { formBlogConfig } from "../../../../../shared/global-const/form-config";
 
 /**
  * @Component BlogEditByIdAdminComponent
@@ -27,16 +27,6 @@ export class BlogEditByIdAdminComponent implements OnInit {
   private _router = inject(Router); // Helps navigate between routes
 
   formData: any = {}; // Object to hold the blog data to be edited
-
-  // Configuration for the form fields
-  formConfig: FormFieldConfig[] = [
-    { name: 'naslov', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
-    { name: 'podnaslov', label: 'Podnaslov', type: 'text', validators: [ Validators.required ] },
-    { name: 'kategorija', label: 'Kategorija', type: 'text', validators: [ Validators.required ] },
-    { name: 'vsebina', label: 'Vsebina', type: 'text', validators: [ Validators.required, Validators.minLength(10) ] },
-    { name: 'image', label: 'Image', type: 'text', validators: [ Validators.required ] }
-  ];
-
   /**
    * @method ngOnInit
    * Lifecycle hook that is called after Angular has initialized all data-bound properties.
@@ -70,4 +60,10 @@ export class BlogEditByIdAdminComponent implements OnInit {
       this._router.navigate([ '/blog-admin' ]);
     });
   }
+
+  /**
+   * Form configuration for blog
+   * Uses predefined formBlogConfig from a global constant file
+   * */
+  protected readonly formBlogConfig = formBlogConfig;
 }
