@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { ProjectsService } from "../../../../../services/api/projects.service";
-import { ShowDataTestComponent } from "../../../../../shared/components/show-data-test/show-data-test.component";
+import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component";
 import { RouterLink } from "@angular/router";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import {
@@ -18,7 +18,7 @@ import { DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.con
 @Component({
   selector: 'app-projects-admin',
   standalone: true, // This component is standalone, not requiring external bindings
-  imports: [ CommonModule, GoBackComponent, ShowDataTestComponent, RouterLink, MatDialogModule ], // Import necessary Angular modules
+  imports: [ CommonModule, GoBackComponent, ShowDataComponent, RouterLink, MatDialogModule ], // Import necessary Angular modules
   templateUrl: './projects-all-admin.component.html' // Template file for this component
 })
 export class ProjectsAllAdminComponent {

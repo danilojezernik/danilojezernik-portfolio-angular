@@ -41,7 +41,7 @@ export class UsersService {
     return this._http.get<User[]>(`${environment.usersUrl.public}`).pipe(
       // Handling any errors that occur during the HTTP request
       catchError(this._errorHandleService.handleError)
-    );
+    )
   }
 
   /**
@@ -53,7 +53,7 @@ export class UsersService {
     return this._http.get<User>(`${environment.usersUrl.public}/${id}`).pipe(
       // Handling any errors that occur during the HTTP request
       catchError(this._errorHandleService.handleError)
-    );
+    )
   }
 
   /**
@@ -68,7 +68,7 @@ export class UsersService {
     return this._http.get<User[]>(`${environment.usersUrl.admin}`).pipe(
       // Handling any errors that occur during the HTTP request
       catchError(this._errorHandleService.handleError)
-    );
+    )
   }
 
   /**
@@ -80,7 +80,7 @@ export class UsersService {
     return this._http.get<User>(`${environment.usersUrl.admin}${id}`).pipe(
       // Handling any errors that occur during the HTTP request
       catchError(this._errorHandleService.handleError)
-    );
+    )
   }
 
   /**
@@ -93,7 +93,7 @@ export class UsersService {
     return this._http.put<User>(`${environment.usersUrl.public}/${id}`, newUser).pipe(
       // Handling any errors that occur during the HTTP request
       catchError(this._errorHandleService.handleError)
-    );
+    )
   }
 
   /**
@@ -105,6 +105,6 @@ export class UsersService {
     return this._http.post<User>(`${environment.usersUrl.public}`, newUser).pipe(
       // Handling any errors that occur during the HTTP request
       catchError(this._errorHandleService.handleError)
-    );
+    )
   }
 }

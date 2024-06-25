@@ -11,9 +11,9 @@ import { RouterLink } from "@angular/router";
   selector: 'app-show-data-test',
   standalone: true,
   imports: [ CommonModule, RouterLink ],
-  templateUrl: './show-data-test.component.html'
+  templateUrl: './show-data.component.html'
 })
-export class ShowDataTestComponent {
+export class ShowDataComponent {
 
   // Unique identifier for the data
   @Input() _id?: string;

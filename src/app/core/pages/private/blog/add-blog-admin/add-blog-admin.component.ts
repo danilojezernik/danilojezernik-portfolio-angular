@@ -4,7 +4,7 @@ import { BlogService } from "../../../../../services/api/blog.service";
 import { FormsModule, Validators } from "@angular/forms";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
-import { ReusableFormComponent } from "../../../../../shared/forms/reusable-form/reusable-form.component";
+import { ReusableFormAddComponent } from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
 import { FormFieldConfig } from "../../../../../models/form-field-config.model";
 import { BlogModel } from "../../../../../models/blog.model";
 
@@ -16,7 +16,7 @@ import { BlogModel } from "../../../../../models/blog.model";
 @Component({
   selector: 'app-add-blog-admin',
   standalone: true,
-  imports: [ CommonModule, FormsModule, MatSnackBarModule, ReusableFormComponent ],
+  imports: [ CommonModule, FormsModule, MatSnackBarModule, ReusableFormAddComponent ],
   templateUrl: './add-blog-admin.component.html'
 })
 export class AddBlogAdminComponent {

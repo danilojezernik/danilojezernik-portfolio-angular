@@ -4,13 +4,13 @@ import { BlogService } from "../../../../../services/api/blog.service"
 import { RouterLink } from "@angular/router"
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component"
 import { Observable } from "rxjs"
-import { ShowDataTestComponent } from "../../../../../shared/components/show-data-test/show-data-test.component"
+import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component"
 import { MatDialog, MatDialogModule } from "@angular/material/dialog"
 import {
   DialogGlobalAdminComponent
 } from "../../../../../shared/components/dialogs/dialog-global-admin/dialog-global-admin.component"
 import { BlogModel } from "../../../../../models/blog.model"
-import { DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
+import { BUTTONS, DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
 
 /**
  * @Component BlogAllAdminComponent
@@ -21,7 +21,7 @@ import { DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.con
 @Component({
   selector: 'app-blog-all-admin',
   standalone: true,
-  imports: [ CommonModule, RouterLink, GoBackComponent, ShowDataTestComponent, MatDialogModule ],
+  imports: [ CommonModule, RouterLink, GoBackComponent, ShowDataComponent, MatDialogModule ],
   templateUrl: './blog-all-admin.component.html'
 })
 export class BlogAllAdminComponent implements OnInit {
@@ -108,4 +108,5 @@ export class BlogAllAdminComponent implements OnInit {
     }
   }
 
+  protected readonly BUTTONS = BUTTONS;
 }

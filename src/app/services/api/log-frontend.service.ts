@@ -8,8 +8,8 @@ import { GetDeviceService } from "../get-device/get-device.service";
 })
 export class LogFrontendService {
 
-  _logService = inject(LogsService)
-  _deviceInfo = inject(GetDeviceService)
+  private _logService = inject(LogsService)
+  private _deviceInfo = inject(GetDeviceService)
 
   sendPrivateLog(content: string, domain: string) {
     const newLog: Logging = {

@@ -22,6 +22,13 @@
     <textarea class="w-full"
               *ngIf="field.type === 'textarea'" [id]="field.name" [formControlName]="field.name"></textarea>
 
+    <!-- Error message for required fields -->
+    <!-- Display the error message if the form control is invalid and has been touched -->
+    <div *ngIf="form.controls[field.name].invalid && form.controls[field.name].touched">
+      <!-- Display specific error message for 'required' validation -->
+      <div *ngIf="form.controls[field.name].errors?.['required']">{{ field.label }} is required</div>
+    </div>
+
   </div>
 
   <!-- Submit button with dynamic label and disabled state based on form validity. -->

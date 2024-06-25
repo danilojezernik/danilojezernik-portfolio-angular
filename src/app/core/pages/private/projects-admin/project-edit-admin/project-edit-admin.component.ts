@@ -4,12 +4,12 @@ import { ProjectsService } from "../../../../../services/api/projects.service";
 import { ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs";
 import { Projects } from "../../../../../models/projects";
-import { ShowDataTestComponent } from "../../../../../shared/components/show-data-test/show-data-test.component";
+import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component";
 
 @Component({
   selector: 'app-project-edit-admin',
   standalone: true,
-  imports: [ CommonModule, ShowDataTestComponent ],
+  imports: [ CommonModule, ShowDataComponent ],
   templateUrl: './project-edit-admin.component.html'
 })
 export class ProjectEditAdminComponent implements OnInit {

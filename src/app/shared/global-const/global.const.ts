@@ -7,3 +7,10 @@ const ADMIN_GET_BY_ID = {
 export const DIALOG_DIMENSIONS = {
   admin: ADMIN_GET_BY_ID
 }
+
+export enum BUTTONS {
+  read = 'Beri',
+  edit = 'Uredi',
+  add = 'Dodaj',
+  delete = 'Izbriši'
+}

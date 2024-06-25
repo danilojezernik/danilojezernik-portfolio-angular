@@ -1,9 +1,9 @@
 <p>blog-edit-by-id-admin works!</p>
-Naslov: <input style="border: 1px solid black" [(ngModel)]="addNaslov"><br>
-Podnaslov: <input style="border: 1px solid black" [(ngModel)]="addPodnaslov"><br>
-Vsebina: <input style="border: 1px solid black" [(ngModel)]="addVsebina"><br>
-Kategorija: <input style="border: 1px solid black" [(ngModel)]="addKategorija"><br>
-Slika: <input style="border: 1px solid black" [(ngModel)]="addImage"><br>
 
-<button class="me-1.5 bg-blue-500 p-2" (click)="editBlog()">Edit</button>
+<app-reusable-form-edit
+  [formConfig]="formConfig"
+  [formData]="formData"
+  (formSubmit)="editBlog($event)"
+></app-reusable-form-edit>
+
 <app-go-back/>

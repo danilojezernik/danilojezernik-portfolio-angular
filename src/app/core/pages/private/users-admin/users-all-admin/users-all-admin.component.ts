@@ -10,7 +10,7 @@ import {
   DialogGlobalAdminComponent
 } from "../../../../../shared/components/dialogs/dialog-global-admin/dialog-global-admin.component";
 import { DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
-import { ShowDataTestComponent } from "../../../../../shared/components/show-data-test/show-data-test.component";
+import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component";
 
 /**
  * @Component UsersAllAdminComponent
@@ -21,7 +21,7 @@ import { ShowDataTestComponent } from "../../../../../shared/components/show-dat
 @Component({
   selector: 'app-users-admin',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, RouterLink, MatDialogModule, ShowDataTestComponent ],
+  imports: [ CommonModule, GoBackComponent, RouterLink, MatDialogModule, ShowDataComponent ],
   templateUrl: './users-all-admin.component.html'
 })
 export class UsersAllAdminComponent {

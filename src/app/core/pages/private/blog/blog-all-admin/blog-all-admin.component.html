@@ -1,6 +1,7 @@
 <p>blog-all-admin works!</p>
 
-<button style="background-color: brown; color: white; padding: 10px" routerLink="/add-blog-admin">Add blog</button>
+<button style="background-color: brown; color: white; padding: 10px"
+        routerLink="/add-blog-admin">{{ BUTTONS.add }}</button>
 
 <ng-container *ngIf="blogs$ | async as blogs">
   <div class="mb-2 border-b-2" *ngFor="let blog of blogs">
@@ -11,9 +12,9 @@
       [podnaslov]="blog['podnaslov']"
     />
 
-    <button (click)="openDialog(blog._id)" class="me-1.5 bg-amber-400 p-2">Read</button>
-    <button [routerLink]="['/blog-admin/edit', blog._id]" class="me-1.5 bg-blue-500 p-2">Edit</button>
-    <button *ngIf="blog._id" (click)="deleteById(blog._id)" class="bg-red-500 p-2">Delete</button>
+    <button (click)="openDialog(blog._id)" class="me-1.5 bg-amber-400 p-2">{{ BUTTONS.read }}</button>
+    <button [routerLink]="['/blog-admin/edit', blog._id]" class="me-1.5 bg-blue-500 p-2">{{ BUTTONS.edit }}</button>
+    <button (click)="deleteById(blog._id)" class="bg-red-500 p-2">{{ BUTTONS.delete }}</button>
 
   </div>
 </ng-container>

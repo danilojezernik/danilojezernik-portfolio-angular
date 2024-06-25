@@ -13,9 +13,9 @@ import { FormFieldConfig } from "../../../models/form-field-config.model";
   selector: 'app-reusable-form',
   standalone: true,
   imports: [ CommonModule, ReactiveFormsModule ],
-  templateUrl: './reusable-form.component.html'
+  templateUrl: './reusable-form-add.component.html'
 })
-export class ReusableFormComponent implements OnInit {
+export class ReusableFormAddComponent implements OnInit {
 
   /**
    * Injecting FormBuilder dependency using Angular's dependency injection mechanism.

@@ -2,13 +2,13 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, Validators } from "@angular/forms";
 import { ContactService } from "../../../../services/api/contact.service";
-import { ReusableFormComponent } from "../../../../shared/forms/reusable-form/reusable-form.component";
+import { ReusableFormAddComponent } from "../../../../shared/forms/reusable-form-add/reusable-form-add.component";
 import { FormFieldConfig } from "../../../../models/form-field-config.model";
 import { Contact } from "../../../../models/contact";
 
 /**
  * ContactComponent is an Angular component designed to handle user contact form submissions.
- * It utilizes the ReusableFormComponent to dynamically generate form fields based on a configuration
+ * It utilizes the ReusableFormAddComponent to dynamically generate form fields based on a configuration
  * provided within the component. This component is standalone, meaning it can function independently
  * without being part of a larger Angular module. Key functionalities and components included are:
  *
@@ -18,7 +18,7 @@ import { Contact } from "../../../../models/contact";
  *      (such as required and email format validation).
  *
  * 2. **Form Handling**:
- *    - The `ReusableFormComponent` is imported and used to create a form dynamically based on the `formConfig` array.
+ *    - The `ReusableFormAddComponent` is imported and used to create a form dynamically based on the `formConfig` array.
  *
  * 3. **Form Submission Method (sendEmail)**:
  *    - Method `sendEmail` is defined to handle form submission. It takes the validated form data as an argument
@@ -29,7 +29,7 @@ import { Contact } from "../../../../models/contact";
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ CommonModule, ReactiveFormsModule, ReusableFormComponent ],
+  imports: [ CommonModule, ReactiveFormsModule, ReusableFormAddComponent ],
   templateUrl: './contact.component.html'
 })
 export class ContactComponent {

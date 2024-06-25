@@ -23,7 +23,9 @@ import { RegisterUserComponent } from "./core/pages/public/register-user/registe
 import { UsersComponent } from "./core/pages/public/users/users-all/users.component";
 import { UsersAllAdminComponent } from "./core/pages/private/users-admin/users-all-admin/users-all-admin.component";
 import { EmailsAdminComponent } from "./core/pages/private/emails-admin/emails-admin.component";
-import { ExperiencesAdminComponent } from "./core/pages/private/experiences-admin/experiences-admin.component";
+import {
+  AllExperiencesAdminComponent
+} from "./core/pages/private/experiences-admin/all-experiences-admin/all-experiences-admin.component";
 import {
   ProjectsAllAdminComponent
 } from "./core/pages/private/projects-admin/projects-all-admin/projects-all-admin.component";
@@ -60,7 +62,7 @@ const routes: Routes = [
   // PRIVATE
   {
     path: 'experiences-admin',
-    component: ExperiencesAdminComponent,
+    component: AllExperiencesAdminComponent,
     canActivate: [ AuthGuardService ]
   },
 
