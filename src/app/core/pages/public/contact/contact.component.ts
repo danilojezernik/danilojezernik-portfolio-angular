@@ -4,6 +4,7 @@ import { ReactiveFormsModule, Validators } from "@angular/forms";
 import { ContactService } from "../../../../services/api/contact.service";
 import { ReusableFormComponent } from "../../../../shared/forms/reusable-form/reusable-form.component";
 import { FormFieldConfig } from "../../../../models/form-field-config.model";
+import { Contact } from "../../../../models/contact";
 
 /**
  * ContactComponent is an Angular component designed to handle user contact form submissions.
@@ -47,10 +48,13 @@ export class ContactComponent {
   ];
 
   /**
-   * The sendEmail method is called to send the form data to the contact service.
+   * @method sendEmail
+   * Method to send the form data to the contact service.
    * It receives the validated form data as an argument and calls the sendEmailContact method of ContactService.
+   *
+   * @param formValidator - The form data to be validated and sent to the server for email contact.
    */
-  sendEmail(formValidator: any) {
+  sendEmail(formValidator: Contact) {
     /**
      * Sends the validated form data to the contact service's sendEmailContact method.
      * Subscribes to the observable returned by the service method to handle the response.
