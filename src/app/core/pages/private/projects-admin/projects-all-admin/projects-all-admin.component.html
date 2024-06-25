@@ -1,9 +1,17 @@
+<!-- Message indicating the projects admin page works -->
 <p>projects-admin works!</p>
 
+<!-- Button to navigate to the add project admin page -->
+<button style="background-color: brown; color: white; padding: 10px"
+        routerLink="/add-project-admin">{{ BUTTONS.add }}</button>
+
+<!-- Container for displaying projects -->
 <ng-container *ngIf="projects$ | async as projects">
 
+  <!-- Loop through each project and display its details -->
   <div *ngFor="let project of projects">
 
+    <!-- Reusable component to display project details -->
     <app-show-data-test
       [title]="project.title"
       [subtitle]="project.subtitle"
@@ -14,10 +22,16 @@
       [datum_vnosa]="project.datum_vnosa"
     />
 
-    <button class="me-1.5 bg-amber-400 p-2" (click)="openDialog(project._id)">Read</button>
+    <!-- Button to open the dialog for reading the project details -->
+    <button class="me-1.5 bg-amber-400 p-2" (click)="openDialog(project._id)">{{ BUTTONS.read }}</button>
+
+    <!-- Button to delete the project, shown only if the project has an ID -->
+    <button *ngIf="project._id" class="me-1.5 bg-red-500 p-2"
+            (click)="deleteProject(project._id)">{{ BUTTONS.delete }}</button>
 
   </div>
 
 </ng-container>
 
+<!-- Component to navigate back to the previous page -->
 <app-go-back></app-go-back>

@@ -12,7 +12,7 @@ export class ProjectsService {
 
   private _http = inject(HttpClient)
   private _errorHandleService = inject(ErrorHandleService)
-  
+
   getAllProjects(): Observable<Projects[]> {
     return this._http.get<Projects[]>(`${environment.projectsUrl.public}`).pipe(
       // Handling any errors that occur during the HTTP request
@@ -29,6 +29,20 @@ export class ProjectsService {
 
   getAllProjectsAdmin(): Observable<Projects[]> {
     return this._http.get<Projects[]>(`${environment.projectsUrl.admin}`).pipe(
+      // Handling any errors that occur during the HTTP request
+      catchError(this._errorHandleService.handleError)
+    )
+  }
+
+  addProjectAdmin(newProject: Projects): Observable<Projects> {
+    return this._http.post<Projects>(`${environment.projectsUrl.admin}`, newProject).pipe(
+      // Handling any errors that occur during the HTTP request
+      catchError(this._errorHandleService.handleError)
+    )
+  }
+
+  deleteProjectByIdAdmin(id: string): Observable<Projects> {
+    return this._http.delete<Projects>(`${environment.projectsUrl.public}/${id}`).pipe(
       // Handling any errors that occur during the HTTP request
       catchError(this._errorHandleService.handleError)
     )

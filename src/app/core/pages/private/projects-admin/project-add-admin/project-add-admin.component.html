@@ -1,1 +1,7 @@
 <p>project-add-admin works!</p>
+
+<app-reusable-form
+  [config]="formConfig"
+  [submitLabel]="'Dodaj projekt'"
+  (formSubmit)="addNewProject($event)"
+></app-reusable-form>

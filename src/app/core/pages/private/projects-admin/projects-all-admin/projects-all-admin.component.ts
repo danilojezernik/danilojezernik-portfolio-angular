@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { ProjectsService } from "../../../../../services/api/projects.service";
@@ -10,7 +10,7 @@ import {
 } from "../../../../../shared/components/dialogs/dialog-global-admin/dialog-global-admin.component";
 import { Observable } from "rxjs";
 import { Projects } from "../../../../../models/projects";
-import { DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
+import { BUTTONS, DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
 
 /**
  * Component for managing all projects in the admin interface.
@@ -21,7 +21,7 @@ import { DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.con
   imports: [ CommonModule, GoBackComponent, ShowDataComponent, RouterLink, MatDialogModule ], // Import necessary Angular modules
   templateUrl: './projects-all-admin.component.html' // Template file for this component
 })
-export class ProjectsAllAdminComponent {
+export class ProjectsAllAdminComponent implements OnInit {
 
   // Inject ProjectsService instance for interacting with project data
   private _projectService = inject(ProjectsService);
@@ -30,10 +30,18 @@ export class ProjectsAllAdminComponent {
   public dialog = inject(MatDialog);
 
   // Observable holding all projects retrieved from the service
-  projects$ = this._projectService.getAllProjectsAdmin();
+  projects$!: Observable<Projects[]>
 
   // Observable holding project details for a specific project ID
   projectById$!: Observable<Projects>;
+
+  ngOnInit() {
+    this.getAllProjects()
+  }
+
+  getAllProjects() {
+    this.projects$ = this._projectService.getAllProjectsAdmin()
+  }
 
   /**
    * Retrieves project details based on the provided ID.
@@ -41,6 +49,18 @@ export class ProjectsAllAdminComponent {
    */
   getProjectById(id: string) {
     this.projectById$ = this._projectService.getProjectById(id);
+  }
+
+  deleteProject(id: string) {
+    if (id) {
+      this._projectService.deleteProjectByIdAdmin(id).subscribe(() => {
+        this.getAllProjects()
+      }, (error) => {
+        console.error('Failed to delete project:', error); // Log error message if deletion fails
+      })
+    } else {
+      console.error('Project by id doesn\'t exist'); // Log error if ID is undefined
+    }
   }
 
   /**
@@ -68,4 +88,6 @@ export class ProjectsAllAdminComponent {
       console.error('Id doesn\'t exist');
     }
   }
+
+  protected readonly BUTTONS = BUTTONS;
 }
