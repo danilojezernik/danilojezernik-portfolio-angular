@@ -35,3 +35,20 @@ export const formProjectsConfig: FormFieldConfig[] = [
   { name: 'github', label: 'Github', type: 'text', validators: [] },
   { name: 'website', label: 'Website', type: 'text', validators: [] }
 ]
+
+/**
+ * formUserConfig defines the configuration for the form fields used in the projects form.
+ */
+export const formUserConfig: FormFieldConfig[] = [
+  { name: 'full_name', label: 'Ime in priimek', type: 'text', validators: [ Validators.required ] },
+  { name: 'username', label: 'Uporabniško ime', type: 'text', validators: [ Validators.required ] },
+  { name: 'email', label: 'email', type: 'email', validators: [ Validators.required, Validators.email ] },
+  { name: 'profession', label: 'Poklic', type: 'text', validators: [] },
+  { name: 'technology', label: 'Tehnologije', type: 'text', validators: [] },
+  { name: 'description', label: 'description', type: 'text', validators: [ Validators.required ] },
+  { name: 'hashed_password', label: 'hashed_password', type: 'text', validators: [] },
+  { name: 'confirmed', label: 'confirmed', type: 'checkbox', validators: [] },
+  { name: 'registered', label: 'registered', type: 'checkbox', validators: [] },
+  { name: 'blog_notification', label: 'blog_notification', type: 'checkbox', validators: [] }
+]
+

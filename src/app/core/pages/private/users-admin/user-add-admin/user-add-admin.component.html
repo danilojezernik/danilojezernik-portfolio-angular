@@ -1,38 +1,5 @@
-<form (ngSubmit)="addUser()">
-  <label for="addFullName">Full Name:</label>
-  <input id="addFullName" style="border: 1px solid black" [(ngModel)]="addFullName" name="addFullName" required><br>
-
-  <label for="addUsername">Username:</label>
-  <input id="addUsername" style="border: 1px solid black" [(ngModel)]="addUsername" name="addUsername" required><br>
-
-  <label for="addEmail">Email:</label>
-  <input id="addEmail" style="border: 1px solid black" [(ngModel)]="addEmail" name="addEmail" required><br>
-
-  <label for="addProfession">Profession:</label>
-  <input id="addProfession" style="border: 1px solid black" [(ngModel)]="addProfession" name="addProfession"><br>
-
-  <label for="addTechnology">Technology:</label>
-  <input id="addTechnology" style="border: 1px solid black" [(ngModel)]="addTechnology" name="addTechnology"><br>
-
-  <label for="addDescription">Description:</label>
-  <input id="addDescription" style="border: 1px solid black" [(ngModel)]="addDescription" name="addDescription"><br>
-
-  <label for="addPassword">Password:</label>
-  <input id="addPassword" style="border: 1px solid black" [(ngModel)]="addPassword" name="addPassword" type="password"
-         required><br>
-
-  <label for="addConfirmed">Confirmed:</label>
-  <input id="addConfirmed" type="checkbox" style="border: 1px solid black" [(ngModel)]="addConfirmed"
-         name="addConfirmed"><br>
-
-  <label for="addRegistered">Registered:</label>
-  <input id="addRegistered" type="checkbox" style="border: 1px solid black" [(ngModel)]="addRegistered"
-         name="addRegistered"><br>
-
-  <label for="addBlogNotification">Blog Notification:</label>
-  <input id="addBlogNotification" type="checkbox" style="border: 1px solid black" [(ngModel)]="addBlogNotification"
-         name="addBlogNotification"><br>
-
-  <button type="submit">Add User</button>
-</form>
-<p>{{ userAddStatus }}</p>
+<app-reusable-form
+  [config]="formUserConfig"
+  [submitLabel]="'Dodaj uporabnika'"
+  (formSubmit)="addUser($event)"
+></app-reusable-form>

@@ -9,9 +9,9 @@ export interface User {
   profession: string;
   technology: string;
   description: string;
-  hashed_password?: string;
-  confirmed?: boolean;
-  registered?: boolean;
+  hashed_password: string;
+  confirmed: boolean;
+  registered: boolean;
   blog_notification?: boolean;
   datum_vnosa: string;
 }

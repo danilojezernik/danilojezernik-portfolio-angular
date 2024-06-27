@@ -35,9 +35,10 @@ export class AddBlogAdminComponent {
    */
   addNewBlog(formValidator: BlogModel) {
     // Call BlogService to add the new blog post
-    this._blogService.addBlog(formValidator).subscribe()
-    // Navigate to the blog admin page after successful addition
-    this._router.navigate([ 'blog-admin' ])
+    this._blogService.addBlog(formValidator).subscribe(() => {
+      // Navigate to the blog admin page after successful addition
+      this._router.navigate([ 'blog-admin' ])
+    })
   }
 
   /**

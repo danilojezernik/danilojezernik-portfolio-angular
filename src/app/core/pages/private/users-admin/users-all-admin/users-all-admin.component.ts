@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersService } from "../../../../../services/api/users.service";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
@@ -9,7 +9,7 @@ import { User } from "../../../../../models/user";
 import {
   DialogGlobalAdminComponent
 } from "../../../../../shared/components/dialogs/dialog-global-admin/dialog-global-admin.component";
-import { DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
+import { BUTTONS, DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
 import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component";
 
 /**
@@ -24,15 +24,23 @@ import { ShowDataComponent } from "../../../../../shared/components/show-data/sh
   imports: [ CommonModule, GoBackComponent, RouterLink, MatDialogModule, ShowDataComponent ],
   templateUrl: './users-all-admin.component.html'
 })
-export class UsersAllAdminComponent {
+export class UsersAllAdminComponent implements OnInit {
 
   // Injected instances: MatDialog for opening dialogs, UsersService for fetching user data
   private _dialog = inject(MatDialog); // Injecting MatDialog for opening dialogs
   private _userService = inject(UsersService); // Injecting UsersService for fetching user data
 
   // Observable to hold list of private users
-  users$ = this._userService.getAllUsersPrivate(); // Observable that fetches all private users
+  users$!: Observable<User[]> // Observable that fetches all private users
   userById$!: Observable<User>; // Observable that holds a specific user's data
+
+  ngOnInit() {
+    this.getAllUsers()
+  }
+
+  getAllUsers() {
+    this.users$ = this._userService.getAllUsersPrivate()
+  }
 
   /**
    * @method getUserById
@@ -65,4 +73,24 @@ export class UsersAllAdminComponent {
     }
   }
 
+  /**
+   * @method deleteUser
+   * Deletes a user by its ID.
+   * After deletion, refreshes the list of users by calling getAllUsers().
+   * @param id - ID of the user to delete
+   */
+  deleteUser(id: string | undefined) {
+    if (id) {
+      this._userService.deleteUserById(id).subscribe(() => {
+          this.getAllUsers()
+        },
+        (error) => {
+          console.error('Failed to delete user:', error); // Log error message if deletion fails
+        })
+    } else {
+      console.error('User by id doesn\'t exist'); // Log error if ID is undefined
+    }
+  }
+
+  protected readonly BUTTONS = BUTTONS;
 }

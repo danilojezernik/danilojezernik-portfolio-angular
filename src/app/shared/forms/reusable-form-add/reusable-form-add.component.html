@@ -17,6 +17,12 @@
     <input class="w-full"
            *ngIf="field.type === 'number'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
     >
+    <input class="w-full"
+           *ngIf="field.type === 'checkbox'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
+    >
+    <input class="w-full"
+           *ngIf="field.type === 'password'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
+    >
 
     <!-- Renders a textarea element if the field type is 'textarea'. -->
     <textarea class="w-full"

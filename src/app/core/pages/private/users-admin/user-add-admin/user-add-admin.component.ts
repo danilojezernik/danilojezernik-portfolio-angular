@@ -4,57 +4,47 @@ import { UsersService } from "../../../../../services/api/users.service";
 import { Router } from "@angular/router";
 import { User } from "../../../../../models/user";
 import { FormsModule } from "@angular/forms";
+import { ReusableFormAddComponent } from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
+import { formUserConfig } from "../../../../../shared/global-const/form-config";
 
+/**
+ * @Component UserAddAdminComponent
+ * This component handles adding new users in the admin interface.
+ * It uses the ReusableFormAddComponent to render the form and handle form submissions.
+ */
 @Component({
   selector: 'app-user-add-admin',
   standalone: true,
-  imports: [ CommonModule, FormsModule ],
+  imports: [ CommonModule, FormsModule, ReusableFormAddComponent ],
   templateUrl: './user-add-admin.component.html'
 })
 export class UserAddAdminComponent {
 
-  private _usersService = inject(UsersService)
-  private _router = inject(Router)
+  // Injecting UsersService to manage user data and Router for navigation
+  private _usersService = inject(UsersService); // Service for managing user-related API calls
+  private _router = inject(Router); // Router service for navigation
 
-  addFullName: string = ''
-  addUsername: string = ''
-  addEmail: string = ''
-  addProfession: string = ''
-  addTechnology: string = ''
-  addDescription: string = ''
-  addPassword: string = ''
-  addConfirmed: boolean = false
-  addRegistered: boolean = false
-  addBlogNotification: boolean = false
-  userAddStatus: string = ''
+  /**
+   * @method addUser
+   * This method is called when the form is submitted.
+   * It receives the form data, logs it, and calls the UsersService to add the new user.
+   * After successfully adding the user, it navigates back to the users admin page.
+   *
+   * @param formValue - The form data to be validated and sent to the server for adding a new user.
+   */
+  addUser(formValue: User) {
+    // Log the form value for debugging purposes
+    console.log(formValue);
 
-
-  addUser() {
-
-    if (!this.addFullName)
-      return
-
-    const newUser: User = {
-      full_name: this.addFullName,
-      username: this.addUsername,
-      email: this.addEmail,
-      profession: this.addProfession,
-      technology: this.addTechnology,
-      description: this.addDescription,
-      hashed_password: this.addPassword,
-      confirmed: this.addConfirmed,
-      registered: this.addRegistered,
-      blog_notification: this.addBlogNotification,
-      datum_vnosa: new Date().toISOString()
-    }
-
-    this._usersService.addUserAdmin(newUser).subscribe(
+    // Call UsersService to add the new user
+    this._usersService.addUserAdmin(formValue).subscribe(
       () => {
-        this._router.navigate([ 'users-admin' ])
-      },
-      (error) => {
-        this.userAddStatus = error.message;
+        // Navigate to the users admin page after successful addition
+        this._router.navigate([ 'users-admin' ]);
       }
-    )
+    );
   }
+
+  // Form configuration for adding a new user, imported from a global configuration file
+  protected readonly formUserConfig = formUserConfig;
 }

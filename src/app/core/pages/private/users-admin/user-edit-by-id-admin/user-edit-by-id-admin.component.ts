@@ -6,6 +6,8 @@ import { map } from "rxjs";
 import { User } from "../../../../../models/user";
 import { FormsModule } from "@angular/forms";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
+import { ReusableFormEditComponent } from "../../../../../shared/forms/reusable-form-edit/reusable-form-edit.component";
+import { formUserConfig } from "../../../../../shared/global-const/form-config";
 
 /**
  * @Component UserEditByIdAdminComponent
@@ -15,7 +17,7 @@ import { GoBackComponent } from "../../../../../shared/components/go-back/go-bac
 @Component({
   selector: 'app-user-edit-by-id-admin',
   standalone: true,
-  imports: [ CommonModule, FormsModule, GoBackComponent ],
+  imports: [ CommonModule, FormsModule, GoBackComponent, ReusableFormEditComponent ],
   templateUrl: './user-edit-by-id-admin.component.html'
 })
 export class UserEditByIdAdminComponent implements OnInit {
@@ -25,17 +27,7 @@ export class UserEditByIdAdminComponent implements OnInit {
   private _activatedRoute = inject(ActivatedRoute); // Provides access to route parameters
   private _router = inject(Router); // Helps navigate between routes
 
-  // Properties to bind to form inputs
-  changeFullName: string = ''; // Full name of the user
-  changeUsername: string = ''; // Username of the user
-  changeEmail: string = ''; // Email address of the user
-  changeProfession: string = ''; // Profession of the user
-  changeTechnology: string = ''; // Technology of interest to the user
-  changeDescription: string = ''; // Description or bio of the user
-  changeConfirmed?: boolean; // Flag indicating if user account is confirmed
-  changeRegistered?: boolean; // Flag indicating if user is registered
-  changeBlogNotification?: boolean; // Flag indicating if user has blog notifications enabled
-  hashedPassword?: string = ''; // Hashed password of the user (if applicable)
+  formData: any = {}; // Object to hold the blog data to be edited
 
   /**
    * @method ngOnInit
@@ -49,18 +41,16 @@ export class UserEditByIdAdminComponent implements OnInit {
     // Fetch user details by ID from the UsersService and populate form fields
     this._userService.getUserByIdAdmin(userId).pipe(
       map(data => {
-        this.changeFullName = data.full_name;
-        this.changeUsername = data.username;
-        this.changeEmail = data.email;
-        this.changeDescription = data.description;
-        this.changeProfession = data.profession;
-        this.changeTechnology = data.technology;
-        this.hashedPassword = '';
-        this.changeConfirmed = data.confirmed;
-        this.changeRegistered = data.registered;
-        this.changeBlogNotification = data.blog_notification;
-      })
+          this.formData = {
+            ...data,
+            hashed_password: '',
+          };
+
+          console.log(this.formData)
+        }
+      )
     ).subscribe();
+
   }
 
   /**
@@ -68,30 +58,19 @@ export class UserEditByIdAdminComponent implements OnInit {
    * Updates user details based on the form inputs.
    * Calls UsersService to save the updated user data and navigates back to the users admin page.
    */
-  editUser() {
+  editUser(formValue: User) {
     // Prepare updated user data based on form inputs
-    const updatedUserData: User = {
-      full_name: this.changeFullName,
-      username: this.changeUsername,
-      email: this.changeEmail,
-      description: this.changeDescription,
-      profession: this.changeProfession,
-      technology: this.changeTechnology,
-      confirmed: this.changeConfirmed,
-      registered: this.changeRegistered,
-      blog_notification: this.changeBlogNotification,
-      hashed_password: this.hashedPassword,
-      datum_vnosa: new Date().toISOString() // Timestamp of when the user data was last updated
-    };
 
+    console.log(formValue)
     // Retrieve user ID from the route parameters
     const userId = this._activatedRoute.snapshot.paramMap.get('id') || '';
 
     // Call UsersService to update user details based on the user ID
-    this._userService.editUserByIdAdmin(userId, updatedUserData).subscribe();
+    this._userService.editUserByIdAdmin(userId, formValue).subscribe();
 
     // Navigate the user back to the users admin page after editing is complete
     this._router.navigate([ 'users-admin' ]);
   }
 
+  protected readonly formUserConfig = formUserConfig;
 }

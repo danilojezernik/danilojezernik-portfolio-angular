@@ -102,7 +102,15 @@ export class UsersService {
    * @returns Observable<User> - An observable that emits the added user object.
    */
   addUserAdmin(newUser: User): Observable<User> {
+    console.log(newUser)
     return this._http.post<User>(`${environment.usersUrl.public}`, newUser).pipe(
+      // Handling any errors that occur during the HTTP request
+      catchError(this._errorHandleService.handleError)
+    )
+  }
+
+  deleteUserById(id: string): Observable<any> {
+    return this._http.delete<any>(`${environment.usersUrl.public}/${id}`).pipe(
       // Handling any errors that occur during the HTTP request
       catchError(this._errorHandleService.handleError)
     )

@@ -30,6 +30,12 @@
       *ngIf="field.type === 'number'" [type]="field.type" [id]="field.name" [formControlName]="field.name"
     />
 
+    <!-- Input field for number type -->
+    <input
+      *ngIf="field.type === 'checkbox'" [type]="field.type" [id]="field.name" [formControlName]="field.name"
+      [checked]="form.controls[field.name].value"
+    />
+
     <!-- Textarea element for textarea type -->
     <textarea class="w-full"
               *ngIf="field.type === 'textarea'" [id]="field.name" [formControlName]="field.name">
