@@ -1,10 +1,5 @@
-<!-- Display a message indicating the reusable form component is working -->
-<p>reusable-form-edit works!</p>
-
 <!-- Form declaration with Angular reactive form binding -->
-<!-- The [formGroup] directive binds the form to the FormGroup instance 'form' in the component class -->
-<!-- The (ngSubmit) event binds the form submission to the 'onSubmit' method in the component class -->
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="flex flex-col" style="width: 400px" [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <!-- Display the value of 'naslov' from 'formData' -->
   {{formData['naslov']}}
@@ -16,24 +11,26 @@
     <label [for]="field.name">{{ field.label }}</label>
 
     <!-- Input field for text type -->
-    <input
-      *ngIf="field.type === 'text'" [type]="field.type" [id]="field.name" [formControlName]="field.name"
+    <input class="w-full"
+           *ngIf="field.type === 'text'" [type]="field.type" [id]="field.name" [formControlName]="field.name"
     />
 
     <!-- Input field for email type -->
-    <input
-      *ngIf="field.type === 'email'" [type]="field.type" [id]="field.name" [formControlName]="field.name"
+    <input class="w-full"
+           *ngIf="field.type === 'email'" [type]="field.type" [id]="field.name" [formControlName]="field.name"
     />
 
     <!-- Input field for number type -->
-    <input
-      *ngIf="field.type === 'number'" [type]="field.type" [id]="field.name" [formControlName]="field.name"
+    <input class="w-full"
+           *ngIf="field.type === 'number'" [type]="field.type" [id]="field.name" [formControlName]="field.name"
     />
 
     <!-- Input field for number type -->
-    <input
-      *ngIf="field.type === 'checkbox'" [type]="field.type" [id]="field.name" [formControlName]="field.name"
-      [checked]="form.controls[field.name].value"
+    <input class="m-1"
+           *ngIf="field.type === 'checkbox'" [type]="field.type" [id]="field.name" [formControlName]="field.name"
+           (change)="onCheckboxChange(field.name)"
+           [checked]="form.controls[field.name].value"
+
     />
 
     <!-- Textarea element for textarea type -->
@@ -50,5 +47,5 @@
   </div>
 
   <!-- Submit button for the form -->
-  <button type="submit">Submit</button>
+  <button class="p-2 bg-green-600 text-white" type="submit">{{BUTTONS.edit}}</button>
 </form>

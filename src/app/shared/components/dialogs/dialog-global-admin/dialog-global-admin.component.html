@@ -22,12 +22,9 @@
         <!-- Loop through each key in data.allData using *ngFor -->
         <li *ngFor="let key of getObjectKeys(data.allData)">
 
-          <!-- Display only key that has value -->
-          <ng-container *ngIf="data.allData[key]">
-
-            <!-- Display each key and its corresponding value -->
+          <!-- Display key-value pairs only if the value is a non-empty string or a boolean -->
+          <ng-container *ngIf="isStringAndNotEmpty(data.allData[key]) || isBoolean(data.allData[key])">
             <strong>{{ key }}:</strong> {{ data.allData[key] }}
-
           </ng-container>
         </li>
 

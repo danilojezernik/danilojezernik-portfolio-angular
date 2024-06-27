@@ -2,6 +2,7 @@ import { Component, EventEmitter, inject, Input, Output, SimpleChanges } from '@
 import { CommonModule } from '@angular/common';
 import { FormFieldConfig } from "../../../models/form-field-config.model";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { BUTTONS } from "../../global-const/global.const";
 
 /**
  * @Component ReusableFormEditComponent
@@ -85,14 +86,54 @@ export class ReusableFormEditComponent {
   }
 
   /**
+   * @method onCheckboxChange
+   * Handles the change event for checkbox inputs.
+   *
+   * @param fieldName - The name of the form control for the checkbox.
+   */
+  onCheckboxChange(fieldName: string) {
+    const currentValue = this.form.controls[fieldName].value;
+    // Toggle the checkbox value
+    this.form.controls[fieldName].setValue(!currentValue);
+  }
+
+
+  /**
    * @method onSubmit
    * Handles the form submission. Emits the form data if the form is valid.
    */
   onSubmit() {
     // Check if the form is valid before submitting
     if (this.form.valid) {
+      // Log the form data to check the values being submitted
+      const formData = this.form.value;
+
+      // Process form data if necessary
+      this.processFormData(formData);
+
       // Emit the form data when the form is submitted
-      this.formSubmit.emit(this.form.value);
+      this.formSubmit.emit(formData);
     }
   }
+
+  /**
+   * @method processFormData
+   * Ensures proper data format before emitting the form data.
+   *
+   * @param formData - The form data to be processed.
+   */
+  processFormData(formData: any) {
+    // Ensure optional text fields are set to an empty string if no input is provided
+    this.formConfig.forEach(field => {
+      if (field.type === 'text' && !formData[field.name]) {
+        formData[field.name] = '';
+      }
+      // Ensure checkbox values are boolean
+      if (field.type === 'checkbox' && typeof formData[field.name] !== 'boolean') {
+        formData[field.name] = !!formData[field.name];
+      }
+    });
+  }
+
+  protected readonly BUTTONS = BUTTONS;
 }

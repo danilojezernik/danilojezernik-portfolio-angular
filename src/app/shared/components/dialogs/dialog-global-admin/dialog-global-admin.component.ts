@@ -44,4 +44,21 @@ export class DialogGlobalAdminComponent {
     return Object.keys(obj); // Returns an array of strings representing the keys of 'obj'
   }
 
+  /**
+   * Method to check if the value is a non-empty string.
+   * @param value - The value to check.
+   * @returns true if 'value' is a non-empty string; otherwise, returns false.
+   */  isStringAndNotEmpty(value: any): boolean {
+    return typeof value === 'string' && value.trim() !== '';
+  }
+
+  /**
+   * Method to check if the value is a boolean.
+   * @param value - The value to check.
+   * @returns true if 'value' is a boolean; otherwise, returns false.
+   */
+  isBoolean(value: any): boolean {
+    return typeof value === 'boolean';
+  }
+  
 }
