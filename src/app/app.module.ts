@@ -7,10 +7,12 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { HeaderComponent } from "./core/header/header.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterceptorService } from "./services/interceptor/interceptor.service";
+import { CopyrightDirective } from './directives/copyright.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CopyrightDirective
   ],
   imports: [
     BrowserModule,
