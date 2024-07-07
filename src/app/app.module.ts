@@ -3,11 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from "@angular/common/http";
 import { HeaderComponent } from "./core/header/header.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterceptorService } from "./services/interceptor/interceptor.service";
 import { CopyrightDirective } from './directives/copyright.directive';
+
+// import ngx-translate and the http loader
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,17 @@ import { CopyrightDirective } from './directives/copyright.directive';
     AppRoutingModule,
     HttpClientModule,
     HeaderComponent,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
+    // ngx-translate and the loader module
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [ HttpClient ]
+      }
+    })
   ],
   providers: [
     {
@@ -31,4 +45,9 @@ import { CopyrightDirective } from './directives/copyright.directive';
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
+}
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
 }
