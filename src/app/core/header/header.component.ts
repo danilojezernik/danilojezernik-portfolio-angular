@@ -4,19 +4,25 @@ import { RouterLink } from "@angular/router";
 import { AuthService } from "../../auth/auth.service";
 import { LoggedInService } from "../../services/communication/logged-in.service";
 import { Observable } from "rxjs";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ CommonModule, RouterLink ],
+  imports: [ CommonModule, RouterLink, TranslateModule ],
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
 
+  constructor(public translate: TranslateService) {
+    translate.setDefaultLang('en');
+    translate.use('en');
+  }
+
   // Injecting AuthService to handle authentication related operations
   private _authService = inject(AuthService);
 
-  // Injecting LoggedInService to listen to login status changes
+  // Injecting LoggedInService to listen to log in status changes
   private _loggedInService = inject(LoggedInService);
 
   // Observable to hold login status, will be populated in ngOnInit
@@ -32,5 +38,10 @@ export class HeaderComponent implements OnInit {
   logOut() {
     // Calls the AuthService's clear method to remove authentication details and update the login status
     this._authService.clear();
+  }
+
+  // Method to change the language of the application
+  useLanguage(language: string): void {
+    this.translate.use(language);
   }
 }

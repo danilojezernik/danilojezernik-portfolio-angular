@@ -1,4 +1,4 @@
-<a class="pe-3" routerLink="/">Home</a>
+<a class="pe-3" routerLink="/">{{ 'home' | translate }}</a>
 <a class="pe-3" routerLink="/biography">Biography</a>
 <a class="pe-3" routerLink="/experiences">Experiences</a>
 <a class="pe-3" routerLink="/projects">Projects</a>
@@ -16,3 +16,6 @@
 <ng-container *ngIf="(isLoggedIn$ | async) === true">
   <a (click)="logOut()" class="pe-3" routerLink="/login">LogOut</a>
 </ng-container>
+
+<button *ngIf="translate.currentLang === 'en'" (click)="useLanguage('si')">SI</button>
+<button *ngIf="translate.currentLang === 'si'" (click)="useLanguage('en')">EN</button>
