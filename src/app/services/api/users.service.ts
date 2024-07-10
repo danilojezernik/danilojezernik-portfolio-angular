@@ -16,10 +16,9 @@
 
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { catchError, Observable } from "rxjs";
+import { Observable } from "rxjs";
 import { User } from "../../models/user";
 import { environment } from "../../../environments/environment";
-import { ErrorHandleService } from "../error-handle/error-handle.service";
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +26,6 @@ import { ErrorHandleService } from "../error-handle/error-handle.service";
 export class UsersService {
 
   private _http = inject(HttpClient)
-  private _errorHandleService = inject(ErrorHandleService)
 
   /**
    * PUBLIC SERVICES
@@ -38,10 +36,7 @@ export class UsersService {
    * @returns Observable<User[]> - An observable that emits an array of users.
    */
   getAllUsersPublic(): Observable<User[]> {
-    return this._http.get<User[]>(`${environment.usersUrl.public}`).pipe(
-      // Handling any errors that occur during the HTTP request
-      catchError(this._errorHandleService.handleError)
-    )
+    return this._http.get<User[]>(`${environment.usersUrl.public}`)
   }
 
   /**
@@ -50,10 +45,7 @@ export class UsersService {
    * @returns Observable<User> - An observable that emits the user object.
    */
   getUserByIdPublic(id: string): Observable<User> {
-    return this._http.get<User>(`${environment.usersUrl.public}/${id}`).pipe(
-      // Handling any errors that occur during the HTTP request
-      catchError(this._errorHandleService.handleError)
-    )
+    return this._http.get<User>(`${environment.usersUrl.public}/${id}`)
   }
 
   /**
@@ -65,10 +57,7 @@ export class UsersService {
    * @returns Observable<User[]> - An observable that emits an array of users.
    */
   getAllUsersPrivate(): Observable<User[]> {
-    return this._http.get<User[]>(`${environment.usersUrl.admin}`).pipe(
-      // Handling any errors that occur during the HTTP request
-      catchError(this._errorHandleService.handleError)
-    )
+    return this._http.get<User[]>(`${environment.usersUrl.admin}`)
   }
 
   /**
@@ -77,10 +66,7 @@ export class UsersService {
    * @returns Observable<User> - An observable that emits the user object.
    */
   getUserByIdAdmin(id: string): Observable<User> {
-    return this._http.get<User>(`${environment.usersUrl.admin}${id}`).pipe(
-      // Handling any errors that occur during the HTTP request
-      catchError(this._errorHandleService.handleError)
-    )
+    return this._http.get<User>(`${environment.usersUrl.admin}${id}`)
   }
 
   /**
@@ -90,10 +76,7 @@ export class UsersService {
    * @returns Observable<User> - An observable that emits the updated user object.
    */
   editUserByIdAdmin(id: string, newUser: User): Observable<User> {
-    return this._http.put<User>(`${environment.usersUrl.public}/${id}`, newUser).pipe(
-      // Handling any errors that occur during the HTTP request
-      catchError(this._errorHandleService.handleError)
-    )
+    return this._http.put<User>(`${environment.usersUrl.public}/${id}`, newUser)
   }
 
   /**
@@ -103,16 +86,10 @@ export class UsersService {
    */
   addUserAdmin(newUser: User): Observable<User> {
     console.log(newUser)
-    return this._http.post<User>(`${environment.usersUrl.public}`, newUser).pipe(
-      // Handling any errors that occur during the HTTP request
-      catchError(this._errorHandleService.handleError)
-    )
+    return this._http.post<User>(`${environment.usersUrl.public}`, newUser)
   }
 
   deleteUserById(id: string): Observable<any> {
-    return this._http.delete<any>(`${environment.usersUrl.public}/${id}`).pipe(
-      // Handling any errors that occur during the HTTP request
-      catchError(this._errorHandleService.handleError)
-    )
+    return this._http.delete<any>(`${environment.usersUrl.public}/${id}`)
   }
 }

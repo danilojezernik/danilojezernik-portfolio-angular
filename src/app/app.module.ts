@@ -12,6 +12,8 @@ import { CopyrightDirective } from './directives/copyright.directive';
 // import ngx-translate and the http loader
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpErrorInterceptor } from "./services/http-error-interceptor/http-error.interceptor";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     HttpClientModule,
     HeaderComponent,
     BrowserAnimationsModule,
+    MatSnackBarModule,
 
     // ngx-translate and the loader module
     HttpClientModule,
@@ -39,6 +42,11 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
       multi: true
     }
   ],
