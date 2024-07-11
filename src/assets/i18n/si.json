@@ -1,4 +1,14 @@
 {
-	"home": "Domov",
-	"translation.heading": "Slovensko"
+  "home": "Domov",
+  "translation.heading": "Slovensko",
+  "errors": {
+    "unknown": "Prišlo je do neznane napake!",
+    "network": "Preverite internetno povezavo ali poizkusite znova kasneje.",
+    "badRequest": "Neveljavna zahteva. Preverite svoje podatke.",
+    "forbidden": "Nimate dovoljenja za izvedbo tega dejanja.",
+    "unauthorized": "Neavtoriziran. Preverite uporabniško ime in geslo.",
+    "notFound": "Viri niso bili najdeni.",
+    "unprocessableEntity": "Neprebavljiva entiteta. Preverite svoje podatke in poskusite znova.",
+    "internalServerError": "Prišlo je do notranje napake strežnika. Poskusite znova pozneje."
+  }
 }

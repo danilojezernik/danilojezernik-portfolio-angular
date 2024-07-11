@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { catchError, delay, Observable, retryWhen, scan, throwError } from 'rxjs';
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { TranslateService } from "@ngx-translate/core";
 
 /**
  * HttpErrorInterceptor is an Angular HTTP interceptor that intercepts HTTP requests
@@ -12,7 +13,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private snackBar: MatSnackBar, private translate: TranslateService) {
   }
 
   /**
@@ -48,29 +49,33 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
 
         // Default error message
-        let errorMessage = 'An unknown error occurred!';
+        let errorMessage = 'errors.unknown';
 
         // Customize the error message based on the HTTP status code
         if (error.status === 0) {
-          errorMessage = 'Check your network connection or try again later.';
+          errorMessage = 'errors.network';
         } else if (error.status === 400) {
-          errorMessage = 'Bad Request. Please check your input.';
+          errorMessage = 'errors.badRequest';
         } else if (error.status === 403) {
-          errorMessage = 'You do not have permission to perform this action.';
+          errorMessage = 'errors.forbidden';
         } else if (error.status === 401) {
-          errorMessage = 'Unauthorized. Please check your username and password.';
+          errorMessage = 'errors.unauthorized';
         } else if (error.status === 404) {
-          errorMessage = 'Resource not found.';
+          errorMessage = 'errors.notFound';
         } else if (error.status === 422) {
-          errorMessage = 'Unprocessable Entity. Please check your input and try again.';
+          errorMessage = 'errors.unprocessableEntity';
         } else if (error.status === 500) {
-          errorMessage = 'An internal server error occurred. Please try again later.';
+          errorMessage = 'errors.internalServerError';
         }
 
+
         // Display the error message to the user using MatSnackBar
-        this.snackBar.open(errorMessage, 'Close', {
-          duration: 3000,
-        });
+        this.translate.get(errorMessage).subscribe((message: string) => {
+          this.snackBar.open(message, 'Close', {
+            duration: 3000,
+          });
+        })
+
         // Throw the error so it can be handled by other parts of the application if necessary
         return throwError(() => new Error(errorMessage));
       })
