@@ -1,4 +1,11 @@
 <h1>GitHub Repositories</h1>
+
+<ul>
+  <li *ngIf="privateLength">
+    Existing repos: {{ privateLength }}
+  </li>
+</ul>
+
 <ul>
   <li class="pb-2" *ngFor="let repo of github$ | async">
     <p class="text-2xl uppercase">{{ repo.name }}</p>

@@ -12,4 +12,5 @@ export interface Repo {
   html_url: string;
   description: string;
   language: string;
+  private: boolean;
 }

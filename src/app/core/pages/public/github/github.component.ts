@@ -12,6 +12,8 @@ import { Repo } from "../../../../models/github.model";
 })
 export class GithubComponent {
 
+  privateLength: number = 0
+
   _githubService = inject(GithubService)
 
   github$: Observable<Repo[]> = this._githubService.getGitHubRepo().pipe(
@@ -22,8 +24,18 @@ export class GithubComponent {
       owner: repo.owner,
       html_url: repo.html_url,
       description: repo.description,
-      language: repo.language
+      language: repo.language,
+      private: repo.private
     })))
   )
+
+  constructor() {
+    this._githubService.getGitHubRepo().subscribe((data) => {
+      this.privateLength = data.length
+    })
+
+
+  }
+
 
 }
