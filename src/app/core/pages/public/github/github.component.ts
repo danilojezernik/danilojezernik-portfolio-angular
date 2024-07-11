@@ -24,8 +24,7 @@ export class GithubComponent {
       owner: repo.owner,
       html_url: repo.html_url,
       description: repo.description,
-      language: repo.language,
-      private: repo.private
+      language: repo.language
     })))
   )
 
