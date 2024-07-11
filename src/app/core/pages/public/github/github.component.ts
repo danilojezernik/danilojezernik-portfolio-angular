@@ -12,9 +12,15 @@ import { Repo } from "../../../../models/github.model";
 })
 export class GithubComponent {
 
+  _githubService = inject(GithubService)
+
   privateLength: number = 0
 
-  _githubService = inject(GithubService)
+  constructor() {
+    this._githubService.getGitHubRepo().subscribe((data) => {
+      this.privateLength = data.length
+    })
+  }
 
   github$: Observable<Repo[]> = this._githubService.getGitHubRepo().pipe(
     map(repos => repos.map(repo => ({
@@ -27,14 +33,5 @@ export class GithubComponent {
       language: repo.language
     })))
   )
-
-  constructor() {
-    this._githubService.getGitHubRepo().subscribe((data) => {
-      this.privateLength = data.length
-    })
-
-
-  }
-
-
+  
 }
