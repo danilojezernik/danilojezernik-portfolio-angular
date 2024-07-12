@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { AuthService } from "../../auth/auth.service";
 import { LoggedInService } from "../../services/communication/logged-in.service";
 import { Observable } from "rxjs";
@@ -26,6 +26,9 @@ export class HeaderComponent implements OnInit {
   // Injecting LoggedInService to listen to log in status changes
   private _loggedInService = inject(LoggedInService);
 
+  // Inject router to navigate to different routes
+  private _router = inject(Router)
+
   // Observable to hold login status, will be populated in ngOnInit
   isLoggedIn$!: Observable<boolean>;
 
@@ -39,13 +42,15 @@ export class HeaderComponent implements OnInit {
   logOut() {
     // Calls the AuthService's clear method to remove authentication details and update the login status
     this._authService.clear();
+    // Redirect a user to login route when logout
+    this._router.navigate([ '/login' ])
   }
 
   // Method to change the language of the application
   useLanguage(language: string): void {
     this.translate.use(language);
   }
-  
+
   protected readonly MENU = MENU;
   protected readonly TRANSLATE_LANGUAGE = TRANSLATE_LANGUAGE;
   protected readonly LANGUAGE = LANGUAGE;
