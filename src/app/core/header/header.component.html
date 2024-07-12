@@ -1,25 +1,29 @@
-<!-- Loop through each item in the MENU array and create a navigation link - START -->
-<ng-container *ngFor="let menu of MENU">
+<!-- TODO: fix padding or delete -->
+<div class="pb-10">
 
-  <!-- Conditionally render menu items based on login status - START -->
-  <ng-container
-    *ngIf="(!menu.condition) || (menu.condition === 'loggedIn' && (isLoggedIn$ | async)) || (menu.condition === 'loggedOut' && !(isLoggedIn$ | async))">
-    <a class="pe-3" [routerLink]="menu.path"
-       (click)="menu.path === '/logout' ? logOut() : null">{{ menu.menu | translate }}</a>
+  <!-- Loop through each item in the MENU array and create a navigation link - START -->
+  <ng-container *ngFor="let menu of MENU">
+
+    <!-- Conditionally render menu items based on login status - START -->
+    <ng-container
+      *ngIf="(!menu.condition) || (menu.condition === 'loggedIn' && (isLoggedIn$ | async)) || (menu.condition === 'loggedOut' && !(isLoggedIn$ | async))">
+      <a class="pe-3" [routerLink]="menu.path"
+         (click)="menu.path === '/logout' ? logOut() : null">{{ menu.menu | translate }}</a>
+    </ng-container>
+    <!-- Conditionally render menu items based on login status - END -->
+
   </ng-container>
-  <!-- Conditionally render menu items based on login status - END -->
+  <!-- Loop through each item in the MENU array and create a navigation link - END -->
 
-</ng-container>
-<!-- Loop through each item in the MENU array and create a navigation link - END -->
+  <!-- Language toggle button: Shows button to switch to Slovenian if the current language is English - START -->
+  <button *ngIf="translate.currentLang === TRANSLATE_LANGUAGE.en" (click)="useLanguage(TRANSLATE_LANGUAGE.si)">
+    {{ LANGUAGE.si }}
+  </button>
+  <!-- Language toggle button: Shows button to switch to Slovenian if the current language is English - END -->
 
-<!-- Language toggle button: Shows button to switch to Slovenian if the current language is English - START -->
-<button *ngIf="translate.currentLang === TRANSLATE_LANGUAGE.en" (click)="useLanguage(TRANSLATE_LANGUAGE.si)">
-  {{ LANGUAGE.si }}
-</button>
-<!-- Language toggle button: Shows button to switch to Slovenian if the current language is English - END -->
-
-<!-- Language toggle button: Shows button to switch to English if the current language is Slovenian - START -->
-<button *ngIf="translate.currentLang === TRANSLATE_LANGUAGE.si" (click)="useLanguage(TRANSLATE_LANGUAGE.en)">
-  {{ LANGUAGE.en }}
-</button>
-<!-- Language toggle button: Shows button to switch to English if the current language is Slovenian - END -->
+  <!-- Language toggle button: Shows button to switch to English if the current language is Slovenian - START -->
+  <button *ngIf="translate.currentLang === TRANSLATE_LANGUAGE.si" (click)="useLanguage(TRANSLATE_LANGUAGE.en)">
+    {{ LANGUAGE.en }}
+  </button>
+  <!-- Language toggle button: Shows button to switch to English if the current language is Slovenian - END -->
+</div>

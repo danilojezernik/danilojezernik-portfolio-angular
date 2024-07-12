@@ -26,6 +26,7 @@ export const MENU: { menu: string, path: string, condition?: 'loggedIn' | 'logge
   { menu: 'menu.biography', path: '/biography' },
   { menu: 'menu.experiences', path: '/experiences' },
   { menu: 'menu.projects', path: '/projects' },
+  { menu: 'menu.technology', path: '/technology' },
   { menu: 'menu.blog', path: '/blog' },
   { menu: 'menu.github', path: '/github' },
   { menu: 'menu.media', path: '/media' },
@@ -38,6 +39,17 @@ export const MENU: { menu: string, path: string, condition?: 'loggedIn' | 'logge
   { menu: 'menu.logout', path: '/logout', condition: 'loggedIn' },
 ];
 
+// Menu items for the admin menu component
+// MENU ITEMS FOR ADMIN MENU COMPONENT
+export const ADMIN_MENU: { menu: string, path: string }[] = [
+  { menu: 'menu.blog', path: '/blog-admin' },
+  { menu: 'menu.users', path: '/users-admin' },
+  { menu: 'menu.email', path: '/emails-admin' },
+  { menu: 'menu.technology', path: '/technology-admin' },
+  { menu: 'menu.links', path: '/links-admin' },
+  { menu: 'menu.experiences', path: '/experiences-admin' },
+  { menu: 'menu.projects', path: '/projects-admin' },
+];
 
 // Language translations for the header component and Translate service
 

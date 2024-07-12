@@ -12,6 +12,12 @@ export const environment = {
     public: 'http://localhost:3000/blog',
     admin: 'http://localhost:3000/blog/admin/',
   },
+  
+  // TECHNOLOGY API
+  technologyUrl: {
+    public: 'http://localhost:3000/technology',
+    admin: 'http://localhost:3000/technology/admin/',
+  },
 
   // CONTACT API
   contactUrl: {
@@ -51,5 +57,5 @@ export const environment = {
     public: 'http://localhost:8080/portfolio_dj/public',
     private: 'http://localhost:8080/portfolio_dj/private'
   },
-  
+
 };

@@ -15,6 +15,7 @@
 		"blog": "Blog",
 		"books": "Knjige",
 		"contact": "Kontakt",
+		"email": "E-sporočila",
 		"experiences": "Izkušnje",
 		"github": "GitHub",
 		"home": "Domov",
@@ -24,6 +25,7 @@
 		"media": "Media",
 		"projects": "Projekti",
 		"register": "Registracija",
+		"technology": "Tehnologije",
 		"users": "Uporabniki"
 	},
 	"translation": {

@@ -1,6 +1,3 @@
-<p>admin works!</p>
-<a routerLink="/blog-admin">Blogs</a><br>
-<a routerLink="/users-admin">Users</a><br>
-<a routerLink="/emails-admin">Emails</a><br>
-<a routerLink="/experiences-admin">Experiences</a><br>
-<a routerLink="/projects-admin">Projects</a><br>
+<ng-container *ngFor="let menu of ADMIN_MENU">
+  <a [routerLink]="menu.path">{{menu.menu | translate }}</a><br>
+</ng-container>

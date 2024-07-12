@@ -31,8 +31,8 @@ export class LoginComponent {
    * @ViewChild firstInput: Reference to the first input field (username)
    * @ViewChild secondInput: Reference to the second input field (password)
    */
-  @ViewChild('firstInput') firstInput!: ElementRef<any>;
-  @ViewChild('secondInput') secondInput!: ElementRef<any>;
+  @ViewChild('firstInput') firstInput!: ElementRef;
+  @ViewChild('secondInput') secondInput!: ElementRef;
 
   /**
    * Variables to store user input

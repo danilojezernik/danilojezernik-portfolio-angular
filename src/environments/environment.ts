@@ -13,6 +13,12 @@ export const environment = {
     admin: 'http://localhost:3000/blog/admin/',
   },
 
+  // TECHNOLOGY API
+  technologyUrl: {
+    public: 'http://localhost:3000/technology',
+    admin: 'http://localhost:3000/technology/admin/',
+  },
+
   // CONTACT API
   contactUrl: {
     public: 'http://localhost:3000/contact',

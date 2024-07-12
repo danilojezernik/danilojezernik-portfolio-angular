@@ -15,6 +15,7 @@
 		"blog": "Blog",
 		"books": "Books",
 		"contact": "Contact",
+		"email": "Emails",
 		"experiences": "Experiences",
 		"github": "GitHub",
 		"home": "Home",
@@ -24,6 +25,7 @@
 		"media": "Media",
 		"projects": "Projects",
 		"register": "Register",
+		"technology": "Technology",
 		"users": "Users"
 	},
 	"translation": {
