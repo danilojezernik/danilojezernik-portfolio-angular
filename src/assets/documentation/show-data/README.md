@@ -13,12 +13,12 @@ The `ShowDataComponent` allows you to bind various data properties to its inputs
 This example demonstrates how to use the `ShowDataComponent` to display details about a technology item.
 
 ```html
+
 <app-show-data
   [_id]="technology._id"
   [technology]="technology.technology"
   [title]="technology.title"
   [subtitle]="technology.subtitle"
-  [vsebina]="technology.subtitle"
   [datum_vnosa]="technology.datum_vnosa"
 ></app-show-data>
 ```
@@ -28,10 +28,11 @@ This example demonstrates how to use the `ShowDataComponent` to display details 
 This example shows how to use the `ShowDataComponent` to display details about a blog post.
 
 ```html
+
 <app-show-data
-  [title]="blog['title']"
-  [kategorija]="blog['kategorija']"
-  [podnaslov]="blog['podnaslov']"
+  [title]="blog.title"
+  [kategorija]="blog.kategorija"
+  [podnaslov]="blog.podnaslov"
 ></app-show-data>
 ```
 
@@ -58,43 +59,12 @@ import { RouterLink } from "@angular/router";
 })
 export class ShowDataComponent {
   @Input() _id?: string;
-  @Input() naslov?: string;
-  @Input() kategorija?: string;
-  @Input() podnaslov?: string;
-  @Input() vsebina?: string;
-  @Input() image?: string;
-  @Input() datum_vnosa?: string;
   @Input() title?: string;
-  @Input() stack?: string;
-  @Input() framework?: string;
-  @Input() programming_language?: string;
-  @Input() company?: string;
-  @Input() employee?: boolean;
-  @Input() tasks?: string;
-  @Input() company_start?: string;
-  @Input() company_end?: string;
-  @Input() blog_id?: string;
-  @Input() content?: string;
-  @Input() author?: string;
-  @Input() name?: string;
-  @Input() surname?: string;
-  @Input() email?: string;
-  @Input() message?: string;
-  @Input() link?: string;
   @Input() subtitle?: string;
-  @Input() category?: string;
-  @Input() github?: string;
-  @Input() website?: string;
-  @Input() confirmed?: boolean;
-  @Input() username?: string;
-  @Input() full_name?: string;
-  @Input() profession?: string;
+  @Input() kategorija?: string;
+  @Input() datum_vnosa?: string;
   @Input() technology?: string;
-  @Input() description?: string;
-  @Input() hashed_password?: string;
-  @Input() registered?: boolean;
-  @Input() blog_notification?: boolean;
-  @Input() tehnologija?: string;
+  // Other inputs can be added as needed
 }
 ```
 
@@ -106,42 +76,11 @@ The template for the `ShowDataComponent` displays the data fields if they are pr
 
 <div *ngIf="_id">ID: {{ _id }}</div>
 <div *ngIf="title">Title: {{ title }}</div>
-<div *ngIf="naslov">Naslov: {{ naslov }}</div>
-<div *ngIf="kategorija">Kategorija: {{ kategorija }}</div>
-<div *ngIf="podnaslov">Podnaslov: {{ podnaslov }}</div>
-<div *ngIf="vsebina">Vsebina: {{ vsebina }}</div>
-<div *ngIf="image">Image: <img [src]="image" alt="Image"></div>
-<div *ngIf="datum_vnosa">Datum vnosa: {{ datum_vnosa | date }}</div>
-<div *ngIf="stack">Stack: {{ stack }}</div>
-<div *ngIf="framework">Framework: {{ framework }}</div>
-<div *ngIf="programming_language">Programming Language: {{ programming_language }}</div>
-<div *ngIf="company">Company: {{ company }}</div>
-<div *ngIf="employee !== undefined">Employee: {{ employee }}</div>
-<div *ngIf="tasks">Tasks: {{ tasks }}</div>
-<div *ngIf="company_start">Company Start: {{ company_start | date }}</div>
-<div *ngIf="company_end">Company End: {{ company_end | date }}</div>
-<div *ngIf="blog_id">Blog ID: {{ blog_id }}</div>
-<div *ngIf="content">Content: {{ content }}</div>
-<div *ngIf="author">Author: {{ author }}</div>
-<div *ngIf="name">Name: {{ name }}</div>
-<div *ngIf="surname">Surname: {{ surname }}</div>
-<div *ngIf="email">Email: {{ email }}</div>
-<div *ngIf="message">Message: {{ message }}</div>
-<div *ngIf="link">Link: {{ link }}</div>
 <div *ngIf="subtitle">Subtitle: {{ subtitle }}</div>
-<div *ngIf="category">Category: {{ category }}</div>
-<div *ngIf="github">GitHub: {{ github }}</div>
-<div *ngIf="website">Website: {{ website }}</div>
-<div *ngIf="confirmed !== undefined">Confirmed: {{ confirmed }}</div>
-<div *ngIf="username">Username: {{ username }}</div>
-<div *ngIf="full_name">Full Name: {{ full_name }}</div>
-<div *ngIf="profession">Profession: {{ profession }}</div>
+<div *ngIf="kategorija">Kategorija: {{ kategorija }}</div>
+<div *ngIf="datum_vnosa">Datum vnosa: {{ datum_vnosa | date }}</div>
 <div *ngIf="technology">Technology: {{ technology }}</div>
-<div *ngIf="description">Description: {{ description }}</div>
-<div *ngIf="hashed_password">Hashed Password: {{ hashed_password }}</div>
-<div *ngIf="registered !== undefined">Registered: {{ registered }}</div>
-<div *ngIf="blog_notification !== undefined">Blog Notification: {{ blog_notification }}</div>
-<div *ngIf="tehnologija">Tehnologija: {{ tehnologija }}</div>
+<!-- Other fields can be added as needed -->
 ```
 
 ## Explanation
