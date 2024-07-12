@@ -6,11 +6,9 @@ import { GoBackComponent } from "../../../../../shared/components/go-back/go-bac
 import { Observable } from "rxjs"
 import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component"
 import { MatDialog, MatDialogModule } from "@angular/material/dialog"
-import {
-  DialogGlobalAdminComponent
-} from "../../../../../shared/components/dialogs/dialog-global-admin/dialog-global-admin.component"
 import { BlogModel } from "../../../../../models/blog.model"
-import { BUTTONS, DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
+import { BUTTONS } from "../../../../../shared/global-const/global.const";
+import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 
 /**
  * @Component BlogAllAdminComponent
@@ -28,7 +26,7 @@ export class BlogAllAdminComponent implements OnInit {
 
   // Injected instances: BlogService for blog data and MatDialog for dialogs
   private _blogService = inject(BlogService); // Injected BlogService instance
-  public dialog = inject(MatDialog); // Injected MatDialog instance for dialogs
+  public _dialog = inject(MatDialog); // Injected MatDialog instance for dialogs
 
   // Observables to manage blog data
   blogs$!: Observable<BlogModel[]>; // Observable to store list of blogs
@@ -83,28 +81,13 @@ export class BlogAllAdminComponent implements OnInit {
   }
 
   /**
-   * @method openDialog
-   * Opens a dialog to display details of a specific blog post.
-   * Fetches the blog post details by ID and passes them to the DialogGlobalAdminComponent.
-   * @param id - ID of the blog post to display in the dialog
+   * Method to open the dialog with blog details
+   * @param id - ID of the blog to fetch and display in the dialog
    */
   openDialog(id?: string) {
     if (id) {
-      // Fetch blog details by ID from BlogService
-      this.getBlogById(id);
-      // Subscribe to blogById$ Observable to get blog data
-      this.blogById$.subscribe(data => {
-        // Open a dialog component to display blog details
-        this.dialog.open(DialogGlobalAdminComponent, {
-          data: {
-            title: data.naslov, // Set dialog title to blog title
-            allData: data // Pass all blog data to the dialog
-          },
-          ...DIALOG_DIMENSIONS.admin
-        });
-      });
-    } else {
-      console.error('Blog ID is undefined'); // Log error if ID is undefined
+      this.blogById$ = this._blogService.getBlogById(id); // Fetch blog post details by ID
+      openDialogUtil(this._dialog, id, this.getBlogById.bind(this), this.blogById$, 'title', 'blog'); // Open dialog with fetched data
     }
   }
 

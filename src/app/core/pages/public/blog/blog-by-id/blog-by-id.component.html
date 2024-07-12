@@ -1,7 +1,7 @@
 <p>blog-by-id works!</p>
 <ng-container *ngIf="blogId$ | async as blog">
   <div>
-    Naslov: {{blog.naslov}}<br>
+    Naslov: {{blog.title}}<br>
     Vsebina: {{blog.vsebina}}<br>
     Datum vnosa: {{blog.datum_vnosa | date}}
   </div>

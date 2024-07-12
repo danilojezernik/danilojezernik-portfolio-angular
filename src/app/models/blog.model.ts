@@ -4,7 +4,7 @@
 
 export interface BlogModel {
   '_id'?: string;
-  naslov: string;
+  title: string;
   kategorija: string;
   podnaslov: string;
   vsebina: string;

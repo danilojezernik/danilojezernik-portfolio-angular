@@ -15,13 +15,12 @@ import { Validators } from "@angular/forms";
  * formBlogConfig defines the configuration for the form fields used in the blog form.
  */
 export const formBlogConfig: FormFieldConfig[] = [
-  { name: 'naslov', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
+  { name: 'title', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
   { name: 'podnaslov', label: 'Podnaslov', type: 'text', validators: [ Validators.required ] },
   { name: 'kategorija', label: 'Kategorija', type: 'text', validators: [ Validators.required ] },
   { name: 'vsebina', label: 'Vsebina', type: 'text', validators: [ Validators.required, Validators.min(10) ] },
   { name: 'image', label: 'Image', type: 'text', validators: [ Validators.required ] }
 ]
-
 
 /**
  * formProjectsConfig defines the configuration for the form fields used in the projects form.

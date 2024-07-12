@@ -1,1 +1,21 @@
 <p>all-technology-technology works!</p>
+
+<ng-container *ngIf="technology$ | async as technologies">
+
+  <div *ngFor="let technology of technologies">
+
+    <app-show-data-test
+      [_id]="technology._id"
+      [technology]="technology.technology"
+      [title]="technology.title"
+      [subtitle]="technology.subtitle"
+      [vsebina]="technology.subtitle"
+      [datum_vnosa]="technology.datum_vnosa"
+    />
+
+    <button class="me-1.5 bg-amber-400 p-2" (click)="openDialog(technology._id)">Read</button>
+  </div>
+
+</ng-container>
+
+<app-go-back/>

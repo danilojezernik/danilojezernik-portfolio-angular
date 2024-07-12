@@ -14,6 +14,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpErrorInterceptor } from "./interceptors/http-error-interceptor/http-error.interceptor";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     HeaderComponent,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    MatDialogModule,
 
     // ngx-translate and the loader module
     HttpClientModule,
