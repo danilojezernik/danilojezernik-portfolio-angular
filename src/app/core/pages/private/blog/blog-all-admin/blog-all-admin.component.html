@@ -6,7 +6,7 @@
 <ng-container *ngIf="blogs$ | async as blogs">
   <div class="mb-2 border-b-2" *ngFor="let blog of blogs">
 
-    <app-show-data-test
+    <app-show-data
       [title]="blog['title']"
       [kategorija]="blog['kategorija']"
       [podnaslov]="blog['podnaslov']"

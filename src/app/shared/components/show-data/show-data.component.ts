@@ -8,7 +8,7 @@ import { RouterLink } from "@angular/router";
  */
 
 @Component({
-  selector: 'app-show-data-test',
+  selector: 'app-show-data',
   standalone: true,
   imports: [ CommonModule, RouterLink ],
   templateUrl: './show-data.component.html'

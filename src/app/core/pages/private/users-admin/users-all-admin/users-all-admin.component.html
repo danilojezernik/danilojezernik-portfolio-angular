@@ -6,7 +6,7 @@
 <ng-container *ngIf="users$ | async as users">
   <div style="padding-bottom: 20px" *ngFor="let user of users; let i = index" [routerLink]="">
 
-    <app-show-data-test
+    <app-show-data
       [_id]="user._id"
       [full_name]="user.full_name"
       [username]="user.username"
