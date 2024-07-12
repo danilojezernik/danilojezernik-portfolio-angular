@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
     // Calls the AuthService's clear method to remove authentication details and update the login status
     this._authService.clear();
     // Redirect a user to login route when logout
-    this._router.navigate([ '/login' ])
+    this._router.navigate([ '/login' ]);
   }
 
   // Method to change the language of the application
