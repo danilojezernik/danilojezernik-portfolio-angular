@@ -111,7 +111,7 @@ import { initFlowbite } from 'flowbite';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: [ './app.component.css' ]
 })
 export class AppComponent implements OnInit {
   title = 'web-app';
@@ -124,3 +124,9 @@ export class AppComponent implements OnInit {
 
 Now you can start using Flowbite components in your Angular project. Check the Flowbite documentation for examples and further customization options:
 [Flowbite](https://flowbite.com/)
+
+### 4. Documentation
+
+Project has various documentations for different components and utilities. You can find them in the `src/assets/documentation` folder.
+
+[Documentation](https://github.com/danilojezernik/danilojezernik-portfolio-angular/tree/master/src/assets/documentation)
