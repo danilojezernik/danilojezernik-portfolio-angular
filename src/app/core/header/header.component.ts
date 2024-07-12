@@ -45,8 +45,7 @@ export class HeaderComponent implements OnInit {
   useLanguage(language: string): void {
     this.translate.use(language);
   }
-
-
+  
   protected readonly MENU = MENU;
   protected readonly TRANSLATE_LANGUAGE = TRANSLATE_LANGUAGE;
   protected readonly LANGUAGE = LANGUAGE;
