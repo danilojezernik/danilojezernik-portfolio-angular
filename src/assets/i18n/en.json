@@ -9,6 +9,7 @@
 		"unknown": "An unknown error occurred!",
 		"unprocessableEntity": "Unprocessable Entity. Please check your input and try again."
 	},
+	"loading": "Loading",
 	"menu": {
 		"biography": "Biography",
 		"blog": "Blog",

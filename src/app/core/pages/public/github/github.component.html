@@ -1,17 +1,35 @@
 <h1>GitHub Repositories</h1>
 
-<ul>
-  <li *ngIf="privateLength">
-    Existing repos: {{ privateLength }}
-  </li>
-</ul>
 
-<ul>
-  <li class="pb-2" *ngFor="let repo of github$ | async">
-    <p class="text-2xl uppercase">{{ repo.name }}</p>
-    <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
-    <p>{{ repo.description }}</p>
-    <p><strong>Language:</strong> {{ repo.language }}</p>
-    <p><strong>Owner:</strong> <a [href]="repo.owner.html_url" target="_blank">{{ repo.owner.login }}</a></p>
-  </li>
-</ul>
+<ng-container *ngIf="github$ | async as githubData; else loadingData">
+
+  <ul>
+    <li *ngIf="githubData.length > 0">
+      Existing repos: {{ githubData.length }}
+    </li>
+  </ul>
+
+  <ul>
+    <li class="pb-2" *ngFor="let repo of githubData.repos">
+      <p class="text-2xl uppercase">{{ repo.name }}</p>
+      <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+      <p>{{ repo.description }}</p>
+      <p><strong>Language:</strong> {{ repo.language }}</p>
+      <p><strong>Owner:</strong> <a [href]="repo.owner.html_url" target="_blank">{{ repo.owner.login }}</a></p>
+    </li>
+  </ul>
+
+  <ng-container *ngIf="!github$ || error">
+    {{ error }}
+  </ng-container>
+
+</ng-container>
+
+<ng-template #loadingData>
+  <div class="fixed loader-component text-center">
+    <span class="loader text-black font-bold opacity-75 text-7xl"></span>
+    <span class="loading-text text-2xl mt-4">{{ 'loading' | translate }}</span>
+  </div>
+</ng-template>
+
+

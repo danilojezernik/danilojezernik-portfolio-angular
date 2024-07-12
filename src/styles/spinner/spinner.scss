@@ -1,0 +1,27 @@
+@import "../../styles/abstract/mixin";
+@import "../../styles/abstract/variables";
+
+/* Loader position in the middle vertically and horizontally */
+.loader-component {
+  @include position-absolute-center($halp-percent);
+}
+
+/* Loader style and content */
+.loader {
+  font-family: Consolas, Menlo, Monaco, monospace;
+}
+
+.loader:before {
+  content: "{";
+  @include loader-animation-before($inline-block)
+}
+
+.loader:after {
+  content: "}";
+  @include loader-animation-after($inline-block)
+}
+
+/* Text bellow curly brackets with animation */
+.loading-text {
+  @include loader-animation-after($block)
+}

@@ -9,6 +9,7 @@
 		"unknown": "Prišlo je do neznane napake!",
 		"unprocessableEntity": "Neprebavljiva entiteta. Preverite svoje podatke in poskusite znova."
 	},
+	"loading": "Nalagam",
 	"menu": {
 		"biography": "Biografija",
 		"blog": "Blog",

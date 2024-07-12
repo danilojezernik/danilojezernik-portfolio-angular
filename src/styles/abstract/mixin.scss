@@ -1,0 +1,22 @@
+/*********************************************
+      Spinner animation and display mixin
+*********************************************/
+
+@mixin loader-animation-before($display) {
+  display: $display;
+  animation: pulse 0.4s alternate infinite ease-in-out;
+}
+
+@mixin loader-animation-after($display) {
+  display: $display;
+  animation: pulse 0.4s 0.3s alternate infinite ease-in-out;
+}
+
+/***********************************************************
+    Position of the component in the middle - absolute
+************************************************************/
+@mixin position-absolute-center($percent) {
+  top: $percent;
+  left: $percent;
+  transform: translate(-$percent, -$percent);
+}
