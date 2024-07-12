@@ -1,0 +1,5 @@
+Documentation is used to explain some of the features of the application. It is written in markdown format.
+
+Table of content:
+show-data - used to show data to html
+open-dialog-utils - global function to open dialog to show data in modal
