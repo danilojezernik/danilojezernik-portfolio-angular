@@ -1,12 +1,9 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetDeviceService {
-
-  constructor() {
-  }
 
   getDeviceInfo() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);

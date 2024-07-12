@@ -14,7 +14,6 @@ import { Validators } from "@angular/forms";
 /**
  * formBlogConfig defines the configuration for the form fields used in the blog form.
  */
-
 export const formBlogConfig: FormFieldConfig[] = [
   { name: 'naslov', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
   { name: 'podnaslov', label: 'Podnaslov', type: 'text', validators: [ Validators.required ] },
@@ -52,3 +51,13 @@ export const formUserConfig: FormFieldConfig[] = [
   { name: 'blog_notification', label: 'blog_notification', type: 'checkbox', validators: [] }
 ]
 
+/**
+ * formTechnologyConfig defines the configuration for the form fields used in the technology form.
+ * */
+export const formTechnologyConfig: FormFieldConfig[] = [
+  { name: 'technology', label: 'Tehnologija', type: 'text', validators: [ Validators.required ] },
+  { name: 'title', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
+  { name: 'subtitle', label: 'Podnaslov', type: 'text', validators: [] },
+  { name: 'vsebina', label: 'Vsebina', type: 'text', validators: [ Validators.required, Validators.minLength(10) ] },
+  { name: 'image', label: 'Image', type: 'text', validators: [] }
+]
