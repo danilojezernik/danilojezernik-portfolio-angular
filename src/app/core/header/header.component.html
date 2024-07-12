@@ -1,21 +1,18 @@
-<a class="pe-3" routerLink="/">{{ 'home' | translate }}</a>
-<a class="pe-3" routerLink="/biography">Biography</a>
-<a class="pe-3" routerLink="/experiences">Experiences</a>
-<a class="pe-3" routerLink="/projects">Projects</a>
-<a class="pe-3" routerLink="/blog">Blog</a>
-<a class="pe-3" routerLink="/github">Github</a>
-<a class="pe-3" routerLink="/media">Media</a>
-<a class="pe-3" routerLink="/books">Books</a>
-<a class="pe-3" routerLink="/links">Links</a>
-<a class="pe-3" routerLink="/users">Users</a>
-<a class="pe-3" routerLink="/contact">Contact</a>
-<a class="pe-3" routerLink="/register">Register</a>
-<ng-container *ngIf="(isLoggedIn$ | async) === false">
-  <a class="pe-3" routerLink="/login">Login</a>
-</ng-container>
-<ng-container *ngIf="(isLoggedIn$ | async) === true">
-  <a (click)="logOut()" class="pe-3" routerLink="/login">LogOut</a>
+<ng-container *ngFor="let menu of MENU">
+  <a class="pe-3" [routerLink]="menu.path">{{ menu.menu | translate }}</a>
 </ng-container>
 
-<button *ngIf="translate.currentLang === 'en'" (click)="useLanguage('si')">SI</button>
-<button *ngIf="translate.currentLang === 'si'" (click)="useLanguage('en')">EN</button>
+<ng-container *ngIf="(isLoggedIn$ | async) === false">
+  <a class="pe-3" routerLink="/login">{{ 'menu.login' | translate }}</a>
+</ng-container>
+
+<ng-container *ngIf="(isLoggedIn$ | async) === true">
+  <a (click)="logOut()" class="pe-3" routerLink="/login">{{ 'menu.login' | translate }}</a>
+</ng-container>
+
+<button *ngIf="translate.currentLang === TRANSLATE_LANGUAGE.en" (click)="useLanguage(TRANSLATE_LANGUAGE.si)">
+  {{ LANGUAGE.si }}
+</button>
+<button *ngIf="translate.currentLang === TRANSLATE_LANGUAGE.si" (click)="useLanguage(TRANSLATE_LANGUAGE.en)">
+  {{ LANGUAGE.en }}
+</button>

@@ -1,14 +1,31 @@
 {
-  "home": "Home",
-  "translation.heading": "English",
-  "errors": {
-    "unknown": "An unknown error occurred!",
-    "network": "Check your network connection or try again later.",
-    "badRequest": "Bad Request. Please check your input.",
-    "forbidden": "You do not have permission to perform this action.",
-    "unauthorized": "Unauthorized. Please check your username and password.",
-    "notFound": "Resource not found.",
-    "unprocessableEntity": "Unprocessable Entity. Please check your input and try again.",
-    "internalServerError": "An internal server error occurred. Please try again later."
-  }
+	"errors": {
+		"badRequest": "Bad Request. Please check your input.",
+		"forbidden": "You do not have permission to perform this action.",
+		"internalServerError": "An internal server error occurred. Please try again later.",
+		"network": "Check your network connection or try again later.",
+		"notFound": "Resource not found.",
+		"unauthorized": "Unauthorized. Please check your username and password.",
+		"unknown": "An unknown error occurred!",
+		"unprocessableEntity": "Unprocessable Entity. Please check your input and try again."
+	},
+	"menu": {
+		"biography": "Biography",
+		"blog": "Blog",
+		"books": "Books",
+		"contact": "Contact",
+		"experiences": "Experiences",
+		"github": "GitHub",
+		"home": "Home",
+		"links": "Links",
+		"login": "Login",
+		"logout": "Logout",
+		"media": "Media",
+		"projects": "Projects",
+		"register": "Register",
+		"users": "Users"
+	},
+	"translation": {
+		"heading": "English"
+	}
 }

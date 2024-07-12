@@ -1,14 +1,31 @@
 {
-  "home": "Domov",
-  "translation.heading": "Slovensko",
-  "errors": {
-    "unknown": "Prišlo je do neznane napake!",
-    "network": "Preverite internetno povezavo ali poizkusite znova kasneje.",
-    "badRequest": "Neveljavna zahteva. Preverite svoje podatke.",
-    "forbidden": "Nimate dovoljenja za izvedbo tega dejanja.",
-    "unauthorized": "Neavtoriziran. Preverite uporabniško ime in geslo.",
-    "notFound": "Viri niso bili najdeni.",
-    "unprocessableEntity": "Neprebavljiva entiteta. Preverite svoje podatke in poskusite znova.",
-    "internalServerError": "Prišlo je do notranje napake strežnika. Poskusite znova pozneje."
-  }
+	"errors": {
+		"badRequest": "Neveljavna zahteva. Preverite svoje podatke.",
+		"forbidden": "Nimate dovoljenja za izvedbo tega dejanja.",
+		"internalServerError": "Prišlo je do notranje napake strežnika. Poskusite znova pozneje.",
+		"network": "Preverite internetno povezavo ali poizkusite znova kasneje.",
+		"notFound": "Viri niso bili najdeni.",
+		"unauthorized": "Neavtoriziran. Preverite uporabniško ime in geslo.",
+		"unknown": "Prišlo je do neznane napake!",
+		"unprocessableEntity": "Neprebavljiva entiteta. Preverite svoje podatke in poskusite znova."
+	},
+	"menu": {
+		"biography": "Biografija",
+		"blog": "Blog",
+		"books": "Knjige",
+		"contact": "Kontakt",
+		"experiences": "Izkušnje",
+		"github": "GitHub",
+		"home": "Domov",
+		"links": "Povezave",
+		"login": "Vpis",
+		"logout": "Izpis",
+		"media": "Media",
+		"projects": "Projekti",
+		"register": "Registracija",
+		"users": "Uporabniki"
+	},
+	"translation": {
+		"heading": "Slovensko"
+	}
 }

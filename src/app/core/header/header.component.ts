@@ -5,6 +5,7 @@ import { AuthService } from "../../auth/auth.service";
 import { LoggedInService } from "../../services/communication/logged-in.service";
 import { Observable } from "rxjs";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { LANGUAGE, MENU, TRANSLATE_LANGUAGE } from "../../shared/global-const/global.const";
 
 @Component({
   selector: 'app-header',
@@ -44,4 +45,9 @@ export class HeaderComponent implements OnInit {
   useLanguage(language: string): void {
     this.translate.use(language);
   }
+
+
+  protected readonly MENU = MENU;
+  protected readonly TRANSLATE_LANGUAGE = TRANSLATE_LANGUAGE;
+  protected readonly LANGUAGE = LANGUAGE;
 }
