@@ -31,7 +31,6 @@ import { MatDialogModule } from "@angular/material/dialog";
     MatDialogModule,
 
     // ngx-translate and the loader module
-    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
