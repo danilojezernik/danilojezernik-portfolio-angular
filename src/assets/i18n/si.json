@@ -1,4 +1,10 @@
 {
+	"button": {
+		"add": "Dodaj",
+		"delete": "Izbriši",
+		"edit": "Uredi",
+		"read": "Beri"
+	},
 	"errors": {
 		"badRequest": "Neveljavna zahteva. Preverite svoje podatke.",
 		"forbidden": "Nimate dovoljenja za izvedbo tega dejanja.",

@@ -9,6 +9,8 @@ import { MatDialog, MatDialogModule } from "@angular/material/dialog"
 import { BlogModel } from "../../../../../models/blog.model"
 import { BUTTONS } from "../../../../../shared/global-const/global.const";
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
+import { TranslateModule } from "@ngx-translate/core";
+import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
 
 /**
  * @Component BlogAllAdminComponent
@@ -19,7 +21,7 @@ import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 @Component({
   selector: 'app-blog-all-admin',
   standalone: true,
-  imports: [ CommonModule, RouterLink, GoBackComponent, ShowDataComponent, MatDialogModule ],
+  imports: [ CommonModule, RouterLink, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent ],
   templateUrl: './blog-all-admin.component.html'
 })
 export class BlogAllAdminComponent implements OnInit {
@@ -59,12 +61,12 @@ export class BlogAllAdminComponent implements OnInit {
   }
 
   /**
-   * @method deleteById
+   * @method deleteBlog
    * Deletes a blog post by its ID.
    * After deletion, refreshes the list of blogs by calling getAllBlogs().
    * @param id - ID of the blog post to delete
    */
-  deleteById(id: string | undefined) {
+  deleteBlog(id: string | undefined) {
     if (id) {
       // Call BlogService to delete the blog post by ID
       this._blogService.deleteBlogById(id).subscribe(

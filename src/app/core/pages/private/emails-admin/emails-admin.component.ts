@@ -10,11 +10,12 @@ import {
   DialogGlobalAdminComponent
 } from "../../../../shared/components/dialogs/dialog-global-admin/dialog-global-admin.component";
 import { BUTTONS, DIALOG_DIMENSIONS } from "../../../../shared/global-const/global.const";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-emails-admin',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule ],
+  imports: [ CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule ],
   templateUrl: './emails-admin.component.html'
 })
 export class EmailsAdminComponent implements OnInit {

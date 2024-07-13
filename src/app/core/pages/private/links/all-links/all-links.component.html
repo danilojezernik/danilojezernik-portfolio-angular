@@ -1,1 +1,16 @@
 <p>all-links works!</p>
+
+<app-button-admin-add [routerLink]="'/add-links-admin'"/>
+
+<ng-container *ngIf="links$ | async as links">
+
+  <div *ngFor="let link of links">
+
+    <app-show-data
+      [title]="link['title']"
+      [link]="link['link']"
+    />
+
+  </div>
+
+</ng-container>

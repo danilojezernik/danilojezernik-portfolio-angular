@@ -55,6 +55,12 @@ import {
 import { AllLinksComponent } from "./core/pages/private/links/all-links/all-links.component";
 import { AddLinksComponent } from "./core/pages/private/links/add-links/add-links.component";
 import { EditLinksComponent } from "./core/pages/private/links/edit-links/edit-links.component";
+import {
+  AddExperiencesAdminComponent
+} from "./core/pages/private/experiences-admin/add-experiences-admin/add-experiences-admin.component";
+import {
+  EditExperiencesAdminComponent
+} from "./core/pages/private/experiences-admin/edit-experiences-admin/edit-experiences-admin.component";
 
 const routes: Routes = [
   {
@@ -80,6 +86,16 @@ const routes: Routes = [
   {
     path: 'experiences-admin',
     component: AllExperiencesAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'add-experiences-admin',
+    component: AddExperiencesAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'edit-experiences-admin/:id',
+    component: EditExperiencesAdminComponent,
     canActivate: [ AuthGuardService ]
   },
 
@@ -131,7 +147,7 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'blog-admin/edit/:id',
+    path: 'edit-blog-admin/:id',
     component: BlogEditByIdAdminComponent,
     canActivate: [ AuthGuardService ]
   },
@@ -162,7 +178,7 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'technology-admin/edit/:id',
+    path: 'edit-technology-admin/:id',
     component: EditTechnologyComponent,
     canActivate: [ AuthGuardService ]
   },
@@ -213,12 +229,12 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'links-admin/add',
+    path: 'add-links-admin',
     component: AddLinksComponent,
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'links-admin/edit/:id',
+    path: 'edit-links-admin/:id',
     component: EditLinksComponent,
     canActivate: [ AuthGuardService ]
   },
@@ -282,12 +298,12 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'user-admin/add',
+    path: 'add-user-admin',
     component: UserAddAdminComponent,
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'user-admin/edit/:id',
+    path: 'edit-user-admin/:id',
     component: UserEditByIdAdminComponent,
     canActivate: [ AuthGuardService ]
   },

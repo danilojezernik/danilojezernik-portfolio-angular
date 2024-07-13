@@ -11,6 +11,8 @@ import {
 } from "../../../../../shared/components/dialogs/dialog-global-admin/dialog-global-admin.component";
 import { BUTTONS, DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
 import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component";
+import { TranslateModule } from "@ngx-translate/core";
+import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
 
 /**
  * @Component UsersAllAdminComponent
@@ -21,7 +23,7 @@ import { ShowDataComponent } from "../../../../../shared/components/show-data/sh
 @Component({
   selector: 'app-users-admin',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, RouterLink, MatDialogModule, ShowDataComponent ],
+  imports: [ CommonModule, GoBackComponent, RouterLink, MatDialogModule, ShowDataComponent, TranslateModule, ButtonAdminComponent ],
   templateUrl: './users-all-admin.component.html'
 })
 export class UsersAllAdminComponent implements OnInit {

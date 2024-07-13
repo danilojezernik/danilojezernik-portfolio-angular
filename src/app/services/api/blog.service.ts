@@ -33,8 +33,8 @@ export class BlogService {
     return this._http.post<BlogModel>(`${environment.blogUrl.public}/`, newBlog)
   }
 
-  editBlogById(id: string, newData: BlogModel) {
-    return this._http.put<BlogModel>(`${environment.blogUrl.public}/${id}`, newData)
+  editBlogById(id: string, newBlog: BlogModel) {
+    return this._http.put<BlogModel>(`${environment.blogUrl.public}/${id}`, newBlog)
   }
 
   deleteBlogById(id: string): Observable<BlogModel> {

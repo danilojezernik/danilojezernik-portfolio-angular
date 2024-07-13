@@ -13,10 +13,10 @@ export const DIALOG_DIMENSIONS = {
 
 // Enum for button labels
 export enum BUTTONS {
-  read = 'Beri',    // Label for the read button
-  edit = 'Uredi',   // Label for the edit button
-  add = 'Dodaj',    // Label for the add button
-  delete = 'Izbriši'// Label for the delete button
+  read = 'button.read',    // Label for the read button
+  edit = 'button.edit',   // Label for the edit button
+  add = 'button.add',    // Label for the add button
+  delete = 'button.delete'// Label for the delete button
 }
 
 // Menu items for the header component

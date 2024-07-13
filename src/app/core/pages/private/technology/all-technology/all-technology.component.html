@@ -1,5 +1,7 @@
 <p>all-technology-technology works!</p>
 
+<app-button-admin [routerLink]="'/add-technology-admin'"/>
+
 <ng-container *ngIf="technology$ | async as technologies">
 
   <div *ngFor="let technology of technologies">
@@ -13,7 +15,7 @@
       [datum_vnosa]="technology.datum_vnosa"
     />
 
-    <button class="me-1.5 bg-amber-400 p-2" (click)="openDialog(technology._id)">Read</button>
+    <button class="me-1.5 bg-amber-400 p-2" (click)="openDialog(technology._id)">{{ BUTTONS.read |translate}}</button>
   </div>
 
 </ng-container>

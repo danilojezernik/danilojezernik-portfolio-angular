@@ -21,7 +21,7 @@
 <div *ngIf="surname">Surname: {{ surname }}</div>
 <div *ngIf="email">Email: {{ email }}</div>
 <div *ngIf="message">Message: {{ message }}</div>
-<div *ngIf="link">Link: {{ link }}</div>
+<div *ngIf="link">Link: <a [href]="link" target="_blank">{{ link }}</a></div>
 <div *ngIf="subtitle">Subtitle: {{ subtitle }}</div>
 <div *ngIf="category">Category: {{ category }}</div>
 <div *ngIf="github">GitHub: {{ github }}</div>

@@ -7,11 +7,14 @@ import { Observable } from "rxjs";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component";
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
+import { BUTTONS } from "../../../../../shared/global-const/global.const";
+import { TranslateModule } from "@ngx-translate/core";
+import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
 
 @Component({
   selector: 'app-all-technology-technology',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, ShowDataComponent ],
+  imports: [ CommonModule, GoBackComponent, ShowDataComponent, TranslateModule, ButtonAdminComponent ],
   templateUrl: './all-technology.component.html'
 })
 export class AllTechnologyComponent {
@@ -46,4 +49,6 @@ export class AllTechnologyComponent {
       openDialogUtil(this._dialog, id, this.getTechnologyById.bind(this), this.technologyById$, 'title', 'technology')
     }
   }
+
+  protected readonly BUTTONS = BUTTONS;
 }

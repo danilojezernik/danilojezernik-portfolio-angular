@@ -9,12 +9,14 @@ import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import {
   DialogGlobalAdminComponent
 } from "../../../../../shared/components/dialogs/dialog-global-admin/dialog-global-admin.component";
-import { DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
+import { BUTTONS, DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
+import { TranslateModule } from "@ngx-translate/core";
+import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
 
 @Component({
   selector: 'app-experiences-admin',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule ],
+  imports: [ CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent ],
   templateUrl: './all-experiences-admin.component.html'
 })
 export class AllExperiencesAdminComponent {
@@ -46,4 +48,5 @@ export class AllExperiencesAdminComponent {
     }
   }
 
+  protected readonly BUTTONS = BUTTONS;
 }

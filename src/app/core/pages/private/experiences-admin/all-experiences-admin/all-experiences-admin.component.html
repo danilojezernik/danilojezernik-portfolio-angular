@@ -1,5 +1,8 @@
 <p>experiences-admin works!</p>
 
+<app-button-admin [routerLink]="'/add-experiences-admin'"/>
+
+
 <ng-container *ngIf="experiences$ | async as experiences">
 
   <div *ngFor="let experience of experiences">
@@ -18,7 +21,10 @@
       [datum_vnosa]="experience.datum_vnosa"
     />
 
-    <button class="me-1.5 bg-amber-400 p-2" (click)="openDialog(experience._id)">Read</button>
+    <button class="me-1.5 bg-amber-400 p-2" (click)="openDialog(experience._id)">{{ BUTTONS.read | translate}}</button>
+
+
+    <app-button-admin [routerLinkId]="['/edit-experiences-admin', experience._id ?? '']"/>
   </div>
 
 
