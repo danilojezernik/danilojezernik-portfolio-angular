@@ -1,10 +1,10 @@
 # Reusable Form Component
 
-The `ReusableFormComponent` is a dynamic form generator that creates form controls based on a provided configuration. This component is highly customizable and can be used to create different forms by just changing the configuration.
+The `ReusableFormAddComponent` is a dynamic form generator that creates form controls based on a provided configuration. This component is highly customizable and can be used to create different forms by just changing the configuration.
 
 ## Overview
 
-The `ReusableFormComponent` uses Angular's reactive forms to dynamically generate form controls based on the configuration provided by the parent component. This allows for creating flexible and reusable forms.
+The `ReusableFormAddComponent` uses Angular's reactive forms to dynamically generate form controls based on the configuration provided by the parent component. This allows for creating flexible and reusable forms to add data.
 
 ## Form Configuration
 
@@ -27,33 +27,18 @@ export const formBlogConfig: FormFieldConfig[] = [
 ];
 ```
 
-#### User Form Configuration
-
-```typescript
-import { Validators } from "@angular/forms";
-import { FormFieldConfig } from "path-to-form-field-config.model";
-
-export const formUserConfig: FormFieldConfig[] = [
-  { name: 'full_name', label: 'Full name', type: 'text', validators: [ Validators.required ] },
-  { name: 'username', label: 'Username', type: 'text', validators: [ Validators.required ] },
-  { name: 'email', label: 'Email', type: 'email', validators: [ Validators.required, Validators.email ] },
-  { name: 'profession', label: 'Profession', type: 'text', validators: [] },
-  { name: 'technology', label: 'Technology', type: 'text', validators: [] }
-];
-```
-
 ## Component Usage
 
 ### HTML Template
 
-To use the `ReusableFormComponent`, provide the form configuration and handle the form submission event:
+To use the `ReusableFormAddComponent`, provide the form configuration and handle the form submission event:
 
 ```html
 
 <app-reusable-form
-  [config]="formUserConfig"
-  [submitLabel]="'Add user'"
-  (formSubmit)="addUser($event)"
+  [config]="formBlogConfig"
+  [submitLabel]="'Add blog'"
+  (formSubmit)="addBlog($event)"
 ></app-reusable-form>
 ```
 
@@ -64,17 +49,17 @@ In your component, import the form configuration and define the method to handle
 ```typescript
 import { Component } from '@angular/core';
 import { formUserConfig } from 'path-to-your-config';
-import { User } from "path-to-user-model";
+import { Blog } from "path-to-blog-model";
 
 @Component({
-  selector: 'app-user-add',
-  templateUrl: './user-add.component.html'
+  selector: 'app-blog-add',
+  templateUrl: './blog-add.component.html'
 })
-export class UserAddComponent {
+export class BlogAddComponent {
   protected readonly formUserConfig = formUserConfig;
 
-  addUser(formData: User) {
-    console.log('User data:', formData);
+  addBlog(formData: Blog) {
+    console.log('Blog data:', formData);
     // Handle form submission logic here
   }
 }
@@ -225,7 +210,7 @@ The template dynamically renders form controls based on the configuration:
 
 ## Explanation
 
-The `ReusableFormComponent` is a flexible component designed to dynamically create form fields based on the provided configuration. This reduces redundancy and allows for easy form creation and maintenance.
+The `ReusableFormAddComponent` is a flexible component designed to dynamically create form fields based on the provided configuration. This reduces redundancy and allows for easy form creation and maintenance.
 
 ### Key Features:
 
@@ -233,4 +218,4 @@ The `ReusableFormComponent` is a flexible component designed to dynamically crea
 - **Validation**: Supports Angular's form validation through configurable validators.
 - **Reusability**: Can be used across different parts of your application by changing the configuration.
 
-By using the `ReusableFormComponent`, you can ensure a consistent and efficient way to handle forms in your application, minimizing code duplication and enhancing maintainability.
+By using the `ReusableFormAddComponent`, you can ensure a consistent and efficient way to handle forms in your application, minimizing code duplication and enhancing maintainability.
