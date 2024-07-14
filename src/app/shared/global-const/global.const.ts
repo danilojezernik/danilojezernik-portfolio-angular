@@ -69,5 +69,5 @@ export const LANGUAGE = {
 }
 
 export const SELECT_LANGUAGE = [
-  'TypeScript', 'JavaScript', 'Python', 'Vue', 'Kotlin', 'All languages'
+  'TypeScript', 'JavaScript', 'Python', 'Vue', 'Kotlin', 'HTML', 'All languages'
 ]

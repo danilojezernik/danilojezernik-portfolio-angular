@@ -1,18 +1,18 @@
 import { Component, inject } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { GithubService } from "../../../../services/api/github.service"
-import { BehaviorSubject, catchError, map, Observable, of, switchMap } from "rxjs"
+import { catchError, map, Observable, of, BehaviorSubject } from "rxjs"
 import { Repo } from "../../../../models/github.model"
 import { TranslateModule, TranslateService } from "@ngx-translate/core"
-import { MatSelectModule } from "@angular/material/select";
-import { FormsModule } from "@angular/forms";
-import { MatInputModule } from "@angular/material/input";
-import { SELECT_LANGUAGE } from "../../../../shared/global-const/global.const";
+import { MatSelectModule } from "@angular/material/select"
+import { FormsModule } from "@angular/forms"
+import { MatInputModule } from "@angular/material/input"
+import { SELECT_LANGUAGE } from "../../../../shared/global-const/global.const"
+import { switchMap } from 'rxjs/operators'
 
 /**
  * This component displays GitHub repositories fetched from the backend API.
  */
-
 @Component({
   selector: 'app-github',
   standalone: true,
@@ -21,17 +21,11 @@ import { SELECT_LANGUAGE } from "../../../../shared/global-const/global.const";
 })
 export class GithubComponent {
 
-  /**
-   * Injected services:
-   * @private _githubService: Service for fetching GitHub repositories
-   * @private _translateService: Service for handling translations
-   */
+  // Injecting the necessary services for fetching GitHub repositories and handling translations
   private _githubService = inject(GithubService)
   private _translateService = inject(TranslateService)
 
-  /**
-   * Error message property to store error messages.
-   */
+  // Property to store error messages, initialized to null
   error: string | null = null
 
   /**
@@ -39,13 +33,13 @@ export class GithubComponent {
    * - BehaviorSubject is a special type of Observable that keeps hold of the current value and emits it to new subscribers.
    * - It is initialized with the value 'All languages' meaning initially all languages are selected.
    */
-  public selectedLanguage = new BehaviorSubject<string>('All languages')
+  private selectedLanguageSubject = new BehaviorSubject<string>('All languages')
 
   /**
    * Observable to expose the selected language as a stream of values.
    * - 'asObservable()' creates an Observable that emits the current value whenever it changes.
    */
-  selectedLanguage$ = this.selectedLanguage.asObservable()
+  selectedLanguage$ = this.selectedLanguageSubject.asObservable()
 
   /**
    * Combine the selected language and GitHub repositories to filter the data.
@@ -81,14 +75,20 @@ export class GithubComponent {
   )
 
   /**
+   * Property to bind the selected language in the template.
+   * - This property is used to bind the selected language in the template and update the BehaviorSubject.
+   */
+  selectedLanguage: string = 'All languages'
+
+  /**
    * Method to update the selected language.
    * - When a new language is selected, it updates the value of the BehaviorSubject.
    * - This triggers the Observable stream to emit the new value.
    */
   setSelectedLanguage(language: string): void {
-    this.selectedLanguage.next(language)
+    this.selectedLanguageSubject.next(language)
   }
 
   // Expose the constant array of selectable languages to the template
-  protected readonly SELECT_LANGUAGE = SELECT_LANGUAGE;
+  protected readonly SELECT_LANGUAGE = SELECT_LANGUAGE
 }
