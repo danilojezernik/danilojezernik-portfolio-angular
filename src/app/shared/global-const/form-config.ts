@@ -60,3 +60,11 @@ export const formTechnologyConfig: FormFieldConfig[] = [
   { name: 'vsebina', label: 'Vsebina', type: 'text', validators: [ Validators.required, Validators.minLength(10) ] },
   { name: 'image', label: 'Image', type: 'text', validators: [] }
 ]
+
+/**
+ * formLinksConfig defines the configuration for the form fields used in the technology form.
+ * */
+export const formLinksConfig: FormFieldConfig[] = [
+  { name: 'title', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
+  { name: 'link', label: 'Povezava', type: 'text', validators: [ Validators.required ] },
+]

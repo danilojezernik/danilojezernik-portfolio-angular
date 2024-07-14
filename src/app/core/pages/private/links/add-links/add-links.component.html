@@ -1,1 +1,7 @@
 <p>add-links works!</p>
+
+<app-reusable-form
+  [config]="formLinksConfig"
+  [submitLabel]="'Dodaj blog'"
+  (formSubmit)="addNewLink($event)"
+></app-reusable-form>

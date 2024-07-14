@@ -16,7 +16,8 @@ export enum BUTTONS {
   read = 'button.read',    // Label for the read button
   edit = 'button.edit',   // Label for the edit button
   add = 'button.add',    // Label for the add button
-  delete = 'button.delete'// Label for the delete button
+  delete = 'button.delete',// Label for the delete button
+  back = 'button.back' // Label for the back button
 }
 
 // Menu items for the header component
@@ -66,3 +67,7 @@ export const LANGUAGE = {
   si: 'SI', // Slovenian language code
   en: 'EN'  // English language code
 }
+
+export const SELECT_LANGUAGE = [
+  'TypeScript', 'JavaScript', 'Python', 'Vue', 'Kotlin', 'All languages'
+]

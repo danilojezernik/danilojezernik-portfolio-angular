@@ -48,5 +48,11 @@ export class AllExperiencesAdminComponent {
     }
   }
 
+  deleteExperience(id?: string) {
+    if (id) {
+
+    }
+  }
+
   protected readonly BUTTONS = BUTTONS;
 }

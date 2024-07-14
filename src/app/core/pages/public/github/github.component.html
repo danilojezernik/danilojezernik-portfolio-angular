@@ -3,7 +3,7 @@
 <!-- Title of the page displaying GitHub repositories - END -->
 
 <!-- Container to handle the asynchronous data fetching - START -->
-<ng-container *ngIf="github$ | async as githubData; else loadingData">
+<ng-container *ngIf="filteredGitHub$ | async as githubData; else loadingData">
   <!-- Display the number of existing repositories if any are found - START -->
   <ul>
     <li *ngIf="githubData.length > 0">
@@ -11,6 +11,15 @@
     </li>
   </ul>
   <!-- Display the number of existing repositories if any are found - END -->
+
+  <!-- Dropdown to select the language for filtering repositories - START -->
+  <mat-form-field>
+    <mat-label>Choose an option</mat-label>
+    <mat-select [(ngModel)]="selectedLanguage" (ngModelChange)="setSelectedLanguage($event)">
+      <mat-option *ngFor="let language of SELECT_LANGUAGE" [value]="language">{{language}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- Dropdown to select the language for filtering repositories - END -->
 
   <!-- List of GitHub repositories - START -->
   <ul>
@@ -39,7 +48,7 @@
   <!-- List of GitHub repositories - END -->
 
   <!-- Error message display if the data fetching fails - START -->
-  <ng-container *ngIf="!github$ || error">
+  <ng-container *ngIf="!filteredGitHub$ || error">
     {{ error }}
   </ng-container>
   <!-- Error message display if the data fetching fails - END -->

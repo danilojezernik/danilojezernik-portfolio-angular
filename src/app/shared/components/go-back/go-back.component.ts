@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-go-back',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [ CommonModule, TranslateModule ],
   templateUrl: './go-back.component.html'
 })
 export class GoBackComponent {

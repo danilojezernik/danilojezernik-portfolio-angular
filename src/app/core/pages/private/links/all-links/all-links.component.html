@@ -1,6 +1,6 @@
 <p>all-links works!</p>
 
-<app-button-admin-add [routerLink]="'/add-links-admin'"/>
+<app-button-admin [routerLink]="'/add-links-admin'"/>
 
 <ng-container *ngIf="links$ | async as links">
 
@@ -11,6 +11,13 @@
       [link]="link['link']"
     />
 
+    <app-button-admin
+      [routerLinkId]="['/edit-links-admin', link._id ?? '']"
+      (delete)="deleteLink(link._id)"
+    />
+
   </div>
 
 </ng-container>
+
+<app-go-back/>

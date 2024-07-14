@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { TechnologyService } from "../../../../../services/api/technology.service";
 import { MatDialog } from "@angular/material/dialog";
 import { Technology } from "../../../../../models/technology";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component";
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
-import { BUTTONS } from "../../../../../shared/global-const/global.const";
 import { TranslateModule } from "@ngx-translate/core";
 import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
 
@@ -24,10 +23,27 @@ export class AllTechnologyComponent {
   // Inject the MatDialog service to open dialogs
   private _dialog = inject(MatDialog)
 
-  // Observable to hold the list of all technologies
-  technology$ = this._technologyService.getAllTechnology()
+  // BehaviorSubject to hold the list of all technologies
+  private technologySubject = new BehaviorSubject<Technology[]>([]);
+  // Observable to expose the technology list
+  technology$ = this.technologySubject.asObservable();
+
   // Observable to hold the technology details fetched by ID
   technologyById$!: Observable<Technology>
+
+  constructor() {
+    // Initialize the technology list
+    this.loadTechnologies();
+  }
+
+  /**
+   * Method to load all technologies and update the BehaviorSubject
+   */
+  loadTechnologies() {
+    this._technologyService.getAllTechnologyAdmin().subscribe(technologies => {
+      this.technologySubject.next(technologies);
+    });
+  }
 
   /**
    * Method to fetch technology details by ID and assign to technologyById$
@@ -50,5 +66,16 @@ export class AllTechnologyComponent {
     }
   }
 
-  protected readonly BUTTONS = BUTTONS;
+  /**
+   * Method to delete a technology by ID and update the BehaviorSubject
+   * @param id - ID of the technology to delete
+   */
+  deleteTechnology(id?: string) {
+    if (id) {
+      this._technologyService.deleteTechnologyById(id).subscribe(() => {
+        // After deleting, reload the technology list
+        this.loadTechnologies();
+      });
+    }
+  }
 }

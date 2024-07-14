@@ -1,4 +1,4 @@
-<p>all-technology-technology works!</p>
+<p>all-technology works!</p>
 
 <app-button-admin [routerLink]="'/add-technology-admin'"/>
 
@@ -15,7 +15,11 @@
       [datum_vnosa]="technology.datum_vnosa"
     />
 
-    <button class="me-1.5 bg-amber-400 p-2" (click)="openDialog(technology._id)">{{ BUTTONS.read |translate}}</button>
+    <app-button-admin
+      (dialogRead)="openDialog(technology._id)"
+      [routerLinkId]="['/edit-technology-admin', technology._id ?? '']"
+      (delete)="deleteTechnology(technology._id)"
+    />
   </div>
 
 </ng-container>

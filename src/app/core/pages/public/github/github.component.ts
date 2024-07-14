@@ -1,17 +1,22 @@
 import { Component, inject } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { GithubService } from "../../../../services/api/github.service"
-import { catchError, map, Observable, of } from "rxjs"
+import { BehaviorSubject, catchError, map, Observable, of, switchMap } from "rxjs"
 import { Repo } from "../../../../models/github.model"
 import { TranslateModule, TranslateService } from "@ngx-translate/core"
+import { MatSelectModule } from "@angular/material/select";
+import { FormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { SELECT_LANGUAGE } from "../../../../shared/global-const/global.const";
 
 /**
  * This component displays GitHub repositories fetched from the backend API.
  */
+
 @Component({
   selector: 'app-github',
   standalone: true,
-  imports: [ CommonModule, TranslateModule ],
+  imports: [ CommonModule, TranslateModule, MatSelectModule, FormsModule, MatInputModule ],
   templateUrl: './github.component.html'
 })
 export class GithubComponent {
@@ -30,39 +35,60 @@ export class GithubComponent {
   error: string | null = null
 
   /**
-   * Observable to fetch and map GitHub repositories from the backend API.
-   *
-   * @returns an observable that emits an object containing a list of repositories and their count.
+   * BehaviorSubject to store the selected language.
+   * - BehaviorSubject is a special type of Observable that keeps hold of the current value and emits it to new subscribers.
+   * - It is initialized with the value 'All languages' meaning initially all languages are selected.
    */
-  github$: Observable<{ repos: Repo[], length: number }> = this._githubService.getGitHubRepo().pipe(
-    map(repos => ({
-        repos: repos.map(repo => ({
-          id: repo.id,
-          name: repo.name,
-          full_name: repo.full_name,
-          owner: repo.owner,
-          html_url: repo.html_url,
-          description: repo.description,
-          language: repo.language
-        })),
-        length: repos.length
-      })
-    ),
-    catchError((error) => {
-      const message = error.message
+  public selectedLanguage = new BehaviorSubject<string>('All languages')
 
-      /**
-       * Translate the error message using the Translation service and set it to the error property.
-       */
-      this._translateService.get(message).subscribe((translation) => {
-        this.error = translation
-      })
+  /**
+   * Observable to expose the selected language as a stream of values.
+   * - 'asObservable()' creates an Observable that emits the current value whenever it changes.
+   */
+  selectedLanguage$ = this.selectedLanguage.asObservable()
 
-      /**
-       * Return an observable of an empty array and length of 0 to handle errors gracefully.
-       */
-      return of({ repos: [], length: 0 })
+  /**
+   * Combine the selected language and GitHub repositories to filter the data.
+   * - 'switchMap' is used to switch to a new Observable each time the selected language changes.
+   */
+  filteredGitHub$: Observable<{ repos: Repo[], length: number }> = this.selectedLanguage$.pipe(
+    switchMap(language => {
+      // Fetch the GitHub repositories from the service
+      return this._githubService.getGitHubRepo().pipe(
+        // 'map' is used to transform the fetched repositories based on the selected language
+        map(repos => {
+          // Filter the repositories based on the selected language
+          const filteredRepos = language === 'All languages' ? repos : repos.filter(repo => repo.language === language)
+          // Return the filtered repositories and their count
+          return {
+            repos: filteredRepos,
+            length: filteredRepos.length
+          }
+        }),
+        // 'catchError' is used to handle any errors that occur during the fetching process
+        catchError((error) => {
+          // Extract the error message
+          const message = error.message
+          // Translate the error message using the Translation service and set it to the error property
+          this._translateService.get(message).subscribe((translation) => {
+            this.error = translation
+          })
+          // Return an observable of an empty array and length of 0 to handle errors gracefully
+          return of({ repos: [], length: 0 })
+        })
+      )
     })
   )
 
+  /**
+   * Method to update the selected language.
+   * - When a new language is selected, it updates the value of the BehaviorSubject.
+   * - This triggers the Observable stream to emit the new value.
+   */
+  setSelectedLanguage(language: string): void {
+    this.selectedLanguage.next(language)
+  }
+
+  // Expose the constant array of selectable languages to the template
+  protected readonly SELECT_LANGUAGE = SELECT_LANGUAGE;
 }

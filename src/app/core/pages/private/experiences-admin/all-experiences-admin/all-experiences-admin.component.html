@@ -21,10 +21,12 @@
       [datum_vnosa]="experience.datum_vnosa"
     />
 
-    <button class="me-1.5 bg-amber-400 p-2" (click)="openDialog(experience._id)">{{ BUTTONS.read | translate}}</button>
+    <app-button-admin
+      (dialogRead)="openDialog(experience._id)"
+      [routerLinkId]="['/edit-experiences-admin', experience._id ?? '']"
+      (delete)="deleteExperience(experience._id)"
+    />
 
-
-    <app-button-admin [routerLinkId]="['/edit-experiences-admin', experience._id ?? '']"/>
   </div>
 
 

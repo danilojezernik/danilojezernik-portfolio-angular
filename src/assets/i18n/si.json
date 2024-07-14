@@ -1,6 +1,7 @@
 {
 	"button": {
 		"add": "Dodaj",
+		"back": "Nazaj",
 		"delete": "Izbriši",
 		"edit": "Uredi",
 		"read": "Beri"
