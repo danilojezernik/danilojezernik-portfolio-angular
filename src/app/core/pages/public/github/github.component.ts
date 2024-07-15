@@ -36,16 +36,10 @@ export class GithubComponent {
   private selectedLanguageSubject = new BehaviorSubject<string>('All languages')
 
   /**
-   * Observable to expose the selected language as a stream of values.
-   * - 'asObservable()' creates an Observable that emits the current value whenever it changes.
-   */
-  selectedLanguage$ = this.selectedLanguageSubject.asObservable()
-
-  /**
    * Combine the selected language and GitHub repositories to filter the data.
    * - 'switchMap' is used to switch to a new Observable each time the selected language changes.
    */
-  filteredGitHub$: Observable<{ repos: Repo[], length: number }> = this.selectedLanguage$.pipe(
+  filteredGitHub$: Observable<{ repos: Repo[], length: number }> = this.selectedLanguageSubject.pipe(
     switchMap(language => {
       // Fetch the GitHub repositories from the service
       return this._githubService.getGitHubRepo().pipe(
