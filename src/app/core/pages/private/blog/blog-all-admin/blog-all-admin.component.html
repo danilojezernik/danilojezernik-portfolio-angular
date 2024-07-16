@@ -6,9 +6,9 @@
   <div class="mb-2 border-b-2" *ngFor="let blog of blogs">
 
     <app-show-data
-      [title]="blog['title']"
-      [kategorija]="blog['kategorija']"
-      [podnaslov]="blog['podnaslov']"
+      [title]="blog.title"
+      [kategorija]="blog.kategorija"
+      [podnaslov]="blog.podnaslov"
     />
 
     <app-button-admin
@@ -16,7 +16,7 @@
       [routerLinkId]="['/edit-blog-admin', blog._id ?? '']"
       (delete)="deleteBlog(blog._id)"
     />
-    
+
   </div>
 </ng-container>
 

@@ -1,1 +1,24 @@
 <p>all-subscriber-admin works!</p>
+
+<app-button-admin [routerLink]="'/add-subscriber-admin'"/>
+
+<ng-container *ngIf="subscribers$ | async as subscribers">
+  <div class="mb-2 border-b-2" *ngFor="let subscriber of subscribers">
+
+    <app-show-data
+      [name]="subscriber.name"
+      [surname]="subscriber.surname"
+      [email]="subscriber.email"
+      [confirmed]="subscriber.confirmed"
+    />
+
+    <app-button-admin
+      (dialogRead)="openDialog(subscriber._id)"
+      [routerLinkId]="['/edit-subscriber-admin', subscriber._id ?? '']"
+      (delete)="deleteSubscriberById(subscriber._id)"
+    />
+
+  </div>
+</ng-container>
+
+<app-go-back/>

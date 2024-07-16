@@ -1,1 +1,9 @@
 <p>edit-books-admin works!</p>
+
+<app-reusable-form-edit
+  [formConfig]="formBooksConfig"
+  [formData]="formData"
+  (formSubmit)="editBook($event)"
+></app-reusable-form-edit>
+
+<app-go-back/>
