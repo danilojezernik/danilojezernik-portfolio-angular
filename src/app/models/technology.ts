@@ -4,6 +4,6 @@ export interface Technology {
   title: string;
   subtitle: string;
   vsebina: string;
-  image: string;
+  image?: string;
   datum_vnosa: string;
 }

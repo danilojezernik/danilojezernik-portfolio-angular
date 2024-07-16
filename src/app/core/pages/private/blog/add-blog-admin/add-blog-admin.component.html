@@ -2,6 +2,6 @@
 
 <app-reusable-form
   [config]="formBlogConfig"
-  [submitLabel]="'Dodaj blog'"
+  [submitLabel]="'submitLabel.blog' | translate"
   (formSubmit)="addNewBlog($event)"
-></app-reusable-form>
+/>

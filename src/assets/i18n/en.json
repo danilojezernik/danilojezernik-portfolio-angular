@@ -35,6 +35,11 @@
 		"technology": "Technology",
 		"users": "Users"
 	},
+	"submitLabel": {
+		"blog": "Add blog",
+		"experiences": "Add Experiences",
+		"technology": "Technology"
+	},
 	"translation": {
 		"heading": "English"
 	}

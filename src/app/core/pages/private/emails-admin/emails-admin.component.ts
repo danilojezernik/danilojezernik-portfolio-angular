@@ -26,13 +26,16 @@ export class EmailsAdminComponent {
 
   // Inject the ContactService to use its methods for email operations
   private _contactService = inject(ContactService);
+
   // Inject the MatDialog service to open dialogs
   private _dialog = inject(MatDialog);
 
   // BehaviorSubject to store the list of emails
   private emailSubject = new BehaviorSubject<Contact[]>([]);
+
   // Observable to expose the list of emails
   emails$ = this.emailSubject.asObservable();
+
   // Observable to hold the email details fetched by ID
   emailById$!: Observable<Contact>;
 

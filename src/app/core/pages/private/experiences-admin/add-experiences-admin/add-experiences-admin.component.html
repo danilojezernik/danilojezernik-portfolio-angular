@@ -1,1 +1,7 @@
 <p>add-experiences-admin works!</p>
+
+<app-reusable-form
+  [config]="formExperiencesConfig"
+  [submitLabel]="'submitLabel.experiences' | translate "
+  (formSubmit)="addNewExperience($event)"
+></app-reusable-form>

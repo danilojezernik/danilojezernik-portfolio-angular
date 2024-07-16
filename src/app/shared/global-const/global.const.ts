@@ -50,6 +50,9 @@ export const ADMIN_MENU: { menu: string, path: string }[] = [
   { menu: 'menu.links', path: '/links-admin' },
   { menu: 'menu.experiences', path: '/experiences-admin' },
   { menu: 'menu.projects', path: '/projects-admin' },
+  { menu: 'menu.book', path: '/books-admin' },
+  { menu: 'menu.newsletter', path: '/newsletter-admin' },
+  { menu: 'menu.subscriber', path: '/subscriber-admin' },
 ];
 
 // Language translations for the header component and Translate service
@@ -68,6 +71,7 @@ export const LANGUAGE = {
   en: 'EN'  // English language code
 }
 
+// Select language options for the GitHub component
 export const SELECT_LANGUAGE = [
   'TypeScript', 'JavaScript', 'Python', 'Vue', 'Kotlin', 'HTML', 'All languages'
 ]

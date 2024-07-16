@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { ReusableFormEditComponent } from "../../../../../shared/forms/reusable-form-edit/reusable-form-edit.component";
 import { formBlogConfig } from "../../../../../shared/global-const/form-config";
+import { BlogModel } from "../../../../../models/blog.model";
 
 /**
  * @Component BlogEditByIdAdminComponent
@@ -27,6 +28,7 @@ export class BlogEditByIdAdminComponent implements OnInit {
   private _router = inject(Router); // Helps navigate between routes
 
   formData: any = {}; // Object to hold the blog data to be edited
+
   /**
    * @method ngOnInit
    * Lifecycle hook that is called after Angular has initialized all data-bound properties.
@@ -50,7 +52,7 @@ export class BlogEditByIdAdminComponent implements OnInit {
    *
    * @param formValue - The form data submitted by the user.
    */
-  editBlog(formValue: any) {
+  editBlog(formValue: BlogModel) {
     // Retrieve the current blog ID from the route parameters
     const blogId = this._activatedRoute.snapshot.paramMap.get('id') || '';
 

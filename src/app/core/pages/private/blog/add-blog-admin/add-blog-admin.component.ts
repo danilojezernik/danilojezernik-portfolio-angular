@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import { ReusableFormAddComponent } from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
 import { BlogModel } from "../../../../../models/blog.model";
 import { formBlogConfig } from "../../../../../shared/global-const/form-config";
+import { TranslateModule } from "@ngx-translate/core";
 
 /******************************************************************
  * @Component AddBlogAdminComponent
@@ -16,7 +17,7 @@ import { formBlogConfig } from "../../../../../shared/global-const/form-config";
 @Component({
   selector: 'app-add-blog-admin',
   standalone: true,
-  imports: [ CommonModule, FormsModule, MatSnackBarModule, ReusableFormAddComponent ],
+  imports: [ CommonModule, FormsModule, MatSnackBarModule, ReusableFormAddComponent, TranslateModule ],
   templateUrl: './add-blog-admin.component.html'
 })
 export class AddBlogAdminComponent {

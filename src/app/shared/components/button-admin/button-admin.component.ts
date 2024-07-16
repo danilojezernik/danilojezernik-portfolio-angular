@@ -18,7 +18,7 @@ export class ButtonAdminComponent {
 
   // Input property to receive the router link for the button
   @Input() routerLink?: string
-
+  
   // Input property to receive an array of router link IDs for the button
   @Input() routerLinkId?: string[]
 

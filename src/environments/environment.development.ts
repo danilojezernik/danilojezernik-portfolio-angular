@@ -12,7 +12,7 @@ export const environment = {
     public: 'http://localhost:3000/blog',
     admin: 'http://localhost:3000/blog/admin/',
   },
-  
+
   // TECHNOLOGY API
   technologyUrl: {
     public: 'http://localhost:3000/technology',
@@ -54,8 +54,8 @@ export const environment = {
 
   // BACKLOG API FOR ANALITICS
   backLogUrl: {
-    public: 'http://localhost:8080/portfolio_dj/public',
-    private: 'http://localhost:8080/portfolio_dj/private'
+    public: 'https://logs.api.danilojezernik.com/portfolio_dj//public',
+    private: 'https://logs.api.danilojezernik.com/portfolio_dj//private'
   },
 
 };

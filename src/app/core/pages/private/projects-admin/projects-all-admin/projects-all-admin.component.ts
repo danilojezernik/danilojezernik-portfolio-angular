@@ -11,15 +11,16 @@ import {
 import { Observable } from "rxjs";
 import { Projects } from "../../../../../models/projects";
 import { BUTTONS, DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
+import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
 
 /**
  * Component for managing all projects in the admin interface.
  */
 @Component({
   selector: 'app-projects-admin',
-  standalone: true, // This component is standalone, not requiring external bindings
-  imports: [ CommonModule, GoBackComponent, ShowDataComponent, RouterLink, MatDialogModule ], // Import necessary Angular modules
-  templateUrl: './projects-all-admin.component.html' // Template file for this component
+  standalone: true,
+  imports: [ CommonModule, GoBackComponent, ShowDataComponent, RouterLink, MatDialogModule, ButtonAdminComponent ],
+  templateUrl: './projects-all-admin.component.html'
 })
 export class ProjectsAllAdminComponent implements OnInit {
 

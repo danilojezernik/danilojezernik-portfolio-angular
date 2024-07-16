@@ -61,6 +61,27 @@ import {
 import {
   EditExperiencesAdminComponent
 } from "./core/pages/private/experiences-admin/edit-experiences-admin/edit-experiences-admin.component";
+import { AllBooksAdminComponent } from "./core/pages/private/book/all-books-admin/all-books-admin.component";
+import { AddBooksAdminComponent } from "./core/pages/private/book/add-books-admin/add-books-admin.component";
+import { EditBooksAdminComponent } from "./core/pages/private/book/edit-books-admin/edit-books-admin.component";
+import {
+  AllNewsletterAdminComponent
+} from "./core/pages/private/newsletter/all-newsletter-admin/all-newsletter-admin.component";
+import {
+  AddNewsletterAdminComponent
+} from "./core/pages/private/newsletter/add-newsletter-admin/add-newsletter-admin.component";
+import {
+  EditNewsletterAdminComponent
+} from "./core/pages/private/newsletter/edit-newsletter-admin/edit-newsletter-admin.component";
+import {
+  AllSubscriberAdminComponent
+} from "./core/pages/private/subscriber/all-subscriber-admin/all-subscriber-admin.component";
+import {
+  AddSubscriberAdminComponent
+} from "./core/pages/private/subscriber/add-subscriber-admin/add-subscriber-admin.component";
+import {
+  EditSubscriberAdminComponent
+} from "./core/pages/private/subscriber/edit-subscriber-admin/edit-subscriber-admin.component";
 
 const routes: Routes = [
   {
@@ -121,7 +142,7 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'projects-admin/edit/:id',
+    path: 'edit-projects-admin/:id',
     component: ProjectEditAdminComponent,
     canActivate: [ AuthGuardService ]
   },
@@ -207,9 +228,29 @@ const routes: Routes = [
   // ---------------------------
   //     BOOKS ROUTES
   // ---------------------------
+
+
+  // PUBLIC
   {
     path: 'books',
     component: BookComponent
+  },
+
+  // PRIVATE
+  {
+    path: 'books-admin',
+    component: AllBooksAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'add-books-admin',
+    component: AddBooksAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'edit-books-admin/:id',
+    component: EditBooksAdminComponent,
+    canActivate: [ AuthGuardService ]
   },
 
   // ---------------------------
@@ -236,6 +277,49 @@ const routes: Routes = [
   {
     path: 'edit-links-admin/:id',
     component: EditLinksComponent,
+    canActivate: [ AuthGuardService ]
+  },
+
+  // ---------------------------
+  //     NEWSLETTER ROUTES
+  // ---------------------------
+
+  // PRIVATE
+  {
+    path: 'newsletter-admin',
+    component: AllNewsletterAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'add-newsletter-admin',
+    component: AddNewsletterAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'edit-newsletter-admin/:id',
+    component: EditNewsletterAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+
+
+  // ---------------------------
+  //     SUBSCRIBER ROUTES
+  // ---------------------------
+
+  // PRIVATE
+  {
+    path: 'subscriber-admin',
+    component: AllSubscriberAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'add-subscriber-admin',
+    component: AddSubscriberAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'edit-subscriber-admin/:id',
+    component: EditSubscriberAdminComponent,
     canActivate: [ AuthGuardService ]
   },
 

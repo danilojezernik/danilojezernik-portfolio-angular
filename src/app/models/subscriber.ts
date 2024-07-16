@@ -1,7 +1,3 @@
-/* tslint:disable */
-
-/* eslint-disable */
-
 export interface Subscriber {
   '_id'?: string;
   name: string;

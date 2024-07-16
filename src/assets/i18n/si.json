@@ -35,6 +35,11 @@
 		"technology": "Tehnologije",
 		"users": "Uporabniki"
 	},
+	"submitLabel": {
+		"blog": "Dodaj blog",
+		"experiences": "Dodaj izkušnje",
+		"technology": "Tehnologija"
+	},
 	"translation": {
 		"heading": "Slovensko"
 	}

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormFieldConfig } from "../../../models/form-field-config.model";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { BUTTONS } from "../../global-const/global.const";
+import { TranslateModule } from "@ngx-translate/core";
+import { ButtonAdminComponent } from "../../components/button-admin/button-admin.component";
 
 /**
  * @Component ReusableFormEditComponent
@@ -11,7 +13,7 @@ import { BUTTONS } from "../../global-const/global.const";
 @Component({
   selector: 'app-reusable-form-edit',
   standalone: true,
-  imports: [ CommonModule, ReactiveFormsModule ],
+  imports: [ CommonModule, ReactiveFormsModule, TranslateModule, ButtonAdminComponent ],
   templateUrl: './reusable-form-edit.component.html'
 })
 export class ReusableFormEditComponent {

@@ -1,7 +1,3 @@
-/* tslint:disable */
-
-/* eslint-disable */
-
 export interface Newsletter {
   '_id'?: string;
   title: string;

@@ -18,12 +18,17 @@ export class LinksService {
     return this._http.get<Links[]>(`${environment.linksUrl.public}`)
   }
 
+  getLinkById(id: string): Observable<Links> {
+    return this._http.get<Links>(`${environment.linksUrl.public}/${id}`)
+  }
+
   /**
    * PRIVATE SERVICES
    */
   getAllLinksAdmin(): Observable<Links[]> {
     return this._http.get<Links[]>(`${environment.linksUrl.admin}`)
   }
+
 
   addLink(newLink: Links): Observable<Links> {
     return this._http.post<Links>(`${environment.linksUrl.public}/`, newLink)

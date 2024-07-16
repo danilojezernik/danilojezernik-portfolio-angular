@@ -1,1 +1,9 @@
 <p>edit-technology-technology works!</p>
+
+<app-reusable-form-edit
+  [formConfig]="formTechnologyConfig"
+  [formData]="formData"
+  (formSubmit)="editTechnology($event)"
+></app-reusable-form-edit>
+
+<app-go-back/>

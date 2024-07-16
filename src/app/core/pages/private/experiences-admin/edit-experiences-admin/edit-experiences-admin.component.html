@@ -1,1 +1,9 @@
 <p>edit-experiences-admin works!</p>
+
+<app-reusable-form-edit
+  [formConfig]="formExperiencesConfig"
+  [formData]="formData"
+  (formSubmit)="editExperiences($event)"
+></app-reusable-form-edit>
+
+<app-go-back/>

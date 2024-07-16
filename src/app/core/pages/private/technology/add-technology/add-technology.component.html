@@ -1,1 +1,7 @@
-<p>add-technology-technology works!</p>
+<p>add-technology works!</p>
+
+<app-reusable-form
+  [config]="formTechnologyConfig"
+  [submitLabel]="'submitLabel.technology' | translate"
+  (formSubmit)="addTechnology($event)"
+/>

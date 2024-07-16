@@ -7,11 +7,12 @@
   <div *ngFor="let link of links">
 
     <app-show-data
-      [title]="link['title']"
-      [link]="link['link']"
+      [title]="link.title"
+      [link]="link.link"
     />
 
     <app-button-admin
+      (dialogRead)="openDialog(link._id)"
       [routerLinkId]="['/edit-links-admin', link._id ?? '']"
       (delete)="deleteLink(link._id)"
     />

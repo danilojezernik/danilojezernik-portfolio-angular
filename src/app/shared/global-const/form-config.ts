@@ -62,7 +62,22 @@ export const formTechnologyConfig: FormFieldConfig[] = [
 ]
 
 /**
- * formLinksConfig defines the configuration for the form fields used in the technology form.
+ * formExperiencesConfig defines the configuration for the form fields used in the experiences form.
+ * */
+export const formExperiencesConfig: FormFieldConfig[] = [
+  { name: 'title', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
+  { name: 'stack', label: 'Stack', type: 'text', validators: [ Validators.required ] },
+  { name: 'framework', label: 'Framework', type: 'text', validators: [ Validators.required ] },
+  { name: 'programming_language', label: 'programming_language', type: 'text', validators: [ Validators.required ] },
+  { name: 'company', label: 'company', type: 'text', validators: [] },
+  { name: 'employee', label: 'employee', type: 'checkbox', validators: [ Validators.required ] },
+  { name: 'tasks', label: 'tasks', type: 'text', validators: [] },
+  { name: 'company_start', label: 'company_start', type: 'text', validators: [] },
+  { name: 'company_end', label: 'company_end', type: 'text', validators: [] },
+]
+
+/**
+ * formLinksConfig defines the configuration for the form fields used in the links form.
  * */
 export const formLinksConfig: FormFieldConfig[] = [
   { name: 'title', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
