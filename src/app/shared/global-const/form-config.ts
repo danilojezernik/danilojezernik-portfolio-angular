@@ -94,3 +94,13 @@ export const formBooksConfig: FormFieldConfig[] = [
   { name: 'vsebina', label: 'vsebina', type: 'text', validators: [ Validators.required, Validators.minLength(10) ] },
   { name: 'image', label: 'vsebina', type: 'text', validators: [] },
 ]
+
+/**
+ * formSubscriberConfig defines the configuration for the form fields used in the subscriber form.
+ * */
+export const formSubscriberConfig: FormFieldConfig[] = [
+  { name: 'name', label: 'name', type: 'text', validators: [ Validators.required ] },
+  { name: 'surname', label: 'surname', type: 'text', validators: [ Validators.required ] },
+  { name: 'email', label: 'email', type: 'email', validators: [ Validators.required, Validators.email ] },
+  { name: 'confirmed', label: 'confirmed', type: 'checkbox', validators: [] },
+]

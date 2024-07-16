@@ -1,1 +1,7 @@
 <p>add-subscriber-admin works!</p>
+
+<app-reusable-form
+  [config]="formSubscriberConfig"
+  [submitLabel]="'submitLabel.subscriber' | translate"
+  (formSubmit)="addNewSubscriber($event)"
+/>

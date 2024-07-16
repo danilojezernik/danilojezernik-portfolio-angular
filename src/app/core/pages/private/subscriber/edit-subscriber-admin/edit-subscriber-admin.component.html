@@ -1,1 +1,9 @@
 <p>edit-subscriber-admin works!</p>
+
+<app-reusable-form-edit
+  [formConfig]="formSubscriberConfig"
+  [formData]="formData"
+  (formSubmit)="editSubscriber($event)"
+></app-reusable-form-edit>
+
+<app-go-back/>

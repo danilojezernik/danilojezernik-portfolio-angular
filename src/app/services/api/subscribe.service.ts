@@ -37,4 +37,11 @@ export class SubscribeService {
     return this._http.delete<Subscriber>(`${environment.subscriberUrl.public}/${id}`)
   }
 
+  /**
+   * SUBSCRIBE OF A CLIENT
+   */
+  subscribeClient(newSubscriber: any): Observable<Subscriber> {
+    return this._http.post<Subscriber>(`${environment.subscriberUrl.public}/subscribe/`, newSubscriber)
+  }
+
 }
