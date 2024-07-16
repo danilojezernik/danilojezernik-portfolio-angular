@@ -13,6 +13,24 @@ export const environment = {
     admin: 'http://localhost:3000/blog/admin/',
   },
 
+  // BOOK API
+  bookUrl: {
+    public: 'http://localhost:3000/book',
+    admin: 'http://localhost:3000/book/admin/',
+  },
+
+  // NEWSLETTER API
+  newsletterUrl: {
+    public: 'http://localhost:3000/newsletter',
+    admin: 'http://localhost:3000/newsletter/admin/',
+  },
+
+  // SUBSCRIBER API
+  subscriberUrl: {
+    public: 'http://localhost:3000/subscriber',
+    admin: 'http://localhost:3000/subscriber/admin/',
+  },
+
   // TECHNOLOGY API
   technologyUrl: {
     public: 'http://localhost:3000/technology',

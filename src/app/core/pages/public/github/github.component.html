@@ -58,9 +58,6 @@
 
 <!-- Template to show loading spinner and text while data is being fetched - START -->
 <ng-template #loadingData>
-  <div class="fixed loader-component text-center">
-    <span class="loader text-black font-bold opacity-75 text-7xl"></span>
-    <span class="loading-text text-2xl mt-4">{{ 'loading' | translate }}</span>
-  </div>
+  <app-loading/>
 </ng-template>
 <!-- Template to show loading spinner and text while data is being fetched - END -->

@@ -1,4 +1,7 @@
 {
+	"books": {
+		"noTechnologyBook": "No books listed with this technology!"
+	},
 	"button": {
 		"add": "Add",
 		"back": "Back",

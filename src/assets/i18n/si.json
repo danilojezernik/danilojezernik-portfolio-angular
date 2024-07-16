@@ -1,4 +1,7 @@
 {
+	"books": {
+		"noTechnologyBook": " Ni navedene nobene knjige s to tehnologijo!"
+	},
 	"button": {
 		"add": "Dodaj",
 		"back": "Nazaj",
