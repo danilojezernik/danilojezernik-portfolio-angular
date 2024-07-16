@@ -20,6 +20,7 @@
 	"menu": {
 		"biography": "Biografija",
 		"blog": "Blog",
+		"book": "Knjige",
 		"books": "Knjige",
 		"contact": "Kontakt",
 		"email": "E-sporočila",
@@ -30,8 +31,10 @@
 		"login": "Vpis",
 		"logout": "Izpis",
 		"media": "Media",
+		"newsletter": "E-novice",
 		"projects": "Projekti",
 		"register": "Registracija",
+		"subscriber": "Vpisani",
 		"technology": "Tehnologije",
 		"users": "Uporabniki"
 	},

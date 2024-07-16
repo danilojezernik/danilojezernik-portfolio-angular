@@ -20,6 +20,7 @@
 	"menu": {
 		"biography": "Biography",
 		"blog": "Blog",
+		"book": "Books",
 		"books": "Books",
 		"contact": "Contact",
 		"email": "Emails",
@@ -30,8 +31,10 @@
 		"login": "Login",
 		"logout": "Logout",
 		"media": "Media",
+		"newsletter": "Newsletter",
 		"projects": "Projects",
 		"register": "Register",
+		"subscriber": "Subscriber",
 		"technology": "Technology",
 		"users": "Users"
 	},
