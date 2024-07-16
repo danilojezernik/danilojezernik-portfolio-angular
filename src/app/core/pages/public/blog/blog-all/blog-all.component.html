@@ -1,7 +1,31 @@
 <p>blog-all works!</p>
-<ng-container *ngIf="blog$ | async as blogs">
-  <div *ngFor="let blog of blogs" [routerLink]="['/blog/', blog._id]">
-    {{blog.title}} <br>
-    {{blog.datum_vnosa | date}}
-  </div>
+
+<!-- Container that uses Angular's async pipe to handle the observable blog$ - START -->
+<ng-container *ngIf="blog$ | async as blogs; else loadingData">
+
+  <!-- Container to handle the scenario when there is no error - START -->
+  <ng-container *ngIf="!error">
+
+    <!-- Looping through the blogs array and displaying its properties - START -->
+    <div *ngFor="let blog of blogs" [routerLink]="['/blog/', blog._id]">
+      {{ blog.title }} <br>
+      {{ blog.datum_vnosa | date }}
+    </div>
+    <!-- Looping through the blogs array and displaying its properties - END -->
+
+  </ng-container>
+  <!-- Container to handle the scenario when there is no error - END -->
+
+  <!-- Error message display if the data fetching fails - START -->
+  <ng-container *ngIf="error">
+    {{ error }}
+  </ng-container>
+  <!-- Error message display if the data fetching fails - END -->
 </ng-container>
+<!-- Container that uses Angular's async pipe to handle the observable blog$ - END -->
+
+<!-- Template to show loading spinner and text while data is being fetched - START -->
+<ng-template #loadingData>
+  <app-loading/>
+</ng-template>
+<!-- Template to show loading spinner and text while data is being fetched - END -->

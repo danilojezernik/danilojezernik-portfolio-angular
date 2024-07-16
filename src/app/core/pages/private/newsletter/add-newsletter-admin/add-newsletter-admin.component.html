@@ -1,1 +1,7 @@
 <p>add-newsletter-admin works!</p>
+
+<app-reusable-form
+  [config]="formNewsletterConfig"
+  [submitLabel]="'submitLabel.newsletter' | translate"
+  (formSubmit)="addNewNewsletter($event)"
+/>

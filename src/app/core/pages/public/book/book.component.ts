@@ -16,8 +16,7 @@ import { DropdownSelectComponent } from "../../../../shared/components/dropdown-
   selector: 'app-book',
   standalone: true,
   imports: [ CommonModule, MatFormFieldModule, MatOptionModule, MatSelectModule, FormsModule, TranslateModule, LoadingComponent, DropdownSelectComponent ],
-  templateUrl: './book.component.html',
-  styleUrls: [ './book.component.scss' ]
+  templateUrl: './book.component.html'
 })
 export class BookComponent {
 

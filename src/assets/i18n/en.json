@@ -48,7 +48,9 @@
 	},
 	"submitLabel": {
 		"blog": "Add blog",
+		"book": "Book",
 		"experiences": "Add Experiences",
+		"newsletter": "Send newsletter",
 		"subscriber": "Subscriber",
 		"technology": "Technology"
 	},

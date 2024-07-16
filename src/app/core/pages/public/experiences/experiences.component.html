@@ -1,5 +1,5 @@
 <p class="py-5 text-2xl">experiences works!</p>
-<ng-container *ngIf="experiences$ | async as experiences">
+<ng-container *ngIf="experiences$ | async as experiences; else loadingData">
 
   <div *ngFor="let experience of experiences">
     {{experience.title}}<br>
@@ -15,3 +15,9 @@
   </div>
 
 </ng-container>
+
+<!-- Template to show loading spinner and text while data is being fetched - START -->
+<ng-template #loadingData>
+  <app-loading/>
+</ng-template>
+<!-- Template to show loading spinner and text while data is being fetched - END -->

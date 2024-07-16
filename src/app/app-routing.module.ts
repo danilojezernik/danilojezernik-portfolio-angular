@@ -71,9 +71,6 @@ import {
   AddNewsletterAdminComponent
 } from "./core/pages/private/newsletter/add-newsletter-admin/add-newsletter-admin.component";
 import {
-  EditNewsletterAdminComponent
-} from "./core/pages/private/newsletter/edit-newsletter-admin/edit-newsletter-admin.component";
-import {
   AllSubscriberAdminComponent
 } from "./core/pages/private/subscriber/all-subscriber-admin/all-subscriber-admin.component";
 import {
@@ -295,12 +292,6 @@ const routes: Routes = [
     component: AddNewsletterAdminComponent,
     canActivate: [ AuthGuardService ]
   },
-  {
-    path: 'edit-newsletter-admin/:id',
-    component: EditNewsletterAdminComponent,
-    canActivate: [ AuthGuardService ]
-  },
-
 
   // ---------------------------
   //     SUBSCRIBER ROUTES

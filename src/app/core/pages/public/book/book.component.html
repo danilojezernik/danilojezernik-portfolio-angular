@@ -10,23 +10,28 @@
   </ul>
   <!-- Display the number of existing books if any are found - END -->
 
-  <!-- Dropdown to select the language for filtering books - START -->
-  <app-dropdown-select [options]="SELECT_TECHNOLOGY" [selectedValue]="selectedTechnology"
-                       (valueChange)="onSelectChange($event)" [label]="'selected.optionTxt'"/>
-  <!-- Dropdown to select the language for filtering books - END -->
+  <ng-container *ngIf="!error">
 
-  <ul>
-    <li class="pb-2" *ngFor="let book of books.all">
-      <p class="text-2xl uppercase">{{ book.naslov }}</p>
-      <p class="text-xl uppercase">{{ book.podnaslov }}</p>
-      <p><strong>Tehnologija:</strong> {{ book.tehnologija }}</p>
-      <p>{{ book.vsebina }}</p>
-    </li>
-  </ul>
+    <!-- Dropdown to select the language for filtering books - START -->
+    <app-dropdown-select [options]="SELECT_TECHNOLOGY" [selectedValue]="selectedTechnology"
+                         (valueChange)="onSelectChange($event)" [label]="'selected.optionTxt'"/>
+    <!-- Dropdown to select the language for filtering books - END -->
 
-  <ng-container *ngIf="books.length === 0">
-    {{ 'books.noTechnologyBook' | translate }}
+    <ul>
+      <li class="pb-2" *ngFor="let book of books.all">
+        <p class="text-2xl uppercase">{{ book.naslov }}</p>
+        <p class="text-xl uppercase">{{ book.podnaslov }}</p>
+        <p><strong>Tehnologija:</strong> {{ book.tehnologija }}</p>
+        <p>{{ book.vsebina }}</p>
+      </li>
+    </ul>
   </ng-container>
+  
+  <!-- Error message display if the data fetching fails - START -->
+  <ng-container *ngIf="error">
+    {{error}}
+  </ng-container>
+  <!-- Error message display if the data fetching fails - END -->
 
 </ng-container>
 

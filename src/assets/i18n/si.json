@@ -48,7 +48,9 @@
 	},
 	"submitLabel": {
 		"blog": "Dodaj blog",
+		"book": "Knjigo",
 		"experiences": "Dodaj izkušnje",
+		"newsletter": "Pošlji E-novičke",
 		"subscriber": "Vpisani",
 		"technology": "Tehnologija"
 	},

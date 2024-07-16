@@ -33,10 +33,6 @@ export class NewsletterService {
     return this._http.post<Newsletter>(`${environment.newsletterUrl.public}/`, newNewsletter)
   }
 
-  editNewsletterById(id: string, newNewsletter: Newsletter) {
-    return this._http.put<Newsletter>(`${environment.newsletterUrl.public}/${id}`, newNewsletter)
-  }
-
   deleteNewsletterById(id: string): Observable<Newsletter> {
     return this._http.delete<Newsletter>(`${environment.newsletterUrl.public}/${id}`)
   }

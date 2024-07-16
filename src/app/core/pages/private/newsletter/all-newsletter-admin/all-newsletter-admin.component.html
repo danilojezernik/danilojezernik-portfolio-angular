@@ -11,7 +11,6 @@
 
     <app-button-admin
       (dialogRead)="openDialog(newsletter._id)"
-      [routerLinkId]="['/edit-newsletter-admin', newsletter._id ?? '']"
       (delete)="deleteNewsletter(newsletter._id)"
     />
 

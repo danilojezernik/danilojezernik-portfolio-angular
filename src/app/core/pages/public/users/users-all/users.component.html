@@ -1,10 +1,32 @@
 <p>users works!</p>
-<ng-container *ngIf="users$ | async as users">
-  <div style="padding-bottom: 20px" *ngFor="let user of users">
-    User with username: {{user.username}}<br>
-    User registerd on: {{user.datum_vnosa | date}}<br>
-    <button [routerLink]="['/user/', user._id]">See user</button>
-  </div>
-</ng-container>
 
-<app-go-back></app-go-back>
+<!-- Container that uses Angular's async pipe to handle the observable users$ - START -->
+<ng-container *ngIf="users$ | async as users; else loadingData">
+
+  <!-- Container to handle the scenario when there is no error - START -->
+  <ng-container *ngIf="!error">
+
+    <!-- Looping through the users array and displaying its properties - START -->
+    <div style="padding-bottom: 20px" *ngFor="let user of users">
+      User with username: {{ user.username }}<br>
+      User registered on: {{ user.datum_vnosa | date }}<br>
+      <button [routerLink]="['/user/', user._id]">See user</button>
+    </div>
+    <!-- Looping through the users array and displaying its properties - END -->
+
+  </ng-container>
+  <!-- Container to handle the scenario when there is no error - END -->
+
+  <!-- Error message display if the data fetching fails - START -->
+  <ng-container *ngIf="error">
+    {{ error }}
+  </ng-container>
+  <!-- Error message display if the data fetching fails - END -->
+</ng-container>
+<!-- Container that uses Angular's async pipe to handle the observable users$ - END -->
+
+<!-- Template to show loading spinner and text while data is being fetched - START -->
+<ng-template #loadingData>
+  <app-loading/>
+</ng-template>
+<!-- Template to show loading spinner and text while data is being fetched - END -->

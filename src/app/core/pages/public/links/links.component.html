@@ -1,10 +1,24 @@
 <p>links works!</p>
-<ng-container *ngIf="links$ | async as links">
+<ng-container *ngIf="links$ | async as links; else loadingData">
 
-  <div *ngFor="let link of links">
+  <ng-container *ngIf="!error">
 
-    <a [href]="link.link" target="_blank">{{link.title}}</a><br>
+    <div *ngFor="let link of links">
+      <a class="border-l" [href]="link.link" target="_blank">{{link.title}}</a><br>
+    </div>
 
-  </div>
+  </ng-container>
+
+  <!-- Error message display if the data fetching fails - START -->
+  <ng-container *ngIf="error">
+    {{error}}
+  </ng-container>
+  <!-- Error message display if the data fetching fails - END -->
 
 </ng-container>
+
+<!-- Template to show loading spinner and text while data is being fetched - START -->
+<ng-template #loadingData>
+  <app-loading/>
+</ng-template>
+<!-- Template to show loading spinner and text while data is being fetched - END -->

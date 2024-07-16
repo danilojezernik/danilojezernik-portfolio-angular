@@ -1,18 +1,44 @@
 <p>projects works!</p>
 
+<!-- Container that uses Angular's async pipe to handle the observable projects$ - START -->
+<ng-container *ngIf="projects$ | async as projects; else loadingData">
 
-<ng-container *ngIf="projects$ | async as projects">
+  <!-- Container to handle the scenario when there is no error - START -->
+  <ng-container *ngIf="!error">
 
-  <div *ngFor="let project of projects">
+    <!-- Looping through the projects array and displaying its properties - START -->
+    <div *ngFor="let project of projects">
+      {{ project.title }}<br>
+      {{ project.subtitle }}<br>
+      {{ project.content }}<br>
 
-    {{project.title}}<br>
-    {{project.subtitle}}<br>
-    {{project.content}}<br>
-    <ng-container *ngIf="project.website">{{project.website}}<br></ng-container>
-    <ng-container *ngIf="project.github">{{project.github}}<br></ng-container>
-    {{project.category}}<br>
-    {{project.datum_vnosa | date }}<br>
+      <!-- Display project website if available - START -->
+      <ng-container *ngIf="project.website">{{ project.website }}<br></ng-container>
+      <!-- Display project website if available - END -->
 
-  </div>
+      <!-- Display project GitHub link if available - START -->
+      <ng-container *ngIf="project.github">{{ project.github }}<br></ng-container>
+      <!-- Display project GitHub link if available - END -->
+
+      {{ project.category }}<br>
+      {{ project.datum_vnosa | date }}<br>
+    </div>
+    <!-- Looping through the projects array and displaying its properties - END -->
+
+  </ng-container>
+  <!-- Container to handle the scenario when there is no error - END -->
+
+  <!-- Error message display if the data fetching fails - START -->
+  <ng-container *ngIf="error">
+    {{ error }}
+  </ng-container>
+  <!-- Error message display if the data fetching fails - END -->
 
 </ng-container>
+<!-- Container that uses Angular's async pipe to handle the observable projects$ - END -->
+
+<!-- Template to show loading spinner and text while data is being fetched - START -->
+<ng-template #loadingData>
+  <app-loading/>
+</ng-template>
+<!-- Template to show loading spinner and text while data is being fetched - END -->

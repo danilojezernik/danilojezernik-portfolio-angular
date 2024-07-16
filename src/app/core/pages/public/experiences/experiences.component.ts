@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExperiencesService } from "../../../../services/api/experiences.service";
 import { map } from "rxjs";
+import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
 
 @Component({
   selector: 'app-experiences',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [ CommonModule, LoadingComponent ],
   templateUrl: './experiences.component.html'
 })
 export class ExperiencesComponent {

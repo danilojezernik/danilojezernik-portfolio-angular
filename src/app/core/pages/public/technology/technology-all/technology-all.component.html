@@ -1,1 +1,34 @@
 <p>technology-all works!</p>
+
+<!-- Container that uses Angular's async pipe to handle the observable technology$ - START -->
+<ng-container *ngIf="technology$ | async as technologies; else loadingData">
+
+  <!-- Container to handle the scenario when there is no error - START -->
+  <ng-container *ngIf="!error">
+
+    <!-- Looping through the technologies array and displaying its properties - START -->
+    <div class="pb-3" *ngFor="let technology of technologies">
+      {{ technology.title }} <br>
+      {{ technology.subtitle }} <br>
+      {{ technology.vsebina }} <br>
+      {{ technology.technology }} <br>
+    </div>
+    <!-- Looping through the technologies array and displaying its properties - END -->
+
+  </ng-container>
+  <!-- Container to handle the scenario when there is no error - END -->
+
+  <!-- Error message display if the data fetching fails - START -->
+  <ng-container *ngIf="error">
+    {{ error }}
+  </ng-container>
+  <!-- Error message display if the data fetching fails - END -->
+
+</ng-container>
+<!-- Container that uses Angular's async pipe to handle the observable technology$ - END -->
+
+<!-- Template to show loading spinner and text while data is being fetched - START -->
+<ng-template #loadingData>
+  <app-loading/>
+</ng-template>
+<!-- Template to show loading spinner and text while data is being fetched - END -->

@@ -104,3 +104,12 @@ export const formSubscriberConfig: FormFieldConfig[] = [
   { name: 'email', label: 'email', type: 'email', validators: [ Validators.required, Validators.email ] },
   { name: 'confirmed', label: 'confirmed', type: 'checkbox', validators: [] },
 ]
+
+/**
+ * formNewsletterConfig defines the configuration for the form fields used in the newsletter form.
+ * */
+export const formNewsletterConfig: FormFieldConfig[] = [
+  { name: 'title', label: 'title', type: 'text', validators: [ Validators.required ] },
+  { name: 'content', label: 'content', type: 'text', validators: [ Validators.required ] },
+]
+
