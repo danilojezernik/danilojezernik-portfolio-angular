@@ -41,6 +41,11 @@
 		"technology": "Tehnologije",
 		"users": "Uporabniki"
 	},
+	"selected": {
+		"allTechnology": "Vsa tehnologija",
+		"language": "Vsi jeziki",
+		"optionTxt": "Izberite možnost"
+	},
 	"submitLabel": {
 		"blog": "Dodaj blog",
 		"experiences": "Dodaj izkušnje",

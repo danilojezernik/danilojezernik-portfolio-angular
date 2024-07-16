@@ -71,7 +71,12 @@ export const LANGUAGE = {
   en: 'EN'  // English language code
 }
 
-// Select language options for the GitHub and Books component
+// Select language options for the GitHub component
 export const SELECT_LANGUAGE = [
-  'TypeScript', 'JavaScript', 'Python', 'Vue', 'Kotlin', 'HTML', 'Angular', 'All languages'
+  'selected.language', 'TypeScript', 'JavaScript', 'Python', 'Vue', 'Kotlin', 'HTML'
+]
+
+// Select language options for the Books component
+export const SELECT_TECHNOLOGY = [
+  'selected.allTechnology', 'TypeScript', 'JavaScript', 'Python', 'Vue', 'Kotlin', 'HTML', 'Angular'
 ]

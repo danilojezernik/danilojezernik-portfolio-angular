@@ -11,12 +11,14 @@
   <!-- Display the number of existing books if any are found - END -->
 
   <!-- Dropdown to select the language for filtering books - START -->
-  <mat-form-field>
-    <mat-label>Choose an option</mat-label>
-    <mat-select [(ngModel)]="selectedTechnology" (ngModelChange)="setSelectedTechnology($event)">
-      <mat-option *ngFor="let language of SELECT_LANGUAGE" [value]="language">{{language}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="relative inline-block w-64">
+    <label for="language-select"
+           class="block text-sm font-medium text-gray-700">{{ 'selected.optionTxt' | translate }}</label>
+    <select id="language-select" [(ngModel)]="selectedTechnology" (change)="onSelectChange($event)"
+            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+      <option *ngFor="let language of SELECT_TECHNOLOGY" [value]="language">{{language | translate}}</option>
+    </select>
+  </div>
   <!-- Dropdown to select the language for filtering books - END -->
 
   <ul>

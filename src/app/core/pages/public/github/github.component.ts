@@ -34,7 +34,7 @@ export class GithubComponent {
    * - BehaviorSubject is a special type of Observable that keeps hold of the current value and emits it to new subscribers.
    * - It is initialized with the value 'All languages' meaning initially all languages are selected.
    */
-  private selectedLanguageSubject = new BehaviorSubject<string>('All languages')
+  private selectedLanguageSubject = new BehaviorSubject<string>('selected.language')
 
   /**
    * Combine the selected language and GitHub repositories to filter the data.
@@ -47,7 +47,7 @@ export class GithubComponent {
         // 'map' is used to transform the fetched repositories based on the selected language
         map(repos => {
           // Filter the repositories based on the selected language
-          const filteredRepos = language === 'All languages' ? repos : repos.filter(repo => repo.language === language)
+          const filteredRepos = language === 'selected.language' ? repos : repos.filter(repo => repo.language === language)
           // Return the filtered repositories and their count
           return {
             repos: filteredRepos,
@@ -73,7 +73,7 @@ export class GithubComponent {
    * Property to bind the selected language in the template.
    * - This property is used to bind the selected language in the template and update the BehaviorSubject.
    */
-  selectedLanguage: string = 'All languages'
+  selectedLanguage: string = 'selected.language'
 
   /**
    * Method to update the selected language.
@@ -82,6 +82,11 @@ export class GithubComponent {
    */
   setSelectedLanguage(language: string): void {
     this.selectedLanguageSubject.next(language)
+  }
+
+  onSelectChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement
+    this.setSelectedLanguage(selectElement.value)
   }
 
   // Expose the constant array of selectable languages to the template

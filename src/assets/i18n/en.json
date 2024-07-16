@@ -41,6 +41,11 @@
 		"technology": "Technology",
 		"users": "Users"
 	},
+	"selected": {
+		"allTechnology": "All technology",
+		"language": "All languages",
+		"optionTxt": "Choose an option"
+	},
 	"submitLabel": {
 		"blog": "Add blog",
 		"experiences": "Add Experiences",
