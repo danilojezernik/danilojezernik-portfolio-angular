@@ -30,10 +30,10 @@ export class BlogAllAdminComponent {
   private _dialog = inject(MatDialog); // Injected MatDialog instance for dialogs
 
   // BehaviorSubject to store list of blogs
-  private blogSubject = new BehaviorSubject<BlogModel[]>([]);
+  private _blogSubject = new BehaviorSubject<BlogModel[]>([]);
 
   // Observables to expose the blog list
-  blogs$ = this.blogSubject.asObservable(); // Observable to store list of blogs
+  blogs$ = this._blogSubject.asObservable(); // Observable to store list of blogs
   blogById$!: Observable<BlogModel>; // Observable to store a single blog item
 
   /**
@@ -50,7 +50,7 @@ export class BlogAllAdminComponent {
    */
   getAllBlogs() {
     this._blogService.getAllBlogsAdmin().subscribe(blog => {
-      this.blogSubject.next(blog)
+      this._blogSubject.next(blog)
     })
   }
 

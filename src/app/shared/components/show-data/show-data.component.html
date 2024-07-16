@@ -5,7 +5,7 @@
 <div *ngIf="podnaslov">Podnaslov: {{ podnaslov }}</div>
 <div *ngIf="vsebina">Vsebina: {{ vsebina }}</div>
 <div *ngIf="image">Image: <img [src]="image" alt="Image"></div>
-<div *ngIf="datum_vnosa">Datum vnosa: {{ datum_vnosa | date }}</div>
+<div *ngIf="datum_vnosa">Datum vnosa: {{ datum_vnosa | date:'short' }}</div>
 <div *ngIf="stack">Stack: {{ stack }}</div>
 <div *ngIf="framework">Framework: {{ framework }}</div>
 <div *ngIf="programming_language">Programming Language: {{ programming_language }}</div>

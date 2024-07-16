@@ -24,7 +24,14 @@
 
           <!-- Display key-value pairs only if the value is a non-empty string or a boolean -->
           <ng-container *ngIf="isStringAndNotEmpty(data.allData[key]) || isBoolean(data.allData[key])">
-            <strong>{{ key }}:</strong> {{ data.allData[key] }}
+            <strong>{{ key }}:</strong>
+            <!-- Check if the key is 'datum_vnosa' to apply the date pipe -->
+            <ng-container *ngIf="key === 'datum_vnosa'; else normalValue">
+              {{ data.allData[key] | date:'MMM dd, yyyy, HH:mm' }}
+            </ng-container>
+            <ng-template #normalValue>
+              {{ data.allData[key] }}
+            </ng-template>
           </ng-container>
         </li>
 

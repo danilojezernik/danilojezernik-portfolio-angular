@@ -1,1 +1,21 @@
 <p>all-newsletter-admin works!</p>
+
+<app-button-admin [routerLink]="'/add-newsletter-admin'"/>
+
+<ng-container *ngIf="newsletters$ | async as newsletters">
+  <div class="mb-2 border-b-2" *ngFor="let newsletter of newsletters">
+
+    <app-show-data
+      [title]="newsletter.title"
+    />
+
+    <app-button-admin
+      (dialogRead)="openDialog(newsletter._id)"
+      [routerLinkId]="['/edit-newsletter-admin', newsletter._id ?? '']"
+      (delete)="deleteNewsletter(newsletter._id)"
+    />
+
+  </div>
+</ng-container>
+
+<app-go-back/>
