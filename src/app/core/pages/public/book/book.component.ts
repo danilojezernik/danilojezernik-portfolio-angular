@@ -10,11 +10,12 @@ import { MatSelectModule } from "@angular/material/select";
 import { FormsModule } from "@angular/forms";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
+import { DropdownSelectComponent } from "../../../../shared/components/dropdown-select/dropdown-select.component";
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [ CommonModule, MatFormFieldModule, MatOptionModule, MatSelectModule, FormsModule, TranslateModule, LoadingComponent ],
+  imports: [ CommonModule, MatFormFieldModule, MatOptionModule, MatSelectModule, FormsModule, TranslateModule, LoadingComponent, DropdownSelectComponent ],
   templateUrl: './book.component.html',
   styleUrls: [ './book.component.scss' ]
 })
@@ -72,10 +73,10 @@ export class BookComponent {
    * Method to handle change events from the dropdown.
    * - Casts the event target to HTMLSelectElement and updates the selected technology.
    */
-  onSelectChange(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement
-    this.setSelectedTechnology(selectElement.value)
+  onSelectChange(technology: string): void {
+    this.setSelectedTechnology(technology);
   }
+
 
   // Read-only property for the technology options, used in the template
   protected readonly SELECT_TECHNOLOGY = SELECT_TECHNOLOGY;

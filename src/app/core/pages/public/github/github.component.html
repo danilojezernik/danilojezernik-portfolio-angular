@@ -4,6 +4,7 @@
 
 <!-- Container to handle the asynchronous data fetching - START -->
 <ng-container *ngIf="filteredGitHub$ | async as githubData; else loadingData">
+
   <!-- Display the number of existing repositories if any are found - START -->
   <ul>
     <li *ngIf="githubData.length > 0">
@@ -13,14 +14,8 @@
   <!-- Display the number of existing repositories if any are found - END -->
 
   <!-- Dropdown to select the language for filtering books - START -->
-  <div class="relative inline-block w-64">
-    <label for="language-select"
-           class="block text-sm font-medium text-gray-700">{{ 'selected.optionTxt' | translate }}</label>
-    <select id="language-select" [(ngModel)]="selectedLanguage" (change)="onSelectChange($event)"
-            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-      <option *ngFor="let language of SELECT_LANGUAGE" [value]="language">{{language | translate }}</option>
-    </select>
-  </div>
+  <app-dropdown-select [options]="SELECT_LANGUAGE" [selectedValue]="selectedLanguage"
+                       (valueChange)="onSelectChange($event)" [label]="'selected.language'"/>
   <!-- Dropdown to select the language for filtering books - END -->
 
   <!-- List of GitHub repositories - START -->

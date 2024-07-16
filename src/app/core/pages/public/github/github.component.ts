@@ -10,6 +10,7 @@ import { MatInputModule } from "@angular/material/input"
 import { SELECT_LANGUAGE } from "../../../../shared/global-const/global.const"
 import { switchMap } from 'rxjs/operators'
 import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
+import { DropdownSelectComponent } from "../../../../shared/components/dropdown-select/dropdown-select.component";
 
 /**
  * This component displays GitHub repositories fetched from the backend API.
@@ -17,7 +18,7 @@ import { LoadingComponent } from "../../../../shared/components/loading/loading.
 @Component({
   selector: 'app-github',
   standalone: true,
-  imports: [ CommonModule, TranslateModule, MatSelectModule, FormsModule, MatInputModule, LoadingComponent ],
+  imports: [ CommonModule, TranslateModule, MatSelectModule, FormsModule, MatInputModule, LoadingComponent, DropdownSelectComponent ],
   templateUrl: './github.component.html'
 })
 export class GithubComponent {
@@ -84,9 +85,12 @@ export class GithubComponent {
     this.selectedLanguageSubject.next(language)
   }
 
-  onSelectChange(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement
-    this.setSelectedLanguage(selectElement.value)
+  /**
+   * Method to handle change events from the dropdown.
+   * - Casts the event target to HTMLSelectElement and updates the selected technology.
+   */
+  onSelectChange(language: string): void {
+    this.setSelectedLanguage(language);
   }
 
   // Expose the constant array of selectable languages to the template
