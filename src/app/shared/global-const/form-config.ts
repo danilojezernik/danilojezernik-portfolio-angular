@@ -83,3 +83,14 @@ export const formLinksConfig: FormFieldConfig[] = [
   { name: 'title', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
   { name: 'link', label: 'Povezava', type: 'text', validators: [ Validators.required ] },
 ]
+
+/**
+ * formBooksConfig defines the configuration for the form fields used in the books form.
+ * */
+export const formBooksConfig: FormFieldConfig[] = [
+  { name: 'naslov', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
+  { name: 'tehnologija', label: 'tehnologija', type: 'text', validators: [ Validators.required ] },
+  { name: 'podnaslov', label: 'podnaslov', type: 'text', validators: [] },
+  { name: 'vsebina', label: 'vsebina', type: 'text', validators: [ Validators.required, Validators.minLength(10) ] },
+  { name: 'image', label: 'vsebina', type: 'text', validators: [] },
+]

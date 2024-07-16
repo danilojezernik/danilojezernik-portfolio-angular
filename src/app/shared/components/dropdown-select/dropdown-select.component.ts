@@ -10,12 +10,23 @@ import { TranslateModule } from "@ngx-translate/core";
   templateUrl: './dropdown-select.component.html'
 })
 export class DropdownSelectComponent {
+  
+  // Input property to accept an array of options for the dropdown
+  @Input() options: any[] = [];
 
-  @Input() options: any[] = []
-  @Input() selectedValue: string = ''
-  @Input() label: string = ''
-  @Output() valueChange = new EventEmitter<string>()
+  // Input property to accept the selected value for the dropdown
+  @Input() selectedValue: string = '';
 
+  // Input property to accept the label for the dropdown
+  @Input() label: string = '';
+
+  // Output event emitter to notify parent component of value changes
+  @Output() valueChange = new EventEmitter<string>();
+
+  /**
+   * Method to handle the change event of the dropdown.
+   * - Casts the event target to HTMLSelectElement and emits the selected value.
+   */
   onSelectChange(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
     this.valueChange.emit(selectElement.value);

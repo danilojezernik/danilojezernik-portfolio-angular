@@ -1,2 +1,24 @@
 <p>all-books-admin works!</p>
 
+<app-button-admin [routerLink]="'/add-books-admin'"/>
+
+<ng-container *ngIf="books$ | async as books">
+  <div class="mb-2 border-b-2" *ngFor="let book of books">
+
+    <app-show-data
+      [naslov]="book.naslov"
+      [podnaslov]="book.podnaslov"
+      [vsebina]="book.vsebina"
+      [image]="book.image"
+    />
+
+    <app-button-admin
+      (dialogRead)="openDialog(book._id)"
+      [routerLinkId]="['/edit-books-admin', book._id ?? '']"
+      (delete)="deleteBook(book._id)"
+    />
+
+  </div>
+</ng-container>
+
+<app-go-back/>

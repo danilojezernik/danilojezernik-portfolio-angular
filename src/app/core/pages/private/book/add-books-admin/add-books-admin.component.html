@@ -1,1 +1,7 @@
 <p>add-books-admin works!</p>
+
+<app-reusable-form
+  [config]="formBooksConfig"
+  [submitLabel]="'submitLabel.blog' | translate"
+  (formSubmit)="addNewBook($event)"
+/>
