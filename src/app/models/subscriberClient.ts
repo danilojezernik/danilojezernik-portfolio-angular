@@ -1,4 +1,4 @@
-export interface Subscriber {
+export interface SubscriberClient {
   '_id'?: string;
   name: string;
   surname: string;

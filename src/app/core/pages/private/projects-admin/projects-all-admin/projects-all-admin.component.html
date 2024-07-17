@@ -1,17 +1,18 @@
-<!-- Message indicating the projects admin page works -->
 <p>projects-admin works!</p>
 
-<!-- Button to navigate to the add project admin page -->
-<app-button-admin [routerLink]="'/add-project-admin'"/>
+<!-- Button to navigate to the add project admin page - START -->
+<ng-container *ngIf="projects$ && !loading && !error">
+  <app-button-admin [routerLink]="'/add-project-admin'"/>
+</ng-container>
+<!-- Button to navigate to the add project admin page - END -->
 
-
-<!-- Container for displaying projects -->
+<!-- Container to check if projects data is available, and show content or loading template accordingly - START -->
 <ng-container *ngIf="projects$ | async as projects">
 
-  <!-- Loop through each project and display its details -->
+  <!-- Loop through each project and display its information along with action buttons - START -->
   <div *ngFor="let project of projects">
 
-    <!-- Reusable component to display project details -->
+    <!-- Component to display project data - START -->
     <app-show-data
       [title]="project.title"
       [subtitle]="project.subtitle"
@@ -21,16 +22,34 @@
       [website]="project.website"
       [datum_vnosa]="project.datum_vnosa"
     />
+    <!-- Component to display project data - END -->
 
+    <!-- Buttons for editing and deleting project, and opening a dialog - START -->
     <app-button-admin
       (dialogRead)="openDialog(project._id)"
       [routerLinkId]="['/edit-projects-admin', project._id ?? '']"
       (delete)="deleteProject(project._id)"
     />
+    <!-- Buttons for editing and deleting project, and opening a dialog - END -->
 
   </div>
+  <!-- Loop through each project and display its information along with action buttons - END -->
 
 </ng-container>
+<!-- Container to check if blogs data is available, and show content or loading template accordingly - END -->
 
-<!-- Component to navigate back to the previous page -->
-<app-go-back></app-go-back>
+<!-- Error message display if the data fetching fails - START -->
+<ng-container *ngIf="error && !loading">
+  {{ error }}
+</ng-container>
+<!-- Error message display if the data fetching fails - END -->
+
+<!-- Loading spinner - START -->
+<ng-container *ngIf="loading">
+  <app-loading/>
+</ng-container>
+<!-- Loading spinner - END -->
+
+<!-- Button to navigate back to the previous page - START -->
+<app-go-back/>
+<!-- Button to navigate back to the previous page - END -->

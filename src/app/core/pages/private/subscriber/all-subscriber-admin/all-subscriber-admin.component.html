@@ -1,24 +1,52 @@
 <p>all-subscriber-admin works!</p>
 
-<app-button-admin [routerLink]="'/add-subscriber-admin'"/>
+<!-- Button to navigate to the add subscriber admin page - START -->
+<ng-container *ngIf="subscribers$ && !loading && !error">
+  <app-button-admin [routerLink]="'/add-subscriber-admin'"/>
+</ng-container>
+<!-- Button to navigate to the add subscriber admin page - END -->
+
+<!-- Container to check if subscribers data is available, and show content or loading template accordingly - START -->
 
 <ng-container *ngIf="subscribers$ | async as subscribers">
-  <div class="mb-2 border-b-2" *ngFor="let subscriber of subscribers">
+  <!-- Loop through each subscriber and display its information along with action buttons - START -->
 
+  <div class="mb-2 border-b-2" *ngFor="let subscriber of subscribers">
+    <!-- Component to display subscriber data - START -->
     <app-show-data
       [name]="subscriber.name"
       [surname]="subscriber.surname"
       [email]="subscriber.email"
       [confirmed]="subscriber.confirmed"
     />
+    <!-- Component to display subscriber data - END -->
 
+    <!-- Buttons for editing and deleting subscriber, and opening a dialog - START -->
     <app-button-admin
       (dialogRead)="openDialog(subscriber._id)"
       [routerLinkId]="['/edit-subscriber-admin', subscriber._id ?? '']"
       (delete)="deleteSubscriberById(subscriber._id)"
     />
+    <!-- Buttons for editing and deleting subscriber, and opening a dialog - END -->
 
   </div>
-</ng-container>
+  <!-- Loop through each subscriber and display its information along with action buttons - END -->
 
+</ng-container>
+<!-- Container to check if subscribers data is available, and show content or loading template accordingly - END -->
+
+<!-- Error message display if the subscriber fetching fails - START -->
+<ng-container *ngIf="error && !loading">
+  {{ error }}
+</ng-container>
+<!-- Error message display if the subscriber fetching fails - END -->
+
+<!-- Loading spinner - START -->
+<ng-container *ngIf="loading">
+  <app-loading/>
+</ng-container>
+<!-- Loading spinner - END -->
+
+<!-- Button to navigate back to the previous page - START -->
 <app-go-back/>
+<!-- Button to navigate back to the previous page - END -->

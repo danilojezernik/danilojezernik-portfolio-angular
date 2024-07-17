@@ -4,6 +4,11 @@ import { formLinksConfig } from "../../../../../shared/global-const/form-config"
 import { ReusableFormAddComponent } from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
 import { LinksService } from "../../../../../services/api/links.service";
 import { Router } from "@angular/router";
+import { TranslateService } from "@ngx-translate/core";
+import { of } from "rxjs";
+import { Links } from "../../../../../models/links";
+import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
+import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 
 /**
  * @Component AddLinksComponent
@@ -14,7 +19,7 @@ import { Router } from "@angular/router";
 @Component({
   selector: 'app-add-links',
   standalone: true,
-  imports: [ CommonModule, ReusableFormAddComponent ],
+  imports: [ CommonModule, ReusableFormAddComponent, GoBackComponent, LoadingComponent ],
   templateUrl: './add-links.component.html'
 })
 export class AddLinksComponent {
@@ -23,6 +28,13 @@ export class AddLinksComponent {
   private _linksService = inject(LinksService);
   // Injecting Router for navigating between routes
   private _router = inject(Router);
+  private _translateService = inject(TranslateService); // Injecting TranslateService for translating error messages
+
+  // Property to store error messages, initialized to null
+  error: string | null = null;
+
+  // Property to track loading state, initialized to false
+  loading: boolean = false;
 
   /**
    * @method addNewLink
@@ -30,9 +42,28 @@ export class AddLinksComponent {
    * @param formValidator - The form data submitted by the user
    */
   addNewLink(formValidator: any) {
+    // Show spinner while loading
+    this.loading = true;
+
     this._linksService.addLink(formValidator).subscribe(() => {
+      // Hide spinner after loading
+      this.loading = false;
+
       // Navigate to the admin links page after successfully adding a new link
       this._router.navigate([ 'links-admin' ]);
+    }, (error) => {
+      // Hide spinner after loading
+      this.loading = false;
+
+      // Extract the error message
+      const message = error.message;
+      // Translate the error message using the Translation service and set it to the error property
+      this._translateService.get(message).subscribe((translation) => {
+        this.error = translation;
+      });
+
+      // Return an observable of an empty array to handle errors gracefully
+      return of([] as Links[]);
     });
   }
 

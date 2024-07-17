@@ -1,24 +1,48 @@
 <p>all-books-admin works!</p>
 
-<app-button-admin [routerLink]="'/add-books-admin'"/>
+<!-- Button to navigate to the add books admin page - START -->
+<ng-container *ngIf="books$ && !loading && !error">
+  <app-button-admin [routerLink]="'/add-books-admin'"></app-button-admin>
+</ng-container>
+<!-- Button to navigate to the add books admin page - END -->
 
+<!-- Container to check if books data is available and show content or error template accordingly - START -->
 <ng-container *ngIf="books$ | async as books">
+  <!-- Loop through each book and display its information along with action buttons - START -->
   <div class="mb-2 border-b-2" *ngFor="let book of books">
-
+    <!-- Component to display book data - START -->
     <app-show-data
       [naslov]="book.naslov"
       [podnaslov]="book.podnaslov"
       [vsebina]="book.vsebina"
       [image]="book.image"
-    />
+    ></app-show-data>
+    <!-- Component to display book data - END -->
 
+    <!-- Buttons for editing and deleting book, and opening a dialog - START -->
     <app-button-admin
       (dialogRead)="openDialog(book._id)"
       [routerLinkId]="['/edit-books-admin', book._id ?? '']"
       (delete)="deleteBook(book._id)"
-    />
-
+    ></app-button-admin>
+    <!-- Buttons for editing and deleting book, and opening a dialog - END -->
   </div>
+  <!-- Loop through each book and display its information along with action buttons - END -->
 </ng-container>
+<!-- Container to check if books data is available and show content or error template accordingly - END -->
 
-<app-go-back/>
+<!-- Error message display if the data fetching fails - START -->
+<ng-container *ngIf="error && !loading">
+  {{ error }}
+</ng-container>
+<!-- Error message display if the data fetching fails - END -->
+
+<!-- Loading spinner - START -->
+<ng-container *ngIf="loading">
+  <app-loading></app-loading>
+</ng-container>
+<!-- Loading spinner - END -->
+
+<!-- Button to navigate back to the previous page - START -->
+<app-go-back></app-go-back>
+<!-- Button to navigate back to the previous page - END -->

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SubscribeService } from "../../../../../services/api/subscribe.service";
 import { Router } from "@angular/router";
-import { Subscriber } from "../../../../../models/subscriber";
+import { SubscriberClient } from "../../../../../models/subscriberClient";
 import { formSubscriberConfig } from "../../../../../shared/global-const/form-config";
 import { ReusableFormAddComponent } from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
 import { TranslateModule } from "@ngx-translate/core";
@@ -26,7 +26,7 @@ export class AddSubscriberAdminComponent {
    *
    * @param formValidator - The form data to be validated and sent to the server for adding a new subscriber post.
    */
-  addNewSubscriber(formValidator: Subscriber) {
+  addNewSubscriber(formValidator: SubscriberClient) {
     this._subscriberService.addSubscriber(formValidator).subscribe(() => {
       this._router.navigate([ 'subscriber-admin' ])
     })

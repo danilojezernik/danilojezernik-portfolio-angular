@@ -1,1 +1,29 @@
 <p>edit-links works!</p>
+
+<!-- Container to display the form and handle its submission - START -->
+<ng-container *ngIf="!error && !loading">
+
+  <app-reusable-form-edit
+    [formConfig]="formLinksConfig"
+    [formData]="formData"
+    (formSubmit)="editLink($event)"
+  />
+
+</ng-container>
+<!-- Container to display the form and handle its submission - END -->
+
+<!-- Template to show loading spinner and text while data is being fetched - START -->
+<ng-container *ngIf="loading">
+  <app-loading/>
+</ng-container>
+<!-- Template to show loading spinner and text while data is being fetched - END -->
+
+<!-- Template to show error messages - START -->
+<ng-container *ngIf="error">
+  {{ error }}
+</ng-container>
+<!-- Template to show error messages - END -->
+
+<!-- Button to go back to the previous page - START -->
+<app-go-back/>
+<!-- Button to go back to the previous page - END -->

@@ -1,20 +1,48 @@
 <p>all-newsletter-admin works!</p>
 
-<app-button-admin [routerLink]="'/add-newsletter-admin'"/>
+<!-- Button to navigate to the add newsletter admin page - START -->
+<ng-container *ngIf="newsletters$ && !loading && !error">
+  <app-button-admin [routerLink]="'/add-newsletter-admin'"/>
+</ng-container>
+<!-- Button to navigate to the add newsletter admin page - END -->
 
+<!-- Container to check if blogs data is available, and show content or loading template accordingly - START -->
 <ng-container *ngIf="newsletters$ | async as newsletters">
+
+  <!-- Loop through each newsletter and display its information along with action buttons - START -->
   <div class="mb-2 border-b-2" *ngFor="let newsletter of newsletters">
 
+    <!-- Component to display newsletter data - START -->
     <app-show-data
       [title]="newsletter.title"
     />
+    <!-- Component to display newsletter data - END -->
 
+    <!-- Buttons for editing and deleting newsletter, and opening a dialog - START -->
     <app-button-admin
       (dialogRead)="openDialog(newsletter._id)"
       (delete)="deleteNewsletter(newsletter._id)"
     />
+    <!-- Buttons for editing and deleting newsletter, and opening a dialog - END -->
 
   </div>
-</ng-container>
+  <!-- Loop through each newsletter and display its information along with action buttons - END -->
 
+</ng-container>
+<!-- Container to check if newsletters data is available, and show content or loading template accordingly - END -->
+
+<!-- Error message display if the data fetching fails - START -->
+<ng-container *ngIf="error && !loading">
+  {{ error }}
+</ng-container>
+<!-- Error message display if the data fetching fails - END -->
+
+<!-- Loading spinner - START -->
+<ng-container *ngIf="loading">
+  <app-loading/>
+</ng-container>
+<!-- Loading spinner - END -->
+
+<!-- Button to navigate back to the previous page - START -->
 <app-go-back/>
+<!-- Button to navigate back to the previous page - END -->

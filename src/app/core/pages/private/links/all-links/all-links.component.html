@@ -1,24 +1,50 @@
 <p>all-links works!</p>
 
-<app-button-admin [routerLink]="'/add-links-admin'"/>
+<!-- Container to display the 'Add Link' button if links data is available, not loading, and there is no error - START -->
+<ng-container *ngIf="links$ && !loading && !error">
+  <app-button-admin [routerLink]="'/add-links-admin'"></app-button-admin>
+</ng-container>
+<!-- Container to display the 'Add Link' button if links data is available, not loading, and there is no error - END -->
 
+<!-- Container to check if links data is available and show content accordingly - START -->
 <ng-container *ngIf="links$ | async as links">
 
+  <!-- Loop through each link and display its information along with action buttons - START -->
   <div *ngFor="let link of links">
 
+    <!-- Component to display link data - START -->
     <app-show-data
       [title]="link.title"
       [link]="link.link"
-    />
+    ></app-show-data>
+    <!-- Component to display link data - END -->
 
+    <!-- Buttons for editing, deleting link, and opening a dialog - START -->
     <app-button-admin
       (dialogRead)="openDialog(link._id)"
       [routerLinkId]="['/edit-links-admin', link._id ?? '']"
       (delete)="deleteLink(link._id)"
-    />
+    ></app-button-admin>
+    <!-- Buttons for editing, deleting link, and opening a dialog - END -->
 
   </div>
+  <!-- Loop through each link and display its information along with action buttons - END -->
 
 </ng-container>
+<!-- Container to check if links data is available and show content accordingly - END -->
 
+<!-- Error message display if the data fetching fails - START -->
+<ng-container *ngIf="error && !loading">
+  {{ error }}
+</ng-container>
+<!-- Error message display if the data fetching fails - END -->
+
+<!-- Loading spinner to indicate data fetching - START -->
+<ng-container *ngIf="loading">
+  <app-loading/>
+</ng-container>
+<!-- Loading spinner to indicate data fetching - END -->
+
+<!-- Button to navigate back to the previous page - START -->
 <app-go-back/>
+<!-- Button to navigate back to the previous page - END -->

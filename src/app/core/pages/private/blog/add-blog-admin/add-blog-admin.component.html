@@ -2,11 +2,13 @@
 
 <!-- Container to display the form and handle its submission - START -->
 <ng-container *ngIf="!error && !loading">
+
   <app-reusable-form
     [config]="formBlogConfig"
     [submitLabel]="'submitLabel.blog' | translate"
     (formSubmit)="addNewBlog($event)"
   />
+
 </ng-container>
 <!-- Container to display the form and handle its submission - END -->
 

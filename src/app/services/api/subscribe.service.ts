@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
-import { Subscriber } from "../../models/subscriber";
+import { SubscriberClient } from "../../models/subscriberClient";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -14,34 +14,34 @@ export class SubscribeService {
   /**
    * PUBLIC SERVICES
    */
-  getAllSubscribers(): Observable<Subscriber[]> {
-    return this._http.get<Subscriber[]>(`${environment.subscriberUrl.public}`)
+  getAllSubscribers(): Observable<SubscriberClient[]> {
+    return this._http.get<SubscriberClient[]>(`${environment.subscriberUrl.public}`)
   }
 
-  getSubscriberById(id: string): Observable<Subscriber> {
-    return this._http.get<Subscriber>(`${environment.subscriberUrl.public}/${id}`)
+  getSubscriberById(id: string): Observable<SubscriberClient> {
+    return this._http.get<SubscriberClient>(`${environment.subscriberUrl.public}/${id}`)
   }
 
   /**
    * PRIVATE SERVICES
    */
-  addSubscriber(newSubscriber: any): Observable<Subscriber> {
-    return this._http.post<Subscriber>(`${environment.subscriberUrl.public}/`, newSubscriber)
+  addSubscriber(newSubscriber: any): Observable<SubscriberClient> {
+    return this._http.post<SubscriberClient>(`${environment.subscriberUrl.public}/`, newSubscriber)
   }
 
-  editSubscriberById(id: string, newSubscriber: any): Observable<Subscriber> {
-    return this._http.put<Subscriber>(`${environment.subscriberUrl.public}/${id}`, newSubscriber)
+  editSubscriberById(id: string, newSubscriber: any): Observable<SubscriberClient> {
+    return this._http.put<SubscriberClient>(`${environment.subscriberUrl.public}/${id}`, newSubscriber)
   }
 
-  deleteSubscriberById(id: string): Observable<Subscriber> {
-    return this._http.delete<Subscriber>(`${environment.subscriberUrl.public}/${id}`)
+  deleteSubscriberById(id: string): Observable<SubscriberClient> {
+    return this._http.delete<SubscriberClient>(`${environment.subscriberUrl.public}/${id}`)
   }
 
   /**
    * SUBSCRIBE OF A CLIENT
    */
-  subscribeClient(newSubscriber: any): Observable<Subscriber> {
-    return this._http.post<Subscriber>(`${environment.subscriberUrl.public}/subscribe/`, newSubscriber)
+  subscribeClient(newSubscriber: any): Observable<SubscriberClient> {
+    return this._http.post<SubscriberClient>(`${environment.subscriberUrl.public}/subscribe/`, newSubscriber)
   }
 
 }

@@ -1,12 +1,18 @@
 <p>experiences-admin works!</p>
 
-<app-button-admin [routerLink]="'/add-experiences-admin'"/>
+<!-- Button to navigate to the add experiences admin page - START -->
+<ng-container *ngIf="experiences$ && !loading && !error">
+  <app-button-admin [routerLink]="'/add-experiences-admin'"/>
+</ng-container>
+<!-- Button to navigate to the add experiences admin page - END -->
 
-
+<!-- Container to check if experiences data is available, and show content or loading template accordingly - START -->
 <ng-container *ngIf="experiences$ | async as experiences">
 
+  <!-- Loop through each experience and display its information along with action buttons - START -->
   <div *ngFor="let experience of experiences">
 
+    <!-- Component to display experience data - START -->
     <app-show-data
       [_id]="experience._id"
       [company]="experience.company"
@@ -20,17 +26,34 @@
       [company_end]="experience.company_end"
       [datum_vnosa]="experience.datum_vnosa"
     />
+    <!-- Component to display experience data - END -->
 
+    <!-- Buttons for editing and deleting experience, and opening a dialog - START -->
     <app-button-admin
       (dialogRead)="openDialog(experience._id)"
       [routerLinkId]="['/edit-experiences-admin', experience._id ?? '']"
       (delete)="deleteExperience(experience._id)"
     />
+    <!-- Buttons for editing and deleting experience, and opening a dialog - END -->
 
   </div>
-
+  <!-- Loop through each experience and display its information along with action buttons - END -->
 
 </ng-container>
+<!-- Container to check if experiences data is available, and show content or loading template accordingly - END -->
 
+<!-- Error message display if the data fetching fails - START -->
+<ng-container *ngIf="error && !loading">
+  {{ error }}
+</ng-container>
+<!-- Error message display if the data fetching fails - END -->
 
+<!-- Loading spinner - START -->
+<ng-container *ngIf="loading">
+  <app-loading></app-loading>
+</ng-container>
+<!-- Loading spinner - END -->
+
+<!-- Button to navigate back to the previous page - START -->
 <app-go-back></app-go-back>
+<!-- Button to navigate back to the previous page - END -->

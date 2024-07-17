@@ -3,26 +3,31 @@ import { CommonModule } from '@angular/common';
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { ExperiencesService } from "../../../../../services/api/experiences.service";
 import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, catchError, finalize, Observable, of } from "rxjs";
 import { Experiences } from "../../../../../models/experiences";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
+import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 
 @Component({
   selector: 'app-experiences-admin',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent ],
+  imports: [ CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent ],
   templateUrl: './all-experiences-admin.component.html'
 })
 export class AllExperiencesAdminComponent {
 
   // Inject the ExperiencesService to use its methods for email operations
   private _experiencesService = inject(ExperiencesService)
+  private _dialog = inject(MatDialog) // Inject the MatDialog service to open dialogs
+  private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
 
-  // Inject the MatDialog service to open dialogs
-  private _dialog = inject(MatDialog)
+  // Property to store error messages, initialized to null
+  error: string | null = null
+  // Property to track loading state, initialized to false
+  loading: boolean = false
 
   // BehaviorSubject to store the list of experiences
   experiencesSubject$ = new BehaviorSubject<Experiences[]>([])
@@ -44,9 +49,26 @@ export class AllExperiencesAdminComponent {
   /**
    * @method getAllExperiences
    * Fetches all experiences from the ExperiencesService and assigns them to experiences$.
+   * Also handles loading state and error messages.
    */
   getAllExperiences() {
-    this._experiencesService.getAllExperiences().subscribe(experiences => {
+    this.loading = true; // Set loading state to true before making the API call
+
+    this._experiencesService.getAllExperiences().pipe(
+      // Handle any errors that occur during the fetching process
+      catchError((error) => {
+        // Extract and translate the error message, then set it to the error property
+        const message = error.message
+        this._translateService.get(message).subscribe((translation) => {
+          this.error = translation
+        })
+        // Return an observable of an empty array to handle errors gracefully
+        return of([] as Experiences[])
+      }),
+      // Ensure loading state is set to false once the API call is complete
+      finalize(() => this.loading = false)
+    ).subscribe(experiences => {
+      this.loading = false; // Set loading state to false after receiving the response
       this.experiencesSubject$.next(experiences)
     })
   }

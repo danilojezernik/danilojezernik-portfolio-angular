@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ContactService } from "../../../../services/api/contact.service";
 import { GoBackComponent } from "../../../../shared/components/go-back/go-back.component";
 import { ShowDataComponent } from "../../../../shared/components/show-data/show-data.component";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, catchError, finalize, Observable, of } from "rxjs";
 import { Contact } from "../../../../models/contact";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { ButtonAdminComponent } from "../../../../shared/components/button-admin/button-admin.component";
 import { openDialogUtil } from "../../../../utils/open-dialog.util";
+import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
 
 /**
  * @Component EmailsAdminComponent
@@ -19,16 +20,20 @@ import { openDialogUtil } from "../../../../utils/open-dialog.util";
 @Component({
   selector: 'app-emails-admin',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent ],
+  imports: [ CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent ],
   templateUrl: './emails-admin.component.html'
 })
 export class EmailsAdminComponent {
 
   // Inject the ContactService to use its methods for email operations
   private _contactService = inject(ContactService);
+  private _dialog = inject(MatDialog); // Inject the MatDialog service to open dialogs
+  private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
 
-  // Inject the MatDialog service to open dialogs
-  private _dialog = inject(MatDialog);
+  // Property to store error messages, initialized to null
+  error: string | null = null
+  // Property to track loading state, initialized to false
+  loading: boolean = false
 
   // BehaviorSubject to store the list of emails
   private emailSubject = new BehaviorSubject<Contact[]>([]);
@@ -44,15 +49,31 @@ export class EmailsAdminComponent {
    * Calls the loadBlogs method to load all emails.
    */
   constructor() {
-    this.loadBlogs();
+    this.loadEmails();
   }
 
   /**
-   * @method loadBlogs
+   * @method loadEmails
    * Fetches all emails from the ContactService and assigns them to emails$.
    */
-  loadBlogs() {
-    this._contactService.getAllEmailsAdmin().subscribe(email => {
+  loadEmails() {
+    this.loading = true; // Set loading state to true before making the API call
+
+    this._contactService.getAllEmailsAdmin().pipe(
+      // Handle any errors that occur during the fetching process
+      catchError((error) => {
+        // Extract and translate the error message, then set it to the error property
+        const message = error.message
+        this._translateService.get(message).subscribe((translation) => {
+          this.error = translation
+        })
+        // Return an observable of an empty array to handle errors gracefully
+        return of([] as Contact[])
+      }),
+      // Ensure loading state is set to false once the API call is complete
+      finalize(() => this.loading = false)
+    ).subscribe(email => {
+      this.loading = false; // Set loading state to false after receiving the response
       this.emailSubject.next(email);
     });
   }
@@ -75,7 +96,7 @@ export class EmailsAdminComponent {
   deleteEmail(id?: string) {
     if (id) {
       this._contactService.deleteEmailAdmin(id).subscribe(() => {
-        this.loadBlogs(); // Refresh the list of emails after deletion
+        this.loadEmails(); // Refresh the list of emails after deletion
       });
     }
   }

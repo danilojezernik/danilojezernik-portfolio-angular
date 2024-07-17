@@ -1,8 +1,13 @@
 <p>emails-admin works!</p>
+
+<!-- Container to check if emails data is available, and show content or loading template accordingly - START -->
 <ng-container *ngIf="emails$ | async as emails">
 
+  <!-- Loop through each email and display its information along with action buttons - START -->
   <div style="padding-bottom: 20px" *ngFor="let email of emails">
 
+
+    <!-- Component to display email data - START -->
     <app-show-data
       [_id]="email._id"
       [name]="email.name"
@@ -10,14 +15,33 @@
       [email]="email.email"
       [datum_vnosa]="email.datum_vnosa"
     />
+    <!-- Component to display email data - END -->
 
+    <!-- Buttons for editing and deleting email, and opening a dialog - START -->
     <app-button-admin
       (dialogRead)="openDialog(email._id)"
       (delete)="deleteEmail(email._id)"
     />
-    
+    <!-- Buttons for editing and deleting email, and opening a dialog - END -->
+
   </div>
+  <!-- Loop through each email and display its information along with action buttons - END -->
 
 </ng-container>
+<!-- Container to check if blogs data is available, and show content or loading template accordingly - END -->
 
+<!-- Error message display if the data fetching fails - START -->
+<ng-container *ngIf="error && !loading">
+  {{ error }}
+</ng-container>
+<!-- Error message display if the data fetching fails - END -->
+
+<!-- Loading spinner - START -->
+<ng-container *ngIf="loading">
+  <app-loading></app-loading>
+</ng-container>
+<!-- Loading spinner - END -->
+
+<!-- Button to navigate back to the previous page - START -->
 <app-go-back></app-go-back>
+<!-- Button to navigate back to the previous page - END -->
