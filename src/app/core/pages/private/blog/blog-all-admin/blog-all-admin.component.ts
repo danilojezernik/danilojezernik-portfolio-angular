@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common'
 import { BlogService } from "../../../../../services/api/blog.service"
 import { RouterLink } from "@angular/router"
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component"
-import { BehaviorSubject, Observable } from "rxjs"
+import { BehaviorSubject, catchError, Observable, of } from "rxjs"
 import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component"
 import { MatDialog, MatDialogModule } from "@angular/material/dialog"
 import { BlogModel } from "../../../../../models/blog.model"
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
+import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 
 /**
  * @Component BlogAllAdminComponent
@@ -20,7 +21,7 @@ import { ButtonAdminComponent } from "../../../../../shared/components/button-ad
 @Component({
   selector: 'app-blog-all-admin',
   standalone: true,
-  imports: [ CommonModule, RouterLink, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent ],
+  imports: [ CommonModule, RouterLink, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent ],
   templateUrl: './blog-all-admin.component.html'
 })
 export class BlogAllAdminComponent {
@@ -28,12 +29,30 @@ export class BlogAllAdminComponent {
   // Injected instances: BlogService for blog data and MatDialog for dialogs
   private _blogService = inject(BlogService); // Injected BlogService instance
   private _dialog = inject(MatDialog); // Injected MatDialog instance for dialogs
+  private _translateService = inject(TranslateService)
+
+  // Property to store error messages, initialized to null
+  error: string | null = null
 
   // BehaviorSubject to store list of blogs
   private _blogSubject = new BehaviorSubject<BlogModel[]>([]);
 
   // Observables to expose the blog list
-  blogs$ = this._blogSubject.asObservable(); // Observable to store list of blogs
+  blogs$ = this._blogSubject.asObservable().pipe(
+    // 'catchError' is used to handle any errors that occur during the fetching process
+    catchError((error) => {
+      // Extract the error message
+      const message = error.message
+      // Translate the error message using the Translation service and set it to the error property
+      this._translateService.get(message).subscribe((translation) => {
+        this.error = translation
+      })
+      // Return an observable of an empty array to handle errors gracefully
+      return of([] as BlogModel[])
+    })
+  );
+
+  // Observable to store list of blogs
   blogById$!: Observable<BlogModel>; // Observable to store a single blog item
 
   /**

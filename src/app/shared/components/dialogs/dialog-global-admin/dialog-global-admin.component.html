@@ -50,5 +50,5 @@
 <!-- ng-template defines a template for displaying when data.allData is falsy -->
 <ng-template #noData>
   <!-- Display a message when no data is available -->
-  <p>Ni podatkov...</p>
+  <p>{{ 'errors.noData' | translate }}</p>
 </ng-template>

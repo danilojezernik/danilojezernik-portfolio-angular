@@ -1,23 +1,49 @@
 <p>blog-all-admin works!</p>
 
+<!-- Button to navigate to the add blog admin page - START -->
 <app-button-admin [routerLink]="'/add-blog-admin'"/>
+<!-- Button to navigate to the add blog admin page - END -->
 
-<ng-container *ngIf="blogs$ | async as blogs">
+<!-- Container to check if blogs data is available, and show content or loading template accordingly - START -->
+<ng-container *ngIf="blogs$ | async as blogs; else loadingData">
+
+  <!-- Loop through each blog and display its information along with action buttons - START -->
   <div class="mb-2 border-b-2" *ngFor="let blog of blogs">
 
+    <!-- Component to display blog data - START -->
     <app-show-data
       [title]="blog.title"
       [kategorija]="blog.kategorija"
       [podnaslov]="blog.podnaslov"
     />
+    <!-- Component to display blog data - END -->
 
+    <!-- Buttons for editing and deleting blog, and opening a dialog - START -->
     <app-button-admin
       (dialogRead)="openDialog(blog._id)"
       [routerLinkId]="['/edit-blog-admin', blog._id ?? '']"
       (delete)="deleteBlog(blog._id)"
     />
+    <!-- Buttons for editing and deleting blog, and opening a dialog - END -->
+
+    <!-- Error message display if the data fetching fails - START -->
+    <ng-container *ngIf="error">
+      {{ error }}
+    </ng-container>
+    <!-- Error message display if the data fetching fails - END -->
 
   </div>
-</ng-container>
+  <!-- Loop through each blog and display its information along with action buttons - END -->
 
+</ng-container>
+<!-- Container to check if blogs data is available, and show content or loading template accordingly - END -->
+
+<!-- Template to show loading spinner and text while data is being fetched - START -->
+<ng-template #loadingData>
+  <app-loading/>
+</ng-template>
+<!-- Template to show loading spinner and text while data is being fetched - END -->
+
+<!-- Button to navigate back to the previous page - START -->
 <app-go-back/>
+<!-- Button to navigate back to the previous page - END -->

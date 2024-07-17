@@ -14,6 +14,7 @@
 		"forbidden": "Nimate dovoljenja za izvedbo tega dejanja.",
 		"internalServerError": "Prišlo je do notranje napake strežnika. Poskusite znova pozneje.",
 		"network": "Preverite internetno povezavo ali poizkusite znova kasneje.",
+		"noData": "Ni podatkov...",
 		"notFound": "Viri niso bili najdeni.",
 		"unauthorized": "Neavtoriziran. Preverite uporabniško ime in geslo.",
 		"unknown": "Prišlo je do neznane napake!",
