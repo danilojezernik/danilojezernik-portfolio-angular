@@ -1,18 +1,16 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersService } from "../../../../../services/api/users.service";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { RouterLink } from "@angular/router";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { Observable } from "rxjs";
+import { BehaviorSubject, catchError, finalize, Observable, of } from "rxjs";
 import { User } from "../../../../../models/user";
-import {
-  DialogGlobalAdminComponent
-} from "../../../../../shared/components/dialogs/dialog-global-admin/dialog-global-admin.component";
-import { BUTTONS, DIALOG_DIMENSIONS } from "../../../../../shared/global-const/global.const";
 import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component";
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
+import { openDialogUtil } from "../../../../../utils/open-dialog.util";
+import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 
 /**
  * @Component UsersAllAdminComponent
@@ -23,25 +21,51 @@ import { ButtonAdminComponent } from "../../../../../shared/components/button-ad
 @Component({
   selector: 'app-users-admin',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, RouterLink, MatDialogModule, ShowDataComponent, TranslateModule, ButtonAdminComponent ],
+  imports: [ CommonModule, GoBackComponent, RouterLink, MatDialogModule, ShowDataComponent, TranslateModule, ButtonAdminComponent, LoadingComponent ],
   templateUrl: './users-all-admin.component.html'
 })
-export class UsersAllAdminComponent implements OnInit {
+export class UsersAllAdminComponent {
 
   // Injected instances: MatDialog for opening dialogs, UsersService for fetching user data
   private _dialog = inject(MatDialog); // Injecting MatDialog for opening dialogs
   private _userService = inject(UsersService); // Injecting UsersService for fetching user data
+  private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
+
+  // Property to store error messages, initialized to null
+  error: string | null = null
+
+  // Property to track loading state, initialized to false
+  loading: boolean = false
 
   // Observable to hold list of private users
-  users$!: Observable<User[]> // Observable that fetches all private users
+  private _userSubject = new BehaviorSubject<User[]>([]);
+  users$ = this._userSubject.asObservable() // Observable that fetches all private users
   userById$!: Observable<User>; // Observable that holds a specific user's data
 
-  ngOnInit() {
+  constructor() {
     this.getAllUsers()
   }
 
   getAllUsers() {
-    this.users$ = this._userService.getAllUsersPrivate()
+    this.loading = true; // Set loading state to true before making the API call
+
+    this._userService.getAllUsersPrivate().pipe(
+      // Handle any errors that occur during the fetching process
+      catchError((error) => {
+        // Extract and translate the error message, then set it to the error property
+        const message = error.message
+        this._translateService.get(message).subscribe((translation) => {
+          this.error = translation
+        })
+        // Return an observable of an empty array to handle errors gracefully
+        return of([] as User[])
+      }),
+      // Ensure loading state is set to false once the API call is complete
+      finalize(() => this.loading = false)
+    ).subscribe(user => {
+      this.loading = false; // Set loading state to false after receiving the response
+      this._userSubject.next(user); // Update the BehaviorSubject with the fetched blogs
+    })
   }
 
   /**
@@ -50,29 +74,7 @@ export class UsersAllAdminComponent implements OnInit {
    * @param id - The ID of the user to fetch
    */
   getUserById(id: string) {
-    this.userById$ = this._userService.getUserByIdAdmin(id);
-  }
-
-  /**
-   * @method openDialog
-   * Opens a dialog showing details of a specific user based on their ID.
-   * @param id - Optional ID of the user for whom details are displayed
-   */
-  openDialog(id?: string) {
-    if (id) { // If ID is provided
-      this.getUserById(id); // Fetch user data
-      this.userById$.subscribe(data => { // Subscribe to user data observable
-        this._dialog.open(DialogGlobalAdminComponent, { // Open MatDialog with specified component and data
-          data: {
-            title: data.username, // Title of the dialog based on user's username
-            allData: data // Pass all user data to the dialog
-          },
-          ...DIALOG_DIMENSIONS.admin // Spread dimensions for dialog configuration
-        });
-      });
-    } else { // If ID is not provided
-      console.error('No id'); // Log an error message
-    }
+    this.userById$ = this._userService.getUserByIdPublic(id);
   }
 
   /**
@@ -84,15 +86,20 @@ export class UsersAllAdminComponent implements OnInit {
   deleteUser(id: string | undefined) {
     if (id) {
       this._userService.deleteUserById(id).subscribe(() => {
-          this.getAllUsers()
-        },
-        (error) => {
-          console.error('Failed to delete user:', error); // Log error message if deletion fails
-        })
-    } else {
-      console.error('User by id doesn\'t exist'); // Log error if ID is undefined
+        this.getAllUsers()
+      })
     }
   }
 
-  protected readonly BUTTONS = BUTTONS;
+  /**
+   * @method openDialog
+   * Opens a dialog showing details of a specific user based on their ID.
+   * @param id - Optional ID of the user for whom details are displayed
+   */
+  openDialog(id?: string) {
+    if (id) {
+      this.userById$ = this._userService.getUserByIdPublic(id); // Fetch user post details by ID
+      openDialogUtil(this._dialog, id, this.getUserById.bind(this), this.userById$, 'full_name', 'user'); // Open dialog with fetched data
+    }
+  }
 }
