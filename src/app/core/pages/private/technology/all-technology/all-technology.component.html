@@ -1,11 +1,18 @@
 <p>all-technology works!</p>
 
-<app-button-admin [routerLink]="'/add-technology-admin'"/>
+<!-- Button to navigate to the add technology admin page - START -->
+<ng-container *ngIf="technology$ && !loading && !error">
+  <app-button-admin [routerLink]="'/add-technology-admin'"/>
+</ng-container>
+<!-- Button to navigate to the technology blog admin page - END -->
 
+<!-- Container to check if technologies data is available, and show content or loading template accordingly - START -->
 <ng-container *ngIf="technology$ | async as technologies">
 
+  <!-- Loop through each technology and display its information along with action buttons - START -->
   <div *ngFor="let technology of technologies">
 
+    <!-- Component to display technology data - START -->
     <app-show-data
       [_id]="technology._id"
       [technology]="technology.technology"
@@ -14,14 +21,34 @@
       [vsebina]="technology.subtitle"
       [datum_vnosa]="technology.datum_vnosa"
     />
+    <!-- Component to display technology data - END -->
 
+    <!-- Buttons for editing and deleting technology, and opening a dialog - START -->
     <app-button-admin
       (dialogRead)="openDialog(technology._id)"
       [routerLinkId]="['/edit-technology-admin', technology._id ?? '']"
       (delete)="deleteTechnology(technology._id)"
     />
+    <!-- Buttons for editing and deleting technology, and opening a dialog - END -->
+
   </div>
+  <!-- Loop through each technology and display its information along with action buttons - END -->
 
 </ng-container>
+<!-- Container to check if technologies data is available, and show content or loading template accordingly - END -->
 
+<!-- Error message display if the data fetching fails - START -->
+<ng-container *ngIf="error && !loading">
+  {{ error }}
+</ng-container>
+<!-- Error message display if the data fetching fails - END -->
+
+<!-- Loading spinner - START -->
+<ng-container *ngIf="loading">
+  <app-loading/>
+</ng-container>
+<!-- Loading spinner - END -->
+
+<!-- Button to navigate back to the previous page - START -->
 <app-go-back/>
+<!-- Button to navigate back to the previous page - END -->

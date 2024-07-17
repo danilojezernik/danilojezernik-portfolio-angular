@@ -3,17 +3,18 @@ import { CommonModule } from '@angular/common';
 import { TechnologyService } from "../../../../../services/api/technology.service";
 import { MatDialog } from "@angular/material/dialog";
 import { Technology } from "../../../../../models/technology";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, catchError, finalize, Observable, of } from "rxjs";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component";
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
+import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 
 @Component({
   selector: 'app-all-technology-technology',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, ShowDataComponent, TranslateModule, ButtonAdminComponent ],
+  imports: [ CommonModule, GoBackComponent, ShowDataComponent, TranslateModule, ButtonAdminComponent, LoadingComponent ],
   templateUrl: './all-technology.component.html'
 })
 export class AllTechnologyComponent {
@@ -22,6 +23,12 @@ export class AllTechnologyComponent {
   private _technologyService = inject(TechnologyService)
   // Inject the MatDialog service to open dialogs
   private _dialog = inject(MatDialog)
+  private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
+
+  // Property to store error messages, initialized to null
+  error: string | null = null
+  // Property to track loading state, initialized to false
+  loading: boolean = false
 
   // BehaviorSubject to hold the list of all technologies
   private technologySubject = new BehaviorSubject<Technology[]>([]);
@@ -32,7 +39,6 @@ export class AllTechnologyComponent {
   technologyById$!: Observable<Technology>
 
   constructor() {
-    // Initialize the technology list
     this.loadTechnologies();
   }
 
@@ -40,7 +46,23 @@ export class AllTechnologyComponent {
    * Method to load all technologies and update the BehaviorSubject
    */
   loadTechnologies() {
-    this._technologyService.getAllTechnologyAdmin().subscribe(technologies => {
+    this.loading = true; // Set loading state to true before making the API call
+
+    this._technologyService.getAllTechnologyAdmin().pipe(
+      // Handle any errors that occur during the fetching process
+      catchError((error) => {
+        // Extract and translate the error message, then set it to the error property
+        const message = error.message
+        this._translateService.get(message).subscribe((translation) => {
+          this.error = translation
+        })
+        // Return an observable of an empty array to handle errors gracefully
+        return of([] as Technology[])
+      }),
+      // Ensure loading state is set to false once the API call is complete
+      finalize(() => this.loading = false)
+    ).subscribe(technologies => {
+      this.loading = false; // Set loading state to false after receiving the response
       this.technologySubject.next(technologies);
     });
   }
