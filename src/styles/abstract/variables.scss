@@ -2,12 +2,25 @@ $inline-block: inline-block;
 $block: block;
 $halp-percent: 50%;
 
-/* IMAGE ONE */
-$color-first: #201a1c; /* RGB: (32, 26, 28) */
-$color-second: #c117d4; /* RGB: (193, 23, 212) */
-$color-third: #f90f63; /* RGB: (249, 15, 99) */
-$color-fourth: #4f233d; /* RGB: (79, 35, 61) */
-$color-fifth: #eccbdd; /* RGB: (236, 203, 221) */
+$main-text-color: #ffffff;
+$black-text-color: #000000;
+
+/* MAIN COLORS */
+$color-first-hex: #151323;
+$color-first-rgb: rgb(32, 26, 28);
+
+$color-second-hex: #c117d4;
+$color-second-rgb: rgb(193, 23, 212);
+
+$color-third-hex: #f90f63;
+$color-third-rgb: rgb(249, 15, 99);
+
+
+$color-fourth-hex: #4f233d;
+$color-fourth-rgb: rgb(79, 35, 61);
+
+$color-fifth-hex: #eccbdd;
+$color-fifth-rgb: rgb(236, 203, 221);
 
 /* IMAGE 2 */
 $color-first: #151323; /* RGB: (21, 19, 35) */
@@ -16,3 +29,34 @@ $color-third: #74707a; /* RGB: (116, 112, 122) */
 $color-fourth: #e9d0de; /* RGB: (233, 208, 222) */
 $color-fifth: #502f4c; /* RGB: (80, 47, 76) */
 
+/************
+ ADMIN STYLE
+*************/
+
+$dialog-bg: #1a1a1c;
+
+/************
+ ADMIN STYLE
+*************/
+
+/* ADMIN BUTTONS STYLE */
+$padding-button-admin: 8px 32px;
+$bold-font-weight: 700;
+$letter-spacing-admin: 1px;
+$border-radius-button-admin: 15px 50px;
+
+/* BUTTON COLORS */
+$color-add-start: #f90f63;
+$color-add-end: #c117d4;
+
+$color-read-start: #1E90FF;
+$color-read-end: #00BFFF;
+
+$color-edit-start: #32CD32;
+$color-edit-end: #3CB371;
+
+$color-delete-start: #FF4500;
+$color-delete-end: #FF6347;
+
+$color-back-start: #A9A9A9;
+$color-back-end: #D3D3D3;

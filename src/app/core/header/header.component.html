@@ -8,7 +8,7 @@
     <ng-container
       *ngIf="(!menu.condition) || (menu.condition === 'loggedIn' && (isLoggedIn$ | async)) || (menu.condition === 'loggedOut' && !(isLoggedIn$ | async))">
       <a class="pe-3" [routerLink]="menu.path"
-         (click)="menu.path === '/logout' ? logOut() : null">{{ menu.menu | translate }}</a>
+         (click)="menu.path === '/logout' ? logOut() : null">{{ menu.menu | translate }}</a><br>
     </ng-container>
     <!-- Conditionally render menu items based on login status - END -->
 

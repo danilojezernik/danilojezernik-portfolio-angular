@@ -1,1 +1,28 @@
 <p>technology-by-id works!</p>
+
+<!-- Container to check if technology data is available and show content accordingly - START -->
+<ng-container *ngIf="technology$ | async as technology; else loadingData">
+
+  <!-- Display technology data if available and no error - START -->
+  <div *ngIf="technology$ && !error">
+    Naslov: {{technology.title}}<br>
+    Podnaslov: {{technology.subtitle}}<br>
+    Vsebina: {{technology.vsebina}}<br>
+    Datum vnosa: {{technology.datum_vnosa | date}}
+  </div>
+  <!-- Display technology data if available and no error - END -->
+
+  <!-- Error message display if the data fetching fails - START -->
+  <ng-container *ngIf="error">
+    {{error}}
+  </ng-container>
+  <!-- Error message display if the data fetching fails - END -->
+
+</ng-container>
+<!-- Container to check if technology data is available and show content accordingly - END -->
+
+<!-- Template to show loading spinner and text while data is being fetched - START -->
+<ng-template #loadingData>
+  <app-loading></app-loading>
+</ng-template>
+<!-- Template to show loading spinner and text while data is being fetched - END -->

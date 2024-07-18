@@ -7,7 +7,7 @@
   <ng-container *ngIf="!error">
 
     <!-- Looping through the technologies array and displaying its properties - START -->
-    <div class="pb-3" *ngFor="let technology of technologies">
+    <div class="pb-3" *ngFor="let technology of technologies" [routerLink]="['/technology/', technology._id]">
       {{ technology.title }} <br>
       {{ technology.subtitle }} <br>
       {{ technology.vsebina }} <br>

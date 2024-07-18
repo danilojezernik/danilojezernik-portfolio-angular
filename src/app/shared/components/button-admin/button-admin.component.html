@@ -1,20 +1,20 @@
 <ng-container *ngIf="routerLink">
-  <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" [routerLink]="routerLink">
+  <button class="btn-admin add" [routerLink]="routerLink">
     {{ BUTTONS.add | translate }}
   </button>
 </ng-container>
 
 <ng-container *ngIf="routerLinkId">
-  <button class="bg-amber-400 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded" [routerLink]="routerLinkId">
+  <button class="btn-admin edit" [routerLink]="routerLinkId">
     {{ BUTTONS.edit | translate }}
   </button>
 </ng-container>
 
 <ng-container *ngIf="dialogRead && !routerLink">
-  <button class="bg-amber-400 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded" (click)="openDialog()">
+  <button class="btn-admin read" (click)="openDialog()">
     {{ BUTTONS.read | translate }}
   </button>
-  <button class="bg-red-400 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="deleteData()">
+  <button class="btn-admin delete" (click)="deleteData()">
     {{ BUTTONS.delete | translate }}
   </button>
 </ng-container>

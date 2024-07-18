@@ -1,5 +1,7 @@
+@import "../abstract/variables";
+
 /*********************************************
-      Spinner animation and display mixin
+     1. Spinner animation and display mixin
 *********************************************/
 
 @mixin loader-animation-before($display) {
@@ -13,10 +15,23 @@
 }
 
 /***********************************************************
-    Position of the component in the middle - absolute
+   2. Position of the component in the middle - absolute
 ************************************************************/
 @mixin position-absolute-center($percent) {
   top: $percent;
   left: $percent;
   transform: translate(-$percent, -$percent);
+}
+
+
+/***********************************************************
+   3. Button hover effect styles
+************************************************************/
+@mixin button-hover-effect($color-start, $color-end) {
+  background: $color-start;
+  background: linear-gradient(90deg, $color-start 0%, $color-end 64%);
+  &:hover {
+    background: darken($color-start, 10%);
+    background: linear-gradient(90deg, darken($color-start, 10%) 0%, darken($color-end, 10%) 64%);
+  }
 }

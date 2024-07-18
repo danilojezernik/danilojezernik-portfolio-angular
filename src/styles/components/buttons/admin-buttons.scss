@@ -1,0 +1,38 @@
+// IMPORT VARIABLES AND MIXIN
+@import "../../abstract/variables";
+@import "../../abstract/mixin";
+
+/*************
+ ADMIN BUTTONS
+ included:
+  3. Button hover effect styles mixin
+**************/
+
+.btn-admin {
+  color: $main-text-color;
+  font-weight: $bold-font-weight;
+  letter-spacing: $letter-spacing-admin;
+  padding: $padding-button-admin;
+  border-radius: $border-radius-button-admin;
+
+  &.add {
+    @include button-hover-effect($color-add-start, $color-add-end);
+  }
+
+  &.read {
+    @include button-hover-effect($color-read-start, $color-read-end);
+  }
+
+  &.edit {
+    @include button-hover-effect($color-edit-start, $color-edit-end);
+  }
+
+  &.delete {
+    @include button-hover-effect($color-delete-start, $color-delete-end);
+  }
+
+  &.back {
+    color: $black-text-color;
+    @include button-hover-effect($color-back-start, $color-back-end);
+  }
+}

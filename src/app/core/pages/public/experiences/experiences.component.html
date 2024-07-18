@@ -1,20 +1,33 @@
 <p class="py-5 text-2xl">experiences works!</p>
+
 <ng-container *ngIf="experiences$ | async as experiences; else loadingData">
 
-  <div *ngFor="let experience of experiences">
-    {{experience.title}}<br>
-    {{experience.stack}}<br>
-    {{experience.framework}}<br>
-    {{experience.programming_language}}<br>
-    {{experience.company}}<br>
-    {{experience.employee}}<br>
-    {{experience.tasks}}<br>
-    {{experience.company_start | date}}<br>
-    {{experience.company_end}}<br>
-    {{experience.datum_vnosa | date}}<br>
-  </div>
+  <!-- Container to handle the scenario when there is no error - START -->
+  <ng-container *ngIf="!error">
+    <div *ngFor="let experience of experiences">
+      {{experience.title}}<br>
+      {{experience.stack}}<br>
+      {{experience.framework}}<br>
+      {{experience.programming_language}}<br>
+      {{experience.company}}<br>
+      {{experience.employee}}<br>
+      {{experience.tasks}}<br>
+      {{experience.company_start | date}}<br>
+      {{experience.company_end}}<br>
+      {{experience.datum_vnosa | date}}<br>
+    </div>
+    <!-- Looping through the users array and displaying its properties - END -->
 
+  </ng-container>
+  <!-- Container to handle the scenario when there is no error - END -->
+
+  <!-- Error message display if the data fetching fails - START -->
+  <ng-container *ngIf="error">
+    {{ error }}
+  </ng-container>
+  <!-- Error message display if the data fetching fails - END -->
 </ng-container>
+<!-- Container that uses Angular's async pipe to handle the observable users$ - END -->
 
 <!-- Template to show loading spinner and text while data is being fetched - START -->
 <ng-template #loadingData>

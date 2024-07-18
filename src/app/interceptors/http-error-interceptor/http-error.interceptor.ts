@@ -35,7 +35,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
            */
           scan((retryCount, error) => {
             // Stop retrying after 3 attempts or if the error is not retryable
-            if (retryCount >= 3 || !this.shouldRetry(error)) {
+            // TODO: ADD 3 TO RETRY COUNT
+            if (retryCount >= 1 || !this.shouldRetry(error)) {
               throw error;
             }
             // Increment the retry count

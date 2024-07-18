@@ -11,6 +11,7 @@ import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import { DialogAdminService } from "../../../../../services/dialog-admin/dialog-admin.service";
 
 /**
  * @Component BlogAllAdminComponent
@@ -29,6 +30,7 @@ export class BlogAllAdminComponent {
   // Injected instances: BlogService for blog data, MatDialog for dialogs, and TranslateService for translations
   private _blogService = inject(BlogService); // Injected BlogService instance
   private _dialog = inject(MatDialog); // Injected MatDialog instance for dialogs
+  private _openDialog = inject(DialogAdminService)
   private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
 
   // Property to store error messages, initialized to null
@@ -112,7 +114,7 @@ export class BlogAllAdminComponent {
   openDialog(id?: string) {
     if (id) {
       this.blogById$ = this._blogService.getBlogById(id); // Fetch blog post details by ID
-      openDialogUtil(this._dialog, id, this.getBlogById.bind(this), this.blogById$, 'title', 'blog'); // Open dialog with fetched data
+      this._openDialog.openDialogUtil(id, this.getBlogById.bind(this), this.blogById$, 'title', 'blog'); // Open dialog with fetched data
     }
   }
 }

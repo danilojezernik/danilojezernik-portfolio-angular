@@ -72,7 +72,6 @@ export class UserEditByIdAdminComponent implements OnInit {
         return of([] as User[]);
       })
     ).subscribe();
-
   }
 
   /**

@@ -15,7 +15,7 @@ import { TranslateService } from "@ngx-translate/core";
 })
 export class BlogByIdComponent implements OnInit {
 
-  private _route = inject(ActivatedRoute)
+  private _activatedRouter = inject(ActivatedRoute)
   private _blogService = inject(BlogService)
   private _translateService = inject(TranslateService)
 
@@ -25,7 +25,7 @@ export class BlogByIdComponent implements OnInit {
   blogId$!: Observable<BlogModel>
 
   ngOnInit() {
-    const blogId = this._route.snapshot.paramMap.get('id') || ''
+    const blogId = this._activatedRouter.snapshot.paramMap.get('id') || ''
 
     if (blogId)
       this.getBlogById(blogId)

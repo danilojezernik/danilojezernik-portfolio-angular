@@ -5,12 +5,8 @@
 
 @import "styles/components/spinner/spinner";
 @import "styles/animation/spinner";
+@import "styles/global";
+@import "styles/components/buttons/admin-buttons";
 
-html, body {
-  height: 100%;
-}
+@import "styles/angular/dialog-background";
 
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}

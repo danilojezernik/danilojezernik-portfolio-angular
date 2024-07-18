@@ -5,11 +5,12 @@ import { catchError, Observable, of } from "rxjs";
 import { Technology } from "../../../../../models/technology";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import { TranslateService } from "@ngx-translate/core";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-technology-all',
   standalone: true,
-  imports: [ CommonModule, LoadingComponent ],
+  imports: [ CommonModule, LoadingComponent, RouterLink ],
   templateUrl: './technology-all.component.html'
 })
 export class TechnologyAllComponent {
