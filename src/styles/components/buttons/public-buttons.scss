@@ -1,0 +1,25 @@
+// IMPORT VARIABLES AND MIXIN
+@import "../../abstract/variables";
+@import "../../abstract/mixin";
+
+/*************
+ ADMIN BUTTONS
+ included:
+  3. Button hover effect styles mixin
+**************/
+
+.btn-public {
+  color: $main-text-color;
+  font-weight: $bold-font-weight;
+  letter-spacing: $letter-spacing-admin;
+  padding: $padding-button-login;
+
+  &.login {
+    @include button-hover-effect($color-add-start, $color-add-end);
+  }
+
+  &.translate {
+    @include button-hover-effect($color-edit-start, $color-edit-end);
+  }
+
+}

@@ -28,16 +28,18 @@ export enum BUTTONS {
 
 // Menu items for the header component
 // MENU ITEMS FOR HEADER COMPONENT
-export const MENU: { menu: string, path: string, condition?: 'loggedIn' | 'loggedOut' }[] = [
+export const MENU: { menu: string, path: string}[] = [
   {menu: 'menu.home', path: '/'},
   {menu: 'menu.about', path: '/about'},
-  {menu: 'menu.resources', path: ''},
   {menu: 'menu.users', path: '/users'},
   {menu: 'menu.contact', path: '/contact'},
-  {menu: 'menu.register', path: '/register'},
+  {menu: 'menu.register', path: '/register'}
+];
+
+export const LOGIN_LOGOUT = [
   {menu: 'menu.login', path: '/login', condition: 'loggedOut'},
   {menu: 'menu.logout', path: '/logout', condition: 'loggedIn'},
-];
+]
 
 export const ABOUT_ME: { menu: string, path: string }[] = [
   {menu: 'menu.biography', path: '/biography'},

@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'background-menu': 'rgb(32, 26, 28)'
+        'background-menu': 'rgb(32, 26, 28)',
       }
     },
   },

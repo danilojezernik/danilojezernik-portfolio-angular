@@ -6,6 +6,8 @@ $main-text-color: #ffffff;
 $black-text-color: #000000;
 
 /* MAIN COLORS */
+$color-zero-hex: #131313;
+
 $color-first-hex: #151323;
 $color-first-rgb: rgb(32, 26, 28);
 
@@ -44,6 +46,9 @@ $padding-button-admin: 8px 32px;
 $bold-font-weight: 700;
 $letter-spacing-admin: 1px;
 $border-radius-button-admin: 15px 50px;
+
+/* PUBLIC BUTTONS STYLE */
+$padding-button-login: 8px 16px;
 
 /* BUTTON COLORS */
 $color-add-start: #f90f63;

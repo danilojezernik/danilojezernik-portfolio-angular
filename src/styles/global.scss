@@ -3,14 +3,14 @@
 @import "./abstract/mixin";
 
 html, body {
-  height: 100%;
+
 }
 
 body {
   margin: 0;
   padding: 0;
   color: $main-text-color;
-  background-color: $color-first;
+  background-color: $color-zero-hex;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -18,4 +18,7 @@ input, option, select, textarea {
   color: black;
 }
 
-
+/* Main width of the container */
+.container-width {
+  max-width: 1216px;
+}
