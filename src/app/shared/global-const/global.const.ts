@@ -28,34 +28,37 @@ export enum BUTTONS {
 
 // Menu items for the header component
 // MENU ITEMS FOR HEADER COMPONENT
-export const MENU: { menu: string, path: string}[] = [
+export const MENU: { menu: string, path: string }[] = [
   {menu: 'menu.home', path: '/'},
   {menu: 'menu.about', path: '/about'},
   {menu: 'menu.users', path: '/users'},
+  {menu: 'menu.blog', path: '/blog'},
+  {menu: 'menu.github', path: '/github'},
   {menu: 'menu.contact', path: '/contact'},
   {menu: 'menu.register', path: '/register'}
-];
+]
 
-export const LOGIN_LOGOUT = [
+// MENU ITEMS FOR LOGIN AND LOGOUT HEADER COMPONENT
+export const LOGIN_LOGOUT: { menu: string, path: string, condition: string }[] = [
   {menu: 'menu.login', path: '/login', condition: 'loggedOut'},
   {menu: 'menu.logout', path: '/logout', condition: 'loggedIn'},
 ]
 
+// LINK ITEMS FOR ABOUT ME PAGE COMPONENT
 export const ABOUT_ME: { menu: string, path: string }[] = [
   {menu: 'menu.biography', path: '/biography'},
   {menu: 'menu.experiences', path: '/experiences'},
   {menu: 'menu.media', path: '/media'},
 ]
 
-// MENU ITEMS FOR HEADER COMPONENT
-export const DROPDOWN: { menu: string, path: string }[] = [
+// LINK ITEMS FOR MY RESOURCES FOR ABOUT ME COMPONENT
+export const MY_RESOURCES: { menu: string, path: string }[] = [
   {menu: 'menu.projects', path: '/projects'},
   {menu: 'menu.technology', path: '/technology'},
-  {menu: 'menu.blog', path: '/blog'},
   {menu: 'menu.github', path: '/github'},
   {menu: 'menu.books', path: '/books'},
   {menu: 'menu.links', path: '/links'},
-];
+]
 
 
 // Menu items for the admin menu component
@@ -71,7 +74,7 @@ export const ADMIN_MENU: { menu: string, path: string }[] = [
   {menu: 'menu.book', path: '/books-admin'},
   {menu: 'menu.newsletter', path: '/newsletter-admin'},
   {menu: 'menu.subscriber', path: '/subscriber-admin'},
-];
+]
 
 // Language translations for the header component and Translate service
 
