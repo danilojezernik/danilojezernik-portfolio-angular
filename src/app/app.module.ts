@@ -38,6 +38,7 @@ import { MatDialogModule } from "@angular/material/dialog";
         deps: [ HttpClient ]
       }
     })
+
   ],
   providers: [
     {

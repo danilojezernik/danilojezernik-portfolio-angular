@@ -79,6 +79,7 @@ import {
 import {
   EditSubscriberAdminComponent
 } from "./core/pages/private/subscriber/edit-subscriber-admin/edit-subscriber-admin.component";
+import {AboutComponent} from "./core/pages/public/about/about.component";
 
 const routes: Routes = [
   {
@@ -98,6 +99,17 @@ const routes: Routes = [
   {
     path: 'experiences',
     component: ExperiencesComponent
+  },
+
+  // ---------------------------
+  //     EXPERIENCES ROUTES
+  // ---------------------------
+
+  // PUBLIC
+
+  {
+    path: 'about',
+    component: AboutComponent
   },
 
   // PRIVATE
