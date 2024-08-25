@@ -2,7 +2,7 @@
 <ng-container *ngIf="images$ | async as image">
 
   <div *ngFor="let imgName of image.images">
-    <img [src]="_getImageByName.getImageUrl(imgName)" [alt]="imgName" />
+    <img [src]="_getImageByName.getImageUrl(imgName)" class="max-h-80" [alt]="imgName" />
   </div>
 
 </ng-container>

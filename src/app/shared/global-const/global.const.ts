@@ -33,6 +33,7 @@ export const MENU: { menu: string, path: string }[] = [
   {menu: 'menu.about', path: '/about'},
   {menu: 'menu.users', path: '/users'},
   {menu: 'menu.blog', path: '/blog'},
+  {menu: 'menu.books', path: '/books'},
   {menu: 'menu.github', path: '/github'},
   {menu: 'menu.contact', path: '/contact'},
   {menu: 'menu.register', path: '/register'}
