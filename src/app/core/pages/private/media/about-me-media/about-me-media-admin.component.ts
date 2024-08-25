@@ -3,10 +3,9 @@ import {CommonModule} from '@angular/common';
 import {BehaviorSubject, catchError, finalize, of} from "rxjs";
 import {MyGalleryService} from "../../../../../services/api/my-gallery.service";
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
-import {Clipboard} from "@angular/cdk/clipboard";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
+import {ClipboardCopyService} from "../../../../../services/clipboard-copy/clipboard-copy.service";
 
 /**
  * @Component AboutMeMediaAdminComponent
@@ -26,8 +25,7 @@ export class AboutMeMediaAdminComponent implements OnInit {
   protected _getImageService = inject(GetImageService)
 
   // Inject services to copy image name to clipboard
-  private _clipboard = inject(Clipboard)
-  private _snack = inject(MatSnackBar)
+  private _clipboardService = inject(ClipboardCopyService)
 
   // BehaviorSubject to keep track of images and their observable stream
   private _imageSubject = new BehaviorSubject<{ images: string[] }>({images: []});
@@ -151,9 +149,6 @@ export class AboutMeMediaAdminComponent implements OnInit {
   }
 
   copyToClipboard(img: string) {
-    this._clipboard.copy(img)
-    this._snack.open(`Shranjeno v odložišče: ${img}`, 'Close', {
-      duration: 5000 // Duration in milliseconds (5000ms = 5 seconds)
-    })
+    this._clipboardService.copyImageName(img)
   }
 }

@@ -10,5 +10,6 @@ export interface Projects {
   content: string;
   github: string;
   website: string;
+  image: string;
   datum_vnosa: string;
 }

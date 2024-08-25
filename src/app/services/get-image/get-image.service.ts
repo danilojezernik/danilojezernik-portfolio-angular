@@ -27,4 +27,11 @@ export class GetImageService {
     return `${environment.blogUrl.publicMedia}${imageName}`
   }
 
+  /**
+   * Use function to get projects pictures
+   */
+  public getProjectImageUrl(imageName: string): string {
+    return `${environment.projectsUrl.publicMedia}${imageName}`
+  }
+
 }

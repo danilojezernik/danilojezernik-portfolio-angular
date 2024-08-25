@@ -3,8 +3,6 @@
 <div *ngIf="naslov">Naslov: {{ naslov }}</div>
 <div *ngIf="kategorija">Kategorija: {{ kategorija }}</div>
 <div *ngIf="podnaslov">Podnaslov: {{ podnaslov }}</div>
-<div *ngIf="vsebina">Vsebina: {{ vsebina }}</div>
-<div *ngIf="image">Image: <img [src]="image" class="max-h-40" alt="Image"></div>
 <div *ngIf="datum_vnosa">Datum vnosa: {{ datum_vnosa | date:'short' }}</div>
 <div *ngIf="stack">Stack: {{ stack }}</div>
 <div *ngIf="framework">Framework: {{ framework }}</div>
@@ -15,7 +13,6 @@
 <div *ngIf="company_start">Company Start: {{ company_start | date }}</div>
 <div *ngIf="company_end">Company End: {{ company_end | date }}</div>
 <div *ngIf="blog_id">Blog ID: {{ blog_id }}</div>
-<div *ngIf="content">Content: {{ content }}</div>
 <div *ngIf="author">Author: {{ author }}</div>
 <div *ngIf="name">Name: {{ name }}</div>
 <div *ngIf="surname">Surname: {{ surname }}</div>
@@ -36,3 +33,6 @@
 <div *ngIf="registered !== undefined">Registered: {{ registered }}</div>
 <div *ngIf="blog_notification !== undefined">Blog Notification: {{ blog_notification }}</div>
 <div *ngIf="tehnologija">Tehnologija: {{ tehnologija }}</div>
+<div *ngIf="image">Image: <strong>{{ image }}</strong></div>
+<div *ngIf="vsebina">Vsebina: {{ vsebina }}</div>
+<div *ngIf="content">Content: {{ content }}</div>

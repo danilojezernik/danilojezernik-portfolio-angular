@@ -1,22 +1,22 @@
 import {Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
 import {BehaviorSubject, catchError, finalize, of} from "rxjs";
-import {BlogService} from "../../../../../services/api/blog.service";
-import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
+import {ProjectsService} from "../../../../../services/api/projects.service";
 import {ClipboardCopyService} from "../../../../../services/clipboard-copy/clipboard-copy.service";
 
 @Component({
-  selector: 'app-blogs-media',
+  selector: 'app-projects-media',
   standalone: true,
-  imports: [CommonModule, GoBackComponent, BreadcrumbAdminComponent],
-  templateUrl: './blogs-media-admin.component.html'
+  imports: [CommonModule, BreadcrumbAdminComponent, GoBackComponent],
+  templateUrl: './projects-media-admin.component.html'
 })
-export class BlogsMediaAdminComponent {
+export class ProjectsMediaAdminComponent {
 
   // Inject MyGalleryService to interact with backend services for media management
-  protected _blogService = inject(BlogService);
+  protected _projectsService = inject(ProjectsService);
   protected _getImageService = inject(GetImageService)
 
   // Inject services to copy image name to clipboard
@@ -56,7 +56,7 @@ export class BlogsMediaAdminComponent {
   getAllImages(): void {
     this.loading = true; // Set loading state to true before making the API call
 
-    this._blogService.getAllBlogsImages().pipe(
+    this._projectsService.getAllProjectsImages().pipe(
       catchError(error => {
         // Capture and display error message
         this.error = error.message;
@@ -95,7 +95,7 @@ export class BlogsMediaAdminComponent {
       // Set upload status to "Uploading..."
       this._uploadStatusSubject.next('Uploading...');
 
-      this._blogService.uploadBlogImage(this.selectedFile).pipe(
+      this._projectsService.uploadProjectImage(this.selectedFile).pipe(
         catchError(error => {
           // Set upload status to error message if upload fails
           this._uploadStatusSubject.next(`Upload failed: ${error.message}`);
@@ -127,7 +127,7 @@ export class BlogsMediaAdminComponent {
     const yes = confirm(`Ali res želiš izbrisati sliko: ${filename}?`)
 
     if (yes) {
-      this._blogService.deleteBlogImageByName(filename).pipe(
+      this._projectsService.deleteProjectImageByName(filename).pipe(
         catchError(error => {
           // Capture and display error message
           this.error = error.message;

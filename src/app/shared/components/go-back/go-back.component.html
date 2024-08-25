@@ -3,12 +3,37 @@
   {{ 'button.back' | translate }}
 </button>
 
+
+<!-- Button shown when adding something - START -->
 <button *ngIf="booksAdmin" style="position: fixed; bottom: 50px; right: 0; margin: 10px" class="btn-admin back"
-        routerLink="/media-books">
+routerLink="/media-books">
   {{ 'button.books-admin' | translate }}
 </button>
 
 <button *ngIf="blogsAdmin" style="position: fixed; bottom: 50px; right: 0; margin: 10px" class="btn-admin back"
-        routerLink="/media-blogs">
+routerLink="/media-blogs">
   {{ 'button.blogs-admin' | translate }}
 </button>
+
+<button *ngIf="projectsAdmin" style="position: fixed; bottom: 50px; right: 0; margin: 10px" class="btn-admin back"
+routerLink="/media-projects">
+  {{ 'button.media-projects' | translate }}
+</button>
+<!-- Button shown when adding something - END -->
+
+<!-- Button shown when on media page - START -->
+<button *ngIf="booksMediaAdmin" style="position: fixed; bottom: 50px; right: 0; margin: 10px" class="btn-admin back"
+routerLink="/books-admin">
+  {{ 'button.to-books' | translate }}
+</button>
+
+<button *ngIf="blogsMediaAdmin" style="position: fixed; bottom: 50px; right: 0; margin: 10px" class="btn-admin back"
+routerLink="/blog-admin">
+  {{ 'button.to-blogs' | translate }}
+</button>
+
+<button *ngIf="projectsMediaAdmin" style="position: fixed; bottom: 50px; right: 0; margin: 10px" class="btn-admin back"
+routerLink="/projects-admin">
+  {{ 'button.to-projects' | translate }}
+</button>
+<!-- Button shown when on media page - END -->

@@ -31,7 +31,8 @@ export const formProjectsConfig: FormFieldConfig[] = [
   { name: 'category', label: 'Kategorija', type: 'text', validators: [ Validators.required ] },
   { name: 'content', label: 'Vsebina', type: 'textarea', validators: [ Validators.required, Validators.minLength(10) ] },
   { name: 'github', label: 'Github', type: 'text', validators: [] },
-  { name: 'website', label: 'Website', type: 'text', validators: [] }
+  { name: 'website', label: 'Website', type: 'text', validators: [] },
+  { name: 'image', label: 'Image', type: 'text', validators: [] }
 ]
 
 /**

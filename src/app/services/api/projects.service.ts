@@ -35,5 +35,26 @@ export class ProjectsService {
     return this._http.delete<Projects>(`${environment.projectsUrl.public}/${id}`)
   }
 
+  /**
+   * PUBLIC MEDIA SERVICE
+   */
+  getAllProjectsImages(): Observable<{ images: string[] }> {
+    return this._http.get<{ images: string[] }>(`${environment.projectsUrl.public}/images/`)
+  }
+
+  /**
+   * PRIVATE MEDIA SERVICE
+   */
+
+  deleteProjectImageByName(filename: string): Observable<any> {
+    return this._http.delete<any>(`${environment.projectsUrl.publicMedia}${filename}`)
+  }
+
+  uploadProjectImage(file: File): Observable<any> {
+    const formData = new FormData()
+    formData.append('file', file, file.name)
+
+    return this._http.post<any>(`${environment.projectsUrl.publicMedia}`, formData)
+  }
 
 }

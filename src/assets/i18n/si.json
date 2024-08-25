@@ -39,7 +39,11 @@
 		"books-admin": "Slike - o meni",
 		"delete": "Izbriši",
 		"edit": "Uredi",
-		"read": "Beri"
+		"media-projects": "Slike - projekti",
+		"read": "Beri",
+		"to-blogs": "Pojdi na bloge",
+		"to-books": "Pojdi do knjige",
+		"to-projects": "Pojdi na projekte"
 	},
 	"errors": {
 		"badRequest": "Neveljavna zahteva. Preverite svoje podatke.",
@@ -71,6 +75,7 @@
 		"media": "Media",
 		"media-blogs": "Slike - Blogi",
 		"media-books": "Slike - Knjige",
+		"media-projects": "Slike - Projekti",
 		"newsletter": "E-novice",
 		"projects": "Projekti",
 		"register": "Registracija",

@@ -39,7 +39,11 @@
 		"books-admin": "Media - about me",
 		"delete": "Delete",
 		"edit": "Edit",
-		"read": "Read"
+		"media-projects": "Pictures - projects",
+		"read": "Read",
+		"to-blogs": "Go to blogs",
+		"to-books": "Go to books",
+		"to-projects": "Go to projects"
 	},
 	"errors": {
 		"badRequest": "Bad Request. Please check your input.",
@@ -71,6 +75,7 @@
 		"media": "Media",
 		"media-blogs": "Pictures - Blogs",
 		"media-books": "Pictures - Books",
+		"media-projects": "Pictures - Projects",
 		"newsletter": "Newsletter",
 		"projects": "Projects",
 		"register": "Register",

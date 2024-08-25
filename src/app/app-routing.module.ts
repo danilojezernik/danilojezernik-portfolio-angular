@@ -83,6 +83,7 @@ import {AboutMeMediaAdminComponent} from "./core/pages/private/media/about-me-me
 import {MediaAdminComponent} from "./core/pages/private/media/media-admin.component";
 import {BooksMediaAdminComponent} from "./core/pages/private/media/books-media/books-media-admin.component";
 import {BlogsMediaAdminComponent} from "./core/pages/private/media/blogs-media/blogs-media-admin.component";
+import {ProjectsMediaAdminComponent} from "./core/pages/private/media/projects-media/projects-media-admin.component";
 
 const routes: Routes = [
   {
@@ -250,6 +251,11 @@ const routes: Routes = [
   {
     path: 'media-blogs',
     component: BlogsMediaAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'media-projects',
+    component: ProjectsMediaAdminComponent,
     canActivate: [ AuthGuardService ]
   },
 

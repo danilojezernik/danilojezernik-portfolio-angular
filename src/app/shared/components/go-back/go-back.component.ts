@@ -19,6 +19,17 @@ export class GoBackComponent {
   // Show button if in blog admin
   @Input() blogsAdmin?: boolean
 
+  // Show button if in projects admin
+  @Input() projectsAdmin?: boolean
+
+  // Show button if in books admin
+  @Input() booksMediaAdmin?: boolean
+
+  // Show button if in blog admin
+  @Input() blogsMediaAdmin?: boolean
+
+  // Show button if in projects admin
+  @Input() projectsMediaAdmin?: boolean
 
   goBack() {
     this._back.back()

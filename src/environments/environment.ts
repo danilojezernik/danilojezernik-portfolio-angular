@@ -5,6 +5,7 @@ export const environment = {
   projectsUrl: {
     public: 'http://localhost:3000/projects',
     admin: 'http://localhost:3000/projects/admin/',
+    publicMedia: 'http://localhost:3000/projects/media/',
   },
 
   // BLOG API

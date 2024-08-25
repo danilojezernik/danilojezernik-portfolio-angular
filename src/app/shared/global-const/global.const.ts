@@ -82,6 +82,7 @@ export const MEDIA_MENU = [
   {menu: 'menu.about-me-media', path: '/media-about-me'},
   {menu: 'menu.media-books', path: '/media-books'},
   {menu: 'menu.media-blogs', path: '/media-blogs'},
+  {menu: 'menu.media-projects', path: '/media-projects'},
 ]
 
 // Language translations for the header component and Translate service
