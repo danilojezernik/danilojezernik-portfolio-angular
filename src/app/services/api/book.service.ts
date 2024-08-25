@@ -40,4 +40,30 @@ export class BookService {
   deleteBookById(id: string): Observable<Book> {
     return this._http.delete<Book>(`${environment.bookUrl.public}/${id}`)
   }
+
+  /**
+   * PUBLIC MEDIA SERVICE
+   */
+  getAllBookImages(): Observable<{ images: string[] }> {
+    return this._http.get<{ images: string[] }>(`${environment.bookUrl.public}/images/`)
+  }
+
+  getBookImageByName(filename: string): Observable<Blob> {
+    return this._http.get(`${environment.bookUrl.public}`, { responseType: 'blob'})
+  }
+
+  uploadBookImage(file: File): Observable<any> {
+    const formData = new FormData()
+    formData.append('file', file, file.name)
+
+    return this._http.post<any>(`${environment.bookUrl.publicMedia}`, formData)
+  }
+
+  deleteBookImageByName(filename: string): Observable<any> {
+    return this._http.delete<any>(`${environment.bookUrl.public}/${filename}`)
+  }
+
+  /**
+   * PRIVATE MEDIA SERVICE
+   */
 }

@@ -28,8 +28,8 @@
   <div class="flex flex-wrap justify-center gap-2 w-full">
     <!-- Display images and provide delete buttons -->
     <ng-container *ngIf="images$ | async as imageData">
-      <div *ngFor="let imgName of imageData.images" class="flex flex-col items-center border border-red-600">
-        <img [src]="_getImageService.getImageUrl(imgName)" class="max-h-32" alt="Image"/>
+      <div *ngFor="let imgName of imageData.images" class="flex flex-col items-center">
+        <img [src]="_getImageService.getImageUrl(imgName)" class="max-h-40 border border-red-600" alt="Image"/>
         <button (click)="deleteImage(imgName)" class="m-0 bg-red-500 text-white px-2 py-1 w-full">Delete</button>
       </div>
     </ng-container>

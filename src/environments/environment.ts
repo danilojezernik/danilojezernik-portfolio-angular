@@ -22,6 +22,7 @@ export const environment = {
   bookUrl: {
     public: 'http://localhost:3000/book',
     admin: 'http://localhost:3000/book/admin/',
+    publicMedia: 'http://localhost:3000/book/media/',
   },
 
   // NEWSLETTER API
