@@ -10,11 +10,12 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 @Component({
   selector: 'app-experiences-admin',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent ],
+    imports: [CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './all-experiences-admin.component.html'
 })
 export class AllExperiencesAdminComponent {

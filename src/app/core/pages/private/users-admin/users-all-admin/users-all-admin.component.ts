@@ -11,6 +11,7 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component UsersAllAdminComponent
@@ -21,7 +22,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 @Component({
   selector: 'app-users-admin',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, RouterLink, MatDialogModule, ShowDataComponent, TranslateModule, ButtonAdminComponent, LoadingComponent ],
+    imports: [CommonModule, GoBackComponent, RouterLink, MatDialogModule, ShowDataComponent, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './users-all-admin.component.html'
 })
 export class UsersAllAdminComponent {

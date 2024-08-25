@@ -11,6 +11,7 @@ import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { TranslateService } from "@ngx-translate/core";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component AllBooksAdminComponent
@@ -20,7 +21,7 @@ import {GetImageService} from "../../../../../services/get-image/get-image.servi
 @Component({
   selector: 'app-all-books-admin',
   standalone: true,
-  imports: [ CommonModule, ButtonAdminComponent, GoBackComponent, ShowDataComponent, LoadingComponent ],
+  imports: [CommonModule, ButtonAdminComponent, GoBackComponent, ShowDataComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './all-books-admin.component.html'
 })
 export class AllBooksAdminComponent {

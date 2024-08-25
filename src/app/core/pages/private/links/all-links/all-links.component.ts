@@ -11,6 +11,7 @@ import { BehaviorSubject, catchError, finalize, Observable, of } from "rxjs";
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component AllLinksComponent
@@ -21,7 +22,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 @Component({
   selector: 'app-all-links',
   standalone: true,
-  imports: [ CommonModule, ShowDataComponent, TranslateModule, RouterLink, ButtonAdminComponent, GoBackComponent, MatDialogModule, LoadingComponent ],
+    imports: [CommonModule, ShowDataComponent, TranslateModule, RouterLink, ButtonAdminComponent, GoBackComponent, MatDialogModule, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './all-links.component.html'
 })
 export class AllLinksComponent {

@@ -10,6 +10,7 @@ import { ShowDataComponent } from "../../../../../shared/components/show-data/sh
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { TranslateService } from "@ngx-translate/core";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component AllNewsletterAdminComponent
@@ -20,7 +21,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 @Component({
   selector: 'app-all-newsletter-admin',
   standalone: true,
-  imports: [ CommonModule, ButtonAdminComponent, GoBackComponent, ShowDataComponent, LoadingComponent ],
+    imports: [CommonModule, ButtonAdminComponent, GoBackComponent, ShowDataComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './all-newsletter-admin.component.html'
 })
 export class AllNewsletterAdminComponent {

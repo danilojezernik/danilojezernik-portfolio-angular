@@ -10,6 +10,7 @@ import { formBlogConfig } from "../../../../../shared/global-const/form-config";
 import { BlogModel } from "../../../../../models/blog.model";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import { TranslateService } from "@ngx-translate/core";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component BlogEditByIdAdminComponent
@@ -19,7 +20,7 @@ import { TranslateService } from "@ngx-translate/core";
 @Component({
   selector: 'app-blog-edit-by-id-admin',
   standalone: true,
-  imports: [ CommonModule, ReactiveFormsModule, FormsModule, GoBackComponent, ReusableFormEditComponent, LoadingComponent ],
+    imports: [CommonModule, ReactiveFormsModule, FormsModule, GoBackComponent, ReusableFormEditComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './blog-edit-by-id-admin.component.html'
 })
 export class BlogEditByIdAdminComponent implements OnInit {

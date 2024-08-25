@@ -9,11 +9,12 @@ import { GoBackComponent } from "../../../../../shared/components/go-back/go-bac
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import { ReusableFormEditComponent } from "../../../../../shared/forms/reusable-form-edit/reusable-form-edit.component";
 import { formLinksConfig } from "../../../../../shared/global-const/form-config";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 @Component({
   selector: 'app-edit-links',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, LoadingComponent, ReusableFormEditComponent ],
+    imports: [CommonModule, GoBackComponent, LoadingComponent, ReusableFormEditComponent, BreadcrumbAdminComponent],
   templateUrl: './edit-links.component.html'
 })
 export class EditLinksComponent implements OnInit {

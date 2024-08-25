@@ -9,6 +9,7 @@ import { of } from "rxjs";
 import { Links } from "../../../../../models/links";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component AddLinksComponent
@@ -19,7 +20,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 @Component({
   selector: 'app-add-links',
   standalone: true,
-  imports: [ CommonModule, ReusableFormAddComponent, GoBackComponent, LoadingComponent ],
+    imports: [CommonModule, ReusableFormAddComponent, GoBackComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './add-links.component.html'
 })
 export class AddLinksComponent {

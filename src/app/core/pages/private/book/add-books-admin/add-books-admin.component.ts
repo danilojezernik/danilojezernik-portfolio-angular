@@ -9,6 +9,7 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { of } from "rxjs";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component AddBooksAdminComponent
@@ -18,7 +19,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 @Component({
   selector: 'app-add-books-admin',
   standalone: true,
-  imports: [ CommonModule, ReusableFormAddComponent, TranslateModule, GoBackComponent, LoadingComponent ],
+  imports: [CommonModule, ReusableFormAddComponent, TranslateModule, GoBackComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './add-books-admin.component.html'
 })
 export class AddBooksAdminComponent {

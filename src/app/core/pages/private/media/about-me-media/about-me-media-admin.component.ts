@@ -6,6 +6,7 @@ import {GetImageService} from "../../../../../services/get-image/get-image.servi
 import {Clipboard} from "@angular/cdk/clipboard";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component AboutMeMediaAdminComponent
@@ -15,7 +16,7 @@ import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.
 @Component({
   selector: 'app-media',
   standalone: true,
-  imports: [CommonModule, GoBackComponent],
+  imports: [CommonModule, GoBackComponent, BreadcrumbAdminComponent],
   templateUrl: './about-me-media-admin.component.html'
 })
 export class AboutMeMediaAdminComponent implements OnInit {
@@ -151,6 +152,8 @@ export class AboutMeMediaAdminComponent implements OnInit {
 
   copyToClipboard(img: string) {
     this._clipboard.copy(img)
-    this._snack.open(`Shranjeno v odložišče: ${img}`)
+    this._snack.open(`Shranjeno v odložišče: ${img}`, 'Close', {
+      duration: 5000 // Duration in milliseconds (5000ms = 5 seconds)
+    })
   }
 }

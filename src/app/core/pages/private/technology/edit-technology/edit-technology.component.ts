@@ -9,6 +9,7 @@ import { ReusableFormEditComponent } from "../../../../../shared/forms/reusable-
 import { formTechnologyConfig } from "../../../../../shared/global-const/form-config";
 import { TranslateService } from "@ngx-translate/core";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component EditTechnologyComponent
@@ -18,7 +19,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 @Component({
   selector: 'app-edit-technology-technology',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, ReusableFormEditComponent, LoadingComponent ],
+    imports: [CommonModule, GoBackComponent, ReusableFormEditComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './edit-technology.component.html'
 })
 export class EditTechnologyComponent implements OnInit {

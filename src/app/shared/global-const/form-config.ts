@@ -92,7 +92,7 @@ export const formBooksConfig: FormFieldConfig[] = [
   { name: 'tehnologija', label: 'tehnologija', type: 'text', validators: [ Validators.required ] },
   { name: 'podnaslov', label: 'podnaslov', type: 'text', validators: [] },
   { name: 'vsebina', label: 'vsebina', type: 'textarea', validators: [ Validators.required, Validators.minLength(10) ] },
-  { name: 'image', label: 'vsebina', type: 'text', validators: [] },
+  { name: 'image', label: 'slika', type: 'text', validators: [] },
 ]
 
 /**

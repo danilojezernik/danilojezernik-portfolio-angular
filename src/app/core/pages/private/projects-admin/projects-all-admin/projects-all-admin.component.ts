@@ -11,6 +11,7 @@ import { ButtonAdminComponent } from "../../../../../shared/components/button-ad
 import { TranslateService } from "@ngx-translate/core";
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component ProjectsAllAdminComponent
@@ -21,7 +22,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 @Component({
   selector: 'app-projects-admin',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, ShowDataComponent, RouterLink, MatDialogModule, ButtonAdminComponent, LoadingComponent ],
+    imports: [CommonModule, GoBackComponent, ShowDataComponent, RouterLink, MatDialogModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './projects-all-admin.component.html'
 })
 export class ProjectsAllAdminComponent {

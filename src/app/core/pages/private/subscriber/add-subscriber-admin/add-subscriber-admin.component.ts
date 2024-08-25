@@ -9,11 +9,12 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { of } from "rxjs";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 @Component({
   selector: 'app-add-subscriber-admin',
   standalone: true,
-  imports: [ CommonModule, ReusableFormAddComponent, TranslateModule, GoBackComponent, LoadingComponent ],
+    imports: [CommonModule, ReusableFormAddComponent, TranslateModule, GoBackComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './add-subscriber-admin.component.html'
 })
 export class AddSubscriberAdminComponent {

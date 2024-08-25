@@ -10,6 +10,7 @@ import { formProjectsConfig } from "../../../../../shared/global-const/form-conf
 import { TranslateService } from "@ngx-translate/core";
 import { Projects } from "../../../../../models/projects";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component ProjectEditAdminComponent
@@ -19,7 +20,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 @Component({
   selector: 'app-project-edit-admin',
   standalone: true,
-  imports: [ CommonModule, ShowDataComponent, GoBackComponent, ReusableFormEditComponent, LoadingComponent ],
+    imports: [CommonModule, ShowDataComponent, GoBackComponent, ReusableFormEditComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './project-edit-admin.component.html'
 })
 export class ProjectEditAdminComponent implements OnInit {

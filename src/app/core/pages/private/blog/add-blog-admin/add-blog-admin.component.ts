@@ -11,6 +11,7 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { of } from "rxjs";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component AddBlogAdminComponent
@@ -20,7 +21,7 @@ import { GoBackComponent } from "../../../../../shared/components/go-back/go-bac
 @Component({
   selector: 'app-add-blog-admin',
   standalone: true,
-  imports: [ CommonModule, FormsModule, MatSnackBarModule, ReusableFormAddComponent, TranslateModule, LoadingComponent, GoBackComponent ],
+    imports: [CommonModule, FormsModule, MatSnackBarModule, ReusableFormAddComponent, TranslateModule, LoadingComponent, GoBackComponent, BreadcrumbAdminComponent],
   templateUrl: './add-blog-admin.component.html'
 })
 export class AddBlogAdminComponent {

@@ -9,11 +9,12 @@ import { of } from "rxjs";
 import { Newsletter } from "../../../../../models/newsletter";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 @Component({
   selector: 'app-add-newsletter-admin',
   standalone: true,
-  imports: [ CommonModule, ReusableFormAddComponent, TranslateModule, GoBackComponent, LoadingComponent ],
+    imports: [CommonModule, ReusableFormAddComponent, TranslateModule, GoBackComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './add-newsletter-admin.component.html'
 })
 export class AddNewsletterAdminComponent {

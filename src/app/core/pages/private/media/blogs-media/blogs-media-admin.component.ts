@@ -6,11 +6,12 @@ import {Clipboard} from "@angular/cdk/clipboard";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {BehaviorSubject, catchError, finalize, of} from "rxjs";
 import {BlogService} from "../../../../../services/api/blog.service";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 @Component({
   selector: 'app-blogs-media',
   standalone: true,
-  imports: [CommonModule, GoBackComponent],
+  imports: [CommonModule, GoBackComponent, BreadcrumbAdminComponent],
   templateUrl: './blogs-media-admin.component.html'
 })
 export class BlogsMediaAdminComponent {
@@ -146,6 +147,8 @@ export class BlogsMediaAdminComponent {
 
   copyToClipboard(img: string) {
     this._clipboard.copy(img)
-    this._snack.open(`Shranjeno v odložišče: ${img}`)
+    this._snack.open(`Shranjeno v odložišče: ${img}`, 'Close', {
+      duration: 5000 // Duration in milliseconds (5000ms = 5 seconds)
+    })
   }
 }

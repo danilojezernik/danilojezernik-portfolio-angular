@@ -6,11 +6,12 @@ import {BookService} from "../../../../../services/api/book.service";
 import {Clipboard} from "@angular/cdk/clipboard";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 @Component({
   selector: 'app-books-media',
   standalone: true,
-  imports: [CommonModule, GoBackComponent],
+  imports: [CommonModule, GoBackComponent, BreadcrumbAdminComponent],
   templateUrl: './books-media-admin.component.html'
 })
 export class BooksMediaAdminComponent implements OnInit {
@@ -146,6 +147,8 @@ export class BooksMediaAdminComponent implements OnInit {
 
   copyToClipboard(img: string) {
     this._clipboard.copy(img)
-    this._snack.open(`Shranjeno v odložišče: ${img}`)
+    this._snack.open(`Shranjeno v odložišče: ${img}`, 'Close', {
+      duration: 5000 // Duration in milliseconds (5000ms = 5 seconds)
+    })
   }
 }

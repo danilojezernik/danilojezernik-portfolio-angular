@@ -10,6 +10,7 @@ import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component AllTechnologyComponent
@@ -20,7 +21,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 @Component({
   selector: 'app-all-technology-technology',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, ShowDataComponent, TranslateModule, ButtonAdminComponent, LoadingComponent ],
+    imports: [CommonModule, GoBackComponent, ShowDataComponent, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './all-technology.component.html'
 })
 export class AllTechnologyComponent {

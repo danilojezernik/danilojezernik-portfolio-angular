@@ -9,6 +9,7 @@ import { formSubscriberConfig } from "../../../../../shared/global-const/form-co
 import { TranslateService } from "@ngx-translate/core";
 import { SubscriberClient } from "../../../../../models/subscriberClient";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component EditSubscriberAdminComponent
@@ -18,7 +19,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 @Component({
   selector: 'app-edit-subscriber-admin',
   standalone: true,
-  imports: [ CommonModule, GoBackComponent, ReusableFormEditComponent, LoadingComponent ],
+    imports: [CommonModule, GoBackComponent, ReusableFormEditComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './edit-subscriber-admin.component.html'
 })
 export class EditSubscriberAdminComponent implements OnInit {

@@ -9,6 +9,7 @@ import { Technology } from "../../../../../models/technology";
 import { of } from "rxjs";
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component AddTechnologyComponent
@@ -18,7 +19,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 @Component({
   selector: 'app-add-technology-technology',
   standalone: true,
-  imports: [ CommonModule, ReusableFormAddComponent, TranslateModule, GoBackComponent, LoadingComponent ],
+    imports: [CommonModule, ReusableFormAddComponent, TranslateModule, GoBackComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './add-technology.component.html'
 })
 export class AddTechnologyComponent {

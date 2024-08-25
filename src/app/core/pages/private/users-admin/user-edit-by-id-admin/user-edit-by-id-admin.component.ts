@@ -10,6 +10,7 @@ import { ReusableFormEditComponent } from "../../../../../shared/forms/reusable-
 import { formUserConfig } from "../../../../../shared/global-const/form-config";
 import { TranslateService } from "@ngx-translate/core";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
  * @Component UserEditByIdAdminComponent
@@ -19,7 +20,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 @Component({
   selector: 'app-user-edit-by-id-admin',
   standalone: true,
-  imports: [ CommonModule, FormsModule, GoBackComponent, ReusableFormEditComponent, LoadingComponent ],
+    imports: [CommonModule, FormsModule, GoBackComponent, ReusableFormEditComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './user-edit-by-id-admin.component.html'
 })
 export class UserEditByIdAdminComponent implements OnInit {
