@@ -5,6 +5,7 @@
 	"button": {
 		"add": "Add",
 		"back": "Back",
+		"books-admin": "Media",
 		"delete": "Delete",
 		"edit": "Edit",
 		"read": "Read"
@@ -23,6 +24,7 @@
 	"loading": "Loading",
 	"menu": {
 		"about": "About me",
+		"about-me-media": "Pictures - About me",
 		"biography": "Biography",
 		"blog": "Blog",
 		"book": "Books",
@@ -36,6 +38,7 @@
 		"login": "Login",
 		"logout": "Logout",
 		"media": "Media",
+		"media-books": "Pictures - Books",
 		"newsletter": "Newsletter",
 		"projects": "Projects",
 		"register": "Register",

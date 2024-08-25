@@ -1,8 +1,8 @@
-import { inject, Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { Book } from "../../models/book";
-import { environment } from "../../../environments/environment";
+import {inject, Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {Book} from "../../models/book";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -48,8 +48,12 @@ export class BookService {
     return this._http.get<{ images: string[] }>(`${environment.bookUrl.public}/images/`)
   }
 
-  getBookImageByName(filename: string): Observable<Blob> {
-    return this._http.get(`${environment.bookUrl.public}`, { responseType: 'blob'})
+  /**
+   * PRIVATE MEDIA SERVICE
+   */
+
+  deleteBookImageByName(filename: string): Observable<any> {
+    return this._http.delete<any>(`${environment.bookUrl.publicMedia}${filename}`)
   }
 
   uploadBookImage(file: File): Observable<any> {
@@ -58,12 +62,4 @@ export class BookService {
 
     return this._http.post<any>(`${environment.bookUrl.publicMedia}`, formData)
   }
-
-  deleteBookImageByName(filename: string): Observable<any> {
-    return this._http.delete<any>(`${environment.bookUrl.public}/${filename}`)
-  }
-
-  /**
-   * PRIVATE MEDIA SERVICE
-   */
 }

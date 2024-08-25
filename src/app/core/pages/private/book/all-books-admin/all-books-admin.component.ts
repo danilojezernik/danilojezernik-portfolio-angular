@@ -10,6 +10,7 @@ import { ShowDataComponent } from "../../../../../shared/components/show-data/sh
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { TranslateService } from "@ngx-translate/core";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
+import {GetImageService} from "../../../../../services/get-image/get-image.service";
 
 /**
  * @Component AllBooksAdminComponent
@@ -28,6 +29,7 @@ export class AllBooksAdminComponent {
   private _bookService = inject(BookService); // Service to handle book-related operations
   private _dialog = inject(MatDialog); // Service to handle dialogs
   private _translateService = inject(TranslateService); // Service for translation
+  protected _getImageByName = inject(GetImageService)
 
   // Property to store error messages, initialized to null
   error: string | null = null;

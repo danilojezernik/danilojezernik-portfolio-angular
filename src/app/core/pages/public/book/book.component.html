@@ -23,10 +23,11 @@
         <p class="text-xl uppercase">{{ book.podnaslov }}</p>
         <p><strong>Tehnologija:</strong> {{ book.tehnologija }}</p>
         <p>{{ book.vsebina }}</p>
+        <img *ngIf="book.image" [src]="_getImageByName.getBookImageUrl(book.image)" class="max-h-80" [alt]="book.image" />
       </li>
     </ul>
   </ng-container>
-  
+
   <!-- Error message display if the data fetching fails - START -->
   <ng-container *ngIf="error">
     {{error}}

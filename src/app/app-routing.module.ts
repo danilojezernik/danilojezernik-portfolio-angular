@@ -79,7 +79,9 @@ import {
   EditSubscriberAdminComponent
 } from "./core/pages/private/subscriber/edit-subscriber-admin/edit-subscriber-admin.component";
 import {AboutComponent} from "./core/pages/public/about/about.component";
+import {AboutMeMediaAdminComponent} from "./core/pages/private/media/about-me-media/about-me-media-admin.component";
 import {MediaAdminComponent} from "./core/pages/private/media/media-admin.component";
+import {BooksMediaAdminComponent} from "./core/pages/private/media/books-media/books-media-admin.component";
 
 const routes: Routes = [
   {
@@ -233,11 +235,18 @@ const routes: Routes = [
     path: 'media',
     component: MediaAdminComponent
   },
+  {
+    path: 'media-about-me',
+    component: AboutMeMediaAdminComponent
+  },
+  {
+    path: 'media-books',
+    component: BooksMediaAdminComponent
+  },
 
   // ---------------------------
   //     BOOKS ROUTES
   // ---------------------------
-
 
   // PUBLIC
   {

@@ -78,6 +78,11 @@ export const ADMIN_MENU: { menu: string, path: string }[] = [
   {menu: 'menu.subscriber', path: '/subscriber-admin'},
 ]
 
+export const MEDIA_MENU = [
+  {menu: 'menu.about-me-media', path: '/media-about-me'},
+  {menu: 'menu.media-books', path: '/media-books'},
+]
+
 // Language translations for the header component and Translate service
 
 // Enum for supported languages

@@ -5,6 +5,7 @@
 	"button": {
 		"add": "Dodaj",
 		"back": "Nazaj",
+		"books-admin": "Slike",
 		"delete": "Izbriši",
 		"edit": "Uredi",
 		"read": "Beri"
@@ -23,6 +24,7 @@
 	"loading": "Nalagam",
 	"menu": {
 		"about": "O meni",
+		"about-me-media": "Slike - O meni",
 		"biography": "Biografija",
 		"blog": "Blog",
 		"book": "Knjige",
@@ -36,6 +38,7 @@
 		"login": "Vpis",
 		"logout": "Izpis",
 		"media": "Media",
+		"media-books": "Slike - Knjige",
 		"newsletter": "E-novice",
 		"projects": "Projekti",
 		"register": "Registracija",

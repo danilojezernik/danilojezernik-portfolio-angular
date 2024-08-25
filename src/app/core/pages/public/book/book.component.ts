@@ -11,6 +11,7 @@ import { FormsModule } from "@angular/forms";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
 import { DropdownSelectComponent } from "../../../../shared/components/dropdown-select/dropdown-select.component";
+import {GetImageService} from "../../../../services/get-image/get-image.service";
 
 @Component({
   selector: 'app-book',
@@ -22,6 +23,7 @@ export class BookComponent {
 
   private _bookService = inject(BookService)
   private _translateService = inject(TranslateService)
+  protected _getImageByName = inject(GetImageService)
 
   // Property to store error messages, initialized to null
   error: string | null = null

@@ -10,4 +10,11 @@ export class GetImageService {
     return `${environment.mediaUrl.public}/${imageName}`
   }
 
+  /**
+   * Use function to get blog pictures
+   */
+  public getBookImageUrl(imageName: string): string {
+    return `${environment.bookUrl.publicMedia}${imageName}`
+  }
+
 }

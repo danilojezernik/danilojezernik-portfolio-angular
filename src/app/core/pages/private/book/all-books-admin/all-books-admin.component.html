@@ -10,13 +10,22 @@
 <ng-container *ngIf="books$ | async as books">
   <!-- Loop through each book and display its information along with action buttons - START -->
   <div class="mb-2 border-b-2" *ngFor="let book of books">
-    <!-- Component to display book data - START -->
-    <app-show-data
-      [naslov]="book.naslov"
-      [podnaslov]="book.podnaslov"
-      [vsebina]="book.vsebina"
-      [image]="book.image"
-    ></app-show-data>
+    <!-- Component to display book data with image - START -->
+    <div class="flex flex-row">
+
+      <app-show-data
+        [naslov]="book.naslov"
+        [podnaslov]="book.podnaslov"
+        [vsebina]="book.vsebina"
+      />
+
+      <app-show-data
+        class="border-red-600 border"
+        *ngIf="book.image"
+        [image]="_getImageByName.getBookImageUrl(book.image)"
+      />
+    </div>
+
     <!-- Component to display book data - END -->
 
     <!-- Buttons for editing and deleting book, and opening a dialog - START -->
@@ -44,5 +53,5 @@
 <!-- Loading spinner - END -->
 
 <!-- Button to navigate back to the previous page - START -->
-<app-go-back></app-go-back>
+<app-go-back [booksAdmin]="true" />
 <!-- Button to navigate back to the previous page - END -->

@@ -14,10 +14,6 @@ export class MyGalleryService {
     return this._http.get<{ images: string[] }>(`${environment.mediaUrl.public}/images/`)
   }
 
-  getImageByName(filename: string): Observable<Blob> {
-    return this._http.get(`${environment.mediaUrl.public}`, { responseType: 'blob'})
-  }
-
   uploadImage(file: File): Observable<any> {
     const formData = new FormData()
     formData.append('file', file, file.name)
