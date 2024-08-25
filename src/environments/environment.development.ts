@@ -19,6 +19,10 @@ export const environment = {
     admin: 'http://localhost:3000/book/admin/',
   },
 
+  // MEDIA API
+  mediaUrl: {
+    public: 'http://localhost:3000/media'
+  },
   // NEWSLETTER API
   newsletterUrl: {
     public: 'http://localhost:3000/newsletter',

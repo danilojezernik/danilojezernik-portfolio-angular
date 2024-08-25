@@ -1,0 +1,20 @@
+<!-- File input for selecting an image -->
+<input type="file" (change)="onFileChange($event)" />
+
+<!-- Button to trigger upload -->
+<button (click)="upload()">Upload</button>
+
+<!-- Display upload status -->
+<p *ngIf="uploadStatus$ | async as status">{{ status }}</p>
+
+<!-- Display images and provide delete buttons -->
+<ng-container *ngIf="images$ | async as imageData">
+  <div *ngFor="let imgName of imageData.images">
+    <img [src]="_getImageService.getImageUrl(imgName)" style="max-height: 100px" alt="Image" />
+    <button (click)="deleteImage(imgName)">Delete</button>
+  </div>
+</ng-container>
+
+<!-- Display loading spinner -->
+<p *ngIf="loading">Loading...</p>
+<p *ngIf="error">{{ error }}</p>

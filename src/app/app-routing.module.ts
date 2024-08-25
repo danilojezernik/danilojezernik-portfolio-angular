@@ -7,7 +7,6 @@ import { BiographyComponent } from "./core/pages/public/biography/biography.comp
 import { ExperiencesComponent } from "./core/pages/public/experiences/experiences.component";
 import { NotFoundComponent } from "./core/pages/public/not-found/not-found.component";
 import { ProjectsComponent } from "./core/pages/public/projects/projects.component";
-import { MediaComponent } from "./core/pages/public/media/media.component";
 import { BookComponent } from "./core/pages/public/book/book.component";
 import { LinksComponent } from "./core/pages/public/links/links.component";
 import { ContactComponent } from "./core/pages/public/contact/contact.component";
@@ -80,6 +79,7 @@ import {
   EditSubscriberAdminComponent
 } from "./core/pages/private/subscriber/edit-subscriber-admin/edit-subscriber-admin.component";
 import {AboutComponent} from "./core/pages/public/about/about.component";
+import {MediaAdminComponent} from "./core/pages/private/media/media-admin.component";
 
 const routes: Routes = [
   {
@@ -231,7 +231,7 @@ const routes: Routes = [
   // ---------------------------
   {
     path: 'media',
-    component: MediaComponent
+    component: MediaAdminComponent
   },
 
   // ---------------------------

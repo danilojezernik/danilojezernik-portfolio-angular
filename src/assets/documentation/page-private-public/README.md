@@ -122,7 +122,7 @@ src/
 │   │   │   │   ├── login.component.ts
 │   │   │   ├── media/
 │   │   │   │   ├── media.component.html
-│   │   │   │   ├── media.component.ts
+│   │   │   │   ├── media-admin.component.ts
 │   │   │   ├── not-found/
 │   │   │   │   ├── not-found.component.html
 │   │   │   │   ├── not-found.component.ts
