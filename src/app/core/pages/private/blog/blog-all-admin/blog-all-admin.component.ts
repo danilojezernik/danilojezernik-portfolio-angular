@@ -5,13 +5,13 @@ import { RouterLink } from "@angular/router"
 import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component"
 import { BehaviorSubject, catchError, finalize, Observable, of } from "rxjs"
 import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component"
-import { MatDialog, MatDialogModule } from "@angular/material/dialog"
+import { MatDialogModule } from "@angular/material/dialog"
 import { BlogModel } from "../../../../../models/blog.model"
-import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import { DialogAdminService } from "../../../../../services/dialog-admin/dialog-admin.service";
+import {GetImageService} from "../../../../../services/get-image/get-image.service";
 
 /**
  * @Component BlogAllAdminComponent
@@ -29,7 +29,7 @@ export class BlogAllAdminComponent {
 
   // Injected instances: BlogService for blog data, MatDialog for dialogs, and TranslateService for translations
   private _blogService = inject(BlogService); // Injected BlogService instance
-  private _dialog = inject(MatDialog); // Injected MatDialog instance for dialogs
+  protected _getImageByName = inject(GetImageService)
   private _openDialog = inject(DialogAdminService)
   private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
 

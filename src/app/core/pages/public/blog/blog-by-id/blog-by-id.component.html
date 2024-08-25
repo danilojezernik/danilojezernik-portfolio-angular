@@ -1,14 +1,16 @@
 <p>blog-by-id works!</p>
 <ng-container *ngIf="blogId$ | async as blog; else loadingData">
   <div>
-    Naslov: {{blog.title}}<br>
-    Vsebina: {{blog.vsebina}}<br>
-    Datum vnosa: {{blog.datum_vnosa | date}}
+    Naslov: {{ blog.title }}<br>
+    Vsebina: {{ blog.vsebina }}<br>
+    Datum vnosa: {{ blog.datum_vnosa | date }}
+    Slika:
+    <img *ngIf="blog.image" [src]="_getImageByName.getBlogImageUrl(blog.image)" class="max-h-80" [alt]="blog.image"/>
   </div>
 
   <!-- Error message display if the data fetching fails - START -->
   <ng-container *ngIf="error">
-    {{error}}
+    {{ error }}
   </ng-container>
   <!-- Error message display if the data fetching fails - END -->
 </ng-container>

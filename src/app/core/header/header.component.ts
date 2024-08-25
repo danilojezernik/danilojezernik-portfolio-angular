@@ -1,4 +1,4 @@
-import {Component, ElementRef, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
@@ -14,8 +14,6 @@ import {MY_RESOURCES, LANGUAGE, LOGIN_LOGOUT, MENU, TRANSLATE_LANGUAGE} from "..
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
-
-  private _el = inject(ElementRef)
 
   constructor(public translate: TranslateService) {
     translate.setDefaultLang('en');
@@ -51,26 +49,6 @@ export class HeaderComponent implements OnInit {
   // Method to change the language of the application
   useLanguage(language: string): void {
     this.translate.use(language);
-  }
-
-  toggleMegaMenu() {
-    const menu = this._el.nativeElement.querySelector(`mega-menu-full`)
-    if(menu)
-      menu.classList.toggle('hidden');
-  }
-
-  toggleMegaMenuDropdown() {
-    const dropDown = this._el.nativeElement.querySelector(`mega-menu-full-dropdown`)
-    if(dropDown)
-      dropDown.classList.toggle('hidden');
-  }
-
-  get firstColumnItems() {
-    return this.DROPDOWN.slice(0, 3)
-  }
-
-  get secondColumnItems() {
-    return this.DROPDOWN.slice(3)
   }
 
   protected readonly MENU = MENU;

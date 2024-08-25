@@ -1,27 +1,22 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {BehaviorSubject, catchError, finalize, of} from "rxjs";
-import {MyGalleryService} from "../../../../../services/api/my-gallery.service";
+import {Component, inject} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
 import {Clipboard} from "@angular/cdk/clipboard";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
+import {BehaviorSubject, catchError, finalize, of} from "rxjs";
+import {BlogService} from "../../../../../services/api/blog.service";
 
-/**
- * @Component AboutMeMediaAdminComponent
- * Component for managing media files.
- * Allows viewing, uploading, and deleting images.
- */
 @Component({
-  selector: 'app-media',
+  selector: 'app-blogs-media',
   standalone: true,
   imports: [CommonModule, GoBackComponent],
-  templateUrl: './about-me-media-admin.component.html'
+  templateUrl: './blogs-media-admin.component.html'
 })
-export class AboutMeMediaAdminComponent implements OnInit {
+export class BlogsMediaAdminComponent {
 
   // Inject MyGalleryService to interact with backend services for media management
-  protected _myGalleryService = inject(MyGalleryService);
+  protected _blogService = inject(BlogService);
   protected _getImageService = inject(GetImageService)
 
   // Inject services to copy image name to clipboard
@@ -62,7 +57,7 @@ export class AboutMeMediaAdminComponent implements OnInit {
   getAllImages(): void {
     this.loading = true; // Set loading state to true before making the API call
 
-    this._myGalleryService.getAllImages().pipe(
+    this._blogService.getAllBlogsImages().pipe(
       catchError(error => {
         // Capture and display error message
         this.error = error.message;
@@ -101,7 +96,7 @@ export class AboutMeMediaAdminComponent implements OnInit {
       // Set upload status to "Uploading..."
       this._uploadStatusSubject.next('Uploading...');
 
-      this._myGalleryService.uploadImage(this.selectedFile).pipe(
+      this._blogService.uploadBlogImage(this.selectedFile).pipe(
         catchError(error => {
           // Set upload status to error message if upload fails
           this._uploadStatusSubject.next(`Upload failed: ${error.message}`);
@@ -133,7 +128,7 @@ export class AboutMeMediaAdminComponent implements OnInit {
     const yes = confirm(`Ali res želiš izbrisati sliko: ${filename}?`)
 
     if (yes) {
-      this._myGalleryService.deleteImageByName(filename).pipe(
+      this._blogService.deleteBlogImageByName(filename).pipe(
         catchError(error => {
           // Capture and display error message
           this.error = error.message;

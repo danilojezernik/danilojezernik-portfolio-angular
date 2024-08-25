@@ -5,7 +5,8 @@
 	"button": {
 		"add": "Add",
 		"back": "Back",
-		"books-admin": "Media",
+		"blogs-admin": "Media - Blogs",
+		"books-admin": "Media - about me",
 		"delete": "Delete",
 		"edit": "Edit",
 		"read": "Read"
@@ -38,6 +39,7 @@
 		"login": "Login",
 		"logout": "Logout",
 		"media": "Media",
+		"media-blogs": "Pictures - Blogs",
 		"media-books": "Pictures - Books",
 		"newsletter": "Newsletter",
 		"projects": "Projects",

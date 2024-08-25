@@ -7,9 +7,10 @@
   <ng-container *ngIf="!error">
 
     <!-- Looping through the blogs array and displaying its properties - START -->
-    <div *ngFor="let blog of blogs" [routerLink]="['/blog/', blog._id]">
+    <div class="cursor-pointer" *ngFor="let blog of blogs" [routerLink]="['/blog/', blog._id]">
       {{ blog.title }} <br>
       {{ blog.datum_vnosa | date }}
+      <img *ngIf="blog.image" [src]="_getImageByName.getBlogImageUrl(blog.image)" class="max-h-40" [alt]="blog.image"/>
     </div>
     <!-- Looping through the blogs array and displaying its properties - END -->
 

@@ -1,22 +1,22 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BookService } from "../../../../services/api/book.service";
-import { BehaviorSubject, catchError, map, Observable, of, switchMap } from "rxjs";
-import { Book } from "../../../../models/book";
-import { SELECT_TECHNOLOGY } from "../../../../shared/global-const/global.const";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatOptionModule } from "@angular/material/core";
-import { MatSelectModule } from "@angular/material/select";
-import { FormsModule } from "@angular/forms";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
-import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
-import { DropdownSelectComponent } from "../../../../shared/components/dropdown-select/dropdown-select.component";
+import {Component, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BookService} from "../../../../services/api/book.service";
+import {BehaviorSubject, catchError, map, Observable, of, switchMap} from "rxjs";
+import {Book} from "../../../../models/book";
+import {SELECT_TECHNOLOGY} from "../../../../shared/global-const/global.const";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {FormsModule} from "@angular/forms";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {LoadingComponent} from "../../../../shared/components/loading/loading.component";
+import {DropdownSelectComponent} from "../../../../shared/components/dropdown-select/dropdown-select.component";
 import {GetImageService} from "../../../../services/get-image/get-image.service";
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [ CommonModule, MatFormFieldModule, MatOptionModule, MatSelectModule, FormsModule, TranslateModule, LoadingComponent, DropdownSelectComponent ],
+  imports: [CommonModule, MatFormFieldModule, MatOptionModule, MatSelectModule, FormsModule, TranslateModule, LoadingComponent, DropdownSelectComponent],
   templateUrl: './book.component.html'
 })
 export class BookComponent {
@@ -49,7 +49,7 @@ export class BookComponent {
             this.error = translation
           })
           // Return an observable of an empty array and length of 0 to handle errors gracefully
-          return of({ all: [], length: 0 })
+          return of({all: [], length: 0})
         })
       )
     })

@@ -6,6 +6,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 import { catchError, of } from "rxjs";
 import { TranslateService } from "@ngx-translate/core";
 import { BlogModel } from "../../../../../models/blog.model";
+import {GetImageService} from "../../../../../services/get-image/get-image.service";
 
 @Component({
   selector: 'app-blog-all',
@@ -17,6 +18,7 @@ export class BlogAllComponent {
 
   private _blogService = inject(BlogService)
   private _translateService = inject(TranslateService)
+  protected _getImageByName = inject(GetImageService)
 
   // Property to store error messages, initialized to null
   error: string | null = null

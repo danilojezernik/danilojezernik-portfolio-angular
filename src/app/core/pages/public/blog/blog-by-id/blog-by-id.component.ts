@@ -6,6 +6,7 @@ import { catchError, Observable, of } from "rxjs";
 import { BlogModel } from "../../../../../models/blog.model";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import { TranslateService } from "@ngx-translate/core";
+import {GetImageService} from "../../../../../services/get-image/get-image.service";
 
 @Component({
   selector: 'app-blog-by-id',
@@ -18,6 +19,7 @@ export class BlogByIdComponent implements OnInit {
   private _activatedRouter = inject(ActivatedRoute)
   private _blogService = inject(BlogService)
   private _translateService = inject(TranslateService)
+  protected _getImageByName = inject(GetImageService)
 
   // Property to store error messages, initialized to null
   error: string | null = null

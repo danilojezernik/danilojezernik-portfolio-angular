@@ -18,7 +18,7 @@ export const formBlogConfig: FormFieldConfig[] = [
   { name: 'title', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
   { name: 'podnaslov', label: 'Podnaslov', type: 'text', validators: [ Validators.required ] },
   { name: 'kategorija', label: 'Kategorija', type: 'text', validators: [ Validators.required ] },
-  { name: 'vsebina', label: 'Vsebina', type: 'text', validators: [ Validators.required, Validators.min(10) ] },
+  { name: 'vsebina', label: 'Vsebina', type: 'textarea', validators: [ Validators.required, Validators.min(10) ] },
   { name: 'image', label: 'Image', type: 'text', validators: [ Validators.required ] }
 ]
 
@@ -29,7 +29,7 @@ export const formProjectsConfig: FormFieldConfig[] = [
   { name: 'title', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
   { name: 'subtitle', label: 'Podnaslov', type: 'text', validators: [ Validators.required ] },
   { name: 'category', label: 'Kategorija', type: 'text', validators: [ Validators.required ] },
-  { name: 'content', label: 'Vsebina', type: 'text', validators: [ Validators.required, Validators.minLength(10) ] },
+  { name: 'content', label: 'Vsebina', type: 'textarea', validators: [ Validators.required, Validators.minLength(10) ] },
   { name: 'github', label: 'Github', type: 'text', validators: [] },
   { name: 'website', label: 'Website', type: 'text', validators: [] }
 ]
@@ -57,7 +57,7 @@ export const formTechnologyConfig: FormFieldConfig[] = [
   { name: 'technology', label: 'Tehnologija', type: 'text', validators: [ Validators.required ] },
   { name: 'title', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
   { name: 'subtitle', label: 'Podnaslov', type: 'text', validators: [] },
-  { name: 'vsebina', label: 'Vsebina', type: 'text', validators: [ Validators.required, Validators.minLength(10) ] },
+  { name: 'vsebina', label: 'Vsebina', type: 'textarea', validators: [ Validators.required, Validators.minLength(10) ] },
   { name: 'image', label: 'Image', type: 'text', validators: [] }
 ]
 
@@ -91,7 +91,7 @@ export const formBooksConfig: FormFieldConfig[] = [
   { name: 'naslov', label: 'Naslov', type: 'text', validators: [ Validators.required ] },
   { name: 'tehnologija', label: 'tehnologija', type: 'text', validators: [ Validators.required ] },
   { name: 'podnaslov', label: 'podnaslov', type: 'text', validators: [] },
-  { name: 'vsebina', label: 'vsebina', type: 'text', validators: [ Validators.required, Validators.minLength(10) ] },
+  { name: 'vsebina', label: 'vsebina', type: 'textarea', validators: [ Validators.required, Validators.minLength(10) ] },
   { name: 'image', label: 'vsebina', type: 'text', validators: [] },
 ]
 
@@ -110,6 +110,6 @@ export const formSubscriberConfig: FormFieldConfig[] = [
  * */
 export const formNewsletterConfig: FormFieldConfig[] = [
   { name: 'title', label: 'title', type: 'text', validators: [ Validators.required ] },
-  { name: 'content', label: 'content', type: 'text', validators: [ Validators.required ] },
+  { name: 'content', label: 'content', type: 'textarea', validators: [ Validators.required ] },
 ]
 

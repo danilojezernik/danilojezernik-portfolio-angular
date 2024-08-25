@@ -13,11 +13,20 @@
   <div class="mb-2 border-b-2" *ngFor="let blog of blogs">
 
     <!-- Component to display blog data - START -->
+    <div class="flex flex-row">
+
     <app-show-data
       [title]="blog.title"
       [kategorija]="blog.kategorija"
       [podnaslov]="blog.podnaslov"
     />
+
+    <app-show-data
+      class="border-red-600 border"
+      *ngIf="blog.image"
+      [image]="_getImageByName.getBookImageUrl(blog.image)"
+    />
+    </div>
     <!-- Component to display blog data - END -->
 
     <!-- Buttons for editing and deleting blog, and opening a dialog - START -->
@@ -47,5 +56,5 @@
 <!-- Loading spinner - END -->
 
 <!-- Button to navigate back to the previous page - START -->
-<app-go-back/>
+<app-go-back [blogsAdmin]="true"/>
 <!-- Button to navigate back to the previous page - END -->

@@ -11,6 +11,7 @@ export const environment = {
   blogUrl: {
     public: 'http://localhost:3000/blog',
     admin: 'http://localhost:3000/blog/admin/',
+    publicMedia: 'http://localhost:3000/blog/media/',
   },
 
   // BOOK API

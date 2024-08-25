@@ -82,6 +82,7 @@ import {AboutComponent} from "./core/pages/public/about/about.component";
 import {AboutMeMediaAdminComponent} from "./core/pages/private/media/about-me-media/about-me-media-admin.component";
 import {MediaAdminComponent} from "./core/pages/private/media/media-admin.component";
 import {BooksMediaAdminComponent} from "./core/pages/private/media/books-media/books-media-admin.component";
+import {BlogsMediaAdminComponent} from "./core/pages/private/media/blogs-media/blogs-media-admin.component";
 
 const routes: Routes = [
   {
@@ -233,15 +234,23 @@ const routes: Routes = [
   // ---------------------------
   {
     path: 'media',
-    component: MediaAdminComponent
+    component: MediaAdminComponent,
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'media-about-me',
-    component: AboutMeMediaAdminComponent
+    component: AboutMeMediaAdminComponent,
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'media-books',
-    component: BooksMediaAdminComponent
+    component: BooksMediaAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'media-blogs',
+    component: BlogsMediaAdminComponent,
+    canActivate: [ AuthGuardService ]
   },
 
   // ---------------------------

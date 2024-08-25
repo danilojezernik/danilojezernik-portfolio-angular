@@ -6,6 +6,9 @@ import {environment} from "../../../environments/environment";
 })
 export class GetImageService {
 
+  /**
+   * Use function to get about me pictures
+   */
   public getImageUrl(imageName: string): string {
     return `${environment.mediaUrl.public}/${imageName}`
   }
@@ -15,6 +18,13 @@ export class GetImageService {
    */
   public getBookImageUrl(imageName: string): string {
     return `${environment.bookUrl.publicMedia}${imageName}`
+  }
+
+  /**
+   * Use function to get blog pictures
+   */
+  public getBlogImageUrl(imageName: string): string {
+    return `${environment.blogUrl.publicMedia}${imageName}`
   }
 
 }

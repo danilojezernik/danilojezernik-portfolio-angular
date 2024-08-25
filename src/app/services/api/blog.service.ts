@@ -41,4 +41,25 @@ export class BlogService {
     return this._http.delete<BlogModel>(`${environment.blogUrl.public}/${id}`)
   }
 
+  /**
+   * PUBLIC MEDIA SERVICE
+   */
+  getAllBlogsImages(): Observable<{ images: string[] }> {
+    return this._http.get<{ images: string[] }>(`${environment.blogUrl.public}/images/`)
+  }
+
+  /**
+   * PRIVATE MEDIA SERVICE
+   */
+
+  deleteBlogImageByName(filename: string): Observable<any> {
+    return this._http.delete<any>(`${environment.blogUrl.publicMedia}${filename}`)
+  }
+
+  uploadBlogImage(file: File): Observable<any> {
+    const formData = new FormData()
+    formData.append('file', file, file.name)
+
+    return this._http.post<any>(`${environment.blogUrl.publicMedia}`, formData)
+  }
 }

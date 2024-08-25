@@ -81,6 +81,7 @@ export const ADMIN_MENU: { menu: string, path: string }[] = [
 export const MEDIA_MENU = [
   {menu: 'menu.about-me-media', path: '/media-about-me'},
   {menu: 'menu.media-books', path: '/media-books'},
+  {menu: 'menu.media-blogs', path: '/media-blogs'},
 ]
 
 // Language translations for the header component and Translate service

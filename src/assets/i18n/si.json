@@ -5,7 +5,8 @@
 	"button": {
 		"add": "Dodaj",
 		"back": "Nazaj",
-		"books-admin": "Slike",
+		"blogs-admin": "Slike - Blogi",
+		"books-admin": "Slike - o meni",
 		"delete": "Izbriši",
 		"edit": "Uredi",
 		"read": "Beri"
@@ -38,6 +39,7 @@
 		"login": "Vpis",
 		"logout": "Izpis",
 		"media": "Media",
+		"media-blogs": "Slike - Blogi",
 		"media-books": "Slike - Knjige",
 		"newsletter": "E-novice",
 		"projects": "Projekti",

@@ -16,6 +16,9 @@ export class GoBackComponent {
   // Show button if in books admin
   @Input() booksAdmin?: boolean
 
+  // Show button if in blog admin
+  @Input() blogsAdmin?: boolean
+
   goBack() {
     this._back.back()
   }
