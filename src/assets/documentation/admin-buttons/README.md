@@ -61,7 +61,7 @@ export class ButtonAdminComponent {
 
 The HTML template for `ButtonAdminComponent` includes buttons for different actions such as add, edit, read, and delete. These buttons are conditionally rendered based on the input properties provided.
 
-```html
+```angular2html
 
 <ng-container *ngIf="routerLink">
   <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" [routerLink]="routerLink">
@@ -88,7 +88,7 @@ Below is an example of how to use the `ButtonAdminComponent` in a parent compone
 
 #### Example Usage in Parent Component
 
-```html
+```angular2html
 
 <app-button-admin [routerLink]="'/path-to-router-link'"></app-button-admin>
 

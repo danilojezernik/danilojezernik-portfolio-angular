@@ -78,8 +78,8 @@ export const environment = {
 
   // BACKLOG API FOR ANALITICS
   backLogUrl: {
-    public: 'https://logs.api.danilojezernik.com/portfolio_dj//public',
-    private: 'https://logs.api.danilojezernik.com/portfolio_dj//private'
+    public: 'https://logs.api.danilojezernik.com/portfolio_dj/public',
+    private: 'https://logs.api.danilojezernik.com/portfolio_dj/private'
   },
 
 };
