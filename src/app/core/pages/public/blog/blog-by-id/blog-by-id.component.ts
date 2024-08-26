@@ -7,11 +7,12 @@ import { BlogModel } from "../../../../../models/blog.model";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import { TranslateService } from "@ngx-translate/core";
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
+import {SlovenianDateTransformPipe} from "../../../../../pipes/date-transform/slovenian-date-transform.pipe";
 
 @Component({
   selector: 'app-blog-by-id',
   standalone: true,
-  imports: [ CommonModule, LoadingComponent ],
+  imports: [CommonModule, LoadingComponent, SlovenianDateTransformPipe],
   templateUrl: './blog-by-id.component.html'
 })
 export class BlogByIdComponent implements OnInit {

@@ -6,6 +6,7 @@ import {
   Router,
   RouterStateSnapshot,
 } from "@angular/router";
+import {map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -15,22 +16,30 @@ export class AuthGuardService implements CanActivate {
   private _auth = inject(AuthService)
   private _router = inject(Router)
 
-  // Implementing CanActivate interface method
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-    return this.authGuard() // Calls the private authGuard method
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    return this.authGuard(route)
   }
 
-  // Private method to handle authentication logic
-  private async authGuard(): Promise<boolean> {
-    const token = this._auth.getAccessToken(); // Retrieve the access token
-    // If no token, redirect to log in and resolve to false
-    if (!token) {
-      await this._router.navigate([ '/login' ]);
-      return Promise.resolve(false);
-    }
+  private authGuard(route: ActivatedRouteSnapshot): Observable<boolean> {
+    return this._auth.getUserRoleObservable().pipe(
+      map(role => {
+        const token = this._auth.getAccessToken()
+        // If no token, redirect to log in and return false
+        if (!token) {
+          this._router.navigate(['/login'])
+          return false
+        }
 
-    // Resolve to true if token exists (user is authenticated)
-    return Promise.resolve(true);
+        // Check user role and determine if access is granted
+        const allowedRoles = route.data['roles'] as Array<string>
+        if (allowedRoles && !allowedRoles.includes(role)) {
+          this._router.navigate(['/not-authorized'])
+          return false
+        }
+
+        return true
+      })
+    )
   }
 
 }

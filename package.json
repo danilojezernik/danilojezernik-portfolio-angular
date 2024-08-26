@@ -25,9 +25,11 @@
     "@angular/router": "^16.1.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
+    "@types/three": "^0.167.2",
     "flowbite": "^2.3.0",
     "ngx-device-detector": "^8.0.0",
     "rxjs": "~7.8.0",
+    "three": "^0.167.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

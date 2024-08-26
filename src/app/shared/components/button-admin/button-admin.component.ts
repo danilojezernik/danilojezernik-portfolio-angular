@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BUTTONS } from "../../global-const/global.const";
-import { RouterLink } from "@angular/router";
-import { TranslateModule } from "@ngx-translate/core";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BUTTONS} from "../../global-const/global.const";
+import {RouterLink} from "@angular/router";
+import {TranslateModule} from "@ngx-translate/core";
 
 /**
  * Component decorator to define metadata for the ButtonAdminComponent
@@ -11,7 +11,7 @@ import { TranslateModule } from "@ngx-translate/core";
 @Component({
   selector: 'app-button-admin',
   standalone: true,
-  imports: [ CommonModule, RouterLink, TranslateModule ],
+  imports: [CommonModule, RouterLink, TranslateModule],
   templateUrl: './button-admin.component.html'
 })
 export class ButtonAdminComponent {
@@ -40,8 +40,11 @@ export class ButtonAdminComponent {
 
   // Method to emit the delete event when delete action is triggered
   deleteData() {
-    if (this.delete) {
-      this.delete.emit()
+    const yes = confirm('Potrdite brisanje!')
+    if (yes) {
+      if (this.delete) {
+        this.delete.emit()
+      }
     }
   }
 

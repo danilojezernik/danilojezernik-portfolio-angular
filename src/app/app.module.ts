@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,11 +15,20 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpErrorInterceptor } from "./interceptors/http-error-interceptor/http-error.interceptor";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatDialogModule } from "@angular/material/dialog";
+import {FooterComponent} from "./core/footer/footer.component";
+import { SlovenianDateTransformPipe } from './pipes/date-transform/slovenian-date-transform.pipe';
+import localeSl from '@angular/common/locales/sl'
+
+// Import Slovenian locale data and register the locale data
+import {registerLocaleData} from "@angular/common";
+import { NotAuthorizedComponent } from './core/pages/public/not-authorized/not-authorized.component';
+registerLocaleData(localeSl, 'sl-SI')
 
 @NgModule({
   declarations: [
     AppComponent,
-    CopyrightDirective
+    NotAuthorizedComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -29,15 +38,18 @@ import { MatDialogModule } from "@angular/material/dialog";
     BrowserAnimationsModule,
     MatSnackBarModule,
     MatDialogModule,
+    CopyrightDirective,
+    SlovenianDateTransformPipe,
 
     // ngx-translate and the loader module
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [ HttpClient ]
+        deps: [HttpClient]
       }
-    })
+    }),
+    FooterComponent
 
   ],
   providers: [
@@ -50,9 +62,17 @@ import { MatDialogModule } from "@angular/material/dialog";
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
       multi: true
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'sl-SI'
     }
   ],
-  bootstrap: [ AppComponent ]
+  exports: [
+    CopyrightDirective,
+    SlovenianDateTransformPipe
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

@@ -56,5 +56,5 @@
   </div>
 
   <!-- Submit button with dynamic label and disabled state based on form validity. -->
-  <button class="btn-admin add" type="submit" [disabled]="form.invalid">{{ submitLabel }}</button>
+  <button class="btn-admin add rounded-lg mt-2 focus:bg-transparent" type="submit" [disabled]="form.invalid">{{ submitLabel | translate }}</button>
 </form>

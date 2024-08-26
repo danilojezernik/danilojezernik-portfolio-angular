@@ -84,6 +84,7 @@ import {MediaAdminComponent} from "./core/pages/private/media/media-admin.compon
 import {BooksMediaAdminComponent} from "./core/pages/private/media/books-media/books-media-admin.component";
 import {BlogsMediaAdminComponent} from "./core/pages/private/media/blogs-media/blogs-media-admin.component";
 import {ProjectsMediaAdminComponent} from "./core/pages/private/media/projects-media/projects-media-admin.component";
+import {NotAuthorizedComponent} from "./core/pages/public/not-authorized/not-authorized.component";
 
 const routes: Routes = [
   {
@@ -188,7 +189,8 @@ const routes: Routes = [
   {
     path: 'add-blog-admin',
     component: AddBlogAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthGuardService ],
+    data: { roles: ['admin'] }
   },
 
   // --------------------
@@ -418,7 +420,10 @@ const routes: Routes = [
     component: UserEditByIdAdminComponent,
     canActivate: [ AuthGuardService ]
   },
-
+  {
+    path: 'not-authorized', component: NotAuthorizedComponent,
+    canActivate: [ AuthGuardService ]
+  },
   // ---------------------------
   //     404 ROUTE
   // ---------------------------
@@ -430,6 +435,9 @@ const routes: Routes = [
       shouldRedirect: true
     }
   }
+
+
+
 ];
 
 @NgModule({

@@ -41,6 +41,7 @@
 		"edit": "Uredi",
 		"media-projects": "Slike - projekti",
 		"read": "Beri",
+		"send-message": "Pošlji sporočilo",
 		"to-blogs": "Pojdi na bloge",
 		"to-books": "Pojdi do knjige",
 		"to-projects": "Pojdi na projekte"
@@ -96,6 +97,8 @@
 		"image": "Slika",
 		"kategorija": "Kategorija",
 		"link": "Povezava",
+		"message": "Sporočilo",
+		"name": "Ime",
 		"naslov": "Naslov",
 		"podnaslov": "Podnaslov",
 		"profession": "Poklic",
@@ -103,6 +106,7 @@
 		"registered": "Registriran",
 		"required": "je obvezno polje",
 		"stack": "Stack",
+		"surname": "Priimek",
 		"tasks": "Naloge",
 		"technology": "Tehnologija",
 		"title": "Naslov",
@@ -136,6 +140,12 @@
 		"subscriber": "Naročniki",
 		"technology": "Tehnologije",
 		"users": "Uporabniki"
+	},
+	"pages": {
+		"contact": {
+			"contact-us": "Kontaktiraj me",
+			"text": "Hvala, da ste obiskali mojo spletno stran! Če imate kakršnakoli vprašanja ali potrebujete pomoč, me lahko kontaktirate preko spodnjega obrazca. Veselim se vaših sporočil!"
+		}
 	},
 	"selected": {
 		"allTechnology": "Vsa tehnologija",

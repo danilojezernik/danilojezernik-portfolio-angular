@@ -41,6 +41,7 @@
 		"edit": "Edit",
 		"media-projects": "Pictures - projects",
 		"read": "Read",
+		"send-message": "Send message",
 		"to-blogs": "Go to blogs",
 		"to-books": "Go to books",
 		"to-projects": "Go to projects"
@@ -96,6 +97,8 @@
 		"image": "Image",
 		"kategorija": "Category",
 		"link": "Link",
+		"message": "Message",
+		"name": "Name",
 		"naslov": "Title",
 		"podnaslov": "Subtitle",
 		"profession": "Profession",
@@ -103,6 +106,7 @@
 		"registered": "Registered",
 		"required": "is required",
 		"stack": "Stack",
+		"surname": "Surname",
 		"tasks": "Tasks",
 		"technology": "Technology",
 		"title": "Title",
@@ -136,6 +140,12 @@
 		"subscriber": "Subscriber",
 		"technology": "Technology",
 		"users": "Users"
+	},
+	"pages": {
+		"contact": {
+			"contact-us": "Conntact me",
+			"text": "Thank you for visiting my website! If you have any questions or need assistance, feel free to reach out using the form below. I look forward to hearing from you!"
+		}
 	},
 	"selected": {
 		"allTechnology": "All technology",

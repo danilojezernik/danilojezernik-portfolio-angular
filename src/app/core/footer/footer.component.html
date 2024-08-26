@@ -1,1 +1,14 @@
-<p>footer works!</p>
+<footer class="bg-background-menu border-opacity-10 border-white border md:mt-8 mt-16">
+  <div class="w-full text-center mx-auto max-w-screen-xl p-4 md:flex items-center justify-between">
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400" appCopyright>
+    </span>
+    <ul class="flex justify-center flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+      <li  *ngFor="let menu of MENU_TOP">
+        <ng-container *ngIf="menu.menu !== 'menu.login' && menu.menu !== 'menu.logout'">
+          <a [routerLink]="menu.path"
+             class="hover:underline me-4 md:me-6">{{ menu.menu | translate }}</a>
+        </ng-container>
+      </li>
+    </ul>
+  </div>
+</footer>

@@ -29,14 +29,20 @@ export enum BUTTONS {
 // Menu items for the header component
 // MENU ITEMS FOR HEADER COMPONENT
 export const MENU: { menu: string, path: string }[] = [
+  {menu: 'menu.users', path: '/users'},
+  {menu: 'menu.github', path: '/github'},
+  {menu: 'menu.books', path: '/books'},
+  {menu: 'menu.register', path: '/register'}
+
+]
+
+// Menu items for the header component
+// MENU ITEMS FOR HEADER COMPONENT
+export const MENU_TOP: { menu: string, path: string }[] = [
   {menu: 'menu.home', path: '/'},
   {menu: 'menu.about', path: '/about'},
-  {menu: 'menu.users', path: '/users'},
   {menu: 'menu.blog', path: '/blog'},
-  {menu: 'menu.books', path: '/books'},
-  {menu: 'menu.github', path: '/github'},
-  {menu: 'menu.contact', path: '/contact'},
-  {menu: 'menu.register', path: '/register'}
+  {menu: 'menu.contact', path: '/contact'}
 ]
 
 // MENU ITEMS FOR LOGIN AND LOGOUT HEADER COMPONENT

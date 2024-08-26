@@ -5,7 +5,7 @@ import {ClipboardCopyService} from "../../../services/clipboard-copy/clipboard-c
 
 /**
  * This component is for easy adding any kind of data inputs and displaying them.
- * It uses Angular's standalone component feature and imports CommonModule for common directives.
+ * It uses Angular standalone component feature and imports CommonModule for common directives.
  */
 
 @Component({

@@ -15,9 +15,15 @@ export class AuthService {
   // BehaviorSubject to track and emit the current login status
   private loggedInSubject: BehaviorSubject<boolean>;
 
+  // BehaviorSubject to track and emit the current role status
+  private userRoleSubject: BehaviorSubject<string>
+
   constructor() {
     // Initializing the BehaviorSubject with the current login status based on the presence of a token
     this.loggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
+
+    // Initializing the BehaviorSubject with the current role status based on the presence of a role
+    this.userRoleSubject = new BehaviorSubject<string>(this.getUserRole())
 
     // Assigning the login status observable from the BehaviorSubject to the LoggedInService's observable
     this._loggedIn.isLoggedIn$ = this.loggedInSubject.asObservable();
@@ -26,12 +32,20 @@ export class AuthService {
   /**
    * Method to set the access token and update the login status.
    * @param token {string} - The access token to be set.
+   * @param role
    */
-  setAccessToken(token: string): void {
+  setAccessToken(token: string, role: string = 'visitor'): void {
     // Store the token in localStorage
     localStorage.setItem('token', token);
+
+    // Store role in local storage
+    localStorage.setItem('role', role)
+
     // Update login status to true
     this.loggedInSubject.next(true);
+
+    // Update role status to role
+    this.userRoleSubject.next(role)
   }
 
   /**
@@ -52,6 +66,14 @@ export class AuthService {
     return localStorage.getItem('token') || '';
   }
 
+  private getUserRole(): string {
+    return localStorage.getItem('role') || ''
+  }
+
+  getUserRoleObservable(): Observable<string> {
+    return this.userRoleSubject.asObservable()
+  }
+
   /**
    * Method to clear the access token and update the login status to false.
    */
@@ -60,6 +82,7 @@ export class AuthService {
     localStorage.clear();
     // Update login status to false
     this.loggedInSubject.next(false);
+    this.userRoleSubject.next('')
   }
 
   /**

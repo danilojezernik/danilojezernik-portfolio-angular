@@ -5,6 +5,7 @@ import { ContactService } from "../../../../services/api/contact.service";
 import { ReusableFormAddComponent } from "../../../../shared/forms/reusable-form-add/reusable-form-add.component";
 import { FormFieldConfig } from "../../../../models/form-field-config.model";
 import { Contact } from "../../../../models/contact";
+import {TranslateModule} from "@ngx-translate/core";
 
 /**
  * ContactComponent is an Angular component designed to handle user contact form submissions.
@@ -29,7 +30,7 @@ import { Contact } from "../../../../models/contact";
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ CommonModule, ReactiveFormsModule, ReusableFormAddComponent ],
+  imports: [CommonModule, ReactiveFormsModule, ReusableFormAddComponent, TranslateModule],
   templateUrl: './contact.component.html'
 })
 export class ContactComponent {
@@ -41,10 +42,10 @@ export class ContactComponent {
    * It is an array of FormFieldConfig objects, each specifying the name, label, type, and validators for a form field.
    */
   formConfig: FormFieldConfig[] = [
-    { name: 'name', label: 'First Name', type: 'text', validators: [ Validators.required ] },
-    { name: 'surname', label: 'Last Name', type: 'text', validators: [ Validators.required ] },
+    { name: 'name', label: 'name', type: 'text', validators: [ Validators.required ] },
+    { name: 'surname', label: 'surname', type: 'text', validators: [ Validators.required ] },
     { name: 'email', label: 'Email', type: 'email', validators: [ Validators.required, Validators.email ] },
-    { name: 'message', label: 'Message', type: 'text', validators: [ Validators.required, Validators.min(10) ] }
+    { name: 'message', label: 'message', type: 'text', validators: [ Validators.required, Validators.min(10) ] }
   ];
 
   /**

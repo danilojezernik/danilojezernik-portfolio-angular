@@ -5,7 +5,14 @@ import {AuthService} from "../../auth/auth.service";
 import {LoggedInService} from "../../services/communication/logged-in.service";
 import {Observable} from "rxjs";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
-import {MY_RESOURCES, LANGUAGE, LOGIN_LOGOUT, MENU, TRANSLATE_LANGUAGE} from "../../shared/global-const/global.const";
+import {
+  MY_RESOURCES,
+  LANGUAGE,
+  LOGIN_LOGOUT,
+  MENU,
+  TRANSLATE_LANGUAGE,
+  MENU_TOP
+} from "../../shared/global-const/global.const";
 
 @Component({
   selector: 'app-header',
@@ -56,4 +63,5 @@ export class HeaderComponent implements OnInit {
   protected readonly LANGUAGE = LANGUAGE;
   protected readonly DROPDOWN = MY_RESOURCES;
   protected readonly LOGIN_LOGOUT = LOGIN_LOGOUT;
+  protected readonly MENU_TOP = MENU_TOP;
 }
