@@ -420,10 +420,15 @@ const routes: Routes = [
     component: UserEditByIdAdminComponent,
     canActivate: [ AuthGuardService ]
   },
+
+  // ---------------------------
+  //     NOT AUTHORIZED if not admin
+  // ---------------------------
   {
     path: 'not-authorized', component: NotAuthorizedComponent,
     canActivate: [ AuthGuardService ]
   },
+
   // ---------------------------
   //     404 ROUTE
   // ---------------------------
@@ -435,7 +440,6 @@ const routes: Routes = [
       shouldRedirect: true
     }
   }
-
 
 
 ];
