@@ -55,7 +55,7 @@ export class LoginComponent {
       if (inputName === 'firstInput') {
         this.secondInput.nativeElement.focus(); // Move focus to the password input field
       } else if (inputName === 'secondInput') {
-        this.logIn(); // Trigger the login process
+        this.login(); // Trigger the login process
       }
     }
   }
@@ -67,15 +67,19 @@ export class LoginComponent {
    * On success, stores the access token, logs the event, and navigates to the admin page.
    * On failure, logs the error message.
    */
-  logIn() {
-    this._authService.login(this.getUsername, this.getPassword)
-      .subscribe((response) => {
-        this._authService.setAccessToken(response.access_token); // Store the access token
-        this._logService.sendPublicLog('Login is checked', 'PUBLIC'); // Log the login attempt
-        this._router.navigate([ 'admin' ]); // Navigate to the admin page
-      }, error => {
-        console.log('Login failed', error); // Log the error to the console
-        this._logService.sendPublicLog(`Error: Login failed: ` + error.message, 'PUBLIC'); // Log the error message
-      });
+  login(): void {
+    this._authService.login(this.getUsername, this.getPassword).subscribe(response => {
+      if (response.access_token && response.role) {
+        // Correctly set the access token and user role
+        this._authService.setAccessToken(response.access_token, response.role);
+        this._router.navigate(['/admin']);
+      } else {
+        // Handle error or missing role/token scenario
+        console.error('Login failed: Invalid response data.');
+      }
+    }, error => {
+      // Handle HTTP error
+      console.error('Login request failed', error);
+    });
   }
 }

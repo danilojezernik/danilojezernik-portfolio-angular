@@ -10,6 +10,7 @@ export interface User {
   technology: string;
   description: string;
   hashed_password: string;
+  role?: string;
   confirmed: boolean;
   registered: boolean;
   blog_notification?: boolean;

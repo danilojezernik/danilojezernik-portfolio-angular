@@ -1,8 +1,8 @@
-import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { LoggedInService } from '../services/communication/logged-in.service';
+import {inject, Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable, tap} from 'rxjs';
+import {environment} from '../../environments/environment';
+import {LoggedInService} from '../services/communication/logged-in.service';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,7 @@ export class AuthService {
    * @param token {string} - The access token to be set.
    * @param role
    */
-  setAccessToken(token: string, role: string = 'visitor'): void {
+  setAccessToken(token: string, role: string): void {
     // Store the token in localStorage
     localStorage.setItem('token', token);
 
@@ -98,6 +98,13 @@ export class AuthService {
     formData.append('password', password);
 
     // Send a POST request to the login endpoint with the form data
-    return this._http.post<any>(`${environment.authUrl}`, formData);
+    return this._http.post<any>(`${environment.authUrl}`, formData).pipe(
+      tap(response => {
+        if (response.access_token && response.role) {
+          // Set the access token and user role from the response
+          this.setAccessToken(response.access_token, response.role);
+        }
+      })
+    );
   }
 }
