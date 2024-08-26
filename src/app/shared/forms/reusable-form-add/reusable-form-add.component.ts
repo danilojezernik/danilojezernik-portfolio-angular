@@ -2,6 +2,7 @@ import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn } from '@angular/forms';
 import { FormFieldConfig } from "../../../models/form-field-config.model";
+import {TranslateModule} from "@ngx-translate/core";
 
 /*************************************************************************************************
  * This component represents a reusable form component that dynamically generates form controls
@@ -12,7 +13,7 @@ import { FormFieldConfig } from "../../../models/form-field-config.model";
 @Component({
   selector: 'app-reusable-form',
   standalone: true,
-  imports: [ CommonModule, ReactiveFormsModule ],
+  imports: [CommonModule, ReactiveFormsModule, TranslateModule],
   templateUrl: './reusable-form-add.component.html'
 })
 export class ReusableFormAddComponent implements OnInit {

@@ -1,32 +1,44 @@
-<app-breadcrumb-admin first="breadcrumb.links" />
+<app-breadcrumb-admin first="breadcrumb.links"/>
 
 <!-- Container to display the 'Add Link' button if links data is available, not loading, and there is no error - START -->
 <ng-container *ngIf="links$ && !loading && !error">
-  <app-button-admin [routerLink]="'/add-links-admin'"></app-button-admin>
+  <div class="flex justify-center pb-5">
+    <app-button-admin [width]="true" [routerLink]="'/add-links-admin'"></app-button-admin>
+  </div>
 </ng-container>
 <!-- Container to display the 'Add Link' button if links data is available, not loading, and there is no error - END -->
 
 <!-- Container to check if links data is available and show content accordingly - START -->
 <ng-container *ngIf="links$ | async as links">
 
-  <!-- Loop through each link and display its information along with action buttons - START -->
-  <div *ngFor="let link of links">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
-    <!-- Component to display link data - START -->
-    <app-show-data
-      [title]="link.title"
-      [link]="link.link"
-    ></app-show-data>
-    <!-- Component to display link data - END -->
+      <!-- Loop through each link and display its information along with action buttons - START -->
+      <div class="flex bg-background-menu flex-col p-4 border rounded-lg shadow-lg" *ngFor="let link of links">
 
-    <!-- Buttons for editing, deleting link, and opening a dialog - START -->
-    <app-button-admin
-      (dialogRead)="openDialog(link._id)"
-      [routerLinkId]="['/edit-links-admin', link._id ?? '']"
-      (delete)="deleteLink(link._id)"
-    ></app-button-admin>
-    <!-- Buttons for editing, deleting link, and opening a dialog - END -->
+        <!-- Component to display link data - START -->
+        <div class="flex-1 overflow-x-auto ms-4 mb-4">
 
+          <app-show-data
+            [title]="link.title"
+            [link]="link.link"
+          />
+        </div>
+        <!-- Component to display link data - END -->
+        <div class="flex justify-center">
+
+          <!-- Buttons for editing, deleting link, and opening a dialog - START -->
+          <app-button-admin
+            (dialogRead)="openDialog(link._id)"
+            [routerLinkId]="['/edit-links-admin', link._id ?? '']"
+            (delete)="deleteLink(link._id)"
+          />
+          <!-- Buttons for editing, deleting link, and opening a dialog - END -->
+
+        </div>
+      </div>
+    </div>
   </div>
   <!-- Loop through each link and display its information along with action buttons - END -->
 

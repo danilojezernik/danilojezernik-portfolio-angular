@@ -12,6 +12,8 @@ import { TranslateService } from "@ngx-translate/core";
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
+import {GetImageService} from "../../../../../services/get-image/get-image.service";
+import {ShowImageComponent} from "../../../../../shared/components/show-image/show-image.component";
 
 /**
  * @Component ProjectsAllAdminComponent
@@ -22,7 +24,7 @@ import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcr
 @Component({
   selector: 'app-projects-admin',
   standalone: true,
-    imports: [CommonModule, GoBackComponent, ShowDataComponent, RouterLink, MatDialogModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent],
+  imports: [CommonModule, GoBackComponent, ShowDataComponent, RouterLink, MatDialogModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent, ShowImageComponent],
   templateUrl: './projects-all-admin.component.html'
 })
 export class ProjectsAllAdminComponent {
@@ -32,6 +34,7 @@ export class ProjectsAllAdminComponent {
   // Inject MatDialog instance for displaying dialogs
   private _dialog = inject(MatDialog);
   private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
+  protected _getImageByName = inject(GetImageService)
 
   // Property to store error messages, initialized to null
   error: string | null = null

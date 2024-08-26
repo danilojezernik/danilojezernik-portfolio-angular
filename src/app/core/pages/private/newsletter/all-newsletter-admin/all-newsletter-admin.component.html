@@ -1,30 +1,42 @@
-<app-breadcrumb-admin first="breadcrumb.newsletter" />
+<app-breadcrumb-admin first="breadcrumb.newsletter"/>
 
 <!-- Button to navigate to the add newsletter admin page - START -->
 <ng-container *ngIf="newsletters$ && !loading && !error">
-  <app-button-admin [routerLink]="'/add-newsletter-admin'"/>
+  <div class="flex justify-center pb-5">
+    <app-button-admin [width]="true" [routerLink]="'/add-newsletter-admin'"/>
+  </div>
 </ng-container>
 <!-- Button to navigate to the add newsletter admin page - END -->
 
 <!-- Container to check if blogs data is available, and show content or loading template accordingly - START -->
 <ng-container *ngIf="newsletters$ | async as newsletters">
 
-  <!-- Loop through each newsletter and display its information along with action buttons - START -->
-  <div class="mb-2 border-b-2" *ngFor="let newsletter of newsletters">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
-    <!-- Component to display newsletter data - START -->
-    <app-show-data
-      [title]="newsletter.title"
-    />
-    <!-- Component to display newsletter data - END -->
+      <!-- Loop through each newsletter and display its information along with action buttons - START -->
+      <div class="flex bg-background-menu flex-col p-4 border rounded-lg shadow-lg"
+           *ngFor="let newsletter of newsletters">
 
-    <!-- Buttons for editing and deleting newsletter, and opening a dialog - START -->
-    <app-button-admin
-      (dialogRead)="openDialog(newsletter._id)"
-      (delete)="deleteNewsletter(newsletter._id)"
-    />
-    <!-- Buttons for editing and deleting newsletter, and opening a dialog - END -->
+        <!-- Component to display newsletter data - START -->
+        <div class="flex-1 overflow-x-auto mx-auto mb-4">
+          <app-show-data
+            [title]="newsletter.title"
+          />
+        </div>
+        <!-- Component to display newsletter data - END -->
+        <div class="flex justify-center">
 
+          <!-- Buttons for editing and deleting newsletter, and opening a dialog - START -->
+          <app-button-admin
+            (dialogRead)="openDialog(newsletter._id)"
+            (delete)="deleteNewsletter(newsletter._id)"
+          />
+          <!-- Buttons for editing and deleting newsletter, and opening a dialog - END -->
+
+        </div>
+      </div>
+    </div>
   </div>
   <!-- Loop through each newsletter and display its information along with action buttons - END -->
 

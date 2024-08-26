@@ -2,41 +2,44 @@
 
 <!-- Button to navigate to the add blog admin page - START -->
 <ng-container *ngIf="blogs$ && !loading && !error">
-  <app-button-admin [routerLink]="'/add-blog-admin'"/>
+  <div class="flex justify-center pb-5">
+    <app-button-admin [width]="true" [routerLink]="'/add-blog-admin'"/>
+  </div>
 </ng-container>
 <!-- Button to navigate to the add blog admin page - END -->
 
 <!-- Container to check if blogs data is available, and show content or loading template accordingly - START -->
 <ng-container *ngIf="blogs$ | async as blogs;">
 
-  <!-- Loop through each blog and display its information along with action buttons - START -->
-  <div class="mb-2 border-b-2" *ngFor="let blog of blogs">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
-    <!-- Component to display blog data - START -->
-    <div class="flex flex-row">
+      <!-- Loop through each blog and display its information along with action buttons - START -->
+      <div class="flex bg-background-menu flex-col p-4 border rounded-lg shadow-lg" *ngFor="let blog of blogs">
 
-    <app-show-data
-      [title]="blog.title"
-      [kategorija]="blog.kategorija"
-      [podnaslov]="blog.podnaslov"
-      [image]="blog.image"
-    />
+        <!-- Component to display blog data - START -->
+        <div class="flex-1 overflow-x-auto ms-4 mb-4">
+          <app-show-data
+            [title]="blog.title"
+            [kategorija]="blog.kategorija"
+            [podnaslov]="blog.podnaslov"
+            [imageName]="blog.image"
+          />
+        </div>
+        <!-- Component to display blog data - END -->
 
-    <app-show-data
-      class="border-red-600 border"
-      *ngIf="blog.image"
-      [image]="_getImageByName.getBookImageUrl(blog.image)"
-    />
+        <div class="flex justify-center">
+          <!-- Buttons for editing and deleting blog, and opening a dialog - START -->
+          <app-button-admin
+            (dialogRead)="openDialog(blog._id)"
+            [routerLinkId]="['/edit-blog-admin', blog._id ?? '']"
+            (delete)="deleteBlog(blog._id)"
+          />
+          <!-- Buttons for editing and deleting blog, and opening a dialog - END -->
+        </div>
+      </div>
     </div>
     <!-- Component to display blog data - END -->
-
-    <!-- Buttons for editing and deleting blog, and opening a dialog - START -->
-    <app-button-admin
-      (dialogRead)="openDialog(blog._id)"
-      [routerLinkId]="['/edit-blog-admin', blog._id ?? '']"
-      (delete)="deleteBlog(blog._id)"
-    />
-    <!-- Buttons for editing and deleting blog, and opening a dialog - END -->
 
   </div>
   <!-- Loop through each blog and display its information along with action buttons - END -->

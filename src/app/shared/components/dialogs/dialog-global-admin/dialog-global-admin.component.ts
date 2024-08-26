@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule } from "@angular/material/dialog";
 import { TranslateModule } from "@ngx-translate/core";
+import {MatButtonModule} from "@angular/material/button";
 
 /**
  * @Component declaration for DialogGlobalAdminComponent.
@@ -13,7 +14,7 @@ import { TranslateModule } from "@ngx-translate/core";
 @Component({
   selector: 'app-dialog',
   standalone: true,
-  imports: [ CommonModule, MatDialogModule, TranslateModule ],
+  imports: [ CommonModule, MatDialogModule, TranslateModule, MatButtonModule ],
   templateUrl: './dialog-global-admin.component.html'
 })
 export class DialogGlobalAdminComponent {
@@ -49,7 +50,8 @@ export class DialogGlobalAdminComponent {
    * Method to check if the value is a non-empty string.
    * @param value - The value to check.
    * @returns true if 'value' is a non-empty string; otherwise, returns false.
-   */  isStringAndNotEmpty(value: any): boolean {
+   */
+  isStringAndNotEmpty(value: any): boolean {
     return typeof value === 'string' && value.trim() !== '';
   }
 

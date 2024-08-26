@@ -1,41 +1,54 @@
-<app-breadcrumb-admin first="breadcrumb.experiences" />
+<app-breadcrumb-admin first="breadcrumb.experiences"/>
 
 <!-- Button to navigate to the add experiences admin page - START -->
 <ng-container *ngIf="experiences$ && !loading && !error">
-  <app-button-admin [routerLink]="'/add-experiences-admin'"/>
+  <div class="flex justify-center pb-5">
+    <app-button-admin [width]="true" [routerLink]="'/add-experiences-admin'"/>
+  </div>
 </ng-container>
 <!-- Button to navigate to the add experiences admin page - END -->
 
 <!-- Container to check if experiences data is available, and show content or loading template accordingly - START -->
 <ng-container *ngIf="experiences$ | async as experiences">
 
-  <!-- Loop through each experience and display its information along with action buttons - START -->
-  <div *ngFor="let experience of experiences">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
-    <!-- Component to display experience data - START -->
-    <app-show-data
-      [_id]="experience._id"
-      [company]="experience.company"
-      [framework]="experience.framework"
-      [title]="experience.title"
-      [stack]="experience.stack"
-      [tasks]="experience.tasks"
-      [programming_language]="experience.programming_language"
-      [employee]="experience.employee"
-      [company_start]="experience.company_start"
-      [company_end]="experience.company_end"
-      [datum_vnosa]="experience.datum_vnosa"
-    />
-    <!-- Component to display experience data - END -->
+      <!-- Loop through each experience and display its information along with action buttons - START -->
+      <div class="flex bg-background-menu flex-col p-4 border rounded-lg shadow-lg"
+           *ngFor="let experience of experiences">
 
-    <!-- Buttons for editing and deleting experience, and opening a dialog - START -->
-    <app-button-admin
-      (dialogRead)="openDialog(experience._id)"
-      [routerLinkId]="['/edit-experiences-admin', experience._id ?? '']"
-      (delete)="deleteExperience(experience._id)"
-    />
-    <!-- Buttons for editing and deleting experience, and opening a dialog - END -->
+        <!-- Component to display experience data - START -->
+        <div class="flex-1 overflow-x-auto ms-4 mb-4">
 
+          <app-show-data
+            [_id]="experience._id"
+            [company]="experience.company"
+            [framework]="experience.framework"
+            [title]="experience.title"
+            [stack]="experience.stack"
+            [tasks]="experience.tasks"
+            [programming_language]="experience.programming_language"
+            [employee]="experience.employee"
+            [company_start]="experience.company_start"
+            [company_end]="experience.company_end"
+            [datum_vnosa]="experience.datum_vnosa"
+          />
+        </div>
+        <!-- Component to display experience data - END -->
+        <div class="flex justify-center">
+
+          <!-- Buttons for editing and deleting experience, and opening a dialog - START -->
+          <app-button-admin
+            (dialogRead)="openDialog(experience._id)"
+            [routerLinkId]="['/edit-experiences-admin', experience._id ?? '']"
+            (delete)="deleteExperience(experience._id)"
+          />
+          <!-- Buttons for editing and deleting experience, and opening a dialog - END -->
+
+        </div>
+      </div>
+    </div>
   </div>
   <!-- Loop through each experience and display its information along with action buttons - END -->
 

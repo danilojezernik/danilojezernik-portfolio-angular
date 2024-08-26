@@ -4,9 +4,6 @@ import {
   DialogGlobalAdminComponent
 } from "../shared/components/dialogs/dialog-global-admin/dialog-global-admin.component";
 import { DIALOG_DIMENSIONS } from "../shared/global-const/global.const";
-import { inject } from "@angular/core";
-import { DeviceDetectorService } from "ngx-device-detector";
-
 
 /**
  * Utility function to open a dialog with data fetched by ID.
@@ -39,7 +36,6 @@ export function openDialogUtil(
           allData: data // Pass all data to the dialog
         },
         ...DIALOG_DIMENSIONS.admin, // Apply predefined dialog dimensions
-        panelClass: [ 'md:w-3/5', 'w-full' ],
       })
     })
   } else {

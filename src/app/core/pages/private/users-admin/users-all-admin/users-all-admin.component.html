@@ -2,38 +2,50 @@
 
 <!-- Button to navigate to the add user admin page - START -->
 <ng-container *ngIf="users$ && !loading && !error">
-  <app-button-admin [routerLink]="'/add-user-admin'"/>
+  <div class="flex justify-center pb-5">
+  <app-button-admin [width]="true" [routerLink]="'/add-user-admin'"/>
+  </div>
 </ng-container>
 <!-- Button to navigate to the add user admin page - END -->
 
 <!-- Container to check if users data is available, and show content or loading template accordingly - START -->
 <ng-container *ngIf="users$ | async as users">
 
-  <!-- Loop through each user and display its information along with action buttons - START -->
-  <div style="padding-bottom: 20px" *ngFor="let user of users; let i = index">
+  <div class="container mx-auto px-4">
+    <div class="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
-    <!-- Component to display blog user - START -->
-    <app-show-data
-      [_id]="user._id"
-      [full_name]="user.full_name"
-      [username]="user.username"
-      [email]="user.email"
-      [technology]="user.technology"
-      [description]="user.description"
-      [blog_notification]="user.blog_notification"
-      [confirmed]="user.confirmed"
-      [registered]="user.registered"
-    />
-    <!-- Component to display user data - END -->
+      <!-- Loop through each user and display its information along with action buttons - START -->
+      <div class="flex bg-background-menu flex-col p-4 border rounded-lg shadow-lg"
+           *ngFor="let user of users; let i = index">
 
-    <!-- Buttons for editing and deleting user, and opening a dialog - START -->
-    <app-button-admin
-      (dialogRead)="openDialog(user._id)"
-      [routerLinkId]="['/edit-user-admin', user._id ?? '']"
-      (delete)="deleteUser(user._id)"
-    />
-    <!-- Buttons for editing and deleting user, and opening a dialog - END -->
+        <!-- Component to display blog user - START -->
+        <div class="flex-1 overflow-x-auto ms-4 mb-4">
+          <app-show-data
+            [_id]="user._id"
+            [full_name]="user.full_name"
+            [username]="user.username"
+            [email]="user.email"
+            [technology]="user.technology"
+            [description]="user.description"
+            [blog_notification]="user.blog_notification"
+            [confirmed]="user.confirmed"
+            [registered]="user.registered"
+          />
+        </div>
+        <!-- Component to display user data - END -->
+        <div class="flex justify-center">
 
+          <!-- Buttons for editing and deleting user, and opening a dialog - START -->
+          <app-button-admin
+            (dialogRead)="openDialog(user._id)"
+            [routerLinkId]="['/edit-user-admin', user._id ?? '']"
+            (delete)="deleteUser(user._id)"
+          />
+          <!-- Buttons for editing and deleting user, and opening a dialog - END -->
+
+        </div>
+      </div>
+    </div>
   </div>
   <!-- Loop through each user and display its information along with action buttons - END -->
 

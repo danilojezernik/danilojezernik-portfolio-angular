@@ -1,43 +1,40 @@
-<app-breadcrumb-admin first="breadcrumb.books" />
+<app-breadcrumb-admin first="breadcrumb.books"/>
 
 <!-- Button to navigate to the add books admin page - START -->
 <ng-container *ngIf="books$ && !loading && !error">
-  <app-button-admin [routerLink]="'/add-books-admin'"></app-button-admin>
+  <div class="flex justify-center pb-5">
+    <app-button-admin [width]="true" [routerLink]="'/add-books-admin'" />
+  </div>
 </ng-container>
 <!-- Button to navigate to the add books admin page - END -->
 
 <!-- Container to check if books data is available and show content or error template accordingly - START -->
 <ng-container *ngIf="books$ | async as books">
-  <!-- Loop through each book and display its information along with action buttons - START -->
-  <div class="mb-2 border-b-2" *ngFor="let book of books">
-    <!-- Component to display book data with image - START -->
-    <div class="flex flex-row">
-
-      <app-show-data
-        [naslov]="book.naslov"
-        [podnaslov]="book.podnaslov"
-        [vsebina]="book.vsebina"
-        [image]="book.image"
-      />
-
-      <app-show-data
-        class="border-red-600 border"
-        *ngIf="book.image"
-        [image]="_getImageByName.getBookImageUrl(book.image)"
-      />
+  <!-- Container for the card grid -->
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <!-- Loop through each book and display its information along with action buttons -->
+      <div class="flex bg-background-menu flex-col p-4 border rounded-lg shadow-lg" *ngFor="let book of books">
+        <div class="flex-1 overflow-x-auto ms-4 mb-4">
+          <app-show-data
+            [naslov]="book.naslov"
+            [podnaslov]="book.podnaslov"
+            [vsebina]="book.vsebina"
+            [imageName]="book.image"
+          />
+        </div>
+        <!-- Buttons for editing and deleting book, and opening a dialog -->
+        <div class="flex justify-center">
+          <app-button-admin
+            (dialogRead)="openDialog(book._id)"
+            [routerLinkId]="['/edit-books-admin', book._id ?? '']"
+            (delete)="deleteBook(book._id)"
+          />
+        </div>
+      </div>
     </div>
-
-    <!-- Component to display book data - END -->
-
-    <!-- Buttons for editing and deleting book, and opening a dialog - START -->
-    <app-button-admin
-      (dialogRead)="openDialog(book._id)"
-      [routerLinkId]="['/edit-books-admin', book._id ?? '']"
-      (delete)="deleteBook(book._id)"
-    ></app-button-admin>
-    <!-- Buttons for editing and deleting book, and opening a dialog - END -->
   </div>
-  <!-- Loop through each book and display its information along with action buttons - END -->
+
 </ng-container>
 <!-- Container to check if books data is available and show content or error template accordingly - END -->
 
@@ -54,5 +51,5 @@
 <!-- Loading spinner - END -->
 
 <!-- Button to navigate back to the previous page - START -->
-<app-go-back [booksAdmin]="true" />
+<app-go-back [booksAdmin]="true"/>
 <!-- Button to navigate back to the previous page - END -->

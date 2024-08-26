@@ -10,10 +10,9 @@
 
 .btn-admin {
   color: $main-text-color;
-  font-weight: $bold-font-weight;
+  font-weight: $light-font-weight;
   letter-spacing: $letter-spacing-admin;
   padding: $padding-button-admin;
-  border-radius: $border-radius-button-admin;
 
   &.add {
     @include button-hover-effect($color-add-start, $color-add-end);
@@ -32,7 +31,17 @@
   }
 
   &.back {
+    border-radius: $border-radius-button-admin;
     color: $black-text-color;
     @include button-hover-effect($color-back-start, $color-back-end);
   }
+
+  @media (max-width: 575px) {
+    font-size: 12px;
+  }
+
+  @media (min-width: 576px) and (max-width: 1199px) {
+    font-size: 14px;
+  }
+
 }

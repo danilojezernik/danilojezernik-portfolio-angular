@@ -1,36 +1,47 @@
-<app-breadcrumb-admin first="breadcrumb.technology" />
+<app-breadcrumb-admin first="breadcrumb.technology"/>
 
 <!-- Button to navigate to the add technology admin page - START -->
 <ng-container *ngIf="technology$ && !loading && !error">
-  <app-button-admin [routerLink]="'/add-technology-admin'"/>
+  <div class="flex justify-center pb-5">
+    <app-button-admin [width]="true" [routerLink]="'/add-technology-admin'"/>
+  </div>
 </ng-container>
 <!-- Button to navigate to the technology blog admin page - END -->
 
 <!-- Container to check if technologies data is available, and show content or loading template accordingly - START -->
 <ng-container *ngIf="technology$ | async as technologies">
 
-  <!-- Loop through each technology and display its information along with action buttons - START -->
-  <div *ngFor="let technology of technologies">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
-    <!-- Component to display technology data - START -->
-    <app-show-data
-      [_id]="technology._id"
-      [technology]="technology.technology"
-      [title]="technology.title"
-      [subtitle]="technology.subtitle"
-      [vsebina]="technology.subtitle"
-      [datum_vnosa]="technology.datum_vnosa"
-    />
-    <!-- Component to display technology data - END -->
+      <!-- Loop through each technology and display its information along with action buttons - START -->
+      <div class="flex bg-background-menu flex-col p-4 border rounded-lg shadow-lg"
+           *ngFor="let technology of technologies">
 
-    <!-- Buttons for editing and deleting technology, and opening a dialog - START -->
-    <app-button-admin
-      (dialogRead)="openDialog(technology._id)"
-      [routerLinkId]="['/edit-technology-admin', technology._id ?? '']"
-      (delete)="deleteTechnology(technology._id)"
-    />
-    <!-- Buttons for editing and deleting technology, and opening a dialog - END -->
+        <!-- Component to display technology data - START -->
+        <div class="flex-1 overflow-x-auto ms-4 mb-4">
+          <app-show-data
+            [_id]="technology._id"
+            [technology]="technology.technology"
+            [title]="technology.title"
+            [subtitle]="technology.subtitle"
+            [datum_vnosa]="technology.datum_vnosa"
+          />
+        </div>
+        <!-- Component to display technology data - END -->
+        <div class="flex justify-center">
 
+          <!-- Buttons for editing and deleting technology, and opening a dialog - START -->
+          <app-button-admin
+            (dialogRead)="openDialog(technology._id)"
+            [routerLinkId]="['/edit-technology-admin', technology._id ?? '']"
+            (delete)="deleteTechnology(technology._id)"
+          />
+          <!-- Buttons for editing and deleting technology, and opening a dialog - END -->
+
+        </div>
+      </div>
+    </div>
   </div>
   <!-- Loop through each technology and display its information along with action buttons - END -->
 

@@ -3,7 +3,7 @@
 // Dimensions for the admin dialog
 const ADMIN_GET_BY_ID = {
   height: '50%', // Set the height of the admin dialog to 50% of the viewport
-  width: '50%'   // Set the width of the admin dialog to 50% of the viewport
+  width: '100%'   // Set the width of the admin dialog to 50% of the viewport
 }
 
 const ADMIN_GET_BY_ID_MOBILE = {
@@ -64,25 +64,25 @@ export const MY_RESOURCES: { menu: string, path: string }[] = [
 
 // Menu items for the admin menu component
 // MENU ITEMS FOR ADMIN MENU COMPONENT
-export const ADMIN_MENU: { menu: string, path: string }[] = [
-  {menu: 'menu.blog', path: '/blog-admin'},
-  {menu: 'menu.media', path: '/media'},
-  {menu: 'menu.users', path: '/users-admin'},
-  {menu: 'menu.email', path: '/emails-admin'},
-  {menu: 'menu.technology', path: '/technology-admin'},
-  {menu: 'menu.links', path: '/links-admin'},
-  {menu: 'menu.experiences', path: '/experiences-admin'},
-  {menu: 'menu.projects', path: '/projects-admin'},
-  {menu: 'menu.book', path: '/books-admin'},
-  {menu: 'menu.newsletter', path: '/newsletter-admin'},
-  {menu: 'menu.subscriber', path: '/subscriber-admin'},
+export const ADMIN_MENU: { menu: string, path: string, description: string }[] = [
+  {menu: 'menu.blog', path: '/blog-admin', description: 'description.admin-menu.blog'},
+  {menu: 'menu.media', path: '/media', description: 'description.admin-menu.media'},
+  {menu: 'menu.users', path: '/users-admin', description: 'description.admin-menu.users'},
+  {menu: 'menu.email', path: '/emails-admin', description: 'description.admin-menu.email'},
+  {menu: 'menu.technology', path: '/technology-admin', description: 'description.admin-menu.technology'},
+  {menu: 'menu.links', path: '/links-admin', description: 'description.admin-menu.links'},
+  {menu: 'menu.experiences', path: '/experiences-admin', description: 'description.admin-menu.experiences'},
+  {menu: 'menu.projects', path: '/projects-admin', description: 'description.admin-menu.projects'},
+  {menu: 'menu.book', path: '/books-admin', description: 'description.admin-menu.book'},
+  {menu: 'menu.newsletter', path: '/newsletter-admin', description: 'description.admin-menu.newsletter'},
+  {menu: 'menu.subscriber', path: '/subscriber-admin', description: 'description.admin-menu.subscriber'},
 ]
 
 export const MEDIA_MENU = [
-  {menu: 'menu.about-me-media', path: '/media-about-me'},
-  {menu: 'menu.media-books', path: '/media-books'},
-  {menu: 'menu.media-blogs', path: '/media-blogs'},
-  {menu: 'menu.media-projects', path: '/media-projects'},
+  {menu: 'menu.about-me-media', path: '/media-about-me', description: 'description.media-menu.about'},
+  {menu: 'menu.media-books', path: '/media-books', description: 'description.media-menu.books'},
+  {menu: 'menu.media-blogs', path: '/media-blogs', description: 'description.media-menu.blogs'},
+  {menu: 'menu.media-projects', path: '/media-projects', description: 'description.media-menu.projects'},
 ]
 
 // Language translations for the header component and Translate service

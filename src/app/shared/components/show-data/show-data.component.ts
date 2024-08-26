@@ -1,6 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from "@angular/router";
+import {ClipboardCopyService} from "../../../services/clipboard-copy/clipboard-copy.service";
 
 /**
  * This component is for easy adding any kind of data inputs and displaying them.
@@ -30,8 +31,8 @@ export class ShowDataComponent {
   // Main content or body of the data
   @Input() vsebina?: string;
 
-  // URL or path to an image
-  @Input() image?: string;
+  // Name of the image
+  @Input() imageName?: string;
 
   // Date of entry or creation
   @Input() datum_vnosa?: string;
@@ -129,4 +130,11 @@ export class ShowDataComponent {
   // Technology used or associated (alternate field)
   @Input() tehnologija?: string;
 
+  // Inject services to copy image name to clipboard
+  private _clipboardService = inject(ClipboardCopyService)
+
+
+  copyToClipboard(img: string) {
+    this._clipboardService.copyImageName(img)
+  }
 }

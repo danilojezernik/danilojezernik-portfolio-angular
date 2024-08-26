@@ -13,6 +13,7 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 import { DialogAdminService } from "../../../../../services/dialog-admin/dialog-admin.service";
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
+import {ShowImageComponent} from "../../../../../shared/components/show-image/show-image.component";
 
 /**
  * @Component BlogAllAdminComponent
@@ -23,7 +24,7 @@ import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcr
 @Component({
   selector: 'app-blog-all-admin',
   standalone: true,
-  imports: [CommonModule, RouterLink, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent],
+  imports: [CommonModule, RouterLink, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent, ShowImageComponent],
   templateUrl: './blog-all-admin.component.html'
 })
 export class BlogAllAdminComponent {

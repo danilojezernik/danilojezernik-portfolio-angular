@@ -45,6 +45,27 @@
 		"to-books": "Go to books",
 		"to-projects": "Go to projects"
 	},
+	"description": {
+		"admin-menu": {
+			"blog": "Manage and edit blog posts, categories, and comments from the admin dashboard.",
+			"book": "Administer book entries, categories, and other related settings for a book management system.",
+			"email": "Configure and oversee email communications and templates for newsletters and notifications.",
+			"experiences": "Manage and update various user experiences and feedback collected through the platform.",
+			"links": "Edit and organize important links and their categories for easy navigation and access.",
+			"media": " Upload, organize, and manage all media files used throughout the website or application.",
+			"newsletter": "Create and manage newsletters, including content, recipients, and distribution settings.",
+			"projects": "Oversee and manage projects, including details, updates, and statuses from the admin interface.",
+			"subscriber": "View and manage subscriber lists, preferences, and interactions for newsletters and updates.",
+			"technology": "Manage technology-related settings, integrations, and updates for the website or application.",
+			"users": "View, edit, and manage user accounts, roles, and permissions within the admin panel."
+		},
+		"media-menu": {
+			"about": "View, add, and delete images for the gallery about me through the dashboard.",
+			"blogs": "View, add, and delete pictures for blogs through the dashboard.",
+			"books": "View, add, and delete pictures for books through the dashboard.",
+			"projects": "View, add, and delete pictures for projects through the dashboard."
+		}
+	},
 	"errors": {
 		"badRequest": "Bad Request. Please check your input.",
 		"forbidden": "You do not have permission to perform this action.",
@@ -55,6 +76,39 @@
 		"unauthorized": "Unauthorized. Please check your username and password.",
 		"unknown": "An unknown error occurred!",
 		"unprocessableEntity": "Unprocessable Entity. Please check your input and try again."
+	},
+	"labels": {
+		"_id": "ID",
+		"blog_notification": "Blog notification",
+		"company": "Company",
+		"company_end": "Ended up working for the company",
+		"company_start": "Starting work at the company",
+		"confirmed": "Confirmed subscription",
+		"content": "Content",
+		"datum_vnosa": "Adding date",
+		"description": "Description",
+		"email": "E-mail",
+		"employee": "Employee",
+		"framework": "Framework",
+		"full_name": "Name and surname",
+		"github": "Github",
+		"hashed_password": "Hashed password",
+		"image": "Image",
+		"kategorija": "Category",
+		"link": "Link",
+		"naslov": "Title",
+		"podnaslov": "Subtitle",
+		"profession": "Profession",
+		"programming_language": "Programming language",
+		"registered": "Registered",
+		"required": "is required",
+		"stack": "Stack",
+		"tasks": "Tasks",
+		"technology": "Technology",
+		"title": "Title",
+		"username": "Username",
+		"vsebina": "Content",
+		"website": "Website"
 	},
 	"loading": "Loading",
 	"menu": {

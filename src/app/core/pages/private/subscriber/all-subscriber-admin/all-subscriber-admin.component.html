@@ -1,34 +1,48 @@
-<app-breadcrumb-admin first="breadcrumb.subscribers" />
+<app-breadcrumb-admin first="breadcrumb.subscribers"/>
 
 <!-- Button to navigate to the add subscriber admin page - START -->
 <ng-container *ngIf="subscribers$ && !loading && !error">
-  <app-button-admin [routerLink]="'/add-subscriber-admin'"/>
+  <div class="flex justify-center pb-5">
+    <app-button-admin [width]="true" [routerLink]="'/add-subscriber-admin'"/>
+  </div>
 </ng-container>
 <!-- Button to navigate to the add subscriber admin page - END -->
 
 <!-- Container to check if subscribers data is available, and show content or loading template accordingly - START -->
 
 <ng-container *ngIf="subscribers$ | async as subscribers">
-  <!-- Loop through each subscriber and display its information along with action buttons - START -->
 
-  <div class="mb-2 border-b-2" *ngFor="let subscriber of subscribers">
-    <!-- Component to display subscriber data - START -->
-    <app-show-data
-      [name]="subscriber.name"
-      [surname]="subscriber.surname"
-      [email]="subscriber.email"
-      [confirmed]="subscriber.confirmed"
-    />
-    <!-- Component to display subscriber data - END -->
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
-    <!-- Buttons for editing and deleting subscriber, and opening a dialog - START -->
-    <app-button-admin
-      (dialogRead)="openDialog(subscriber._id)"
-      [routerLinkId]="['/edit-subscriber-admin', subscriber._id ?? '']"
-      (delete)="deleteSubscriberById(subscriber._id)"
-    />
-    <!-- Buttons for editing and deleting subscriber, and opening a dialog - END -->
+      <!-- Loop through each subscriber and display its information along with action buttons - START -->
 
+      <div class="flex bg-background-menu flex-col p-4 border rounded-lg shadow-lg"
+           *ngFor="let subscriber of subscribers">
+        <!-- Component to display subscriber data - START -->
+        <div class="flex-1 overflow-x-auto ms-4 mb-4">
+
+          <app-show-data
+            [name]="subscriber.name"
+            [surname]="subscriber.surname"
+            [email]="subscriber.email"
+            [confirmed]="subscriber.confirmed"
+          />
+        </div>
+        <!-- Component to display subscriber data - END -->
+        <div class="flex justify-center">
+
+          <!-- Buttons for editing and deleting subscriber, and opening a dialog - START -->
+          <app-button-admin
+            (dialogRead)="openDialog(subscriber._id)"
+            [routerLinkId]="['/edit-subscriber-admin', subscriber._id ?? '']"
+            (delete)="deleteSubscriberById(subscriber._id)"
+          />
+          <!-- Buttons for editing and deleting subscriber, and opening a dialog - END -->
+
+        </div>
+      </div>
+    </div>
   </div>
   <!-- Loop through each subscriber and display its information along with action buttons - END -->
 

@@ -12,6 +12,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
+import {ShowImageComponent} from "../../../../../shared/components/show-image/show-image.component";
 
 /**
  * @Component AllBooksAdminComponent
@@ -21,7 +22,7 @@ import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcr
 @Component({
   selector: 'app-all-books-admin',
   standalone: true,
-  imports: [CommonModule, ButtonAdminComponent, GoBackComponent, ShowDataComponent, LoadingComponent, BreadcrumbAdminComponent],
+  imports: [CommonModule, ButtonAdminComponent, GoBackComponent, ShowDataComponent, LoadingComponent, BreadcrumbAdminComponent, ShowImageComponent],
   templateUrl: './all-books-admin.component.html'
 })
 export class AllBooksAdminComponent {
