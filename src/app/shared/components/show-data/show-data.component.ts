@@ -40,6 +40,9 @@ export class ShowDataComponent {
   // Generic title field
   @Input() title?: string;
 
+  // Generic title field
+  @Input() role?: string;
+
   // Technology stack
   @Input() stack?: string;
 

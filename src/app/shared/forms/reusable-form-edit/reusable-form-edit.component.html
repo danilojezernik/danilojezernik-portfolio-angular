@@ -50,6 +50,15 @@
       *ngIf="field.type === 'textarea'" [id]="field.name" [formControlName]="field.name">
     </textarea>
 
+    <!-- Add select element -->
+    <div *ngIf="field.type === 'select'">
+      <select
+        class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        [id]="field.name" [formControlName]="field.name">
+        <option *ngFor="let option of field.options" [value]="option.value">{{ option.label }}</option>
+      </select>
+    </div>
+    
     <!-- Error message for required fields -->
     <!-- Display the error message if the form control is invalid and has been touched -->
     <div *ngIf="form.controls[field.name].invalid && form.controls[field.name].touched">

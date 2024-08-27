@@ -15,6 +15,12 @@ export const environment = {
     publicMedia: 'http://localhost:3000/blog/media/',
   },
 
+  // COMMENT API
+  commentUrl: {
+    public: 'http://localhost:3000/comments',
+    admin: 'http://localhost:3000/comments/admin/'
+  },
+
   // BOOK API
   bookUrl: {
     public: 'http://localhost:3000/book',

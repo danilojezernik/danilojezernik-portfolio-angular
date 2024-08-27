@@ -1,11 +1,17 @@
-<p>login works!</p>
+<div class="flex flex-col mx-auto md:w-1/2 w-full p-2">
 
-Username: <input #firstInput style="border: 1px solid black" [(ngModel)]="getUsername"
+
+Username: <input #firstInput
+                 class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 [(ngModel)]="getUsername"
                  (keypress)="checkEnter($event, 'firstInput')"><br>
-Password: <input #secondInput style="border: 1px solid black" [(ngModel)]="getPassword"
+Password: <input #secondInput
+                 class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 [(ngModel)]="getPassword"
                  (keypress)="checkEnter($event, 'secondInput')">
 <br>
 
-<button style="background-color: orange; padding: 10px" (click)="login()">
+<button class="btn-admin add rounded-lg" (click)="login()">
   Login
 </button>
+</div>

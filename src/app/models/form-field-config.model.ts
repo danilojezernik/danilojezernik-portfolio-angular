@@ -21,12 +21,14 @@ export interface FormFieldConfig {
    */
   label: string;
 
+  options?: { value: string; label: string }[]; // Add options property for select fields
+
   /**
    * The type property represents the type of the form control.
    * It is a union type that can be one of the following string literals: 'text', 'email', 'number', or 'textarea'.
    * This property determines the type of input element rendered in the form.
    */
-  type: 'text' | 'email' | 'number' | 'textarea' | 'password' | 'checkbox';
+  type: 'text' | 'email' | 'number' | 'textarea' | 'password' | 'checkbox' | 'select';
 
   /**
    * The validators property is an optional array of ValidatorFn functions.

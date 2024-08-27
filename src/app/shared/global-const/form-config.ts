@@ -45,6 +45,11 @@ export const formUserConfig: FormFieldConfig[] = [
   { name: 'profession', label: 'profession', type: 'text', validators: [] },
   { name: 'technology', label: 'technology', type: 'text', validators: [] },
   { name: 'description', label: 'description', type: 'text', validators: [ Validators.required ] },
+  { name: 'role', label: 'role', type: 'select',
+  options: [
+  { value: 'visitor', label: 'Visitor' },
+  { value: 'admin', label: 'Admin' }
+], validators: [] },
   { name: 'hashed_password', label: 'hashed_password', type: 'text', validators: [] },
   { name: 'confirmed', label: 'confirmed', type: 'checkbox', validators: [] },
   { name: 'registered', label: 'registered', type: 'checkbox', validators: [] },
