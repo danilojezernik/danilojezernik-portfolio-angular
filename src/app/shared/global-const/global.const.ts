@@ -72,6 +72,7 @@ export const MY_RESOURCES: { menu: string, path: string }[] = [
 // MENU ITEMS FOR ADMIN MENU COMPONENT
 export const ADMIN_MENU: { menu: string, path: string, description: string }[] = [
   {menu: 'menu.blog', path: '/blog-admin', description: 'description.admin-menu.blog'},
+  {menu: 'menu.comments', path: '/comments-admin', description: 'description.admin-menu.comment'},
   {menu: 'menu.media', path: '/media', description: 'description.admin-menu.media'},
   {menu: 'menu.users', path: '/users-admin', description: 'description.admin-menu.users'},
   {menu: 'menu.email', path: '/emails-admin', description: 'description.admin-menu.email'},

@@ -1,4 +1,4 @@
-<div *ngIf="_id"><strong>ID: </strong> {{ _id }}</div>
+<div *ngIf="_id" (click)="copyToClipboard(_id)"><strong>ID: </strong> <span class="cursor-pointer hover:text-red-600">{{ _id }}</span></div>
 <div *ngIf="title"><strong>Title: </strong> {{ title }}</div>
 <div *ngIf="naslov"><strong>Naslov: </strong> {{ naslov }}</div>
 <div *ngIf="kategorija"><strong>Kategorija: </strong> {{ kategorija }}</div>
@@ -14,7 +14,7 @@
 <div *ngIf="tasks"><strong>Tasks: </strong> {{ tasks }}</div>
 <div *ngIf="company_start"><strong>Company Start: </strong> {{ company_start | date }}</div>
 <div *ngIf="company_end"><strong>Company End: </strong> {{ company_end | date }}</div>
-<div *ngIf="blog_id"><strong>Blog ID: </strong> {{ blog_id }}</div>
+<div *ngIf="blog_id" (click)="copyToClipboard(blog_id)"><strong>Blog ID: </strong> <span class="cursor-pointer hover:text-red-600">{{ blog_id }}</span></div>
 <div *ngIf="content"><strong>Content: </strong> {{ content }}</div>
 <div *ngIf="author"><strong>Author: </strong> {{ author }}</div>
 <div *ngIf="name" (click)="copyToClipboard(name)"><strong>Name: </strong> <span class="cursor-pointer hover:text-red-600">{{ name }}</span></div>
@@ -37,3 +37,4 @@
 <div *ngIf="blog_notification !== undefined"><strong>Blog Notification: </strong> {{ blog_notification }}</div>
 <div *ngIf="tehnologija"><strong>Tehnologija: </strong> {{ tehnologija }}</div>
 <div *ngIf="imageName" (click)="copyToClipboard(imageName)"><strong>Image: </strong> <span class="cursor-pointer hover:text-red-600">{{ imageName }}</span></div>
+<div *ngIf="blogById"><span class="cursor-pointer hover:text-red-600"><a [routerLink]="['/blog/', blog_id]">Go to blog</a></span></div>

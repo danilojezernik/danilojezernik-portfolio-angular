@@ -50,6 +50,7 @@
 		"admin-menu": {
 			"blog": "Manage and edit blog posts, categories, and comments from the admin dashboard.",
 			"book": "Administer book entries, categories, and other related settings for a book management system.",
+			"comment": "Create and manage comments, including content, users, and submission settings.",
 			"email": "Configure and oversee email communications and templates for newsletters and notifications.",
 			"experiences": "Manage and update various user experiences and feedback collected through the platform.",
 			"links": "Edit and organize important links and their categories for easy navigation and access.",
@@ -80,6 +81,7 @@
 	},
 	"labels": {
 		"_id": "ID",
+		"blog_id": "Blog ID",
 		"blog_notification": "Blog notification",
 		"company": "Company",
 		"company_end": "Ended up working for the company",
@@ -123,6 +125,7 @@
 		"blog": "Blog",
 		"book": "Books",
 		"books": "Books",
+		"comments": "Comments",
 		"contact": "Contact",
 		"email": "Emails",
 		"experiences": "Experiences",

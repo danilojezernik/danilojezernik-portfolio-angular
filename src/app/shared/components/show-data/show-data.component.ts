@@ -19,7 +19,7 @@ export class ShowDataComponent {
   // Unique identifier for the data
   @Input() _id?: string;
 
-  // General title or name of the data
+    // General title or name of the data
   @Input() naslov?: string;
 
   // Category of the data
@@ -132,6 +132,11 @@ export class ShowDataComponent {
 
   // Technology used or associated (alternate field)
   @Input() tehnologija?: string;
+
+  // Add link to the blog
+  @Input() blogById?: boolean;
+
+
 
   // Inject services to copy image name to clipboard
   private _clipboardService = inject(ClipboardCopyService)

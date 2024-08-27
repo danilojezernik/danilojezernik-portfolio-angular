@@ -85,6 +85,9 @@ import {BooksMediaAdminComponent} from "./core/pages/private/media/books-media/b
 import {BlogsMediaAdminComponent} from "./core/pages/private/media/blogs-media/blogs-media-admin.component";
 import {ProjectsMediaAdminComponent} from "./core/pages/private/media/projects-media/projects-media-admin.component";
 import {NotAuthorizedComponent} from "./core/pages/public/not-authorized/not-authorized.component";
+import {
+  CommentsAllAdminComponent
+} from "./core/pages/private/comments-admin/comments-all-admin/comments-all-admin.component";
 
 const routes: Routes = [
   {
@@ -286,6 +289,20 @@ const routes: Routes = [
     path: 'edit-books-admin/:id',
     component: EditBooksAdminComponent,
     canActivate: [ AuthGuardService ]
+  },
+
+  // ---------------------------
+  //     COMMENT ROUTES
+  // ---------------------------
+
+  // PUBLIC
+
+
+  // PRIVATE
+
+  {
+    path: 'comments-admin',
+    component: CommentsAllAdminComponent
   },
 
   // ---------------------------

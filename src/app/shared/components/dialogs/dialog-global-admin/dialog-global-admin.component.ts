@@ -25,6 +25,8 @@ export class DialogGlobalAdminComponent {
    * @param data - An object containing the title and the data items to display.
    */
   constructor(@Inject(MAT_DIALOG_DATA) public data: { title: string, allData: any[] }) {
+    console.log('Dialog data:', data) // Log data for debugging
+
     // The data object is injected using MAT_DIALOG_DATA token, making it available for use in the component
   }
 

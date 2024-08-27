@@ -37,6 +37,8 @@ export function openDialogUtil(
         },
         ...DIALOG_DIMENSIONS.admin, // Apply predefined dialog dimensions
       })
+    }, error => {
+      console.error(`Error fetching data:`, error)
     })
   } else {
     // Log an error if no ID is provided

@@ -50,6 +50,7 @@
 		"admin-menu": {
 			"blog": "Upravljajte in urejajte objave, kategorije in komentarje na blogu prek nadzorne plošče.",
 			"book": "Upravljajte vnose knjig, kategorije in nastavitve za sistem upravljanja knjig.",
+			"comment": "Ustvarjajte in upravljajte komentarje, vključno z vsebino, uporabniki in nastavitvami pošiljanja.",
 			"email": "Konfigurirajte in nadzirajte e-poštne komunikacije ter predloge za novice in obvestila.",
 			"experiences": " Upravljajte in posodabljajte različne uporabniške izkušnje ter povratne informacije na platformi.",
 			"links": "Urejajte in organizirajte pomembne povezave in njihove kategorije za enostaven dostop.",
@@ -80,6 +81,7 @@
 	},
 	"labels": {
 		"_id": "ID",
+		"blog_id": "Blog ID",
 		"blog_notification": "Obvestila o blogu",
 		"company": "Podjetje",
 		"company_end": "Konec dela pri podjetju",
@@ -123,6 +125,7 @@
 		"blog": "Blog",
 		"book": "Knjige",
 		"books": "Knjige",
+		"comments": "Komentarji",
 		"contact": "Kontakt",
 		"email": "E-sporočila",
 		"experiences": "Izkušnje",

@@ -5,21 +5,36 @@ The `openDialogUtil` function is a utility designed to open a dialog to display 
 ## Function Signature
 
 ```typescript
-openDialogUtil(_dialog
-:
-MatDialog, id
-:
-string | undefined, getDataById
-:
-(id: string) => void, data$
-:
-Observable<any>, titleKey
-:
-string, error
-:
-string
-):
-void
+export function openDialogUtil(
+  _dialog: MatDialog,
+  id: string | undefined,
+  getDataById: (id: string) => void,
+  data$: Observable<any>,
+  titleKey: string,
+  error: string
+) {
+  if (id) {
+    // Fetch the data by ID
+    getDataById(id)
+
+    // Subscribe to the data observable
+    data$.subscribe(data => {
+      // Open the dialog with the fetched data
+      _dialog.open(DialogGlobalAdminComponent, {
+        data: {
+          title: data[titleKey], // Set the dialog title using the specified title key
+          allData: data // Pass all data to the dialog
+        },
+        ...DIALOG_DIMENSIONS.admin, // Apply predefined dialog dimensions
+      })
+    }, error => {
+      console.error(`Error fetching data:`, error)
+    })
+  } else {
+    // Log an error if no ID is provided
+    console.error(`Error: No ID provided. Please provide a valid ${error} ID to display its details in the dialog.`)
+  }
+}
 ```
 
 ## Parameters
@@ -44,10 +59,10 @@ The `openDialogUtil` function handles the process of opening a dialog to display
 ## Example Usage
 
 ```typescript
-import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { openDialogUtil } from 'path-to-utils/open-dialog.util';
-import { inject } from "@angular/core";
+import {MatDialog} from '@angular/material/dialog';
+import {Observable} from 'rxjs';
+import {openDialogUtil} from 'path-to-utils/open-dialog.util';
+import {inject} from "@angular/core";
 
 class DataComponent {
 
