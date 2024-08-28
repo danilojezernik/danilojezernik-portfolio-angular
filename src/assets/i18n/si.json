@@ -161,6 +161,10 @@
 		"contact": {
 			"contact-us": "Kontaktiraj me",
 			"text": "Hvala, da ste obiskali mojo spletno stran! Če imate kakršnakoli vprašanja ali potrebujete pomoč, me lahko kontaktirate preko spodnjega obrazca. Veselim se vaših sporočil!"
+		},
+		"github": {
+			"description": "GitHub stran z mojimi repozitoriji in podatki, vključno s projekti, dokumentacijo in vpogledi v sodelovanje.",
+			"title": "GitHub"
 		}
 	},
 	"selected": {

@@ -161,6 +161,10 @@
 		"contact": {
 			"contact-us": "Conntact me",
 			"text": "Thank you for visiting my website! If you have any questions or need assistance, feel free to reach out using the form below. I look forward to hearing from you!"
+		},
+		"github": {
+			"description": "A GitHub page showcasing my repositories and data, featuring code projects, documentation, and collaboration insights.",
+			"title": "GitHub"
 		}
 	},
 	"selected": {

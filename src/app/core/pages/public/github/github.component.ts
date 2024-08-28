@@ -11,6 +11,7 @@ import { SELECT_LANGUAGE } from "../../../../shared/global-const/global.const"
 import { switchMap } from 'rxjs/operators'
 import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
 import { DropdownSelectComponent } from "../../../../shared/components/dropdown-select/dropdown-select.component";
+import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
 
 /**
  * This component displays GitHub repositories fetched from the backend API.
@@ -18,7 +19,7 @@ import { DropdownSelectComponent } from "../../../../shared/components/dropdown-
 @Component({
   selector: 'app-github',
   standalone: true,
-  imports: [ CommonModule, TranslateModule, MatSelectModule, FormsModule, MatInputModule, LoadingComponent, DropdownSelectComponent ],
+  imports: [CommonModule, TranslateModule, MatSelectModule, FormsModule, MatInputModule, LoadingComponent, DropdownSelectComponent, HeroTitleComponent],
   templateUrl: './github.component.html'
 })
 export class GithubComponent {

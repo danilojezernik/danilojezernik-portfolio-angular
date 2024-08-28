@@ -1,62 +1,64 @@
-<!-- Title of the page displaying GitHub repositories - START -->
-<h1>GitHub Repositories</h1>
-<!-- Title of the page displaying GitHub repositories - END -->
+<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 
-<!-- Container to handle the asynchronous data fetching - START -->
-<ng-container *ngIf="filteredGitHub$ | async as githubData; else loadingData">
+  <!-- Title of the page displaying GitHub repositories - START -->
+  <app-hero-title title="pages.github.title" subtitle="pages.github.description"/>
+  <!-- Title of the page displaying GitHub repositories - END -->
 
-  <ng-container *ngIf="!error">
+  <!-- Container to handle the asynchronous data fetching - START -->
+  <ng-container *ngIf="filteredGitHub$ | async as githubData; else loadingData">
 
-    <!-- Display the number of existing repositories if any are found - START -->
-    <ul>
-      <li *ngIf="githubData.length > 0">
-        Existing repos: {{ githubData.length }}
-      </li>
-    </ul>
-    <!-- Display the number of existing repositories if any are found - END -->
+    <ng-container *ngIf="!error">
 
-    <!-- Dropdown to select the language for filtering books - START -->
-    <app-dropdown-select [options]="SELECT_LANGUAGE" [selectedValue]="selectedLanguage"
-                         (valueChange)="onSelectChange($event)" [label]="'selected.language'"/>
-    <!-- Dropdown to select the language for filtering books - END -->
+      <!-- Display the number of existing repositories if any are found - START -->
+      <ul>
+        <li *ngIf="githubData.length > 0">
+          Existing repos: {{ githubData.length }}
+        </li>
+      </ul>
+      <!-- Display the number of existing repositories if any are found - END -->
 
-    <!-- List of GitHub repositories - START -->
-    <ul>
-      <li class="pb-2" *ngFor="let repo of githubData.repos">
-        <!-- Repository name displayed in uppercase and larger font size - START -->
-        <p class="text-2xl uppercase">{{ repo.name }}</p>
-        <!-- Repository name displayed in uppercase and larger font size - END -->
+      <!-- Dropdown to select the language for filtering books - START -->
+      <app-dropdown-select [options]="SELECT_LANGUAGE" [selectedValue]="selectedLanguage"
+                           (valueChange)="onSelectChange($event)" [label]="'selected.language'"/>
+      <!-- Dropdown to select the language for filtering books - END -->
 
-        <!-- Link to the GitHub repository - START -->
-        <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
-        <!-- Link to the GitHub repository - END -->
+      <!-- List of GitHub repositories - START -->
+      <ul>
+        <li class="pb-2" *ngFor="let repo of githubData.repos">
+          <!-- Repository name displayed in uppercase and larger font size - START -->
+          <p class="text-2xl uppercase">{{ repo.name }}</p>
+          <!-- Repository name displayed in uppercase and larger font size - END -->
 
-        <!-- Repository description - START -->
-        <p>{{ repo.description }}</p>
-        <!-- Repository description - END -->
+          <!-- Link to the GitHub repository - START -->
+          <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+          <!-- Link to the GitHub repository - END -->
 
-        <!-- Repository language information - START -->
-        <p><strong>Language:</strong> {{ repo.language }}</p>
-        <!-- Repository language information - END -->
+          <!-- Repository description - START -->
+          <p>{{ repo.description }}</p>
+          <!-- Repository description - END -->
 
-        <!-- Repository owner information with link to the owner's GitHub profile - START -->
-        <p><strong>Owner:</strong> <a [href]="repo.owner.html_url" target="_blank">{{ repo.owner.login }}</a></p>
-        <!-- Repository owner information with link to the owner's GitHub profile - END -->
-      </li>
-    </ul>
-    <!-- List of GitHub repositories - END -->
-  
+          <!-- Repository language information - START -->
+          <p><strong>Language:</strong> {{ repo.language }}</p>
+          <!-- Repository language information - END -->
+
+          <!-- Repository owner information with link to the owner's GitHub profile - START -->
+          <p><strong>Owner:</strong> <a [href]="repo.owner.html_url" target="_blank">{{ repo.owner.login }}</a></p>
+          <!-- Repository owner information with link to the owner's GitHub profile - END -->
+        </li>
+      </ul>
+      <!-- List of GitHub repositories - END -->
+
+    </ng-container>
+
+    <!-- Error message display if the data fetching fails - START -->
+    <ng-container *ngIf="error">
+      {{ error }}
+    </ng-container>
+    <!-- Error message display if the data fetching fails - END -->
+
   </ng-container>
-
-  <!-- Error message display if the data fetching fails - START -->
-  <ng-container *ngIf="error">
-    {{ error }}
-  </ng-container>
-  <!-- Error message display if the data fetching fails - END -->
-
-</ng-container>
-<!-- Container to handle the asynchronous data fetching - END -->
-
+  <!-- Container to handle the asynchronous data fetching - END -->
+</div>
 <!-- Template to show loading spinner and text while data is being fetched - START -->
 <ng-template #loadingData>
   <app-loading/>
