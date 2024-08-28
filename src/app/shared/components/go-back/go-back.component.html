@@ -1,39 +1,62 @@
-<button style="position: fixed; bottom: 0; right: 0; margin: 10px" class="btn-admin back"
+<!-- Back button that appears fixed at the bottom right, used when not in blogByIdPublic - START -->
+<button *ngIf="!blogByIdPublic"
+        style="position: fixed; bottom: 0; right: 0; margin: 10px"
+        class="btn-admin back"
         (click)="goBack()">
   {{ 'button.back' | translate }}
 </button>
+<!-- Back button that appears fixed at the bottom right, used when not in blogByIdPublic - END -->
 
+<!-- Back button for public blog by ID, appears with a margin at the top - START -->
+<button *ngIf="blogByIdPublic"
+        class="btn-public back mt-4"
+        (click)="goBack()">
+  &#11164; {{ 'button.back' | translate }}
+</button>
+<!-- Back button for public blog by ID, appears with a margin at the top - END -->
 
-<!-- Button shown when adding something - START -->
-<button *ngIf="booksAdmin" style="position: fixed; bottom: 50px; right: 0; margin: 10px" class="btn-admin back"
-routerLink="/media-books">
+<!-- Buttons shown when adding something (e.g., books, blogs, projects) - START -->
+<button *ngIf="booksAdmin"
+        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        class="btn-admin back"
+        routerLink="/media-books">
   {{ 'button.books-admin' | translate }}
 </button>
 
-<button *ngIf="blogsAdmin" style="position: fixed; bottom: 50px; right: 0; margin: 10px" class="btn-admin back"
-routerLink="/media-blogs">
+<button *ngIf="blogsAdmin"
+        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        class="btn-admin back"
+        routerLink="/media-blogs">
   {{ 'button.blogs-admin' | translate }}
 </button>
 
-<button *ngIf="projectsAdmin" style="position: fixed; bottom: 50px; right: 0; margin: 10px" class="btn-admin back"
-routerLink="/media-projects">
+<button *ngIf="projectsAdmin"
+        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        class="btn-admin back"
+        routerLink="/media-projects">
   {{ 'button.media-projects' | translate }}
 </button>
-<!-- Button shown when adding something - END -->
+<!-- Buttons shown when adding something (e.g., books, blogs, projects) - END -->
 
-<!-- Button shown when on media page - START -->
-<button *ngIf="booksMediaAdmin" style="position: fixed; bottom: 50px; right: 0; margin: 10px" class="btn-admin back"
-routerLink="/books-admin">
+<!-- Buttons shown when on the media page, linking to the respective admin sections - START -->
+<button *ngIf="booksMediaAdmin"
+        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        class="btn-admin back"
+        routerLink="/books-admin">
   {{ 'button.to-books' | translate }}
 </button>
 
-<button *ngIf="blogsMediaAdmin" style="position: fixed; bottom: 50px; right: 0; margin: 10px" class="btn-admin back"
-routerLink="/blog-admin">
+<button *ngIf="blogsMediaAdmin"
+        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        class="btn-admin back"
+        routerLink="/blog-admin">
   {{ 'button.to-blogs' | translate }}
 </button>
 
-<button *ngIf="projectsMediaAdmin" style="position: fixed; bottom: 50px; right: 0; margin: 10px" class="btn-admin back"
-routerLink="/projects-admin">
+<button *ngIf="projectsMediaAdmin"
+        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        class="btn-admin back"
+        routerLink="/projects-admin">
   {{ 'button.to-projects' | translate }}
 </button>
-<!-- Button shown when on media page - END -->
+<!-- Buttons shown when on the media page, linking to the respective admin sections - END -->

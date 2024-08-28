@@ -120,5 +120,6 @@ export const SELECT_TECHNOLOGY = [
 
 // PAGINATION limit
 export const PAGINATION ={
-  commentLImit: 10
+  commentLImit: 10,
+  limitTextShortening: 200
 }

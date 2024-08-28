@@ -43,6 +43,7 @@
 		"edit": "Uredi",
 		"media-projects": "Slike - projekti",
 		"read": "Beri",
+		"read-more": "Beri dalje",
 		"send-message": "Pošlji sporočilo",
 		"to-blogs": "Pojdi na bloge",
 		"to-books": "Pojdi do knjige",
@@ -149,6 +150,14 @@
 		"users": "Uporabniki"
 	},
 	"pages": {
+		"blog": {
+			"description": "Moj programerski blog ponuja celovite vadnice, poglobljene nasvete, praktične primere kode in vodnike, ki vam pomagajo ostati v ospredju programiranja.",
+			"title": "Moj Blog"
+		},
+		"blog-by-id": {
+			"before-comment": "Nazaj",
+			"next-comment": "Naslednji"
+		},
 		"contact": {
 			"contact-us": "Kontaktiraj me",
 			"text": "Hvala, da ste obiskali mojo spletno stran! Če imate kakršnakoli vprašanja ali potrebujete pomoč, me lahko kontaktirate preko spodnjega obrazca. Veselim se vaših sporočil!"

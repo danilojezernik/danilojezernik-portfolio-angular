@@ -4,14 +4,15 @@ import { BlogService } from "../../../../../services/api/blog.service";
 import { RouterLink } from "@angular/router";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import { catchError, of } from "rxjs";
-import { TranslateService } from "@ngx-translate/core";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import { BlogModel } from "../../../../../models/blog.model";
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
+import {ShorteningTextPipe} from "../../../../../pipes/shortening-text/shortening-text.pipe";
 
 @Component({
   selector: 'app-blog-all',
   standalone: true,
-  imports: [ CommonModule, RouterLink, LoadingComponent ],
+  imports: [CommonModule, RouterLink, LoadingComponent, TranslateModule, ShorteningTextPipe],
   templateUrl: './blog-all.component.html'
 })
 export class BlogAllComponent {

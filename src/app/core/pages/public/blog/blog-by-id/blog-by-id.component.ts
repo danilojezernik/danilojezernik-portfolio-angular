@@ -5,7 +5,7 @@ import {BlogService} from "../../../../../services/api/blog.service";
 import {catchError, Observable, of, switchMap, tap} from "rxjs";
 import {BlogModel} from "../../../../../models/blog.model";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
-import {TranslateService} from "@ngx-translate/core";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
 import {SlovenianDateTransformPipe} from "../../../../../pipes/date-transform/slovenian-date-transform.pipe";
 import {CommentsService} from "../../../../../services/api/comments.service";
@@ -13,11 +13,12 @@ import {Comment} from "../../../../../models/comment";
 import {ReusableFormAddComponent} from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {PAGINATION} from "../../../../../shared/global-const/global.const";
+import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
 
 @Component({
   selector: 'app-blog-by-id',
   standalone: true,
-  imports: [CommonModule, LoadingComponent, SlovenianDateTransformPipe, ReusableFormAddComponent, ReactiveFormsModule],
+  imports: [CommonModule, LoadingComponent, SlovenianDateTransformPipe, ReusableFormAddComponent, ReactiveFormsModule, TranslateModule, GoBackComponent],
   templateUrl: './blog-by-id.component.html'
 })
 export class BlogByIdComponent implements OnInit {
@@ -122,11 +123,7 @@ export class BlogByIdComponent implements OnInit {
         // PAGINATION: Update the total number of comments available
         this.totalComments = response.total_count || 0;
       }),
-      catchError((error) => {
-        const message = error.message
-        this._translateService.get(message).subscribe((translation) => {
-          this.error = translation
-        })
+      catchError(() => {
         return of([] as Comment[])
       })
     ).subscribe()

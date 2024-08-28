@@ -1,21 +1,35 @@
+<!-- Main container that checks if the blog data is available asynchronously, using the Angular async pipe - START -->
 <ng-container *ngIf="blogId$ | async as blog; else loadingData">
+
+  <!-- Container for the main blog content - START -->
   <div class="p-10">
 
+    <!-- Blog title - START -->
     <h1 class="font-bold text-4xl">{{ blog.title }}</h1>
-    <div class="py-5 text-sm font-regular flex">
-                    <span class="mr-3 flex flex-row items-center">
-                       <svg class="text-indigo-600" fill="currentColor" height="13px" width="13px" version="1.1"
-                            id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
-                            xml:space="preserve"><g>
-	                          <g>
-		<path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M277.333,256
-			c0,11.797-9.536,21.333-21.333,21.333h-85.333c-11.797,0-21.333-9.536-21.333-21.333s9.536-21.333,21.333-21.333h64v-128
-		                   	c0-11.797,9.536-21.333,21.333-21.333s21.333,9.536,21.333,21.333V256z"></path></g></g></svg>
-                      <span class="ml-1">{{ blog.datum_vnosa | slovenianDate }}</span>
-                    </span>
+    <!-- Blog title - END -->
 
-      <a href="#" class="flex flex-row items-center  mr-3">
+    <!-- Section displaying blog metadata: date, author, and category - START -->
+    <div class="py-5 text-sm font-regular flex">
+
+      <!-- Date of blog entry - START -->
+      <span class="mr-3 flex flex-row items-center">
+        <svg class="text-indigo-600" fill="currentColor" height="13px" width="13px"
+             id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+             x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+             xml:space="preserve">
+          <g><g>
+            <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M277.333,256
+                    c0,11.797-9.536,21.333-21.333,21.333h-85.333c-11.797,0-21.333-9.536-21.333-21.333s9.536-21.333,21.333-21.333h64v-128
+                    c0-11.797,9.536-21.333,21.333-21.333s21.333,9.536,21.333,21.333V256z">
+            </path>
+          </g></g>
+        </svg>
+        <span class="ml-1">{{ blog.datum_vnosa | slovenianDate }}</span>
+      </span>
+      <!-- Date of blog entry - END -->
+
+      <!-- Author information - START -->
+      <div class="flex flex-row items-center  mr-3">
         <svg class="text-red-600" fill="currentColor" height="16px" aria-hidden="true" role="img"
              focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path fill="currentColor"
@@ -23,23 +37,36 @@
           </path>
           <path d="M0 0h24v24H0z" fill="none"></path>
         </svg>
-        <span class="ml-1">Danilo Jezernik</span></a>
+        <span class="ml-1">{{  blog.author }}</span>
+      </div>
+      <!-- Author information - END -->
 
-      <a href="#" class="flex flex-row items-center">
+      <!-- Blog category - START -->
+      <div class="flex flex-row items-center">
         <svg class="text-indigo-600" fill="currentColor" height="16px" aria-hidden="true" role="img"
              focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
           <path fill=""
                 d="M15.4496399,8.42490555 L8.66109799,1.63636364 L1.63636364,1.63636364 L1.63636364,8.66081885 L8.42522727,15.44178 C8.57869221,15.5954158 8.78693789,15.6817418 9.00409091,15.6817418 C9.22124393,15.6817418 9.42948961,15.5954158 9.58327627,15.4414581 L15.4486339,9.57610048 C15.7651495,9.25692435 15.7649133,8.74206554 15.4496399,8.42490555 Z M16.6084423,10.7304545 L10.7406818,16.59822 C10.280287,17.0591273 9.65554997,17.3181054 9.00409091,17.3181054 C8.35263185,17.3181054 7.72789481,17.0591273 7.26815877,16.5988788 L0.239976954,9.57887876 C0.0863319284,9.4254126 0,9.21716044 0,9 L0,0.818181818 C0,0.366312477 0.366312477,0 0.818181818,0 L9,0 C9.21699531,0 9.42510306,0.0862010512 9.57854191,0.239639906 L16.6084423,7.26954545 C17.5601275,8.22691012 17.5601275,9.77308988 16.6084423,10.7304545 Z M5,6 C4.44771525,6 4,5.55228475 4,5 C4,4.44771525 4.44771525,4 5,4 C5.55228475,4 6,4.44771525 6,5 C6,5.55228475 5.55228475,6 5,6 Z">
           </path>
         </svg>
-        <span class="ml-1">{{ blog.kategorija }}</span></a>
-    </div>
+        <span class="ml-1">{{ blog.kategorija }}</span>
+      </div>
+      <!-- Blog category - END -->
 
+    </div>
+    <!-- Section displaying blog metadata: date, author, and category - END -->
+
+    <!-- Blog image section - START -->
     <img *ngIf="blog.image" [src]="_getImageByName.getBlogImageUrl(blog.image)" class="max-h-80 ms-2 float-right"
          [alt]="blog.image"/>
+    <!-- Blog image section - END -->
 
+    <!-- Blog content section - START -->
     <div [innerHtml]="blog.vsebina"></div>
+    <!-- Blog content section - END -->
+<app-go-back [blogByIdPublic]="true"></app-go-back>
   </div>
+  <!-- Container for the main blog content - END -->
 
   <!-- Error message display if the data fetching fails - START -->
   <ng-container *ngIf="error">
@@ -47,64 +74,134 @@
   </ng-container>
   <!-- Error message display if the data fetching fails - END -->
 
-<!-- Comment section -->
+  <!-- Comment section - START -->
   <section class="py-8 lg:py-16 antialiased">
-    <div class="max-w-2xl mx-auto px-4">
+    <div class="max-w-3xl mx-auto px-4">
+
+      <!-- Comment section header - START -->
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-lg lg:text-2xl font-bold">Komentarjev ({{ commentLength }})</h2>
       </div>
+      <!-- Comment section header - END -->
 
-
+      <!-- Comment form - START -->
       <form class="mb-6" [formGroup]="commentForm" (ngSubmit)="addComment()">
 
+        <!-- Username input field - START -->
         <label for="author" class="">Uporabniško ime:</label>
-        <input id="author" rows="6"
+        <input id="author"
                class="mb-2 bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                formControlName="author" required/>
+        <!-- Username input field - END -->
 
+        <!-- Comment input field - START -->
         <label for="content" class="">Komentar:</label>
         <textarea id="content" rows="6"
                   class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   formControlName="content" required></textarea>
+        <!-- Comment input field - END -->
+
+        <!-- Submit button for adding comment - START -->
         <button type="submit"
                 class="btn-admin add rounded-lg mt-2 focus:bg-transparent" [disabled]="!commentForm.value">
           Dodaj komentar
         </button>
-      </form>
+        <!-- Submit button for adding comment - END -->
 
-      <ng-container *ngIf="commentId$ | async as comment;">
-        <article *ngFor="let data of comment" class="p-6 mb-4 border bg-background-menu text-base rounded-lg">
-          <!-- Display each comment -->
-          <div class="flex justify-between items-center mb-2">
-            <div class="flex items-center">
-              <p class="inline-flex items-center mr-3 text-sm font-semibold">
-                <img class="mr-2 w-6 h-6 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="Profile">
+      </form>
+      <!-- Comment form - END -->
+
+      <!-- Display comments - START -->
+      <ng-container *ngIf="commentId$ | async as comment">
+        <article *ngFor="let data of comment; let i = index"
+                 class="p-6 mb-4 border bg-background-menu text-base rounded-lg"
+                 style="width: 80%"
+                 [ngClass]="{'text-end ms-auto': i % 2 === 1, 'article-left': i % 2 === 0}">
+
+          <!-- Conditional rendering for odd and even comments - START -->
+          <div class="flex mb-2">
+            <div class="flex ms-auto" *ngIf="i % 2 === 1">
+              <!-- Display author and date for odd comments - START -->
+              <p class="inline-flex mr-3 text-sm font-semibold">
+                <svg class="mr-2 w-6 h-6 rounded-full" fill="#f90f63" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 575.616 575.616" xml:space="preserve">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g>
+                      <g>
+                        <path d="M429.248,141.439C429.248,63.33,365.985,0,287.808,0c-78.109,0-141.439,63.33-141.439,141.439 c0,78.11,63.33,141.439,141.439,141.439C365.988,282.878,429.248,219.549,429.248,141.439z M181.727,144.499 c0,0-4.079-40.12,24.82-70.72c20.34,20.389,81.261,70.72,187.342,70.72c0,58.498-47.586,106.081-106.081,106.081 S181.727,202.994,181.727,144.499z"></path>
+                        <path d="M45.049,391.68v62.559v80.919c0,22.365,18.136,40.459,40.459,40.459h404.6c22.365,0,40.459-18.097,40.459-40.459v-80.919 V391.68c0-44.688-36.193-80.919-80.919-80.919H377.91c-5.07,0-11.46,3.422-14.271,7.639l-70.735,99.982 c-2.812,4.22-7.372,4.22-10.184,0l-70.738-99.986c-2.812-4.22-9.202-7.638-14.272-7.638h-71.742 C81.319,310.758,45.049,346.991,45.049,391.68z"></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
                 {{ data.author }}
               </p>
               <p class="text-sm text-gray-600">
                 {{ data.datum_vnosa | slovenianDate }}
               </p>
+              <!-- Display author and date for odd comments - END -->
             </div>
           </div>
-          <p class="text-gray-400 dark:text-gray-400" [innerHtml]="data.content"></p>
-        </article>
 
-        <!-- Pagination Buttons -->
-        <div class="flex justify-between mt-4">
+          <div class="flex mb-2">
+            <div class="flex" *ngIf="i % 2 === 0">
+              <!-- Display author and date for even comments - START -->
+              <p class="inline-flex mr-3 text-sm font-semibold">
+                <svg class="mr-2 w-6 h-6 rounded-full" fill="#f90f63" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 575.616 575.616" xml:space="preserve">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g>
+                      <g>
+                        <path d="M429.248,141.439C429.248,63.33,365.985,0,287.808,0c-78.109,0-141.439,63.33-141.439,141.439 c0,78.11,63.33,141.439,141.439,141.439C365.988,282.878,429.248,219.549,429.248,141.439z M181.727,144.499 c0,0-4.079-40.12,24.82-70.72c20.34,20.389,81.261,70.72,187.342,70.72c0,58.498-47.586,106.081-106.081,106.081 S181.727,202.994,181.727,144.499z"></path>
+                        <path d="M45.049,391.68v62.559v80.919c0,22.365,18.136,40.459,40.459,40.459h404.6c22.365,0,40.459-18.097,40.459-40.459v-80.919 V391.68c0-44.688-36.193-80.919-80.919-80.919H377.91c-5.07,0-11.46,3.422-14.271,7.639l-70.735,99.982 c-2.812,4.22-7.372,4.22-10.184,0l-70.738-99.986c-2.812-4.22-9.202-7.638-14.272-7.638h-71.742 C81.319,310.758,45.049,346.991,45.049,391.68z"></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+                {{ data.author }}
+              </p>
+              <p class="text-sm text-gray-600">
+                {{ data.datum_vnosa | slovenianDate }}
+              </p>
+              <!-- Display author and date for even comments - END -->
+            </div>
+          </div>
+          <!-- Conditional rendering for odd and even comments - END -->
+
+          <!-- Display comment content - START -->
+          <p class="text-gray-400 dark:text-gray-400" [innerHtml]="data.content"></p>
+          <!-- Display comment content - END -->
+
+        </article>
+        <!-- Display comments - END -->
+
+        <!-- Pagination Buttons - START -->
+        <div class="flex justify-around mt-4">
+          <!-- Button to load previous comments - START -->
           <button class="btn-admin read rounded-lg" (click)="loadPreviousComments()" [disabled]="currentOffset === 0">
-            Back
+            &#11164; {{ 'pages.blog-by-id.before-comment' | translate }}
           </button>
+          <!-- Button to load previous comments - END -->
+
+          <!-- Button to load next comments - START -->
           <button class="btn-admin read rounded-lg" (click)="loadNextComments()" [disabled]="currentOffset + limit >= totalComments">
-            Next
+            {{ 'pages.blog-by-id.next-comment' | translate }} &#11166;
           </button>
+          <!-- Button to load next comments - END -->
         </div>
+        <!-- Pagination Buttons - END -->
+
       </ng-container>
+      <!-- Comment section - END -->
 
     </div>
   </section>
-
+  <!-- Comment section - END -->
 
 </ng-container>
+<!-- Main container that checks if the blog data is available asynchronously, using the Angular async pipe - END -->
 
 <!-- Template to show loading spinner and text while data is being fetched - START -->
 <ng-template #loadingData>

@@ -1,18 +1,113 @@
-<p>blog-all works!</p>
-
 <!-- Container that uses Angular's async pipe to handle the observable blog$ - START -->
 <ng-container *ngIf="blog$ | async as blogs; else loadingData">
 
   <!-- Container to handle the scenario when there is no error - START -->
   <ng-container *ngIf="!error">
 
-    <!-- Looping through the blogs array and displaying its properties - START -->
-    <div class="cursor-pointer" *ngFor="let blog of blogs" [routerLink]="['/blog/', blog._id]">
-      {{ blog.title }} <br>
-      {{ blog.datum_vnosa | date }}
-      <img *ngIf="blog.image" [src]="_getImageByName.getBlogImageUrl(blog.image)" class="max-h-40" [alt]="blog.image"/>
-    </div>
-    <!-- Looping through the blogs array and displaying its properties - END -->
+    <!-- Section containing the main content of the blog page - START -->
+    <section>
+      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+
+        <!-- Title and description of the blog section - START -->
+        <div class="mx-auto max-w-screen-md text-center lg:mb-16 mb-8">
+          <h2
+            class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-white">{{ 'pages.blog.title' | translate }}</h2>
+          <p class="font-light text-gray-500 sm:text-xl">
+            {{ 'pages.blog.description' | translate }}
+          </p>
+        </div>
+        <!-- Title and description of the blog section - END -->
+
+        <!-- Grid container for displaying blog articles - START -->
+        <div class="grid gap-8 lg:grid-cols-3">
+
+          <!-- Looping through the blogs array and displaying its properties - START -->
+          <article *ngFor="let blog of blogs"
+                   class="p-6 bg-background-menu rounded-lg border shadow-md border-gray-700">
+
+            <!-- Blog image section - START -->
+            <img *ngIf="blog.image" [src]="_getImageByName.getBlogImageUrl(blog.image)"
+                 class="w-full h-48 object-cover object-center rounded-lg mb-4"
+                 [alt]="blog.image"/>
+            <!-- Blog image section - END -->
+
+            <!-- Blog category and date section - START -->
+            <div class="flex justify-between items-center mb-5 text-gray-500">
+                  <span
+                    class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-red-200 text-primary-800">
+                      <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
+                           xmlns="http://www.w3.org/2000/svg"><path
+                        d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path></svg>
+                    {{ blog.kategorija }}
+                  </span>
+              <span class="text-sm">{{ blog.datum_vnosa | date }}</span>
+            </div>
+            <!-- Blog category and date section - END -->
+
+            <!-- Blog title and content section - START -->
+            <h2 class="mb-2 text-2xl font-bold tracking-tight text-white"><a
+              [routerLink]="['/blog/', blog._id]">{{ blog.title }}</a></h2>
+            <p class="mb-5 font-light text-gray-400" [innerHtml]="blog.vsebina | shorteningText">
+            </p>
+            <!-- Blog title and content section - END -->
+
+            <!-- Blog author and read more section - START -->
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-4">
+                <!-- Author avatar - START -->
+                <svg class="w-7 h-7 rounded-full" viewBox="0 0 32 32" id="user" xmlns="http://www.w3.org/2000/svg"
+                     fill="#000000">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <defs>
+                      <style>.cls-1 {
+                        fill: #f16145;
+                      }
+
+                      .cls-2 {
+                        fill: #f68f71;
+                      }</style>
+                    </defs>
+                    <title></title>
+                    <path class="cls-1"
+                          d="M16,15A15,15,0,0,0,1,30a1,1,0,0,0,1,1H30a1,1,0,0,0,1-1A15,15,0,0,0,16,15Z"></path>
+                    <circle class="cls-2" cx="16" cy="9" r="8"></circle>
+                  </g>
+                </svg>
+                <!-- Author avatar - END -->
+
+                <!-- Author name - START -->
+                <span class="font-medium dark:text-white">
+                          {{ blog.author }}
+                      </span>
+                <!-- Author name - END -->
+              </div>
+
+              <!-- Read more link - START -->
+              <a [routerLink]="['/blog/', blog._id]"
+                 class="inline-flex items-center font-medium text-primary-500 hover:underline">
+                {{ 'button.read-more' | translate }}
+                <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+              </a>
+              <!-- Read more link - END -->
+
+            </div>
+            <!-- Blog author and read more section - END -->
+
+          </article>
+          <!-- Looping through the blogs array and displaying its properties - END -->
+
+        </div>
+        <!-- Grid container for displaying blog articles - END -->
+
+      </div>
+    </section>
+    <!-- Section containing the main content of the blog page - END -->
 
   </ng-container>
   <!-- Container to handle the scenario when there is no error - END -->
@@ -22,8 +117,9 @@
     {{ error }}
   </ng-container>
   <!-- Error message display if the data fetching fails - END -->
+
 </ng-container>
-<!-- Container that uses Angular's async pipe to handle the observable blog$ - END -->
+<!-- Container that uses Angular async pipe to handle the observable blog$ - END -->
 
 <!-- Template to show loading spinner and text while data is being fetched - START -->
 <ng-template #loadingData>

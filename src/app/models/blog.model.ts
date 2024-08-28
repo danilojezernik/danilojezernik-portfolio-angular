@@ -8,6 +8,7 @@ export interface BlogModel {
   kategorija: string;
   podnaslov: string;
   vsebina: string;
+  author: string;
   image: string;
   datum_vnosa: string;
 }

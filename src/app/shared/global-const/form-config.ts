@@ -17,6 +17,7 @@ import { Validators } from "@angular/forms";
 export const formBlogConfig: FormFieldConfig[] = [
   { name: 'title', label: 'title', type: 'text', validators: [ Validators.required ] },
   { name: 'podnaslov', label: 'podnaslov', type: 'text', validators: [ Validators.required ] },
+  { name: 'author', label: 'author', type: 'text', validators: [ Validators.required ] },
   { name: 'kategorija', label: 'kategorija', type: 'text', validators: [ Validators.required ] },
   { name: 'vsebina', label: 'vsebina', type: 'textarea', validators: [ Validators.required, Validators.min(10) ] },
   { name: 'image', label: 'image', type: 'text', validators: [ Validators.required ] }

@@ -43,6 +43,7 @@
 		"edit": "Edit",
 		"media-projects": "Pictures - projects",
 		"read": "Read",
+		"read-more": "Read more",
 		"send-message": "Send message",
 		"to-blogs": "Go to blogs",
 		"to-books": "Go to books",
@@ -149,6 +150,14 @@
 		"users": "Users"
 	},
 	"pages": {
+		"blog": {
+			"description": "My programming blog offers comprehensive tutorials, insightful tips, practical code examples, and guides to help you stay ahead in the coding world.",
+			"title": "My Blog"
+		},
+		"blog-by-id": {
+			"before-comment": "Back",
+			"next-comment": "Next"
+		},
 		"contact": {
 			"contact-us": "Conntact me",
 			"text": "Thank you for visiting my website! If you have any questions or need assistance, feel free to reach out using the form below. I look forward to hearing from you!"

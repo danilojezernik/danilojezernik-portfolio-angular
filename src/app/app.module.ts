@@ -22,12 +22,13 @@ import localeSl from '@angular/common/locales/sl'
 // Import Slovenian locale data and register the locale data
 import {registerLocaleData} from "@angular/common";
 import { NotAuthorizedComponent } from './core/pages/public/not-authorized/not-authorized.component';
+import { ShorteningTextPipe } from './pipes/shortening-text/shortening-text.pipe';
 registerLocaleData(localeSl, 'sl-SI')
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotAuthorizedComponent,
+    NotAuthorizedComponent
 
   ],
   imports: [
@@ -40,6 +41,7 @@ registerLocaleData(localeSl, 'sl-SI')
     MatDialogModule,
     CopyrightDirective,
     SlovenianDateTransformPipe,
+    ShorteningTextPipe,
 
     // ngx-translate and the loader module
     TranslateModule.forRoot({
@@ -70,7 +72,8 @@ registerLocaleData(localeSl, 'sl-SI')
   ],
   exports: [
     CopyrightDirective,
-    SlovenianDateTransformPipe
+    SlovenianDateTransformPipe,
+    ShorteningTextPipe
   ],
   bootstrap: [AppComponent]
 })

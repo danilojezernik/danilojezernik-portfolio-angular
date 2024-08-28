@@ -45,3 +45,42 @@
   }
 
 }
+
+.btn-public {
+  color: $main-text-color;
+  font-weight: $light-font-weight;
+  letter-spacing: $letter-spacing-admin;
+  padding: $padding-button-public;
+
+  &.add {
+    @include button-hover-effect($color-add-start, $color-add-end);
+  }
+
+  &.read {
+    @include button-hover-effect($color-read-start, $color-read-end);
+  }
+
+  &.edit {
+    @include button-hover-effect($color-edit-start, $color-edit-end);
+  }
+
+  &.delete {
+    @include button-hover-effect($color-delete-start, $color-delete-end);
+  }
+
+  &.back {
+    width: min(200px);
+    border-radius: $border-radius-button-admin;
+    color: $black-text-color;
+    @include button-hover-effect($color-back-start, $color-back-end);
+  }
+
+  @media (max-width: 575px) {
+    font-size: 12px;
+  }
+
+  @media (min-width: 576px) and (max-width: 1199px) {
+    font-size: 14px;
+  }
+
+}
