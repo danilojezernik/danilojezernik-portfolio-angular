@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ActivatedRoute} from "@angular/router";
 import {BlogService} from "../../../../../services/api/blog.service";
-import {catchError, Observable, of, switchMap} from "rxjs";
+import {catchError, Observable, of, switchMap, tap} from "rxjs";
 import {BlogModel} from "../../../../../models/blog.model";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
 import {TranslateService} from "@ngx-translate/core";
@@ -35,9 +35,11 @@ export class BlogByIdComponent implements OnInit {
   commentForm: FormGroup = new FormGroup({})
   blogId$!: Observable<BlogModel>
   commentId$!: Observable<Comment[]>
+  commentLength = 0
 
   ngOnInit() {
     const blogId = this._activatedRouter.snapshot.paramMap.get('id') || ''
+
 
     this.commentForm = this._fb.group({
       author: [''],
@@ -95,6 +97,9 @@ export class BlogByIdComponent implements OnInit {
 
   getCommentOfBlog(blogId: string) {
     this.commentId$ = this._commentService.getCommentsOfBlogPublic(blogId).pipe(
+      tap((data) => {
+        this.commentLength = data.length
+      }),
       catchError((error) => {
         const message = error.message
         this._translateService.get(message).subscribe((translation) => {

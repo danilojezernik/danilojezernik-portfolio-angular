@@ -45,27 +45,66 @@
   <ng-container *ngIf="error">
     {{ error }}
   </ng-container>
-
   <!-- Error message display if the data fetching fails - END -->
-  <ng-container>
-    <form [formGroup]="commentForm" (ngSubmit)="addComment()">
-      <input
-        class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        type="text" formControlName="author" required>
-      <textarea
-        class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        formControlName="content" required></textarea>
-      <button type="submit">Add</button>
-    </form>
-  </ng-container>
+
+
+  <section class="py-8 lg:py-16 antialiased">
+    <div class="max-w-2xl mx-auto px-4">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-lg lg:text-2xl font-bold">Discussion ({{ commentLength }})</h2>
+      </div>
+
+
+      <form class="mb-6" [formGroup]="commentForm" (ngSubmit)="addComment()">
+
+        <label for="author" class="sr-only">Your name</label>
+        <input id="author" rows="6"
+               class="mb-2 bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Author" formControlName="author" required/>
+
+        <label for="content" class="sr-only">Your comment</label>
+        <textarea id="content" rows="6"
+                  class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Write a comment..." formControlName="content" required></textarea>
+        <button type="submit"
+                class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+          Post comment
+        </button>
+      </form>
+
+      <ng-container *ngIf="commentId$ | async as comment; else loadingData">
+
+        <article *ngFor="let data of comment" class="p-6 mb-4 text-base bg-white rounded-lg dark:bg-gray-900">
+          <footer class="flex justify-between items-center mb-2">
+            <div class="flex items-center">
+              <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
+                class="mr-2 w-6 h-6 rounded-full"
+                src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+                alt="Michael Gough">
+                {{ data.author }}
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                <span>
+                  {{ data.datum_vnosa | slovenianDate }}
+                </span>
+              </p>
+            </div>
+          </footer>
+          <p class="text-gray-500 dark:text-gray-400">
+            {{ data.content }}
+          </p>
+          <div class="flex items-center mt-4 space-x-4">
+          </div>
+        </article>
+      </ng-container>
+
+    </div>
+  </section>
 
 
 </ng-container>
 <ng-container *ngIf="commentId$ | async as comment; else loadingData">
   <div *ngFor="let data of comment">
-    {{ data.author }}<br>
-    {{ data.content }}<br>
-    {{ data.datum_vnosa }}<br>
   </div>
 </ng-container>
 
