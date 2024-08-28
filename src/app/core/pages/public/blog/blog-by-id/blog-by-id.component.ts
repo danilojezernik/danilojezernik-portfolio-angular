@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ActivatedRoute} from "@angular/router";
 import {BlogService} from "../../../../../services/api/blog.service";
-import {catchError, map, Observable, of, switchMap, tap} from "rxjs";
+import {catchError, Observable, of, switchMap, tap} from "rxjs";
 import {BlogModel} from "../../../../../models/blog.model";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
 import {TranslateService} from "@ngx-translate/core";
@@ -12,6 +12,7 @@ import {CommentsService} from "../../../../../services/api/comments.service";
 import {Comment} from "../../../../../models/comment";
 import {ReusableFormAddComponent} from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
 import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {PAGINATION} from "../../../../../shared/global-const/global.const";
 
 @Component({
   selector: 'app-blog-by-id',
@@ -38,7 +39,7 @@ export class BlogByIdComponent implements OnInit {
   // PAGINATION variables
   commentLength = 0
   currentOffset = 0
-  limit = 10 // Show first 100 comments initially
+  limit = PAGINATION.commentLImit // Show first 100 comments initially
   totalComments = 0 // To track the total number of comments available
 
   ngOnInit() {
@@ -89,6 +90,7 @@ export class BlogByIdComponent implements OnInit {
         // PAGINATION: Update the observable with the new list of comments, after sorting or pagination
         tap(response => {
           this.commentId$ = of(response.comments);
+          this.commentLength = response.total_count;
 
           // PAGINATION: Update the total number of comments available
           this.totalComments = response.total_count || 0;

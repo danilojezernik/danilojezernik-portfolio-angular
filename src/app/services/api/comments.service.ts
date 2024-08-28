@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Comment} from "../../models/comment";
 import {environment} from "../../../environments/environment";
+import {PAGINATION} from "../../shared/global-const/global.const";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class CommentsService {
     return this._http.get<Comment[]>(`${environment.commentUrl.public}`)
   }
 
-  getCommentsOfBlogPublic(blogId: string, limit: number = 10, offset: number = 0): Observable<{ total_count: number, comments: Comment[] }> {
+  getCommentsOfBlogPublic(blogId: string, limit: number = PAGINATION.commentLImit, offset: number = 0): Observable<{ total_count: number, comments: Comment[] }> {
     return this._http.get<{ total_count: number, comments: Comment[] }>(`${environment.commentUrl.public}/${blogId}`, {
       params: {
         limit: limit.toString(),

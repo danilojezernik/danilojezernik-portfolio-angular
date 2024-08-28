@@ -117,3 +117,8 @@ export const SELECT_LANGUAGE = [
 export const SELECT_TECHNOLOGY = [
   'selected.allTechnology', 'TypeScript', 'JavaScript', 'Python', 'Vue', 'Kotlin', 'HTML', 'Angular'
 ]
+
+// PAGINATION limit
+export const PAGINATION ={
+  commentLImit: 10
+}
