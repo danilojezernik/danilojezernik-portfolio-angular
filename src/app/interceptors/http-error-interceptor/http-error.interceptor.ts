@@ -71,11 +71,16 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
 
         // Display the error message to the user using MatSnackBar and translate with ngx-translate
-        this.translate.get(errorMessage).subscribe((message: string) => {
-          this.snackBar.open(message, 'Close', {
-            duration: 3000,
-          });
-        })
+        /**
+         *
+         this.translate.get(errorMessage).subscribe((message: string) => {
+         this.snackBar.open(message, 'Close', {
+         duration: 3000,
+         });
+         })
+
+         */
+
 
         // Throw the error so it can be handled by other parts of the application if necessary
         return throwError(() => new Error(errorMessage));
