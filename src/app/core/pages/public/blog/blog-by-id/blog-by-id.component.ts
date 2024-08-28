@@ -11,7 +11,7 @@ import {SlovenianDateTransformPipe} from "../../../../../pipes/date-transform/sl
 import {CommentsService} from "../../../../../services/api/comments.service";
 import {Comment} from "../../../../../models/comment";
 import {ReusableFormAddComponent} from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
-import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {PAGINATION} from "../../../../../shared/global-const/global.const";
 
 @Component({
@@ -39,15 +39,15 @@ export class BlogByIdComponent implements OnInit {
   // PAGINATION variables
   commentLength = 0
   currentOffset = 0
-  limit = PAGINATION.commentLImit // Show first 100 comments initially
+  limit = PAGINATION.commentLImit // Show first number of random comments comments initially
   totalComments = 0 // To track the total number of comments available
 
   ngOnInit() {
     const blogId = this._activatedRouter.snapshot.paramMap.get('id') || ''
 
     this.commentForm = this._fb.group({
-      author: [''],
-      content: ['']
+      author: ['', Validators.required ],
+      content: ['', Validators.required ]
     })
 
     if (blogId) {
@@ -74,6 +74,7 @@ export class BlogByIdComponent implements OnInit {
 
   // Adds a new comment and refreshes the comment list
   addComment() {
+
     const blogId = this._activatedRouter.snapshot.paramMap.get('id') || ''
     const formValues = this.commentForm.value
 
@@ -83,6 +84,8 @@ export class BlogByIdComponent implements OnInit {
       content: formValues.content,
       datum_vnosa: new Date().toISOString()
     }
+
+    if(!(commentData.content && commentData.author)) return
 
     // Submit the comment and refresh the comments list
     this._commentService.addCommentToBlogPost(blogId, commentData).pipe(

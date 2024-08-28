@@ -67,7 +67,7 @@
                   class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   formControlName="content" required></textarea>
         <button type="submit"
-                class="btn-admin add rounded-lg mt-2 focus:bg-transparent">
+                class="btn-admin add rounded-lg mt-2 focus:bg-transparent" [disabled]="!commentForm.value">
           Dodaj komentar
         </button>
       </form>
@@ -91,10 +91,10 @@
 
         <!-- Pagination Buttons -->
         <div class="flex justify-between mt-4">
-          <button class="btn-admin rounded-lg" (click)="loadPreviousComments()" [disabled]="currentOffset === 0">
+          <button class="btn-admin read rounded-lg" (click)="loadPreviousComments()" [disabled]="currentOffset === 0">
             Back
           </button>
-          <button class="btn-admin rounded-lg" (click)="loadNextComments()" [disabled]="currentOffset + limit >= totalComments">
+          <button class="btn-admin read rounded-lg" (click)="loadNextComments()" [disabled]="currentOffset + limit >= totalComments">
             Next
           </button>
         </div>
