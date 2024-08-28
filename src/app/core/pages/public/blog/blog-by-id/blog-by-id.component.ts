@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ActivatedRoute} from "@angular/router";
 import {BlogService} from "../../../../../services/api/blog.service";
-import {catchError, Observable, of, switchMap, tap} from "rxjs";
+import {catchError, map, Observable, of, switchMap, tap} from "rxjs";
 import {BlogModel} from "../../../../../models/blog.model";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
 import {TranslateService} from "@ngx-translate/core";
@@ -11,7 +11,6 @@ import {SlovenianDateTransformPipe} from "../../../../../pipes/date-transform/sl
 import {CommentsService} from "../../../../../services/api/comments.service";
 import {Comment} from "../../../../../models/comment";
 import {ReusableFormAddComponent} from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
-import {formCommentConfig} from "../../../../../shared/global-const/form-config";
 import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 
 @Component({
@@ -35,11 +34,15 @@ export class BlogByIdComponent implements OnInit {
   commentForm: FormGroup = new FormGroup({})
   blogId$!: Observable<BlogModel>
   commentId$!: Observable<Comment[]>
+
+  // PAGINATION variables
   commentLength = 0
+  currentOffset = 0
+  limit = 10 // Show first 100 comments initially
+  totalComments = 0 // To track the total number of comments available
 
   ngOnInit() {
     const blogId = this._activatedRouter.snapshot.paramMap.get('id') || ''
-
 
     this.commentForm = this._fb.group({
       author: [''],
@@ -68,6 +71,7 @@ export class BlogByIdComponent implements OnInit {
     )
   }
 
+  // Adds a new comment and refreshes the comment list
   addComment() {
     const blogId = this._activatedRouter.snapshot.paramMap.get('id') || ''
     const formValues = this.commentForm.value
@@ -79,9 +83,17 @@ export class BlogByIdComponent implements OnInit {
       datum_vnosa: new Date().toISOString()
     }
 
+    // Submit the comment and refresh the comments list
     this._commentService.addCommentToBlogPost(blogId, commentData).pipe(
-      // After adding the comment, refresh the comments
-      switchMap(() => this._commentService.getCommentsOfBlogPublic(blogId)),
+      switchMap(() => this._commentService.getCommentsOfBlogPublic(blogId, this.limit, this.currentOffset).pipe(
+        // PAGINATION: Update the observable with the new list of comments, after sorting or pagination
+        tap(response => {
+          this.commentId$ = of(response.comments);
+
+          // PAGINATION: Update the total number of comments available
+          this.totalComments = response.total_count || 0;
+        })
+      )),
       catchError((error) => {
         const message = error.message
         this._translateService.get(message).subscribe((translation) => {
@@ -89,16 +101,21 @@ export class BlogByIdComponent implements OnInit {
         })
         return of([] as Comment[])
       })
-    ).subscribe((comments) => {
-      this.commentId$ = of(comments)
+    ).subscribe(() => {
       this.commentForm.reset()
     })
   }
 
+  // Fetches comments for the blog by ID with pagination support
   getCommentOfBlog(blogId: string) {
-    this.commentId$ = this._commentService.getCommentsOfBlogPublic(blogId).pipe(
-      tap((data) => {
-        this.commentLength = data.length
+    this._commentService.getCommentsOfBlogPublic(blogId, this.limit, this.currentOffset).pipe(
+      // PAGINATION: Update the observable with the fetched comments
+      tap(response => {
+        this.commentId$ = of(response.comments);
+        this.commentLength = response.total_count;
+
+        // PAGINATION: Update the total number of comments available
+        this.totalComments = response.total_count || 0;
       }),
       catchError((error) => {
         const message = error.message
@@ -107,9 +124,22 @@ export class BlogByIdComponent implements OnInit {
         })
         return of([] as Comment[])
       })
-    )
+    ).subscribe()
   }
 
+  // PAGINATION: Load the next set of comments
+  loadNextComments() {
+    if (this.currentOffset + this.limit < this.totalComments) {
+      this.currentOffset += this.limit
+      this.getCommentOfBlog(this._activatedRouter.snapshot.paramMap.get('id') || '')
+    }
+  }
 
-  protected readonly formCommentConfig = formCommentConfig;
+  // PAGINATION: Load the previous set of comments
+  loadPreviousComments() {
+    if (this.currentOffset > 0) {
+      this.currentOffset = Math.max(0, this.currentOffset - this.limit)
+      this.getCommentOfBlog(this._activatedRouter.snapshot.paramMap.get('id') || '')
+    }
+  }
 }

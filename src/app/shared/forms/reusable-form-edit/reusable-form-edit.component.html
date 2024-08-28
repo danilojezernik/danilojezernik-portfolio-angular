@@ -47,7 +47,7 @@
     <!-- Textarea element for textarea type -->
     <textarea
       class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      *ngIf="field.type === 'textarea'" [id]="field.name" [formControlName]="field.name">
+      *ngIf="field.type === 'textarea'" [id]="field.name" [formControlName]="field.name" [rows]="rows">
     </textarea>
 
     <!-- Add select element -->
@@ -58,7 +58,7 @@
         <option *ngFor="let option of field.options" [value]="option.value">{{ option.label }}</option>
       </select>
     </div>
-    
+
     <!-- Error message for required fields -->
     <!-- Display the error message if the form control is invalid and has been touched -->
     <div *ngIf="form.controls[field.name].invalid && form.controls[field.name].touched">
@@ -70,7 +70,7 @@
   </div>
 
   <!-- Submit button for the form -->
-  <button class="btn-admin edit"
+  <button class="btn-admin edit rounded-lg mt-2 focus:bg-transparent"
           type="submit">{{ BUTTONS.edit | translate }}
   </button>
 </form>

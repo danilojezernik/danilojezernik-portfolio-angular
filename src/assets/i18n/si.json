@@ -14,8 +14,10 @@
 		"add-user": "Dodaj uporabnika",
 		"blog": "Blog",
 		"books": "Knjige",
+		"comment": "Komentarji",
 		"edit-blog": "Uredi blog",
 		"edit-book": "Uredi knjigo",
+		"edit-comment": "Uredi komentar",
 		"edit-link": "Uredi povezavo",
 		"edit-project": "Uredi projekt",
 		"edit-subscriber": "Uredi naročnika",
@@ -81,6 +83,7 @@
 	},
 	"labels": {
 		"_id": "ID",
+		"author": "Avtor",
 		"blog_id": "Blog ID",
 		"blog_notification": "Obvestila o blogu",
 		"company": "Podjetje",

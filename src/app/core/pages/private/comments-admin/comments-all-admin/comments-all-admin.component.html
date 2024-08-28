@@ -1,5 +1,4 @@
-<h1 class="text-center py-5">comments-all-admin works!</h1>
-
+<app-breadcrumb-admin first="breadcrumb.comment" />
 
 <ng-container *ngIf="comments$ | async as comments;">
 
@@ -7,7 +6,6 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
       <div class="flex bg-background-menu flex-col p-4 border rounded-lg shadow-lg" *ngFor="let comment of comments;">
-
 
         <div class="flex-1 overflow-x-auto ms-4 mb-4">
           <app-show-data
@@ -23,6 +21,7 @@
           <!-- Buttons for editing and deleting blog, and opening a dialog - START -->
           <app-button-admin
             (dialogRead)="openDialog(comment._id)"
+            [routerLinkId]="['/edit-comments-admin', comment._id ?? '']"
             (delete)="deleteComment(comment.blog_id, comment._id)"
           />
           <!-- Buttons for editing and deleting blog, and opening a dialog - END -->

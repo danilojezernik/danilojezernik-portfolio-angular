@@ -14,8 +14,10 @@
 		"add-user": "Add user",
 		"blog": "Blog",
 		"books": "Books",
+		"comment": "Comments",
 		"edit-blog": "Edit blog",
 		"edit-book": "Edit book",
+		"edit-comment": "Edit comment",
 		"edit-link": "Edit link",
 		"edit-project": "Edit project",
 		"edit-subscriber": "Edit subscriber",
@@ -81,6 +83,7 @@
 	},
 	"labels": {
 		"_id": "ID",
+		"author": "Author",
 		"blog_id": "Blog ID",
 		"blog_notification": "Blog notification",
 		"company": "Company",

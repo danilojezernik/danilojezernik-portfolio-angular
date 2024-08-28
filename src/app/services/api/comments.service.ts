@@ -19,8 +19,13 @@ export class CommentsService {
     return this._http.get<Comment[]>(`${environment.commentUrl.public}`)
   }
 
-  getCommentsOfBlogPublic(blogId: string): Observable<Comment[]> {
-    return this._http.get<Comment[]>(`${environment.commentUrl.public}/${blogId}`)
+  getCommentsOfBlogPublic(blogId: string, limit: number = 10, offset: number = 0): Observable<{ total_count: number, comments: Comment[] }> {
+    return this._http.get<{ total_count: number, comments: Comment[] }>(`${environment.commentUrl.public}/${blogId}`, {
+      params: {
+        limit: limit.toString(),
+        offset: offset.toString(),
+      },
+    })
   }
 
   addCommentToBlogPost(blogId: string, newBody: Comment): Observable<Comment> {
@@ -48,8 +53,8 @@ export class CommentsService {
     return this._http.post<Comment>(`${environment.commentUrl.admin}${blogId}`, newBody)
   }
 
-  editCommentById(blogId: string, commentId: string, newBody: Comment): Observable<Comment> {
-    return this._http.put<Comment>(`${environment.commentUrl.admin}${blogId}/${commentId}`, newBody)
+  editCommentByIdAdmin(commentId: string, newBody: Comment): Observable<Comment> {
+    return this._http.put<Comment>(`${environment.commentUrl.admin}${commentId}`, newBody)
   }
 
   deleteCommentById(blogId: string, commentId: string): Observable<Comment> {

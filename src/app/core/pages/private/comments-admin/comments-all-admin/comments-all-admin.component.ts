@@ -9,11 +9,12 @@ import {ShowDataComponent} from "../../../../../shared/components/show-data/show
 import {ButtonAdminComponent} from "../../../../../shared/components/button-admin/button-admin.component";
 import {MatDialog} from "@angular/material/dialog";
 import {openDialogUtil} from "../../../../../utils/open-dialog.util";
+import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 @Component({
   selector: 'app-comments-all-admin',
   standalone: true,
-  imports: [CommonModule, TranslateModule, RouterLink, ShowDataComponent, ButtonAdminComponent],
+  imports: [CommonModule, TranslateModule, RouterLink, ShowDataComponent, ButtonAdminComponent, BreadcrumbAdminComponent],
   templateUrl: './comments-all-admin.component.html'
 })
 export class CommentsAllAdminComponent {

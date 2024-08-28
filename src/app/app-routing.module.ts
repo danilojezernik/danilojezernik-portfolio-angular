@@ -88,6 +88,9 @@ import {NotAuthorizedComponent} from "./core/pages/public/not-authorized/not-aut
 import {
   CommentsAllAdminComponent
 } from "./core/pages/private/comments-admin/comments-all-admin/comments-all-admin.component";
+import {
+  EditCommentAdminComponent
+} from "./core/pages/private/comments-admin/edit-comment-admin/edit-comment-admin.component";
 
 const routes: Routes = [
   {
@@ -303,6 +306,10 @@ const routes: Routes = [
   {
     path: 'comments-admin',
     component: CommentsAllAdminComponent
+  },
+  {
+    path: 'edit-comments-admin/:id',
+    component: EditCommentAdminComponent
   },
 
   // ---------------------------

@@ -27,6 +27,9 @@ export class ReusableFormEditComponent {
   // Input property to accept form data to populate the form fields
   @Input() formData: any = {};
 
+  // Adding rows to the textarea
+  @Input() rows?: number;
+
   // Output property to emit the form data when the form is submitted
   @Output() formSubmit = new EventEmitter<any>();
 
