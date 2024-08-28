@@ -6,6 +6,7 @@ import { ReusableFormAddComponent } from "../../../../shared/forms/reusable-form
 import { FormFieldConfig } from "../../../../models/form-field-config.model";
 import { Contact } from "../../../../models/contact";
 import {TranslateModule} from "@ngx-translate/core";
+import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
 
 /**
  * ContactComponent is an Angular component designed to handle user contact form submissions.
@@ -30,7 +31,7 @@ import {TranslateModule} from "@ngx-translate/core";
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ReusableFormAddComponent, TranslateModule],
+  imports: [CommonModule, ReactiveFormsModule, ReusableFormAddComponent, TranslateModule, HeroTitleComponent],
   templateUrl: './contact.component.html'
 })
 export class ContactComponent {

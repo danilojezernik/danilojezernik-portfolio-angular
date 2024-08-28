@@ -1,13 +1,13 @@
-<div class="pt-8 lg:pt-16 px-4 mx-auto max-w-screen-md">
-  <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center ">
-    {{ 'pages.contact.contact-us' | translate }}
-  </h2>
-  <p class="mb-4 lg:mb-8 font-light text-center sm:text-xl">
-    {{ 'pages.contact.text' | translate }}
-  </p>
+<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+
+  <!-- Title and description of the contact section - START -->
+  <app-hero-title title="pages.contact.contact-us" subtitle="pages.contact.text"/>
+  <!-- Title and description of the contact section - END -->
+
+  <app-reusable-form
+    [config]="formConfig"
+    [submitLabel]="'button.send-message'"
+    (formSubmit)="sendEmail($event)">
+  </app-reusable-form>
+
 </div>
-<app-reusable-form
-  [config]="formConfig"
-  [submitLabel]="'button.send-message'"
-  (formSubmit)="sendEmail($event)">
-</app-reusable-form>
