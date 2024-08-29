@@ -130,9 +130,21 @@ export const formCommentConfig: FormFieldConfig[] = [
   { name: 'content', label: 'content', type: 'textarea', validators: [ Validators.required ] },
 ]
 
+/**
+ * formContactConfig defines the configuration for the form fields used in the newsletter form.
+ * */
 export const formContactConfig: FormFieldConfig[] = [
   { name: 'name', label: 'name', type: 'text', validators: [ Validators.required ] },
   { name: 'surname', label: 'surname', type: 'text', validators: [ Validators.required ] },
   { name: 'email', label: 'Email', type: 'email', validators: [ Validators.required, Validators.email ] },
   { name: 'message', label: 'message', type: 'text', validators: [ Validators.required, Validators.min(10) ] }
-];
+]
+
+/**
+ * formTechnologiesConfig defines the configuration for the form fields used in the angular form.
+ * */
+export const formTechnologiesConfig: FormFieldConfig[] = [
+  { name: 'question', label: 'question', type: 'text', validators: [ Validators.required ] },
+  { name: 'answer', label: 'answer', type: 'text', validators: [ Validators.required ] },
+  { name: 'image', label: 'image', type: 'email', validators: [] },
+]

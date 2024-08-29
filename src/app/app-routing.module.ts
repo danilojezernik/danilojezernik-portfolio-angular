@@ -91,6 +91,7 @@ import {
 import {
   EditCommentAdminComponent
 } from "./core/pages/private/comments-admin/edit-comment-admin/edit-comment-admin.component";
+import {TechnologiesAdminComponent} from "./core/pages/private/technologies/technologies-admin.component";
 
 const routes: Routes = [
   {
@@ -197,6 +198,16 @@ const routes: Routes = [
     component: AddBlogAdminComponent,
     canActivate: [ AuthGuardService ],
     data: { roles: ['admin'] }
+  },
+
+  // --------------------
+  //     TECHNOLOGY ROUTES
+  // --------------------
+
+  // PRIVATE
+  {
+    path: 'technologies-admin',
+    component: TechnologiesAdminComponent
   },
 
   // --------------------

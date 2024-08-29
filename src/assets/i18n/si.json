@@ -69,9 +69,15 @@
 		},
 		"media-menu": {
 			"about": "Preglejuj, dodajaj in briši slike za galerijo o meni, prek nadzorne plošče.",
+			"angular": "Preglejte, dodajte in izbrišite slike za Angular prek nadzorne plošče.",
 			"blogs": "Preglejte, dodajte in izbrišite slike za bloge prek nadzorne plošče.",
 			"books": "Preglejte, dodajte in izbrišite slike za knjige prek nadzorne plošče.",
-			"projects": "Preglejte, dodajte in izbrišite slike za projekte prek nadzorne plošče."
+			"javascript": "Preglejte, dodajte in izbrišite slike za JavaScript prek nadzorne plošče.",
+			"mongodb": "Preglejte, dodajte in izbrišite slike za MongoDB prek nadzorne plošče.",
+			"projects": "Preglejte, dodajte in izbrišite slike za projekte prek nadzorne plošče.",
+			"python": "Preglejte, dodajte in izbrišite slike za Python prek nadzorne plošče.",
+			"typescript": "Preglejte, dodajte in izbrišite slike za TypeScript prek nadzorne plošče.",
+			"vue": "Preglejte, dodajte in izbrišite slike za Vue prek nadzorne plošče."
 		}
 	},
 	"errors": {
@@ -145,9 +151,15 @@
 		"login": "Vpis",
 		"logout": "Izpis",
 		"media": "Media",
+		"media-angular": "Slike - Angular",
 		"media-blogs": "Slike - Blogi",
 		"media-books": "Slike - Knjige",
+		"media-javascript": "Slike - JavaScript",
+		"media-mongodb": "Slike - MongoDB",
 		"media-projects": "Slike - Projekti",
+		"media-python": "Slike - Python",
+		"media-typescript": "Slike - TypeScript",
+		"media-vue": "Slike - Vue 3",
 		"newsletter": "E-novice",
 		"projects": "Projekti",
 		"register": "Registracija",

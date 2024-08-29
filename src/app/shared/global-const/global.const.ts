@@ -77,6 +77,7 @@ export const ADMIN_MENU: { menu: string, path: string, description: string }[] =
   {menu: 'menu.users', path: '/users-admin', description: 'description.admin-menu.users'},
   {menu: 'menu.email', path: '/emails-admin', description: 'description.admin-menu.email'},
   {menu: 'menu.technology', path: '/technology-admin', description: 'description.admin-menu.technology'},
+  {menu: 'menu.technologies', path: '/technologies-admin', description: 'description.admin-menu.technologies'},
   {menu: 'menu.links', path: '/links-admin', description: 'description.admin-menu.links'},
   {menu: 'menu.experiences', path: '/experiences-admin', description: 'description.admin-menu.experiences'},
   {menu: 'menu.projects', path: '/projects-admin', description: 'description.admin-menu.projects'},
@@ -90,6 +91,21 @@ export const MEDIA_MENU = [
   {menu: 'menu.media-books', path: '/media-books', description: 'description.media-menu.books'},
   {menu: 'menu.media-blogs', path: '/media-blogs', description: 'description.media-menu.blogs'},
   {menu: 'menu.media-projects', path: '/media-projects', description: 'description.media-menu.projects'},
+  {menu: 'menu.media-angular', path: '/media-angular', description: 'description.media-menu.angular'},
+  {menu: 'menu.media-vue', path: '/media-vue', description: 'description.media-menu.vue'},
+  {menu: 'menu.media-typescript', path: '/media-typescript', description: 'description.media-menu.typescript'},
+  {menu: 'menu.media-javascript', path: '/media-javascript', description: 'description.media-menu.javascript'},
+  {menu: 'menu.media-python', path: '/media-python', description: 'description.media-menu.python'},
+  {menu: 'menu.media-mongodb', path: '/media-mongodb', description: 'description.media-menu.mongodb'},
+]
+
+export const TECHNOLOGIES_MENU = [
+  {menu: 'menu.tech-angular', path: '/tech-angular', description: 'description.tech-menu.angular'},
+  {menu: 'menu.tech-vue', path: '/tech-vue', description: 'description.tech-menu.vue'},
+  {menu: 'menu.tech-python', path: '/tech-python', description: 'description.tech-menu.python'},
+  {menu: 'menu.tech-javascript', path: '/tech-javascript', description: 'description.tech-menu.javascript'},
+  {menu: 'menu.tech-typescript', path: '/tech-typescript', description: 'description.tech-menu.typescript'},
+  {menu: 'menu.tech-mongodb', path: '/tech-mongodb', description: 'description.tech-menu.mongodb'},
 ]
 
 // Language translations for the header component and Translate service

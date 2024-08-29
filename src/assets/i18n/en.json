@@ -69,9 +69,15 @@
 		},
 		"media-menu": {
 			"about": "View, add, and delete images for the gallery about me through the dashboard.",
+			"angular": "View, add, and delete images for the gallery angular through the dashboard.",
 			"blogs": "View, add, and delete pictures for blogs through the dashboard.",
 			"books": "View, add, and delete pictures for books through the dashboard.",
-			"projects": "View, add, and delete pictures for projects through the dashboard."
+			"javascript": "View, add, and delete images for the gallery JavaScript through the dashboard.",
+			"mongodb": "View, add, and delete images for the gallery MongoDB through the dashboard.",
+			"projects": "View, add, and delete pictures for projects through the dashboard.",
+			"python": "View, add, and delete images for the gallery Python through the dashboard.",
+			"typescript": "View, add, and delete images for the gallery TypeScript through the dashboard.",
+			"vue": "View, add, and delete images for the gallery Vue through the dashboard."
 		}
 	},
 	"errors": {
@@ -145,9 +151,15 @@
 		"login": "Login",
 		"logout": "Logout",
 		"media": "Media",
+		"media-angular": "Pictures - Angular",
 		"media-blogs": "Pictures - Blogs",
 		"media-books": "Pictures - Books",
+		"media-javascript": "Pictures - JavaScript",
+		"media-mongodb": "Pictures - MongoDB",
 		"media-projects": "Pictures - Projects",
+		"media-python": "Images - Python",
+		"media-typescript": "Pictures - TypeScript",
+		"media-vue": "Pictures - Vue 3",
 		"newsletter": "Newsletter",
 		"projects": "Projects",
 		"register": "Register",

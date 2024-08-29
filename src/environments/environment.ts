@@ -51,6 +51,38 @@ export const environment = {
     admin: 'http://localhost:3000/technology/admin/',
   },
 
+  // TECHNOLOGY APIS
+  angularUrl: {
+    public: 'http://localhost:3000/angular',
+    admin: 'http://localhost:3000/angular/admin/',
+    publicMedia: 'http://localhost:3000/angular/media/'
+  },
+  vueUrl: {
+    public: 'http://localhost:3000/vue',
+    admin: 'http://localhost:3000/vue/admin/',
+    publicMedia: 'http://localhost:3000/vue/media/'
+  },
+  pythonUrl: {
+    public: 'http://localhost:3000/python',
+    admin: 'http://localhost:3000/python/admin/',
+    publicMedia: 'http://localhost:3000/python/media/'
+  },
+  javascriptUrl: {
+    public: 'http://localhost:3000/javascript',
+    admin: 'http://localhost:3000/javascript/admin/',
+    publicMedia: 'http://localhost:3000/javascript/media/'
+  },
+  typescriptUrl: {
+    public: 'http://localhost:3000/typescript',
+    admin: 'http://localhost:3000/typescript/admin/',
+    publicMedia: 'http://localhost:3000/typescript/media/'
+  },
+  mongodbUrl: {
+    public: 'http://localhost:3000/mongodb',
+    admin: 'http://localhost:3000/mongodb/admin/',
+    publicMedia: 'http://localhost:3000/mongodb/media/'
+  },
+
   // CONTACT API
   contactUrl: {
     public: 'http://localhost:3000/contact',
@@ -69,7 +101,7 @@ export const environment = {
     admin: 'http://localhost:3000/links/admin/',
   },
 
-  // USERDS API
+  // USERS API
   usersUrl: {
     public: 'http://localhost:3000/user',
     admin: 'http://localhost:3000/user/admin/',

@@ -51,9 +51,8 @@ export class BlogService {
   /**
    * PRIVATE MEDIA SERVICE
    */
-
-  deleteBlogImageByName(filename: string): Observable<any> {
-    return this._http.delete<any>(`${environment.blogUrl.publicMedia}${filename}`)
+  deleteBlogImageByName(filename: string): Observable<string> {
+    return this._http.delete<string>(`${environment.blogUrl.publicMedia}${filename}`)
   }
 
   uploadBlogImage(file: File): Observable<any> {
