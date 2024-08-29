@@ -55,6 +55,12 @@ export class ShowDataComponent {
   // Company name
   @Input() company?: string;
 
+  // Question for technology
+  @Input() question?: string;
+
+  // Answer for technology
+  @Input() answer?: string;
+
   // Boolean indicating if the user is an employee
   @Input() employee?: boolean;
 

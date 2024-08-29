@@ -36,5 +36,7 @@
 <div *ngIf="registered !== undefined"><strong>Registered: </strong> {{ registered }}</div>
 <div *ngIf="blog_notification !== undefined"><strong>Blog Notification: </strong> {{ blog_notification }}</div>
 <div *ngIf="tehnologija"><strong>Tehnologija: </strong> {{ tehnologija }}</div>
+<div *ngIf="question"><strong>Vprašanje: </strong> {{ question }}</div>
+<div *ngIf="answer"><strong>Odgovor: </strong> {{ answer }}</div>
 <div *ngIf="imageName" (click)="copyToClipboard(imageName)"><strong>Image: </strong> <span class="cursor-pointer hover:text-red-600">{{ imageName }}</span></div>
 <div *ngIf="blogById && (blog_id && blog_id.length > 16)"><span class="cursor-pointer hover:text-red-600"><a [routerLink]="['/blog/', blog_id]">Go to blog</a></span></div>

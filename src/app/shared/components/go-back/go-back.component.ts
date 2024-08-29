@@ -25,6 +25,9 @@ export class GoBackComponent {
   // Show button if in projects admin
   @Input() projectsAdmin?: boolean
 
+  // Show button if in projects admin
+  @Input() angularAdmin?: boolean
+
   // Show button if in books media admin section
   @Input() booksMediaAdmin?: boolean
 
@@ -33,6 +36,9 @@ export class GoBackComponent {
 
   // Show button if in projects media admin section
   @Input() projectsMediaAdmin?: boolean
+
+  // Show button if in projects media admin section
+  @Input() angularMediaAdmin?: boolean
 
   // Show button if viewing a public blog by ID
   @Input() blogByIdPublic?: boolean

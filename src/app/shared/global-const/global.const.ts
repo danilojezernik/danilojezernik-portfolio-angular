@@ -100,12 +100,12 @@ export const MEDIA_MENU = [
 ]
 
 export const TECHNOLOGIES_MENU = [
-  {menu: 'menu.tech-angular', path: '/tech-angular', description: 'description.tech-menu.angular'},
-  {menu: 'menu.tech-vue', path: '/tech-vue', description: 'description.tech-menu.vue'},
-  {menu: 'menu.tech-python', path: '/tech-python', description: 'description.tech-menu.python'},
-  {menu: 'menu.tech-javascript', path: '/tech-javascript', description: 'description.tech-menu.javascript'},
-  {menu: 'menu.tech-typescript', path: '/tech-typescript', description: 'description.tech-menu.typescript'},
-  {menu: 'menu.tech-mongodb', path: '/tech-mongodb', description: 'description.tech-menu.mongodb'},
+  {menu: 'menu.tech-angular', path: '/tech-all-angular', description: 'description.tech-menu.angular'},
+  {menu: 'menu.tech-vue', path: '/tech-all-vue', description: 'description.tech-menu.vue'},
+  {menu: 'menu.tech-python', path: '/tech-all-python', description: 'description.tech-menu.python'},
+  {menu: 'menu.tech-javascript', path: '/tech-all-javascript', description: 'description.tech-menu.javascript'},
+  {menu: 'menu.tech-typescript', path: '/tech-all-typescript', description: 'description.tech-menu.typescript'},
+  {menu: 'menu.tech-mongodb', path: '/tech-all-mongodb', description: 'description.tech-menu.mongodb'},
 ]
 
 // Language translations for the header component and Translate service

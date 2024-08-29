@@ -92,6 +92,54 @@ import {
   EditCommentAdminComponent
 } from "./core/pages/private/comments-admin/edit-comment-admin/edit-comment-admin.component";
 import {TechnologiesAdminComponent} from "./core/pages/private/technologies/technologies-admin.component";
+import {
+  AngularAllAdminComponent
+} from "./core/pages/private/technologies/angular/angular-all-admin/angular-all-admin.component";
+import {
+  AngularAddAdminComponent
+} from "./core/pages/private/technologies/angular/angular-add-admin/angular-add-admin.component";
+import {
+  AngularEditAdminComponent
+} from "./core/pages/private/technologies/angular/angular-edit-admin/angular-edit-admin.component";
+import {VueAllAdminComponent} from "./core/pages/private/technologies/vue/vue-all-admin/vue-all-admin.component";
+import {VueAddAdminComponent} from "./core/pages/private/technologies/vue/vue-add-admin/vue-add-admin.component";
+import {VueEditAdminComponent} from "./core/pages/private/technologies/vue/vue-edit-admin/vue-edit-admin.component";
+import {
+  PythonAllAdminComponent
+} from "./core/pages/private/technologies/python/python-all-admin/python-all-admin.component";
+import {
+  PythonAddAdminComponent
+} from "./core/pages/private/technologies/python/python-add-admin/python-add-admin.component";
+import {
+  PythonEditAdminComponent
+} from "./core/pages/private/technologies/python/python-edit-admin/python-edit-admin.component";
+import {
+  JavascriptAllAdminComponent
+} from "./core/pages/private/technologies/javascript/javascript-all-admin/javascript-all-admin.component";
+import {
+  JavascriptAddAdminComponent
+} from "./core/pages/private/technologies/javascript/javascript-add-admin/javascript-add-admin.component";
+import {
+  JavascriptEditAdminComponent
+} from "./core/pages/private/technologies/javascript/javascript-edit-admin/javascript-edit-admin.component";
+import {
+  TypescriptAllAdminComponent
+} from "./core/pages/private/technologies/typescript/typescript-all-admin/typescript-all-admin.component";
+import {
+  TypescriptAddAdminComponent
+} from "./core/pages/private/technologies/typescript/typescript-add-admin/typescript-add-admin.component";
+import {
+  TypescriptEditAdminComponent
+} from "./core/pages/private/technologies/typescript/typescript-edit-admin/typescript-edit-admin.component";
+import {
+  MongodbAllAdminComponent
+} from "./core/pages/private/technologies/mongodb/mongodb-all-admin/mongodb-all-admin.component";
+import {
+  MongodbAddAdminComponent
+} from "./core/pages/private/technologies/mongodb/mongodb-add-admin/mongodb-add-admin.component";
+import {
+  MongodbEditAdminComponent
+} from "./core/pages/private/technologies/mongodb/mongodb-edit-admin/mongodb-edit-admin.component";
 
 const routes: Routes = [
   {
@@ -201,17 +249,115 @@ const routes: Routes = [
   },
 
   // --------------------
-  //     TECHNOLOGY ROUTES
+  //    TECHNOLOGIES ROUTES
   // --------------------
 
   // PRIVATE
   {
     path: 'technologies-admin',
-    component: TechnologiesAdminComponent
+    component: TechnologiesAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  // ANGULAR
+  {
+    path: 'tech-all-angular',
+    component: AngularAllAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tech-add-angular',
+    component: AngularAddAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tech-edit-angular/:id',
+    component: AngularEditAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  // VUE
+  {
+    path: 'tech-all-vue',
+    component: VueAllAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tech-add-vue',
+    component: VueAddAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tech-edit-vue/:id',
+    component: VueEditAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  // PYTHON
+  {
+    path: 'tech-all-python',
+    component: PythonAllAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tech-add-python',
+    component: PythonAddAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tech-edit-python/:id',
+    component: PythonEditAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  // JAVASCRIPT
+  {
+    path: 'tech-all-javascript',
+    component: JavascriptAllAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tech-add-javascript',
+    component: JavascriptAddAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tech-edit-javascript/:id',
+    component: JavascriptEditAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  // TYPESCRIPT
+  {
+    path: 'tech-all-typescript',
+    component: TypescriptAllAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tech-add-typescript',
+    component: TypescriptAddAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tech-edit-typescript/:id',
+    component: TypescriptEditAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  // MONGODB
+  {
+    path: 'tech-all-mongodb',
+    component: MongodbAllAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tech-add-mongodb',
+    component: MongodbAddAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tech-edit-mongodb/:id',
+    component: MongodbEditAdminComponent,
+    canActivate: [ AuthGuardService ]
   },
 
   // --------------------
   //     TECHNOLOGY ROUTES
+  //    TODO: DELETE WHEN SURE THAT IT IS NOT NEEDED
   // --------------------
 
   // PUBLIC
