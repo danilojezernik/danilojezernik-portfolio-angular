@@ -97,7 +97,9 @@ export const formLinksConfig: FormFieldConfig[] = [
 export const formBooksConfig: FormFieldConfig[] = [
   { name: 'naslov', label: 'naslov', type: 'text', validators: [ Validators.required ] },
   { name: 'tehnologija', label: 'tehnologija', type: 'text', validators: [ Validators.required ] },
+  { name: 'author', label: 'author', type: 'text', validators: [ Validators.required ] },
   { name: 'podnaslov', label: 'podnaslov', type: 'text', validators: [] },
+  { name: 'buy_url', label: 'buy_url', type: 'text', validators: [] },
   { name: 'vsebina', label: 'vsebina', type: 'textarea', validators: [ Validators.required, Validators.minLength(10) ] },
   { name: 'image', label: 'image', type: 'text', validators: [] },
 ]
@@ -128,3 +130,9 @@ export const formCommentConfig: FormFieldConfig[] = [
   { name: 'content', label: 'content', type: 'textarea', validators: [ Validators.required ] },
 ]
 
+export const formContactConfig: FormFieldConfig[] = [
+  { name: 'name', label: 'name', type: 'text', validators: [ Validators.required ] },
+  { name: 'surname', label: 'surname', type: 'text', validators: [ Validators.required ] },
+  { name: 'email', label: 'Email', type: 'email', validators: [ Validators.required, Validators.email ] },
+  { name: 'message', label: 'message', type: 'text', validators: [ Validators.required, Validators.min(10) ] }
+];

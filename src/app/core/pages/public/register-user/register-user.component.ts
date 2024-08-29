@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RegisterService } from "../../../../services/api/register.service";
 import { User } from "../../../../models/user";
 import { FormsModule } from "@angular/forms";
+import {ReusableFormAddComponent} from "../../../../shared/forms/reusable-form-add/reusable-form-add.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-register-user',
   standalone: true,
-  imports: [ CommonModule, FormsModule ],
+  imports: [CommonModule, FormsModule, ReusableFormAddComponent, TranslateModule],
   templateUrl: './register-user.component.html'
 })
 export class RegisterUserComponent {

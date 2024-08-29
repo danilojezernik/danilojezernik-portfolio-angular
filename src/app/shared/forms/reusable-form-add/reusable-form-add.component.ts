@@ -1,7 +1,7 @@
-import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn } from '@angular/forms';
-import { FormFieldConfig } from "../../../models/form-field-config.model";
+import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn} from '@angular/forms';
+import {FormFieldConfig} from "../../../models/form-field-config.model";
 import {TranslateModule} from "@ngx-translate/core";
 
 /*************************************************************************************************
@@ -60,7 +60,7 @@ export class ReusableFormAddComponent implements OnInit {
      * - acc: Accumulator object that stores the form controls.
      * - field: Current field configuration from the config array.
      */
-    const formControls = this.config.reduce<{ [key: string]: [ any, ValidatorFn[] ] }>((acc, field) => {
+    const formControls = this.config.reduce<{ [key: string]: [any, ValidatorFn[]] }>((acc, field) => {
       /**
        * For each field in the config array, create a form control configuration.
        *
@@ -73,7 +73,7 @@ export class ReusableFormAddComponent implements OnInit {
        * field.name returns the name of the current form field being processed.
        * this.config returns the entire configuration array passed from the parent component.
        */
-      acc[field.name] = [ field.type === 'checkbox' ? false : '', field.validators || [] ];
+      acc[field.name] = [field.type === 'checkbox' ? false : '', field.validators || []];
       return acc;
     }, {});
 
@@ -92,7 +92,7 @@ export class ReusableFormAddComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       // Clone the form value to ensure processing does not affect the original form value.
-      const processedFormValue = { ...this.form.value };
+      const processedFormValue = {...this.form.value};
 
       // Iterate over the form configuration to process each field
       this.config.forEach(field => {
@@ -105,6 +105,8 @@ export class ReusableFormAddComponent implements OnInit {
           processedFormValue[field.name] = !!processedFormValue[field.name];
         }
       });
+
+      this.form.reset()
 
       // Log the processed form value for debugging purposes
       console.log('Processed Form Value:', processedFormValue);

@@ -12,11 +12,14 @@ import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {LoadingComponent} from "../../../../shared/components/loading/loading.component";
 import {DropdownSelectComponent} from "../../../../shared/components/dropdown-select/dropdown-select.component";
 import {GetImageService} from "../../../../services/get-image/get-image.service";
+import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
+import {ShorteningTextPipe} from "../../../../pipes/shortening-text/shortening-text.pipe";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatOptionModule, MatSelectModule, FormsModule, TranslateModule, LoadingComponent, DropdownSelectComponent],
+  imports: [CommonModule, MatFormFieldModule, MatOptionModule, MatSelectModule, FormsModule, TranslateModule, LoadingComponent, DropdownSelectComponent, HeroTitleComponent, ShorteningTextPipe, RouterLink],
   templateUrl: './book.component.html'
 })
 export class BookComponent {

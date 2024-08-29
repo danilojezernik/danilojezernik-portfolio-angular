@@ -39,8 +39,11 @@
 		"back": "Back",
 		"blogs-admin": "Media - Blogs",
 		"books-admin": "Media - about me",
+		"buy": "Buy",
+		"buy_url": "Buy",
 		"delete": "Delete",
 		"edit": "Edit",
+		"github": "to GitHub",
 		"media-projects": "Pictures - projects",
 		"read": "Read",
 		"read-more": "Read more",
@@ -87,6 +90,7 @@
 		"author": "Author",
 		"blog_id": "Blog ID",
 		"blog_notification": "Blog notification",
+		"buy_url": "Buy",
 		"company": "Company",
 		"company_end": "Ended up working for the company",
 		"company_start": "Starting work at the company",
@@ -113,9 +117,11 @@
 		"required": "is required",
 		"role": "Role",
 		"stack": "Stack",
+		"subtitle": "Subtitle",
 		"surname": "Surname",
 		"tasks": "Tasks",
 		"technology": "Technology",
+		"tehnologija": "Technology",
 		"title": "Title",
 		"username": "Username",
 		"vsebina": "Content",
@@ -158,12 +164,18 @@
 			"before-comment": "Back",
 			"next-comment": "Next"
 		},
+		"books": {
+			"books": "Number of books",
+			"description": "A page where I list books with interesting content that might appeal to others. I also provide a link where you can purchase the book.",
+			"title": "Books"
+		},
 		"contact": {
 			"contact-us": "Conntact me",
 			"text": "Thank you for visiting my website! If you have any questions or need assistance, feel free to reach out using the form below. I look forward to hearing from you!"
 		},
 		"github": {
 			"description": "A GitHub page showcasing my repositories and data, featuring code projects, documentation, and collaboration insights.",
+			"repos": "Existing repositories",
 			"title": "GitHub"
 		}
 	},

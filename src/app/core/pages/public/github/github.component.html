@@ -1,4 +1,4 @@
-<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+<div class="pt-8 px-4 mx-auto max-w-screen-xl lg:pt-16 lg:px-6">
 
   <!-- Title of the page displaying GitHub repositories - START -->
   <app-hero-title title="pages.github.title" subtitle="pages.github.description"/>
@@ -10,43 +10,100 @@
     <ng-container *ngIf="!error">
 
       <!-- Display the number of existing repositories if any are found - START -->
-      <ul>
-        <li *ngIf="githubData.length > 0">
-          Existing repos: {{ githubData.length }}
-        </li>
-      </ul>
+      <div class="flex justify-center font-bold text-lg mb-2" *ngIf="githubData.length > 0">
+        {{ 'pages.github.repos' | translate }}: {{ githubData.length }}
+      </div>
       <!-- Display the number of existing repositories if any are found - END -->
 
       <!-- Dropdown to select the language for filtering books - START -->
-      <app-dropdown-select [options]="SELECT_LANGUAGE" [selectedValue]="selectedLanguage"
-                           (valueChange)="onSelectChange($event)" [label]="'selected.language'"/>
+      <div class="flex justify-center">
+        <app-dropdown-select [options]="SELECT_LANGUAGE" [selectedValue]="selectedLanguage"
+                             (valueChange)="onSelectChange($event)"/>
+      </div>
+
       <!-- Dropdown to select the language for filtering books - END -->
 
-      <!-- List of GitHub repositories - START -->
-      <ul>
-        <li class="pb-2" *ngFor="let repo of githubData.repos">
-          <!-- Repository name displayed in uppercase and larger font size - START -->
-          <p class="text-2xl uppercase">{{ repo.name }}</p>
-          <!-- Repository name displayed in uppercase and larger font size - END -->
+      <section>
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 
-          <!-- Link to the GitHub repository - START -->
-          <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
-          <!-- Link to the GitHub repository - END -->
+          <!-- Grid container for displaying github articles - START -->
+          <div class="grid gap-8 lg:grid-cols-3">
 
-          <!-- Repository description - START -->
-          <p>{{ repo.description }}</p>
-          <!-- Repository description - END -->
+            <article *ngFor="let repo of githubData.repos"
+                     class="p-6 bg-background-menu rounded-lg border shadow-md border-gray-700 flex flex-col justify-between">
 
-          <!-- Repository language information - START -->
-          <p><strong>Language:</strong> {{ repo.language }}</p>
-          <!-- Repository language information - END -->
+              <!-- github category and date section - START -->
+              <div class="flex justify-between items-center mb-5 text-gray-500">
+                <span
+                  class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-red-200 text-primary-800">
+                    <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg"><path
+                      d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                    </svg>
+                  {{ repo.language || 'README.md' }}
+                </span>
+              </div>
+              <!-- github category and date section - END -->
 
-          <!-- Repository owner information with link to the owner's GitHub profile - START -->
-          <p><strong>Owner:</strong> <a [href]="repo.owner.html_url" target="_blank">{{ repo.owner.login }}</a></p>
-          <!-- Repository owner information with link to the owner's GitHub profile - END -->
-        </li>
-      </ul>
-      <!-- List of GitHub repositories - END -->
+              <!-- github title and content section - START -->
+              <h2 class="mb-2 text-2xl font-bold tracking-tight text-white">
+                <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+              </h2>
+              <p class="mb-5 font-light text-gray-400" [innerHtml]="repo.description | shorteningText"></p>
+              <!-- github title and content section - END -->
+
+              <!-- github author and read more section - START -->
+              <div class="flex justify-between items-center mt-auto">
+                <div class="flex items-center space-x-4">
+                  <!-- Author avatar - START -->
+                  <svg class="w-7 h-7 rounded-full" viewBox="0 0 32 32" id="user" xmlns="http://www.w3.org/2000/svg"
+                       fill="#000000">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <defs>
+                        <style>.cls-1 {
+                          fill: #f16145;
+                        }
+
+                        .cls-2 {
+                          fill: #f68f71;
+                        }</style>
+                      </defs>
+                      <title></title>
+                      <path class="cls-1"
+                            d="M16,15A15,15,0,0,0,1,30a1,1,0,0,0,1,1H30a1,1,0,0,0,1-1A15,15,0,0,0,16,15Z"></path>
+                      <circle class="cls-2" cx="16" cy="9" r="8"></circle>
+                    </g>
+                  </svg>
+                  <!-- Author avatar - END -->
+
+                  <!-- Author name - START -->
+                  <a [href]="repo.owner.html_url" target="_blank" class="font-medium dark:text-white">
+                      {{ repo.owner.login }}
+                  </a>
+                  <!-- Author name - END -->
+                </div>
+
+                <!-- Read more link - START -->
+                <a [href]="repo.html_url" target="_blank"
+                   class="inline-flex items-center font-medium text-primary-500 hover:text-red-600">
+                  <span class="pe-2">{{ 'button.github' | translate }}</span> &#11166;
+                </a>
+                <!-- Read more link - END -->
+
+              </div>
+              <!-- github author and read more section - END -->
+
+            </article>
+
+
+          </div>
+          <!-- Grid container for displaying github articles - END -->
+
+        </div>
+      </section>
+      <!-- Section containing the main content of the github page - END -->
 
     </ng-container>
 

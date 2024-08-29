@@ -39,8 +39,11 @@
 		"back": "Nazaj",
 		"blogs-admin": "Slike - Blogi",
 		"books-admin": "Slike - o meni",
+		"buy": "Nakup",
+		"buy_url": "Nakup",
 		"delete": "Izbriši",
 		"edit": "Uredi",
+		"github": "na GitHub",
 		"media-projects": "Slike - projekti",
 		"read": "Beri",
 		"read-more": "Beri dalje",
@@ -87,6 +90,7 @@
 		"author": "Avtor",
 		"blog_id": "Blog ID",
 		"blog_notification": "Obvestila o blogu",
+		"buy_url": "Nakup",
 		"company": "Podjetje",
 		"company_end": "Konec dela pri podjetju",
 		"company_start": "Začetek dela v podjetju",
@@ -113,9 +117,11 @@
 		"required": "je obvezno polje",
 		"role": "Vloga",
 		"stack": "Stack",
+		"subtitle": "Podnaslov",
 		"surname": "Priimek",
 		"tasks": "Naloge",
 		"technology": "Tehnologija",
+		"tehnologija": "Tehnologija",
 		"title": "Naslov",
 		"username": "Uporabniško ime",
 		"vsebina": "Vsebina",
@@ -158,12 +164,18 @@
 			"before-comment": "Nazaj",
 			"next-comment": "Naslednji"
 		},
+		"books": {
+			"books": "Število knjig",
+			"description": "Stran, kjer navajam knjige z zanimivo vsebino, ki bi morda koga zanimale. Prav tako vas popeljem do povezave, kjer lahko nakup knjige opravite.",
+			"title": "Knjige"
+		},
 		"contact": {
 			"contact-us": "Kontaktiraj me",
 			"text": "Hvala, da ste obiskali mojo spletno stran! Če imate kakršnakoli vprašanja ali potrebujete pomoč, me lahko kontaktirate preko spodnjega obrazca. Veselim se vaših sporočil!"
 		},
 		"github": {
 			"description": "GitHub stran z mojimi repozitoriji in podatki, vključno s projekti, dokumentacijo in vpogledi v sodelovanje.",
+			"repos": "Obstoječi repozitoriji",
 			"title": "GitHub"
 		}
 	},

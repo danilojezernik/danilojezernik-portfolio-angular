@@ -1,41 +1,127 @@
-<p>book works!</p>
+<div class="pt-8 px-4 mx-auto max-w-screen-xl lg:pt-16 lg:px-6">
+
+  <!-- Title and description of the book section - START -->
+  <app-hero-title title="pages.books.title" subtitle="pages.books.description"/>
+  <!-- Title and description of the book section - END -->
 
 <ng-container *ngIf="filteredBooks$ | async as books; else loadingData">
 
-  <!-- Display the number of existing books if any are found - START -->
-  <ul>
-    <li *ngIf="books.length > 0">
-      Existing books: {{ books.length }}
-    </li>
-  </ul>
-  <!-- Display the number of existing books if any are found - END -->
-
   <ng-container *ngIf="!error">
 
+    <!-- Display the number of existing repositories if any are found - START -->
+    <div class="flex justify-center font-bold text-lg mb-2" *ngIf="books.length > 0">
+      {{ 'pages.books.books' | translate }}: {{ books.length }}
+    </div>
+    <!-- Display the number of existing repositories if any are found - END -->
+
     <!-- Dropdown to select the language for filtering books - START -->
-    <app-dropdown-select [options]="SELECT_TECHNOLOGY" [selectedValue]="selectedTechnology"
-                         (valueChange)="onSelectChange($event)" [label]="'selected.optionTxt'"/>
+    <div class="flex justify-center">
+      <app-dropdown-select [options]="SELECT_TECHNOLOGY" [selectedValue]="selectedTechnology"
+                           (valueChange)="onSelectChange($event)"/>
+    </div>
     <!-- Dropdown to select the language for filtering books - END -->
 
-    <ul>
-      <li class="pb-2" *ngFor="let book of books.all">
-        <p class="text-2xl uppercase">{{ book.naslov }}</p>
-        <p class="text-xl uppercase">{{ book.podnaslov }}</p>
-        <p><strong>Tehnologija:</strong> {{ book.tehnologija }}</p>
-        <p>{{ book.vsebina }}</p>
-        <img *ngIf="book.image" [src]="_getImageByName.getBookImageUrl(book.image)" class="max-h-80" [alt]="book.image" />
-      </li>
-    </ul>
+    <!-- Section containing the main content of the book page - START -->
+    <section>
+      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+
+        <!-- Grid container for displaying book articles - START -->
+        <div class="grid gap-8 lg:grid-cols-3">
+
+          <!-- Looping through the books array and displaying its properties - START -->
+          <article *ngFor="let book of books.all"
+                   class="p-6 bg-background-menu rounded-lg border shadow-md border-gray-700">
+
+            <!-- book image section - START -->
+            <img *ngIf="book.image" [src]="_getImageByName.getBookImageUrl(book.image)"
+                 class="w-full h-48 object-cover object-center rounded-lg mb-4"
+                 [alt]="book.image"/>
+            <!-- book image section - END -->
+
+            <!-- book category and date section - START -->
+            <div class="flex justify-between items-center mb-5 text-gray-500">
+                  <span
+                    class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-red-200 text-primary-800">
+                      <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
+                           xmlns="http://www.w3.org/2000/svg"><path
+                        d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                      </svg>
+                    {{ book.tehnologija }}
+                  </span>
+              <span class="text-sm">{{ book.datum_vnosa | date }}</span>
+            </div>
+            <!-- book category and date section - END -->
+
+            <!-- book title and content section - START -->
+            <h2 class="mb-2 text-2xl font-bold tracking-tight text-white">
+              {{ book.naslov }}</h2>
+            <p class="mb-5 font-light text-gray-400" [innerHtml]="book.vsebina | shorteningText">
+            </p>
+            <!-- book title and content section - END -->
+
+            <!-- book author and read more section - START -->
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-4">
+                <!-- Author avatar - START -->
+                <svg class="w-7 h-7 rounded-full" viewBox="0 0 32 32" id="user" xmlns="http://www.w3.org/2000/svg"
+                     fill="#000000">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <defs>
+                      <style>.cls-1 {
+                        fill: #f16145;
+                      }
+
+                      .cls-2 {
+                        fill: #f68f71;
+                      }</style>
+                    </defs>
+                    <title></title>
+                    <path class="cls-1"
+                          d="M16,15A15,15,0,0,0,1,30a1,1,0,0,0,1,1H30a1,1,0,0,0,1-1A15,15,0,0,0,16,15Z"></path>
+                    <circle class="cls-2" cx="16" cy="9" r="8"></circle>
+                  </g>
+                </svg>
+                <!-- Author avatar - END -->
+
+                <!-- Author name - START -->
+                <span class="font-medium dark:text-white">
+                          {{ book.author }}
+                      </span>
+                <!-- Author name - END -->
+              </div>
+
+              <!-- Read more link - START -->
+              <a [href]="book.buy_url"
+                 class="inline-flex items-center font-medium text-primary-500 hover:text-red-600">
+                <span class="pe-2">{{ 'button.buy_url' | translate }}</span> &#11166;
+              </a>
+              <!-- Read more link - END -->
+
+            </div>
+            <!-- book author and read more section - END -->
+
+          </article>
+          <!-- Looping through the books array and displaying its properties - END -->
+
+        </div>
+        <!-- Grid container for displaying book articles - END -->
+
+      </div>
+    </section>
+    <!-- Section containing the main content of the book page - END -->
+
   </ng-container>
 
   <!-- Error message display if the data fetching fails - START -->
   <ng-container *ngIf="error">
-    {{error}}
+    {{ error }}
   </ng-container>
   <!-- Error message display if the data fetching fails - END -->
 
 </ng-container>
-
+</div>
 <!-- Template to show loading spinner and text while data is being fetched - START -->
 <ng-template #loadingData>
   <app-loading/>

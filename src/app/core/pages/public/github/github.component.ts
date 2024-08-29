@@ -12,6 +12,8 @@ import { switchMap } from 'rxjs/operators'
 import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
 import { DropdownSelectComponent } from "../../../../shared/components/dropdown-select/dropdown-select.component";
 import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
+import {ShorteningTextPipe} from "../../../../pipes/shortening-text/shortening-text.pipe";
+import {RouterLink} from "@angular/router";
 
 /**
  * This component displays GitHub repositories fetched from the backend API.
@@ -19,7 +21,7 @@ import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-
 @Component({
   selector: 'app-github',
   standalone: true,
-  imports: [CommonModule, TranslateModule, MatSelectModule, FormsModule, MatInputModule, LoadingComponent, DropdownSelectComponent, HeroTitleComponent],
+  imports: [CommonModule, TranslateModule, MatSelectModule, FormsModule, MatInputModule, LoadingComponent, DropdownSelectComponent, HeroTitleComponent, ShorteningTextPipe, RouterLink],
   templateUrl: './github.component.html'
 })
 export class GithubComponent {

@@ -1,12 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, Validators } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import { ContactService } from "../../../../services/api/contact.service";
 import { ReusableFormAddComponent } from "../../../../shared/forms/reusable-form-add/reusable-form-add.component";
-import { FormFieldConfig } from "../../../../models/form-field-config.model";
 import { Contact } from "../../../../models/contact";
-import {TranslateModule} from "@ngx-translate/core";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
+import {formContactConfig} from "../../../../shared/global-const/form-config";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {of} from "rxjs";
+import {LoadingComponent} from "../../../../shared/components/loading/loading.component";
 
 /**
  * ContactComponent is an Angular component designed to handle user contact form submissions.
@@ -31,23 +34,20 @@ import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ReusableFormAddComponent, TranslateModule, HeroTitleComponent],
+  imports: [CommonModule, ReactiveFormsModule, ReusableFormAddComponent, TranslateModule, HeroTitleComponent, LoadingComponent],
   templateUrl: './contact.component.html'
 })
 export class ContactComponent {
 
   private _contactService = inject(ContactService)
+  private _snackBar = inject(MatSnackBar)
+  private _translateService = inject(TranslateService); // Injecting TranslateService for translating error messages
 
-  /**
-   * formConfig defines the configuration for the form fields.
-   * It is an array of FormFieldConfig objects, each specifying the name, label, type, and validators for a form field.
-   */
-  formConfig: FormFieldConfig[] = [
-    { name: 'name', label: 'name', type: 'text', validators: [ Validators.required ] },
-    { name: 'surname', label: 'surname', type: 'text', validators: [ Validators.required ] },
-    { name: 'email', label: 'Email', type: 'email', validators: [ Validators.required, Validators.email ] },
-    { name: 'message', label: 'message', type: 'text', validators: [ Validators.required, Validators.min(10) ] }
-  ];
+  // Property to store error messages, initialized to null
+  error: string | null = null;
+
+  // Property to track loading state, initialized to false
+  loading: boolean = false;
 
   /**
    * @method sendEmail
@@ -57,11 +57,35 @@ export class ContactComponent {
    * @param formValidator - The form data to be validated and sent to the server for email contact.
    */
   sendEmail(formValidator: Contact) {
+    // Show spinner while loading
+    this.loading = true;
+
     /**
      * Sends the validated form data to the contact service's sendEmailContact method.
      * Subscribes to the observable returned by the service method to handle the response.
      */
-    this._contactService.sendEmailContact(formValidator).subscribe()
+    this._contactService.sendEmailContact(formValidator).subscribe(() => {
+      // Hide spinner after loading
+      this.loading = false;
+
+      this._snackBar.open('Uspešno poslano sporočilo', 'Close', {
+        duration: 3000
+      })
+    }, (error) => {
+      // Hide spinner after loading
+      this.loading = false;
+
+      // Extract the error message
+      const message = error.message;
+      // Translate the error message using the Translation service and set it to the error property
+      this._translateService.get(message).subscribe((translation) => {
+        this.error = translation;
+      });
+
+      // Return an observable of an empty array to handle errors gracefully
+      return of([] as Contact[]);
+    })
   }
 
+  protected readonly formContactConfig = formContactConfig;
 }

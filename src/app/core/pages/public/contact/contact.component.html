@@ -4,10 +4,25 @@
   <app-hero-title title="pages.contact.contact-us" subtitle="pages.contact.text"/>
   <!-- Title and description of the contact section - END -->
 
-  <app-reusable-form
-    [config]="formConfig"
-    [submitLabel]="'button.send-message'"
-    (formSubmit)="sendEmail($event)">
-  </app-reusable-form>
+  <!-- Container to display the form and handle its submission - START -->
+  <ng-container *ngIf="!error && !loading">
+    <app-reusable-form
+      [config]="formContactConfig"
+      [submitLabel]="'button.send-message'"
+      (formSubmit)="sendEmail($event)">
+    </app-reusable-form>
+  </ng-container>
+  <!-- Container to display the form and handle its submission - END -->
 
+  <!-- Template to show loading spinner and text while data is being fetched - START -->
+  <ng-container *ngIf="loading">
+    <app-loading/>
+  </ng-container>
+  <!-- Template to show loading spinner and text while data is being fetched - END -->
+
+  <!-- Template to show error messages - START -->
+  <ng-container *ngIf="error">
+    {{ error }}
+  </ng-container>
+  <!-- Template to show error messages - END -->
 </div>
