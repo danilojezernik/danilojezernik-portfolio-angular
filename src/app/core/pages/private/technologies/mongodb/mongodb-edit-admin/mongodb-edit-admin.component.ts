@@ -9,11 +9,9 @@ import {
   ReusableFormEditComponent
 } from "../../../../../../shared/forms/reusable-form-edit/reusable-form-edit.component";
 import {formTechnologiesConfig} from "../../../../../../shared/global-const/form-config";
-import {AngularService} from "../../../../../../services/api/angular.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TranslateService} from "@ngx-translate/core";
 import {catchError, map, of} from "rxjs";
-import {Angular} from "../../../../../../models/angular.model";
 import {MongodbService} from "../../../../../../services/api/mongodb.service";
 import {MongoDb} from "../../../../../../models/mongodb.model";
 

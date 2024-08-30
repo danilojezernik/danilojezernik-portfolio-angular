@@ -28,20 +28,15 @@ export enum BUTTONS {
 
 // Menu items for the header component
 // MENU ITEMS FOR HEADER COMPONENT
-export const MENU: { menu: string, path: string }[] = [
-  {menu: 'menu.users', path: '/users'},
-  {menu: 'menu.github', path: '/github'},
-  {menu: 'menu.books', path: '/books'},
-  {menu: 'menu.register', path: '/register'}
-
-]
-
-// Menu items for the header component
-// MENU ITEMS FOR HEADER COMPONENT
 export const MENU_TOP: { menu: string, path: string }[] = [
   {menu: 'menu.home', path: '/'},
   {menu: 'menu.about', path: '/about'},
   {menu: 'menu.blog', path: '/blog'},
+  {menu: 'menu.github', path: '/github'},
+  {menu: 'menu.books', path: '/books'},
+  {menu: 'menu.users', path: '/users'},
+  {menu: 'menu.technologies', path: '/technologies'},
+  {menu: 'menu.register', path: '/register'},
   {menu: 'menu.contact', path: '/contact'}
 ]
 
@@ -76,7 +71,6 @@ export const ADMIN_MENU: { menu: string, path: string, description: string }[] =
   {menu: 'menu.media', path: '/media', description: 'description.admin-menu.media'},
   {menu: 'menu.users', path: '/users-admin', description: 'description.admin-menu.users'},
   {menu: 'menu.email', path: '/emails-admin', description: 'description.admin-menu.email'},
-  {menu: 'menu.technology', path: '/technology-admin', description: 'description.admin-menu.technology'},
   {menu: 'menu.technologies', path: '/technologies-admin', description: 'description.admin-menu.technologies'},
   {menu: 'menu.links', path: '/links-admin', description: 'description.admin-menu.links'},
   {menu: 'menu.experiences', path: '/experiences-admin', description: 'description.admin-menu.experiences'},

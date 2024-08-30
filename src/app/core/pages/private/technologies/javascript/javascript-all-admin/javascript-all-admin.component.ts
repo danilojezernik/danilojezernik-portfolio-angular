@@ -11,7 +11,6 @@ import {GetImageService} from "../../../../../../services/get-image/get-image.se
 import {DialogAdminService} from "../../../../../../services/dialog-admin/dialog-admin.service";
 import {TranslateService} from "@ngx-translate/core";
 import {BehaviorSubject, catchError, finalize, Observable, of} from "rxjs";
-import {Angular} from "../../../../../../models/angular.model";
 import {JavaScript} from "../../../../../../models/javascript.model";
 import {JavascriptService} from "../../../../../../services/api/javascript.service";
 
@@ -106,7 +105,7 @@ export class JavascriptAllAdminComponent {
   openDialog(id?: string) {
     if (id) {
       this.javascriptById$ = this._javascriptService.getJavascriptById(id); // Fetch blog post details by ID
-      this._openDialog.openDialogUtil(id, this.getJavaScriptById.bind(this), this.javascriptById$, 'title', 'javascript'); // Open dialog with fetched data
+      this._openDialog.openDialogUtil(id, this.getJavaScriptById.bind(this), this.javascriptById$, '_id', 'javascript'); // Open dialog with fetched data
     }
   }
 }

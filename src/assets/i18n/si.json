@@ -91,11 +91,13 @@
 	},
 	"errors": {
 		"badRequest": "Neveljavna zahteva. Preverite svoje podatke.",
+		"emptypass": "Prosim vnesite svoje uporabniško ime in geslo.",
 		"forbidden": "Nimate dovoljenja za izvedbo tega dejanja.",
 		"internalServerError": "Prišlo je do notranje napake strežnika. Poskusite znova pozneje.",
 		"network": "Preverite internetno povezavo ali poizkusite znova kasneje.",
 		"noData": "Ni podatkov...",
 		"notFound": "Viri niso bili najdeni.",
+		"pass": "Preverite svoje uporabniško ime in geslo.",
 		"unauthorized": "Neavtoriziran. Preverite uporabniško ime in geslo.",
 		"unknown": "Prišlo je do neznane napake!",
 		"unprocessableEntity": "Neprebavljiva entiteta. Preverite svoje podatke in poskusite znova."
@@ -126,6 +128,7 @@
 		"message": "Sporočilo",
 		"name": "Ime",
 		"naslov": "Naslov",
+		"password": "Geslo",
 		"podnaslov": "Podnaslov",
 		"profession": "Poklic",
 		"programming_language": "Programski jezik",
@@ -207,6 +210,10 @@
 			"description": "GitHub stran z mojimi repozitoriji in podatki, vključno s projekti, dokumentacijo in vpogledi v sodelovanje.",
 			"repos": "Obstoječi repozitoriji",
 			"title": "GitHub"
+		},
+		"login": {
+			"description": "Hvala, ker ste del te skupnosti. Za dostop do vašega računa, se prosimo prijavite s svojim uporabniškim imenom in geslom. Če imate kakršnakoli vprašanja ali težave pri prijavi, me lahko kontaktirate preko moje strani za kontakt.",
+			"title": "Vpis"
 		}
 	},
 	"selected": {

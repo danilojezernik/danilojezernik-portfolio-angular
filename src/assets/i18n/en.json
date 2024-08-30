@@ -91,11 +91,13 @@
 	},
 	"errors": {
 		"badRequest": "Bad Request. Please check your input.",
+		"emptypass": "Please enter your username and password.",
 		"forbidden": "You do not have permission to perform this action.",
 		"internalServerError": "An internal server error occurred. Please try again later.",
 		"network": "Check your network connection or try again later.",
 		"noData": "No data...",
 		"notFound": "Resource not found.",
+		"pass": "Check your username and password.",
 		"unauthorized": "Unauthorized. Please check your username and password.",
 		"unknown": "An unknown error occurred!",
 		"unprocessableEntity": "Unprocessable Entity. Please check your input and try again."
@@ -126,6 +128,7 @@
 		"message": "Message",
 		"name": "Name",
 		"naslov": "Title",
+		"password": "Password",
 		"podnaslov": "Subtitle",
 		"profession": "Profession",
 		"programming_language": "Programming language",
@@ -207,6 +210,10 @@
 			"description": "A GitHub page showcasing my repositories and data, featuring code projects, documentation, and collaboration insights.",
 			"repos": "Existing repositories",
 			"title": "GitHub"
+		},
+		"login": {
+			"description": "Thank you for being a part of this community. To access your account, please log in with your username and password. If you have any questions or encounter any issues while logging in, you can contact me through my contact page.",
+			"title": "Login"
 		}
 	},
 	"selected": {

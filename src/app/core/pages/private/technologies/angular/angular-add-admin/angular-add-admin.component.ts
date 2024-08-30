@@ -21,43 +21,41 @@ import {Angular} from "../../../../../../models/angular.model";
 })
 export class AngularAddAdminComponent {
 
-  // Injected instances: BlogService for managing blog data, MatSnackBar for displaying notifications, Router for navigation
-  private _angularService = inject(AngularService)
-  private _router = inject(Router); // Injecting Router for navigating between routes
-  private _translateService = inject(TranslateService); // Injecting TranslateService for translating error messages
+  // Injected services for managing Angular data, navigating routes, and translating messages
+  private _angularService = inject(AngularService); // Service for managing Angular-related data
+  private _router = inject(Router); // Service for navigating between routes
+  private _translateService = inject(TranslateService); // Service for translating error messages
 
-  // Property to store error messages, initialized to null
+  // Property to store error messages, initially set to null
   error: string | null = null;
 
-  // Property to track loading state, initialized to false
+  // Property to track loading state, initially set to false
   loading: boolean = false;
 
   /**
-   * @method addNewBlog
-   * Method to add a new blog post based on form inputs.
-   * Validates required fields and calls BlogService to add the new blog post.
-   * Navigates back to the blog admin page after successful addition.
+   * @method addNewAngular
+   * Adds a new Angular entry based on form inputs.
+   * Validates required fields and uses AngularService to add the new entry.
+   * After successful addition, navigates back to the Angular admin page.
    *
-   * @param formValidator - The form data to be validated and sent to the server for adding a new blog post.
+   * @param formValidator - The form data to be validated and sent to the server for adding a new Angular entry.
    */
   addNewAngular(formValidator: Angular) {
-    // Show spinner while loading
+    // Set loading to true to show the spinner
     this.loading = true;
 
-    // Call BlogService to add the new blog post
+    // Use AngularService to add the new entry
     this._angularService.addAngular(formValidator).subscribe(() => {
-      // Hide spinner after loading
+      // On success, set loading to false and navigate to the Angular admin page
       this.loading = false;
-
-      // Navigate to the blog admin page after successful addition
-      this._router.navigate([ 'tech-all-angular' ]);
+      this._router.navigate(['tech-all-angular']);
     }, (error) => {
-      // Hide spinner after loading
+      // On error, set loading to false
       this.loading = false;
 
-      // Extract the error message
+      // Extract the error message from the response
       const message = error.message;
-      // Translate the error message using the Translation service and set it to the error property
+      // Translate the error message and assign it to the error property
       this._translateService.get(message).subscribe((translation) => {
         this.error = translation;
       });
@@ -68,8 +66,8 @@ export class AngularAddAdminComponent {
   }
 
   /**
-   * Form configuration for blog
-   * Uses predefined formBlogConfig from a global constant file
+   * Form configuration for Angular
+   * This configuration is used by the reusable form component.
    */
   protected readonly formTechnologiesConfig = formTechnologiesConfig;
 }

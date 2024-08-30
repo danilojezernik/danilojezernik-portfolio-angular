@@ -13,7 +13,6 @@ import {DialogAdminService} from "../../../../../../services/dialog-admin/dialog
 import {TranslateService} from "@ngx-translate/core";
 import {BehaviorSubject, catchError, finalize, Observable, of} from "rxjs";
 import {Angular} from "../../../../../../models/angular.model";
-import {BlogModel} from "../../../../../../models/blog.model";
 
 @Component({
   selector: 'app-angular-all-admin',
@@ -23,34 +22,39 @@ import {BlogModel} from "../../../../../../models/blog.model";
 })
 export class AngularAllAdminComponent {
 
-  private _angularService = inject(AngularService)
-  protected _getImageByName = inject(GetImageService)
-  private _openDialog = inject(DialogAdminService)
-  private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
+  // Injected services for managing Angular data, retrieving images, opening dialogs, and translating messages
+  private _angularService = inject(AngularService); // Service for managing Angular data
+  protected _getImageByName = inject(GetImageService); // Service for retrieving images by name
+  private _openDialog = inject(DialogAdminService); // Service for opening dialog windows
+  private _translateService = inject(TranslateService); // Service for translating error messages
 
-  // Property to store error messages, initialized to null
-  error: string | null = null
-  // Property to track loading state, initialized to false
-  loading: boolean = false
+  // Property to store error messages; initially set to null
+  error: string | null = null;
 
-  private _angularSubject = new BehaviorSubject<Angular[]>([])
+  // Property to track loading state; initially set to false
+  loading: boolean = false;
 
-  angular$ = this._angularSubject.asObservable()
+  // Subject to store the list of Angular items
+  private _angularSubject = new BehaviorSubject<Angular[]>([]);
 
-  angularById$!: Observable<Angular>
+  // Observable that provides the list of Angular items to the template
+  angular$ = this._angularSubject.asObservable();
+
+  // Observable to store a single Angular item fetched by ID
+  angularById$!: Observable<Angular>;
 
   /**
    * Constructor to initialize the component.
-   * Calls the getAllBlogs method to load all blog posts.
+   * Automatically loads all Angular items when the component is created.
    */
   constructor() {
-    this.getAllAngular()
+    this.getAllAngular();
   }
 
   /**
    * @method getAllAngular
-   * Fetches all blogs from the BlogService and assigns them to blogs$.
-   * Also handles loading state and error messages.
+   * Fetches all Angular items from the AngularService and updates the angular$ observable.
+   * Handles loading state and error messages.
    */
   getAllAngular() {
     this.loading = true; // Set loading state to true before making the API call
@@ -59,54 +63,54 @@ export class AngularAllAdminComponent {
       // Handle any errors that occur during the fetching process
       catchError((error) => {
         // Extract and translate the error message, then set it to the error property
-        const message = error.message
+        const message = error.message;
         this._translateService.get(message).subscribe((translation) => {
-          this.error = translation
-        })
+          this.error = translation;
+        });
         // Return an observable of an empty array to handle errors gracefully
-        return of([] as Angular[])
+        return of([] as Angular[]);
       }),
       // Ensure loading state is set to false once the API call is complete
       finalize(() => this.loading = false)
-    ).subscribe(blog => {
+    ).subscribe(items => {
       this.loading = false; // Set loading state to false after receiving the response
-      this._angularSubject.next(blog); // Update the BehaviorSubject with the fetched blogs
-    })
+      this._angularSubject.next(items); // Update the BehaviorSubject with the fetched Angular items
+    });
   }
 
   /**
    * @method getAngularById
-   * Fetches a single blog post by its ID from the BlogService and assigns it to blogById$.
-   * @param id - ID of the blog post to fetch
+   * Fetches a single Angular item by its ID from the AngularService and assigns it to angularById$.
+   * @param id - ID of the Angular item to fetch
    */
   getAngularById(id: string) {
-    this.angularById$ = this._angularService.getAngularById(id)
+    this.angularById$ = this._angularService.getAngularById(id);
   }
 
   /**
-   * @method deleteBlog
-   * Deletes a blog post by its ID.
-   * After deletion, refreshes the list of blogs by calling getAllBlogs().
-   * @param id - ID of the blog post to delete
+   * @method deleteAngular
+   * Deletes an Angular item by its ID.
+   * After deletion, refreshes the list of Angular items by calling getAllAngular().
+   * @param id - ID of the Angular item to delete
    */
   deleteAngular(id?: string) {
     if (id) {
       this._angularService.deleteAngularById(id).subscribe(() => {
-        this.getAllAngular(); // Refresh the list of blogs after deletion
-      })
+        this.getAllAngular(); // Refresh the list of Angular items after deletion
+      });
     }
   }
 
   /**
    * @method openDialog
-   * Opens a dialog to view or edit a blog by its ID.
-   * Fetches the blog details and uses a utility function to open the dialog.
-   * @param id - ID of the blog to fetch and display in the dialog
+   * Opens a dialog to view or edit an Angular item by its ID.
+   * Fetches the item details and uses a utility function to open the dialog.
+   * @param id - ID of the Angular item to fetch and display in the dialog
    */
   openDialog(id?: string) {
     if (id) {
-      this.angularById$ = this._angularService.getAngularById(id); // Fetch blog post details by ID
-      this._openDialog.openDialogUtil(id, this.getAngularById.bind(this), this.angularById$, 'title', 'angular'); // Open dialog with fetched data
+      this.angularById$ = this._angularService.getAngularById(id); // Fetch Angular item details by ID
+      this._openDialog.openDialogUtil(id, this.getAngularById.bind(this), this.angularById$, '_id', 'angular'); // Open dialog with fetched data
     }
   }
 }

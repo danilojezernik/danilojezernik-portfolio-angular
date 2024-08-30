@@ -21,43 +21,41 @@ import {MongoDb} from "../../../../../../models/mongodb.model";
 })
 export class MongodbAddAdminComponent {
 
-  // Injected instances: BlogService for managing blog data, MatSnackBar for displaying notifications, Router for navigation
-  private _mongodbService = inject(MongodbService)
-  private _router = inject(Router); // Injecting Router for navigating between routes
-  private _translateService = inject(TranslateService); // Injecting TranslateService for translating error messages
+  // Injected services for managing MongoDB data, navigating routes, and translating messages
+  private _mongodbService = inject(MongodbService); // Service for managing MongoDB data
+  private _router = inject(Router); // Service for navigation between routes
+  private _translateService = inject(TranslateService); // Service for translating error messages
 
-  // Property to store error messages, initialized to null
+  // Property to store error messages; initially set to null
   error: string | null = null;
 
-  // Property to track loading state, initialized to false
+  // Property to track loading state; initially set to false
   loading: boolean = false;
 
   /**
-   * @method addNewBlog
-   * Method to add a new blog post based on form inputs.
-   * Validates required fields and calls BlogService to add the new blog post.
-   * Navigates back to the blog admin page after successful addition.
+   * @method addNewMongoDb
+   * Adds a new MongoDB entry based on form inputs.
+   * Validates required fields and uses MongodbService to add the new entry.
+   * After successful addition, navigates back to the MongoDB admin page.
    *
-   * @param formValidator - The form data to be validated and sent to the server for adding a new blog post.
+   * @param formValidator - The form data to be validated and sent to the server for adding a new MongoDB entry.
    */
   addNewMongoDb(formValidator: MongoDb) {
-    // Show spinner while loading
+    // Set loading to true to show spinner
     this.loading = true;
 
-    // Call BlogService to add the new blog post
+    // Use MongodbService to add the new entry
     this._mongodbService.addMongoDb(formValidator).subscribe(() => {
-      // Hide spinner after loading
+      // On success, set loading to false and navigate to the MongoDB admin page
       this.loading = false;
-
-      // Navigate to the blog admin page after successful addition
-      this._router.navigate([ 'tech-all-mongodb' ]);
+      this._router.navigate(['tech-all-mongodb']);
     }, (error) => {
-      // Hide spinner after loading
+      // On error, set loading to false
       this.loading = false;
 
-      // Extract the error message
+      // Extract the error message from the response
       const message = error.message;
-      // Translate the error message using the Translation service and set it to the error property
+      // Translate the error message and assign it to the error property
       this._translateService.get(message).subscribe((translation) => {
         this.error = translation;
       });
@@ -68,8 +66,8 @@ export class MongodbAddAdminComponent {
   }
 
   /**
-   * Form configuration for blog
-   * Uses predefined formBlogConfig from a global constant file
+   * Form configuration for MongoDB
+   * This configuration is used by the reusable form component.
    */
   protected readonly formTechnologiesConfig = formTechnologiesConfig;
 }

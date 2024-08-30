@@ -1,1 +1,63 @@
-<p>python-all-admin works!</p>
+<app-breadcrumb-admin first="breadcrumb.technologies" firstLink="/technologies-admin" second="breadcrumb.tech-python" secondLink="/tech-all-python"/>
+
+<!-- Button to navigate to the add python admin page - START -->
+<ng-container *ngIf="python$ && !loading && !error">
+  <div class="flex justify-center pb-5">
+    <app-button-admin [width]="true" [routerLink]="'/tech-add-python'"/>
+  </div>
+</ng-container>
+<!-- Button to navigate to the add python admin page - END -->
+
+<!-- Container to check if python data is available, and show content or loading template accordingly - START -->
+<ng-container *ngIf="python$ | async as python;">
+
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+      <!-- Loop through each python and display its information along with action buttons - START -->
+      <div class="flex bg-background-menu flex-col p-4 border border-gray-700 rounded-lg shadow-lg" *ngFor="let data of python">
+
+        <!-- Component to display python data - START -->
+        <div class="flex-1 overflow-x-auto ms-4 mb-4">
+          <app-show-data
+            [question]="data.question"
+            [answer]="data.answer"
+            [imageName]="data.image"
+          />
+        </div>
+        <!-- Component to display data data - END -->
+
+        <div class="flex justify-center">
+          <!-- Buttons for editing and deleting data, and opening a dialog - START -->
+          <app-button-admin
+            (dialogRead)="openDialog(data._id)"
+            [routerLinkId]="['/tech-edit-python', data._id ?? '']"
+            (delete)="deletePython(data._id)"
+          />
+          <!-- Buttons for editing and deleting python, and opening a dialog - END -->
+        </div>
+      </div>
+    </div>
+    <!-- Component to display python data - END -->
+
+  </div>
+  <!-- Loop through each python and display its information along with action buttons - END -->
+
+</ng-container>
+<!-- Container to check if python data is available, and show content or loading template accordingly - END -->
+
+<!-- Error message display if the data fetching fails - START -->
+<ng-container *ngIf="error && !loading">
+  {{ error }}
+</ng-container>
+<!-- Error message display if the data fetching fails - END -->
+
+<!-- Loading spinner - START -->
+<ng-container *ngIf="loading">
+  <app-loading/>
+</ng-container>
+<!-- Loading spinner - END -->
+
+<!-- Button to navigate back to the previous page - START -->
+<app-go-back [pythonAdmin]="true"/>
+<!-- Button to navigate back to the previous page - END -->

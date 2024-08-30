@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from "@angular/forms";
 import { AuthService } from "../../../../auth/auth.service";
 import { Router } from "@angular/router";
-import { LogFrontendService } from "../../../../services/api/log-frontend.service";
+import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 /**
  * LoginComponent handles the user login process.
@@ -11,7 +12,7 @@ import { LogFrontendService } from "../../../../services/api/log-frontend.servic
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ CommonModule, FormsModule ],
+  imports: [CommonModule, FormsModule, HeroTitleComponent, TranslateModule],
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
@@ -23,7 +24,6 @@ export class LoginComponent {
    * @private _router: Service for navigation
    */
   private _authService = inject(AuthService);
-  private _logService = inject(LogFrontendService);
   private _router = inject(Router);
 
   /**
@@ -42,6 +42,7 @@ export class LoginComponent {
   getUsername = '';
   getPassword = '';
 
+  error = ''
   /**
    * Handles the Enter key event to move between inputs or trigger login
    *
@@ -68,6 +69,12 @@ export class LoginComponent {
    * On failure, logs the error message.
    */
   login(): void {
+
+    if(!this.getUsername ||!this.getPassword) {
+      this.error = 'errors.emptypass'
+      return
+    }
+
     this._authService.login(this.getUsername, this.getPassword).subscribe(response => {
       if (response.access_token && response.role) {
         // Correctly set the access token and user role
@@ -76,10 +83,12 @@ export class LoginComponent {
       } else {
         // Handle error or missing role/token scenario
         console.error('Login failed: Invalid response data.');
+        this.error = 'errors.pass'
       }
     }, error => {
       // Handle HTTP error
       console.error('Login request failed', error);
+      this.error = 'errors.pass'
     });
   }
 }

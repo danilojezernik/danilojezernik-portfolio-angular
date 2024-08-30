@@ -40,17 +40,6 @@ import { UserAddAdminComponent } from "./core/pages/private/users-admin/user-add
 import {
   ProjectAddAdminComponent
 } from "./core/pages/private/projects-admin/project-add-admin/project-add-admin.component";
-import { TechnologyAllComponent } from "./core/pages/public/technology/technology-all/technology-all.component";
-import { TechnologyByIdComponent } from "./core/pages/public/technology/technology-by-id/technology-by-id.component";
-import {
-  AllTechnologyComponent
-} from "./core/pages/private/technology/all-technology/all-technology.component";
-import {
-  EditTechnologyComponent
-} from "./core/pages/private/technology/edit-technology/edit-technology.component";
-import {
-  AddTechnologyComponent
-} from "./core/pages/private/technology/add-technology/add-technology.component";
 import { AllLinksComponent } from "./core/pages/private/links/all-links/all-links.component";
 import { AddLinksComponent } from "./core/pages/private/links/add-links/add-links.component";
 import { EditLinksComponent } from "./core/pages/private/links/edit-links/edit-links.component";
@@ -364,38 +353,6 @@ const routes: Routes = [
   {
     path: 'tech-edit-mongodb/:id',
     component: MongodbEditAdminComponent,
-    canActivate: [ AuthGuardService ]
-  },
-
-  // --------------------
-  //     TECHNOLOGY ROUTES
-  //    TODO: DELETE WHEN SURE THAT IT IS NOT NEEDED
-  // --------------------
-
-  // PUBLIC
-  {
-    path: 'technology',
-    component: TechnologyAllComponent
-  },
-  {
-    path: 'technology/:id',
-    component: TechnologyByIdComponent
-  },
-
-  // PRIVATE
-  {
-    path: 'technology-admin',
-    component: AllTechnologyComponent,
-    canActivate: [ AuthGuardService ]
-  },
-  {
-    path: 'edit-technology-admin/:id',
-    component: EditTechnologyComponent,
-    canActivate: [ AuthGuardService ]
-  },
-  {
-    path: 'add-technology-admin',
-    component: AddTechnologyComponent,
     canActivate: [ AuthGuardService ]
   },
 

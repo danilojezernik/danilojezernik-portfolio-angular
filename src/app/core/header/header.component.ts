@@ -6,11 +6,7 @@ import {LoggedInService} from "../../services/communication/logged-in.service";
 import {Observable} from "rxjs";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {
-  MY_RESOURCES,
-  LANGUAGE,
   LOGIN_LOGOUT,
-  MENU,
-  TRANSLATE_LANGUAGE,
   MENU_TOP
 } from "../../shared/global-const/global.const";
 
@@ -58,10 +54,6 @@ export class HeaderComponent implements OnInit {
     this.translate.use(language);
   }
 
-  protected readonly MENU = MENU;
-  protected readonly TRANSLATE_LANGUAGE = TRANSLATE_LANGUAGE;
-  protected readonly LANGUAGE = LANGUAGE;
-  protected readonly DROPDOWN = MY_RESOURCES;
   protected readonly LOGIN_LOGOUT = LOGIN_LOGOUT;
   protected readonly MENU_TOP = MENU_TOP;
 }

@@ -1,17 +1,32 @@
-<div class="flex flex-col mx-auto md:w-1/2 w-full p-2">
+<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 
+  <div class="flex flex-col mx-auto md:w-1/2 w-full p-2">
+    <!-- Title and description of the blog section - START -->
+    <app-hero-title title="pages.login.title" subtitle="pages.login.description"/>
+    <!-- Title and description of the blog section - END -->
 
-Username: <input #firstInput
-                 class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                 [(ngModel)]="getUsername"
-                 (keypress)="checkEnter($event, 'firstInput')"><br>
-Password: <input #secondInput
-                 class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                 [(ngModel)]="getPassword"
-                 (keypress)="checkEnter($event, 'secondInput')">
-<br>
+    <label class="block mb-2 mt-4 text-sm font-medium dark:text-white">
+      {{ 'labels.username' | translate }}:
+    </label>
+    <input #firstInput
+                     class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                     [(ngModel)]="getUsername"
+                     (keypress)="checkEnter($event, 'firstInput')"><br>
+    <label class="block mb-2 mt-4 text-sm font-medium dark:text-white">
+      {{ 'labels.password' | translate }}:
+    </label>
+    <input #secondInput
+                     class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                     [(ngModel)]="getPassword"
+                     (keypress)="checkEnter($event, 'secondInput')">
+    <br>
 
-<button class="btn-admin add rounded-lg" (click)="login()">
-  Login
-</button>
+    <button class="btn-admin add rounded-lg" (click)="login()">
+      Login
+    </button>
+
+    <div *ngIf="error" class="text-red-500 mt-2 text-center">
+      {{error | translate}}
+    </div>
+  </div>
 </div>
