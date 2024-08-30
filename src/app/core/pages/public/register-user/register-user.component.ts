@@ -5,11 +5,12 @@ import { User } from "../../../../models/user";
 import { FormsModule } from "@angular/forms";
 import {ReusableFormAddComponent} from "../../../../shared/forms/reusable-form-add/reusable-form-add.component";
 import {TranslateModule} from "@ngx-translate/core";
+import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
 
 @Component({
   selector: 'app-register-user',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReusableFormAddComponent, TranslateModule],
+  imports: [CommonModule, FormsModule, ReusableFormAddComponent, TranslateModule, HeroTitleComponent],
   templateUrl: './register-user.component.html'
 })
 export class RegisterUserComponent {
@@ -25,8 +26,13 @@ export class RegisterUserComponent {
   chosePassword: string = ''
   getConfirmed: boolean = false
   getBlogNotification: boolean = false
+  error = ''
 
   registerNewUser() {
+    if(!this.getUsername || !this.getEmail || !this.chosePassword || !this.getFullName) {
+      this.error = 'errors.emptyregister'
+      return
+    }
 
     console.log('Get blog notification', this.getBlogNotification)
     console.log('Get newsletter', this.getConfirmed)
@@ -48,7 +54,18 @@ export class RegisterUserComponent {
     console.log(newUser.confirmed)
     console.log(newUser.blog_notification)
 
-    this._registerUser.registerNewUser(newUser).subscribe()
+    this._registerUser.registerNewUser(newUser).subscribe(() => {
+      this.getUsername = ''
+      this.chosePassword = ''
+      this.getFullName = ''
+      this.getEmail = ''
+      this.getConfirmed = false
+      this.getBlogNotification = false
+    }, error => {
+      // Handle HTTP error
+      console.error('Login request failed', error);
+      this.error = 'errors.pass'
+    })
 
   }
 

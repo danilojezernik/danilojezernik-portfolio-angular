@@ -1,13 +1,59 @@
-<p>register-user works!</p>
+<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 
+  <div class="flex flex-col mx-auto md:w-1/2 w-full p-2">
+    <!-- Title and description of the blog section - START -->
+    <app-hero-title title="pages.register.title" subtitle="pages.register.description"/>
+    <!-- Title and description of the blog section - END -->
 
-Username: <input class="border mb-1" type="text" [(ngModel)]="getUsername"><br>
-Password: <input class="border mb-1" type="text" [(ngModel)]="chosePassword"><br>
-Full name: <input class="border mb-1" type="text" [(ngModel)]="getFullName"><br>
-Email: <input class="border mb-1" type="text" [(ngModel)]="getEmail"><br>
-You want to subscribe to newsletter: <input class="border mb-1" type="checkbox" [(ngModel)]="getConfirmed"><br>
-Do you want to be notified about blog: <input class="border mb-1" type="checkbox" [(ngModel)]="getBlogNotification"><br>
+    <label class="block mb-2 mt-4 text-sm font-medium dark:text-white">
+      {{ 'labels.username' | translate }}*:
+    </label>
+    <input
+      class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      type="text" [(ngModel)]="getUsername">
 
-<button (click)="registerNewUser()">
-  Registriraj se
-</button>
+    <label class="block mb-2 mt-4 text-sm font-medium dark:text-white">
+      {{ 'labels.password' | translate }}*:
+    </label>
+    <input
+      class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      type="text" [(ngModel)]="chosePassword">
+    <label class="block mb-2 mt-4 text-sm font-medium dark:text-white">
+      {{ 'labels.full_name' | translate }}*:
+    </label>
+    <input
+      class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      type="text" [(ngModel)]="getFullName">
+    <label class="block mb-2 mt-4 text-sm font-medium dark:text-white">
+      {{ 'labels.email' | translate }}*:
+    </label>
+    <input
+      class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      type="text" [(ngModel)]="getEmail">
+
+    <div class="flex flex-row ">
+      <label class="block mb-2 mt-4 text-sm font-medium dark:text-white">
+        You want to subscribe to newsletter:
+      </label>
+      <input
+        class="bg-background-menu my-auto ms-4 w-4 h-4 border border-gray-300 rounded focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+        type="checkbox" [(ngModel)]="getConfirmed"><br>
+    </div>
+
+    <div class="flex flex-row ">
+      <label class="block mb-2 mt-4 text-sm font-medium dark:text-white">
+        Do you want to be notified about blog:
+      </label>
+      <input
+        class="bg-background-menu my-auto ms-4 w-4 h-4 border border-gray-300 rounded focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+        type="checkbox" [(ngModel)]="getBlogNotification"><br>
+    </div>
+    <button class="btn-admin add rounded-lg" (click)="registerNewUser()">
+      Registriraj se
+    </button>
+
+    <div *ngIf="error" class="text-red-500 mt-2 text-center">
+      {{ error | translate }}
+    </div>
+  </div>
+</div>

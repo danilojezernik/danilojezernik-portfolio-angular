@@ -43,6 +43,7 @@ export class LoginComponent {
   getPassword = '';
 
   error = ''
+
   /**
    * Handles the Enter key event to move between inputs or trigger login
    *
