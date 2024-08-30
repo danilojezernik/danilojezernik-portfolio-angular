@@ -223,29 +223,41 @@ const routes: Routes = [
   // PUBLIC
   {
     path: 'blog',
-    component: BlogAllComponent
+    children: [
+      {
+        path: '',
+        component: BlogAllComponent
+      },
+      {
+        path: ':id',
+        component: BlogByIdComponent
+      }
+    ]
   },
-  {
-    path: 'blog/:id',
-    component: BlogByIdComponent
-  },
+
 
   // PRIVATE
   {
     path: 'blog-admin',
-    component: BlogAllAdminComponent,
-    canActivate: [ AuthGuardService ]
-  },
-  {
-    path: 'edit-blog-admin/:id',
-    component: BlogEditByIdAdminComponent,
-    canActivate: [ AuthGuardService ]
-  },
-  {
-    path: 'add-blog-admin',
-    component: AddBlogAdminComponent,
-    canActivate: [ AuthGuardService ],
-    data: { roles: ['admin'] }
+    children: [
+      {
+        path: '',
+        component: BlogAllAdminComponent,
+        canActivate: [ AuthGuardService ]
+      },
+      {
+        path: 'edit/:id',
+        component: BlogEditByIdAdminComponent,
+        canActivate: [ AuthGuardService ]
+      },
+      {
+        path: 'add',
+        component: AddBlogAdminComponent,
+        canActivate: [ AuthGuardService ],
+        data: { roles: ['admin'] }
+      }
+    ]
+
   },
 
   // --------------------

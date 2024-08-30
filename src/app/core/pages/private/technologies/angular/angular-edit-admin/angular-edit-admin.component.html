@@ -1,1 +1,29 @@
-<p>angular-edit-admin works!</p>
+<app-breadcrumb-admin first="breadcrumb.technologies" firstLink="/technologies-admin" second="breadcrumb.tech-angular" secondLink="/tech-all-angular" third="breadcrumb.tech-edit-angular"/>
+
+<!-- Container to display the form and handle its submission - START -->
+<ng-container *ngIf="!error && !loading">
+
+  <app-reusable-form-edit
+    [formConfig]="formTechnologiesConfig"
+    [formData]="formData"
+    (formSubmit)="editAngular($event)"
+  />
+
+</ng-container>
+<!-- Container to display the form and handle its submission - END -->
+
+<!-- Template to show loading spinner and text while data is being fetched - START -->
+<ng-container *ngIf="loading">
+  <app-loading/>
+</ng-container>
+<!-- Template to show loading spinner and text while data is being fetched - END -->
+
+<!-- Template to show error messages - START -->
+<ng-container *ngIf="error">
+  {{ error }}
+</ng-container>
+<!-- Template to show error messages - END -->
+
+<!-- Button to go back to the previous page - START -->
+<app-go-back [angularAdmin]="true"/>
+<!-- Button to go back to the previous page - END -->

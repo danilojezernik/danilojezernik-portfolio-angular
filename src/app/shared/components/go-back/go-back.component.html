@@ -43,6 +43,41 @@
         routerLink="/media-angular">
   {{ 'button.media-angular' | translate }}
 </button>
+
+<button *ngIf="vueAdmin"
+        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        class="btn-admin back"
+        routerLink="/media-vue">
+  {{ 'button.media-vue' | translate }}
+</button>
+
+<button *ngIf="pythonAdmin"
+        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        class="btn-admin back"
+        routerLink="/media-python">
+  {{ 'button.media-python' | translate }}
+</button>
+
+<button *ngIf="javascriptAdmin"
+        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        class="btn-admin back"
+        routerLink="/media-javascript">
+  {{ 'button.media-javascript' | translate }}
+</button>
+
+<button *ngIf="typescriptAdmin"
+        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        class="btn-admin back"
+        routerLink="/media-typescript">
+  {{ 'button.media-typescript' | translate }}
+</button>
+
+<button *ngIf="mongodbAdmin"
+        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        class="btn-admin back"
+        routerLink="/media-mongodb">
+  {{ 'button.media-mongodb' | translate }}
+</button>
 <!-- Buttons shown when adding something (e.g., books, blogs, projects) - END -->
 
 <!-- Buttons shown when on the media page, linking to the respective admin sections - START -->

@@ -28,7 +28,9 @@
 		"newsletter": "Newsletter",
 		"projects": "Projects",
 		"subscribers": "Subscribers",
+		"tech-add-angular": "Add Angular",
 		"tech-angular": "Angular",
+		"tech-edit-angular": "Edit Angular",
 		"tech-javascript": "JavaScript",
 		"tech-mongodb": "MongoDB",
 		"tech-python": "Python",
@@ -100,6 +102,7 @@
 	},
 	"labels": {
 		"_id": "ID",
+		"answer": "Answer",
 		"author": "Author",
 		"blog_id": "Blog ID",
 		"blog_notification": "Blog notification",
@@ -126,6 +129,7 @@
 		"podnaslov": "Subtitle",
 		"profession": "Profession",
 		"programming_language": "Programming language",
+		"question": "Question",
 		"registered": "Registered",
 		"required": "is required",
 		"role": "Role",
@@ -216,6 +220,7 @@
 		"experiences": "Add Experiences",
 		"newsletter": "Send newsletter",
 		"subscriber": "Subscriber",
+		"tech": "Add question",
 		"technology": "Technology"
 	},
 	"translation": {

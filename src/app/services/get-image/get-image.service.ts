@@ -34,4 +34,11 @@ export class GetImageService {
     return `${environment.projectsUrl.publicMedia}${imageName}`
   }
 
+  /**
+   * Use function to get projects pictures
+   */
+  public getAngularImageUrl(imageName: string): string {
+    return `${environment.angularUrl.publicMedia}${imageName}`
+  }
+
 }

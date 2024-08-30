@@ -1,9 +1,9 @@
-<app-breadcrumb-admin first="breadcrumb.blog" firstLink="/blog-admin"/>
+<app-breadcrumb-admin first="breadcrumb.technologies" firstLink="/technologies-admin" second="breadcrumb.tech-angular" secondLink="/tech-all-angular"/>
 
 <!-- Button to navigate to the add blog admin page - START -->
 <ng-container *ngIf="angular$ && !loading && !error">
   <div class="flex justify-center pb-5">
-    <app-button-admin [width]="true" [routerLink]="'/add-blog-admin'"/>
+    <app-button-admin [width]="true" [routerLink]="'/tech-add-angular'"/>
   </div>
 </ng-container>
 <!-- Button to navigate to the add blog admin page - END -->

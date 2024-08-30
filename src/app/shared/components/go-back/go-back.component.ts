@@ -27,6 +27,11 @@ export class GoBackComponent {
 
   // Show button if in projects admin
   @Input() angularAdmin?: boolean
+  @Input() vueAdmin?: boolean
+  @Input() pythonAdmin?: boolean
+  @Input() javascriptAdmin?: boolean
+  @Input() typescriptAdmin?: boolean
+  @Input() mongodbAdmin?: boolean
 
   // Show button if in books media admin section
   @Input() booksMediaAdmin?: boolean
@@ -39,6 +44,11 @@ export class GoBackComponent {
 
   // Show button if in projects media admin section
   @Input() angularMediaAdmin?: boolean
+  @Input() vueMediaAdmin?: boolean
+  @Input() pythonMediaAdmin?: boolean
+  @Input() javascriptMediaAdmin?: boolean
+  @Input() typescriptMediaAdmin?: boolean
+  @Input() mongodbMediaAdmin?: boolean
 
   // Show button if viewing a public blog by ID
   @Input() blogByIdPublic?: boolean

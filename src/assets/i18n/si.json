@@ -28,7 +28,9 @@
 		"newsletter": "E-novičke",
 		"projects": "Projekti",
 		"subscribers": "Vpisani",
+		"tech-add-angular": "Dodaj Angular",
 		"tech-angular": "Angular",
+		"tech-edit-angular": "Uredi Angular",
 		"tech-javascript": "JavaScript",
 		"tech-mongodb": "MongoDB",
 		"tech-python": "Python",
@@ -100,6 +102,7 @@
 	},
 	"labels": {
 		"_id": "ID",
+		"answer": "Odgovor",
 		"author": "Avtor",
 		"blog_id": "Blog ID",
 		"blog_notification": "Obvestila o blogu",
@@ -126,6 +129,7 @@
 		"podnaslov": "Podnaslov",
 		"profession": "Poklic",
 		"programming_language": "Programski jezik",
+		"question": "Vprašanje",
 		"registered": "Registriran",
 		"required": "je obvezno polje",
 		"role": "Vloga",
@@ -216,6 +220,7 @@
 		"experiences": "Dodaj izkušnje",
 		"newsletter": "Pošlji E-novičke",
 		"subscriber": "Vpisani",
+		"tech": "Dodaj vprašanje",
 		"technology": "Tehnologija"
 	},
 	"translation": {

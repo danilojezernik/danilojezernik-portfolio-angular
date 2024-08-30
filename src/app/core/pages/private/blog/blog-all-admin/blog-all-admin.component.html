@@ -3,7 +3,7 @@
 <!-- Button to navigate to the add blog admin page - START -->
 <ng-container *ngIf="blogs$ && !loading && !error">
   <div class="flex justify-center pb-5">
-    <app-button-admin [width]="true" [routerLink]="'/add-blog-admin'"/>
+    <app-button-admin [width]="true" [routerLink]="'/blog-admin/add'"/>
   </div>
 </ng-container>
 <!-- Button to navigate to the add blog admin page - END -->
@@ -32,7 +32,7 @@
           <!-- Buttons for editing and deleting blog, and opening a dialog - START -->
           <app-button-admin
             (dialogRead)="openDialog(blog._id)"
-            [routerLinkId]="['/edit-blog-admin', blog._id ?? '']"
+            [routerLinkId]="['/blog-admin/edit/', blog._id ?? '']"
             (delete)="deleteBlog(blog._id)"
           />
           <!-- Buttons for editing and deleting blog, and opening a dialog - END -->
