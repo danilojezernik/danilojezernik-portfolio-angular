@@ -29,7 +29,6 @@ registerLocaleData(localeSl, 'sl-SI')
   declarations: [
     AppComponent,
     NotAuthorizedComponent
-
   ],
   imports: [
     BrowserModule,

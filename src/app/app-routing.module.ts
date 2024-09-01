@@ -129,6 +129,13 @@ import {
 import {
   MongodbEditAdminComponent
 } from "./core/pages/private/technologies/mongodb/mongodb-edit-admin/mongodb-edit-admin.component";
+import {TechnologiesComponent} from "./core/pages/public/technologies/technologies.component";
+import {AngularComponent} from "./core/pages/public/technologies/angular/angular.component";
+import {VueComponent} from "./core/pages/public/technologies/vue/vue.component";
+import {PythonComponent} from "./core/pages/public/technologies/python/python.component";
+import {JavascriptComponent} from "./core/pages/public/technologies/javascript/javascript.component";
+import {TypescriptComponent} from "./core/pages/public/technologies/typescript/typescript.component";
+import {MongodbComponent} from "./core/pages/public/technologies/mongodb/mongodb.component";
 
 const routes: Routes = [
   {
@@ -252,6 +259,41 @@ const routes: Routes = [
   // --------------------
   //    TECHNOLOGIES ROUTES
   // --------------------
+
+  // PUBLIC
+  {
+    path: 'technologies',
+    children: [
+      {
+        path: '',
+        component: TechnologiesComponent,
+      },
+      {
+        path: 'angular',
+        component: AngularComponent,
+      },
+      {
+        path: 'vue',
+        component: VueComponent,
+      },
+      {
+        path: 'python',
+        component: PythonComponent,
+      },
+      {
+        path: 'javascript',
+        component: JavascriptComponent,
+      },
+      {
+        path: 'typescript',
+        component: TypescriptComponent,
+      },
+      {
+        path: 'mongodb',
+        component: MongodbComponent,
+      }
+    ]
+  },
 
   // PRIVATE
   {

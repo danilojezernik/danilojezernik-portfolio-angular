@@ -18,15 +18,25 @@
     @include button-hover-effect($color-add-start, $color-add-end);
   }
 
+  &.restore {
+    @include button-hover-effect($color-delete-start, $color-delete-end);
+  }
+
   &.read {
+    border-radius: 100%;
+    padding: 10px;
     @include button-hover-effect($color-read-start, $color-read-end);
   }
 
   &.edit {
+    border-radius: 100%;
+    padding: 10px;
     @include button-hover-effect($color-edit-start, $color-edit-end);
   }
 
   &.delete {
+    border-radius: 100%;
+    padding: 10px;
     @include button-hover-effect($color-delete-start, $color-delete-end);
   }
 

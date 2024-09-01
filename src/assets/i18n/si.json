@@ -98,6 +98,7 @@
 		"noData": "Ni podatkov...",
 		"notFound": "Viri niso bili najdeni.",
 		"pass": "Preverite svoje uporabniško ime in geslo.",
+		"register": "Prosim vnesite vse obvezne podatke.",
 		"unauthorized": "Neavtoriziran. Preverite uporabniško ime in geslo.",
 		"unknown": "Prišlo je do neznane napake!",
 		"unprocessableEntity": "Neprebavljiva entiteta. Preverite svoje podatke in poskusite znova."

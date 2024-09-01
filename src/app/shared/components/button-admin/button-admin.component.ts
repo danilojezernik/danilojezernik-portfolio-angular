@@ -19,6 +19,8 @@ export class ButtonAdminComponent {
   // Input property to receive the router link for the button
   @Input() routerLink?: string
 
+  @Input() resetLocalStorage?: boolean
+
   // Input property to extend width of the button
   @Input() width?: boolean
 
@@ -31,10 +33,21 @@ export class ButtonAdminComponent {
   // Output event emitter for the delete event
   @Output() delete = new EventEmitter<void>()
 
+  // Output event emitter for the restore event
+  @Output() remove = new EventEmitter<void>()
+
+
+
   // Method to emit the dialogRead event when the dialog is opened
   openDialog() {
     if (this.dialogRead) {
       this.dialogRead.emit()
+    }
+  }
+
+  restoreLocalStorage() {
+    if(this.remove) {
+      this.remove.emit()
     }
   }
 

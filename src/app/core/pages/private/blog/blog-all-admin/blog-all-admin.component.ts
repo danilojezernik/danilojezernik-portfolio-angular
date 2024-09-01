@@ -1,19 +1,28 @@
-import { Component, inject } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { BlogService } from "../../../../../services/api/blog.service"
-import { RouterLink } from "@angular/router"
-import { GoBackComponent } from "../../../../../shared/components/go-back/go-back.component"
-import { BehaviorSubject, catchError, finalize, Observable, of } from "rxjs"
-import { ShowDataComponent } from "../../../../../shared/components/show-data/show-data.component"
-import { MatDialogModule } from "@angular/material/dialog"
-import { BlogModel } from "../../../../../models/blog.model"
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
-import { ButtonAdminComponent } from "../../../../../shared/components/button-admin/button-admin.component";
-import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
-import { DialogAdminService } from "../../../../../services/dialog-admin/dialog-admin.service";
+import {Component, inject} from '@angular/core'
+import {CommonModule} from '@angular/common'
+import {BlogService} from "../../../../../services/api/blog.service"
+import {RouterLink} from "@angular/router"
+import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component"
+import {BehaviorSubject, catchError, finalize, Observable, of} from "rxjs"
+import {ShowDataComponent} from "../../../../../shared/components/show-data/show-data.component"
+import {MatDialogModule} from "@angular/material/dialog"
+import {BlogModel} from "../../../../../models/blog.model"
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {ButtonAdminComponent} from "../../../../../shared/components/button-admin/button-admin.component";
+import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
+import {DialogAdminService} from "../../../../../services/dialog-admin/dialog-admin.service";
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 import {ShowImageComponent} from "../../../../../shared/components/show-image/show-image.component";
+import {
+  CdkDrag,
+  CdkDragDrop,
+  CdkDragHandle,
+  CdkDragPlaceholder,
+  CdkDropList,
+  moveItemInArray
+} from "@angular/cdk/drag-drop";
+import {OrderService} from "../../../../../utils/local-storage/order-service";
 
 /**
  * @Component BlogAllAdminComponent
@@ -24,7 +33,7 @@ import {ShowImageComponent} from "../../../../../shared/components/show-image/sh
 @Component({
   selector: 'app-blog-all-admin',
   standalone: true,
-  imports: [CommonModule, RouterLink, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent, ShowImageComponent],
+  imports: [CommonModule, RouterLink, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent, ShowImageComponent, CdkDropList, CdkDrag, CdkDragPlaceholder, CdkDragHandle],
   templateUrl: './blog-all-admin.component.html'
 })
 export class BlogAllAdminComponent {
@@ -34,6 +43,7 @@ export class BlogAllAdminComponent {
   protected _getImageByName = inject(GetImageService)
   private _openDialog = inject(DialogAdminService)
   private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
+  private _orderService = inject(OrderService)
 
   // Property to store error messages, initialized to null
   error: string | null = null
@@ -49,12 +59,29 @@ export class BlogAllAdminComponent {
   // Observable to store a single blog item fetched by ID
   blogById$!: Observable<BlogModel>;
 
+  blog: BlogModel[] = []
+
   /**
    * Constructor to initialize the component.
    * Calls the getAllBlogs method to load all blog posts.
    */
   constructor() {
     this.getAllBlogs()
+  }
+
+  /**
+   * Drag and drop functionality and save indexes to local storage so that when reorganized, position will be stored to localstorage.
+   */
+  drop(event: CdkDragDrop<BlogModel[]>) {
+    moveItemInArray(this.blog, event.previousIndex, event.currentIndex);
+    this._orderService.saveOrderToLocalStorage(this.blog, 'blogOrder', '_id')
+  }
+
+  /**
+   * Remove order from local storage
+   * */
+  removeOrder() {
+      this._orderService.clearBlogsFromLocalStorage('blogOrder')
   }
 
   /**
@@ -79,7 +106,9 @@ export class BlogAllAdminComponent {
       // Ensure loading state is set to false once the API call is complete
       finalize(() => this.loading = false)
     ).subscribe(blog => {
-      this.loading = false; // Set loading state to false after receiving the response
+      this.blog = blog
+      this._orderService.applySavedBlogOrder(this.blog, 'blogOrder', '_id')
+      this.loading = false;
       this._blogSubject.next(blog); // Update the BehaviorSubject with the fetched blogs
     })
   }

@@ -98,6 +98,7 @@
 		"noData": "No data...",
 		"notFound": "Resource not found.",
 		"pass": "Check your username and password.",
+		"register": "Please enter all required data.",
 		"unauthorized": "Unauthorized. Please check your username and password.",
 		"unknown": "An unknown error occurred!",
 		"unprocessableEntity": "Unprocessable Entity. Please check your input and try again."

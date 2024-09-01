@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { BlogService } from "../../../../../services/api/blog.service";
 import { RouterLink } from "@angular/router";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
-import { catchError, of } from "rxjs";
+import {catchError, map, of} from "rxjs";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import { BlogModel } from "../../../../../models/blog.model";
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
 import {ShorteningTextPipe} from "../../../../../pipes/shortening-text/shortening-text.pipe";
 import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
+import {OrderService} from "../../../../../utils/local-storage/order-service";
 
 @Component({
   selector: 'app-blog-all',
@@ -21,6 +22,7 @@ export class BlogAllComponent {
   private _blogService = inject(BlogService)
   private _translateService = inject(TranslateService)
   protected _getImageByName = inject(GetImageService)
+  private _orderService = inject(OrderService)
 
   // Property to store error messages, initialized to null
   error: string | null = null
@@ -36,7 +38,9 @@ export class BlogAllComponent {
       })
       // Return an observable of an empty array to handle errors gracefully
       return of([] as BlogModel[])
-    })
+    }),
+    // Apply the saved blog order
+    map(blogs => this._orderService.applySavedBlogOrder(blogs, 'blogOrder', '_id'))
   )
 
 }
