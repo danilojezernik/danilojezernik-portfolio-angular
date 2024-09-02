@@ -5,10 +5,7 @@ import {AuthService} from "../../auth/auth.service";
 import {LoggedInService} from "../../services/communication/logged-in.service";
 import {Observable} from "rxjs";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
-import {
-  LOGIN_LOGOUT,
-  MENU_TOP
-} from "../../shared/global-const/global.const";
+import {LOGIN_LOGOUT, MENU_TOP} from "../../shared/global-const/menu.const";
 
 @Component({
   selector: 'app-header',

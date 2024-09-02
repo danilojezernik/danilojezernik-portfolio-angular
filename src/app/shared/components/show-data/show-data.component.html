@@ -1,5 +1,5 @@
 <div class="flex flex-row justify-around gap-4">
-<div *ngIf="_id" (click)="copyToClipboard(_id)"><strong>ID: </strong> <span class="cursor-pointer hover:text-red-600">{{ _id }}</span></div>
+<div class="flex flex-col" *ngIf="_id" (click)="copyToClipboard(_id)"><strong>ID: </strong> <span class="cursor-pointer hover:text-red-600">{{ _id }}</span></div>
 <div class="flex flex-col" *ngIf="title"><strong>Title: </strong> {{ title }}</div>
 <div class="flex flex-col" *ngIf="naslov"><strong>Naslov: </strong> {{ naslov }}</div>
 <div class="flex flex-col" *ngIf="kategorija"><strong>Kategorija: </strong> {{ kategorija }}</div>

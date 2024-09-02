@@ -87,6 +87,14 @@
 			"python": "View, add, and delete images for the gallery Python through the dashboard.",
 			"typescript": "View, add, and delete images for the gallery TypeScript through the dashboard.",
 			"vue": "View, add, and delete images for the gallery Vue through the dashboard."
+		},
+		"tech-menu": {
+			"angular": "Angular is a TypeScript-based framework for building dynamic, single-page applications (SPAs). It offers robust tools for scalability, maintainability, and testing.",
+			"javascript": "JavaScript is a versatile, high-level programming language used to create interactive, dynamic web applications. It’s essential for modern web development.",
+			"mongodb": "MongoDB is a NoSQL database designed for high scalability and flexibility. It stores data in JSON-like documents, making it ideal for modern applications.",
+			"python": "Python is a versatile, high-level programming language known for its simplicity and readability. It’s widely used in web development, data analysis, and automation.",
+			"typescript": "TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. It enhances code quality, maintainability, and developer productivity.",
+			"vue": "Vue is a progressive JavaScript framework for building user interfaces. It’s designed for flexibility, making it easy to integrate into projects."
 		}
 	},
 	"errors": {
@@ -190,6 +198,11 @@
 		"users": "Users"
 	},
 	"pages": {
+		"angular": {
+			"description": "Angular is a powerful, TypeScript-based framework for building dynamic, scalable, and maintainable web applications with robust features.",
+			"drawer": "All the questions in one place.",
+			"title": "Angular"
+		},
 		"blog": {
 			"description": "My programming blog offers comprehensive tutorials, insightful tips, practical code examples, and guides to help you stay ahead in the coding world.",
 			"title": "My Blog"
@@ -215,6 +228,10 @@
 		"login": {
 			"description": "Thank you for being a part of this community. To access your account, please log in with your username and password. If you have any questions or encounter any issues while logging in, you can contact me through my contact page.",
 			"title": "Login"
+		},
+		"technologies": {
+			"description": "This page covers key technologies: Angular, Vue, TypeScript, JavaScript, MongoDB, and Python, with answers to important questions.",
+			"title": "Technologies"
 		}
 	},
 	"selected": {

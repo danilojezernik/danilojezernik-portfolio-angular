@@ -38,7 +38,7 @@ export class OrderService {
 
   // Remove all order from localStorage
   clearBlogsFromLocalStorage(storageKey: string) {
-    if (confirm('Reset order!'))
+    if (confirm(`Reset order for: ${storageKey}`))
       localStorage.removeItem(storageKey)
   }
 }

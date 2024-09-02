@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {BreadcrumbAdminComponent} from "../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 import {GoBackComponent} from "../../../../shared/components/go-back/go-back.component";
 import {TranslateModule} from "@ngx-translate/core";
-import {TECHNOLOGIES_MENU} from "../../../../shared/global-const/global.const";
+import {TECHNOLOGIES_ADMIN_MENU} from "../../../../shared/global-const/menu.const";
 import {RouterLink} from "@angular/router";
 
 @Component({
@@ -14,5 +14,5 @@ import {RouterLink} from "@angular/router";
 })
 export class TechnologiesAdminComponent {
 
-  protected readonly TECHNOLOGIES_MENU = TECHNOLOGIES_MENU;
+  protected readonly TECHNOLOGIES_MENU = TECHNOLOGIES_ADMIN_MENU;
 }

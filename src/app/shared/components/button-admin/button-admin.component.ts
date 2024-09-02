@@ -21,6 +21,8 @@ export class ButtonAdminComponent {
 
   @Input() resetLocalStorage?: boolean
 
+  @Input() edit?: boolean
+
   // Input property to extend width of the button
   @Input() width?: boolean
 

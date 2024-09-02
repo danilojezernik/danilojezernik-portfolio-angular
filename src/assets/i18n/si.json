@@ -87,6 +87,14 @@
 			"python": "Preglejte, dodajte in izbrišite slike za Python prek nadzorne plošče.",
 			"typescript": "Preglejte, dodajte in izbrišite slike za TypeScript prek nadzorne plošče.",
 			"vue": "Preglejte, dodajte in izbrišite slike za Vue prek nadzorne plošče."
+		},
+		"tech-menu": {
+			"angular": "Angular je okvir, ki temelji na TypeScriptu, za izdelavo dinamičnih, enostranskih aplikacij (SPA). Ponuja zmogljiva orodja za razširljivost, vzdržljivost in testiranje.",
+			"javascript": "JavaScript je vsestranski, visokoravni programski jezik za izdelavo interaktivnih, dinamičnih spletnih aplikacij. Je bistvenega pomena za sodoben spletni razvoj.",
+			"mongodb": "MongoDB je NoSQL baza podatkov, zasnovana za visoko razširljivost in prilagodljivost. Podatke shranjuje v dokumentih, podobnih JSON-u, kar je idealno za sodobne aplikacije.",
+			"python": "Python je vsestranski, visokoravni programski jezik, znan po enostavnosti in berljivosti. Uporablja se v spletnem razvoju, analizi podatkov in avtomatizaciji.",
+			"typescript": "TypeScript je tipiziran nadnabor JavaScripta, ki se prevede v navaden JavaScript. Izboljšuje kakovost kode, vzdržljivost in produktivnost razvijalcev.",
+			"vue": "Vue je progresiven JavaScript okvir za gradnjo uporabniških vmesnikov. Namenjen je prilagodljivosti in je enostaven za integracijo v projekte."
 		}
 	},
 	"errors": {
@@ -190,6 +198,11 @@
 		"users": "Uporabniki"
 	},
 	"pages": {
+		"angular": {
+			"description": "Angular je zmogljiv okvir, ki temelji na TypeScriptu, za izdelavo dinamičnih, prilagodljivih in vzdržljivih spletnih aplikacij.",
+			"drawer": "Vsa vprašanja na enem mestu.",
+			"title": "Angular"
+		},
 		"blog": {
 			"description": "Moj programerski blog ponuja celovite vadnice, poglobljene nasvete, praktične primere kode in vodnike, ki vam pomagajo ostati v ospredju programiranja.",
 			"title": "Moj Blog"
@@ -215,6 +228,10 @@
 		"login": {
 			"description": "Hvala, ker ste del te skupnosti. Za dostop do vašega računa, se prosimo prijavite s svojim uporabniškim imenom in geslom. Če imate kakršnakoli vprašanja ali težave pri prijavi, me lahko kontaktirate preko moje strani za kontakt.",
 			"title": "Vpis"
+		},
+		"technologies": {
+			"description": "Na tej strani so predstavljene ključne tehnologije: Angular, Vue, TypeScript, JavaScript, MongoDB in Python, z odgovori na pomembna vprašanja.",
+			"title": "Tehnologije"
 		}
 	},
 	"selected": {

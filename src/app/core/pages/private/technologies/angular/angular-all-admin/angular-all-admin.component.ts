@@ -13,11 +13,15 @@ import {DialogAdminService} from "../../../../../../services/dialog-admin/dialog
 import {TranslateService} from "@ngx-translate/core";
 import {BehaviorSubject, catchError, finalize, Observable, of} from "rxjs";
 import {Angular} from "../../../../../../models/angular.model";
+import {OrderService} from "../../../../../../utils/local-storage/order-service";
+import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
+import {BlogModel} from "../../../../../../models/blog.model";
+import {ShorteningTextPipe} from "../../../../../../pipes/shortening-text/shortening-text.pipe";
 
 @Component({
   selector: 'app-angular-all-admin',
   standalone: true,
-  imports: [CommonModule, BreadcrumbAdminComponent, ButtonAdminComponent, GoBackComponent, LoadingComponent, ShowDataComponent],
+  imports: [CommonModule, BreadcrumbAdminComponent, ButtonAdminComponent, GoBackComponent, LoadingComponent, ShowDataComponent, CdkDropList, CdkDrag, ShorteningTextPipe],
   templateUrl: './angular-all-admin.component.html'
 })
 export class AngularAllAdminComponent {
@@ -27,6 +31,7 @@ export class AngularAllAdminComponent {
   protected _getImageByName = inject(GetImageService); // Service for retrieving images by name
   private _openDialog = inject(DialogAdminService); // Service for opening dialog windows
   private _translateService = inject(TranslateService); // Service for translating error messages
+  private _orderService = inject(OrderService)
 
   // Property to store error messages; initially set to null
   error: string | null = null;
@@ -43,12 +48,29 @@ export class AngularAllAdminComponent {
   // Observable to store a single Angular item fetched by ID
   angularById$!: Observable<Angular>;
 
+  angular: Angular[] = []
+
   /**
    * Constructor to initialize the component.
    * Automatically loads all Angular items when the component is created.
    */
   constructor() {
     this.getAllAngular();
+  }
+
+  /**
+   * Drag and drop functionality and save indexes to local storage so that when reorganized, position will be stored to localstorage.
+   */
+  drop(event: CdkDragDrop<BlogModel[]>) {
+    moveItemInArray(this.angular, event.previousIndex, event.currentIndex);
+    this._orderService.saveOrderToLocalStorage(this.angular, 'angularOrder', '_id')
+  }
+
+  /**
+   * Remove order from local storage
+   */
+  removeOrder() {
+    this._orderService.clearBlogsFromLocalStorage('angularOrder')
   }
 
   /**
@@ -73,6 +95,8 @@ export class AngularAllAdminComponent {
       // Ensure loading state is set to false once the API call is complete
       finalize(() => this.loading = false)
     ).subscribe(items => {
+      this.angular = items
+      this._orderService.applySavedBlogOrder(this.angular, 'angularOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
       this._angularSubject.next(items); // Update the BehaviorSubject with the fetched Angular items
     });

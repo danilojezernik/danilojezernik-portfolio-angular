@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CopyrightDirective} from "../../directives/copyright.directive";
-import {MENU_TOP} from "../../shared/global-const/global.const";
 import {TranslateModule} from "@ngx-translate/core";
 import {RouterLink} from "@angular/router";
+import {MENU_TOP} from "../../shared/global-const/menu.const";
 
 @Component({
   selector: 'app-footer',

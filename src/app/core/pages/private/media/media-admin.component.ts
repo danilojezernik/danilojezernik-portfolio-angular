@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MEDIA_MENU} from "../../../../shared/global-const/global.const";
+import {MEDIA_MENU} from "../../../../shared/global-const/menu.const";
 import {RouterLink} from "@angular/router";
 import {TranslateModule} from "@ngx-translate/core";
 import {GoBackComponent} from "../../../../shared/components/go-back/go-back.component";

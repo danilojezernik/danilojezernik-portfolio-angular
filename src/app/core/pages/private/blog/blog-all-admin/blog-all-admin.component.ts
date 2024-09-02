@@ -29,7 +29,6 @@ import {OrderService} from "../../../../../utils/local-storage/order-service";
  * Component for managing blog administration.
  * Displays a list of blogs and allows viewing and deleting individual blog posts.
  */
-
 @Component({
   selector: 'app-blog-all-admin',
   standalone: true,
@@ -79,9 +78,9 @@ export class BlogAllAdminComponent {
 
   /**
    * Remove order from local storage
-   * */
+   */
   removeOrder() {
-      this._orderService.clearBlogsFromLocalStorage('blogOrder')
+    this._orderService.clearBlogsFromLocalStorage('blogOrder')
   }
 
   /**
