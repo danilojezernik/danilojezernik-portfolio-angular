@@ -1,26 +1,19 @@
-<div class="flex gap-3">
+<!-- Container that conditionally renders the "Add" button if the 'routerLink' is provided -->
+<ng-container *ngIf="routerLink">
+  <!-- "Add" button styled conditionally based on the 'width' input; navigates to the provided router link -->
+  <button class="btn-admin add" [ngStyle]="{ width: width ? '250px' : 'auto' }" [routerLink]="routerLink">
+    {{ BUTTONS.add | translate }}
+  </button>
+</ng-container>
 
-  <ng-container *ngIf="routerLink">
-    <button class="btn-admin add" [ngStyle]="{ width: width ? '300px' : 'auto' }" [routerLink]="routerLink">
-      {{ BUTTONS.add | translate }}
-    </button>
-  </ng-container>
+<!-- Grid container for holding multiple buttons -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
 
-  <ng-container *ngIf="resetLocalStorage">
-    <button class="btn-admin restore" (click)="restoreLocalStorage()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none"
-           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-           class="icon icon-tabler icons-tabler-outline icon-tabler-restore">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-        <path d="M3.06 13a9 9 0 1 0 .49 -4.087"/>
-        <path d="M3 4.001v5h5"/>
-        <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/>
-      </svg>
-    </button>
-  </ng-container>
-
+  <!-- Container that conditionally renders the "Edit" button if the 'routerLinkId' is provided -->
   <ng-container *ngIf="routerLinkId">
+    <!-- "Edit" button that navigates to the provided router link ID -->
     <button class="btn-admin edit" [routerLink]="routerLinkId">
+      <!-- SVG icon representing the edit action -->
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
            class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
@@ -32,9 +25,12 @@
     </button>
   </ng-container>
 
-  <ng-container *ngIf="dialogRead && !routerLink && !resetLocalStorage && !edit">
-    <!-- Open dialog -->
+  <!-- Container that conditionally renders the "Read" and "Delete" buttons if 'dialogRead' is true,
+       'routerLink' is not provided, and 'edit' mode is not active -->
+  <ng-container *ngIf="dialogRead && !routerLink && !edit">
+    <!-- "Read" button that opens a dialog when clicked -->
     <button class="btn-admin read" (click)="openDialog()">
+      <!-- SVG icon representing the read action (book icon) -->
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
            class="icon icon-tabler icons-tabler-outline icon-tabler-book">
@@ -47,8 +43,9 @@
       </svg>
     </button>
 
-    <!-- Delete button -->
+    <!-- "Delete" button that triggers the 'deleteData()' method when clicked -->
     <button class="btn-admin delete" (click)="deleteData()">
+      <!-- SVG icon representing the delete action (trash can icon) -->
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
            class="icon icon-tabler icons-tabler-outline icon-tabler-trash">

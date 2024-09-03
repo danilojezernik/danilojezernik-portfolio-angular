@@ -2,9 +2,8 @@
 
 <!-- Button to navigate to the add blog admin page - START -->
 <ng-container *ngIf="blogs$ && !loading && !error">
-  <div class="flex justify-center pb-5">
+  <div class="flex pb-5">
     <app-button-admin [width]="true" [routerLink]="'/blog-admin/add'"/>
-    <app-button-admin [resetLocalStorage]="true" (remove)="removeOrder()" />
   </div>
 </ng-container>
 <!-- Button to navigate to the add blog admin page - END -->
@@ -72,5 +71,5 @@
 <!-- Loading spinner - END -->
 
 <!-- Button to navigate back to the previous page - START -->
-<app-go-back [blogsAdmin]="true"/>
+<app-go-back [blogsAdmin]="true" [removeBoolean]="true" (remove)="removeOrder()"/>
 <!-- Button to navigate back to the previous page - END -->

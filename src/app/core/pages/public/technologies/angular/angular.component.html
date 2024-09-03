@@ -6,7 +6,7 @@
 
   <!-- Button to open the drawer containing all questions - START -->
   <div class="text-center">
-    <button class="btn-public read" type="button" data-drawer-target="drawer-right-example"
+    <button (click)="toggleDrawer()" class="btn-public read" type="button" data-drawer-target="drawer-right-example"
             data-drawer-show="drawer-right-example" data-drawer-placement="right" aria-controls="drawer-right-example">
       All the questions
     </button>
@@ -65,7 +65,7 @@
 </div>
 
 <!-- Drawer component that slides in from the right to display a list of all questions - START -->
-<div id="drawer-right-example" #drawerElement
+<div id="drawer-right-example" [ngClass]="{'translate-x-full': !drawerOpen, 'translate-x-0': drawerOpen}"
      class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-background-menu w-80 dark:bg-gray-800"
      tabindex="-1" aria-labelledby="drawer-right-label">
 

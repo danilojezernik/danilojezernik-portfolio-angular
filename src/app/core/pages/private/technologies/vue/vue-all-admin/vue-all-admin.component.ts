@@ -13,11 +13,13 @@ import {TranslateService} from "@ngx-translate/core";
 import {BehaviorSubject, catchError, finalize, Observable, of} from "rxjs";
 import {Vue} from "../../../../../../models/vue.model";
 import {VueService} from "../../../../../../services/api/vue.service";
+import {OrderService} from "../../../../../../utils/local-storage/order-service";
+import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-vue-all-admin',
   standalone: true,
-  imports: [CommonModule, BreadcrumbAdminComponent, ButtonAdminComponent, GoBackComponent, LoadingComponent, ShowDataComponent],
+  imports: [CommonModule, BreadcrumbAdminComponent, ButtonAdminComponent, GoBackComponent, LoadingComponent, ShowDataComponent, CdkDropList, CdkDrag],
   templateUrl: './vue-all-admin.component.html'
 })
 export class VueAllAdminComponent {
@@ -27,6 +29,7 @@ export class VueAllAdminComponent {
   protected _getImageByName = inject(GetImageService); // Service for retrieving images by name
   private _openDialog = inject(DialogAdminService); // Service for opening dialog windows
   private _translateService = inject(TranslateService); // Service for translating error messages
+  private _orderService = inject(OrderService)
 
   // Property to store error messages; initially set to null
   error: string | null = null;
@@ -43,12 +46,29 @@ export class VueAllAdminComponent {
   // Observable to store a single Vue item fetched by ID
   vueById$!: Observable<Vue>;
 
+  vue: Vue[] = []
+
   /**
    * Constructor to initialize the component.
    * Automatically loads all Vue items when the component is created.
    */
   constructor() {
     this.getAllVue();
+  }
+
+  /**
+   * Drag and drop functionality and save indexes to local storage so that when reorganized, position will be stored to localstorage.
+   */
+  drop(event: CdkDragDrop<Vue[]>) {
+    moveItemInArray(this.vue, event.previousIndex, event.currentIndex);
+    this._orderService.saveOrderToLocalStorage(this.vue, 'vueOrder', '_id')
+  }
+
+  /**
+   * Remove order from local storage
+   */
+  removeOrder() {
+    this._orderService.clearBlogsFromLocalStorage('vueOrder')
   }
 
   /**
@@ -73,6 +93,8 @@ export class VueAllAdminComponent {
       // Ensure loading state is set to false once the API call is complete
       finalize(() => this.loading = false)
     ).subscribe(vue => {
+      this.vue = vue;
+      this._orderService.applySavedBlogOrder(this.vue, 'vueOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
       this._vueSubject.next(vue); // Update the BehaviorSubject with the fetched Vue items
     });

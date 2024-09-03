@@ -1,4 +1,4 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { TranslateModule } from "@ngx-translate/core";
 import {RouterLink} from "@angular/router";
@@ -52,6 +52,17 @@ export class GoBackComponent {
 
   // Show button if viewing a public blog by ID
   @Input() blogByIdPublic?: boolean
+
+
+  // Output event emitter for the restore event
+  @Input() removeBoolean?: boolean
+  @Output() remove = new EventEmitter<void>()
+
+  restoreLocalStorage() {
+    if(this.remove) {
+      this.remove.emit()
+    }
+  }
 
   // Method to navigate back to the previous page
   goBack() {

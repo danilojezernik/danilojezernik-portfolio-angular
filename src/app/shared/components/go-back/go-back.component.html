@@ -109,3 +109,12 @@
   {{ 'button.to-angular' | translate }}
 </button>
 <!-- Buttons shown when on the media page, linking to the respective admin sections - END -->
+
+<!-- Button show when one wants to reset order - START -->
+<button *ngIf="removeBoolean"
+        style="position: fixed; bottom: 100px; right: 0; margin: 10px"
+        class="btn-admin restore"
+        (click)="restoreLocalStorage()">
+  {{ 'button.restore-order' | translate }}
+</button>
+<!-- Button show when one wants to reset order - END -->

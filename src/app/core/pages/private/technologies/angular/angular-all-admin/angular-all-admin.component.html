@@ -5,7 +5,6 @@
 <ng-container *ngIf="angular$ && !loading && !error">
   <div class="flex justify-center pb-5">
     <app-button-admin [width]="true" [routerLink]="'/tech-add-angular'"/>
-    <app-button-admin [resetLocalStorage]="true" (remove)="removeOrder()" />
   </div>
 </ng-container>
 <!-- Button to navigate to the add blog admin page - END -->
@@ -22,19 +21,20 @@
             <div class="flex items-center">
               <!-- Drag handle (optional) -->
               <div class="cursor-move mr-4">
+                <div class="ms-2">
+                  <strong class="text-red-600">{{ i + 1 }}</strong>
+                </div>
                 <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M8 6h.01M8 10h.01M8 14h.01M8 18h.01M12 6h.01M12 10h.01M12 14h.01M12 18h.01M16 6h.01M16 10h.01M16 14h.01M16 18h.01"></path>
                 </svg>
               </div>
-              <div class="my-auto">
-                {{ i + 1 }}
-              </div>
+
               <div class="flex-1">
                 <app-show-data
                   [question]="data.question"
-                  [answer]="data.answer | shorteningText:40"
+                  [answer]="data.answer | shorteningText:50"
                   [imageName]="data.image"
                 />
               </div>
@@ -72,5 +72,5 @@
 <!-- Loading spinner - END -->
 
 <!-- Button to navigate back to the previous page - START -->
-<app-go-back [blogsAdmin]="true"/>
+<app-go-back [angularAdmin]="true" [removeBoolean]="true" (remove)="removeOrder()"/>
 <!-- Button to navigate back to the previous page - END -->

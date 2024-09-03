@@ -36,10 +36,10 @@ export class AuthService {
    */
   setAccessToken(token: string, role: string): void {
     // Store the token in localStorage
-    localStorage.setItem('token', token);
+    sessionStorage.setItem('token', token);
 
     // Store role in local storage
-    localStorage.setItem('role', role)
+    sessionStorage.setItem('role', role)
 
     // Update login status to true
     this.loggedInSubject.next(true);
@@ -54,7 +54,7 @@ export class AuthService {
    */
   private hasToken(): boolean {
     // Return true if a token exists in localStorage, false otherwise
-    return !!localStorage.getItem('token');
+    return !!sessionStorage.getItem('token');
   }
 
   /**
@@ -63,11 +63,11 @@ export class AuthService {
    */
   getAccessToken(): string {
     // Retrieve the token from localStorage or return an empty string if it doesn't exist
-    return localStorage.getItem('token') || '';
+    return sessionStorage.getItem('token') || '';
   }
 
   private getUserRole(): string {
-    return localStorage.getItem('role') || ''
+    return sessionStorage.getItem('role') || ''
   }
 
   getUserRoleObservable(): Observable<string> {
@@ -79,7 +79,7 @@ export class AuthService {
    */
   clear() {
     // Clear all items from localStorage
-    localStorage.clear();
+    sessionStorage.clear();
     // Update login status to false
     this.loggedInSubject.next(false);
     this.userRoleSubject.next('')

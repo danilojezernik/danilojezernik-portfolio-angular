@@ -15,7 +15,6 @@ import {BehaviorSubject, catchError, finalize, Observable, of} from "rxjs";
 import {Angular} from "../../../../../../models/angular.model";
 import {OrderService} from "../../../../../../utils/local-storage/order-service";
 import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
-import {BlogModel} from "../../../../../../models/blog.model";
 import {ShorteningTextPipe} from "../../../../../../pipes/shortening-text/shortening-text.pipe";
 
 @Component({
@@ -61,7 +60,7 @@ export class AngularAllAdminComponent {
   /**
    * Drag and drop functionality and save indexes to local storage so that when reorganized, position will be stored to localstorage.
    */
-  drop(event: CdkDragDrop<BlogModel[]>) {
+  drop(event: CdkDragDrop<Angular[]>) {
     moveItemInArray(this.angular, event.previousIndex, event.currentIndex);
     this._orderService.saveOrderToLocalStorage(this.angular, 'angularOrder', '_id')
   }
