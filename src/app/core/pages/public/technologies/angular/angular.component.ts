@@ -12,10 +12,10 @@ import {catchError, map, of} from "rxjs";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {Angular} from "../../../../../models/angular.model";
 import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
-import {BUTTONS} from "../../../../../shared/global-const/global.const";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
 import {RouterLink} from "@angular/router";
 import {ButtonPublicComponent} from "../../../../../shared/components/button-public/button-public.component";
+import {ScrollToQuestionService} from "../../../../../services/scroll-to-question/scroll-to-question.service";
 
 @Component({
   selector: 'app-angular',
@@ -36,6 +36,8 @@ export class AngularComponent {
 
   // Injecting TranslateService to handle translation of text and error messages
   private _translateService = inject(TranslateService);
+
+  private _scrollToQuestionService = inject(ScrollToQuestionService)
 
   // Property to store error messages, initialized to null
   error: string | null = null;
@@ -70,18 +72,7 @@ export class AngularComponent {
    * @param questionId - The ID of the question element to scroll to
    */
   scrollToQuestion(questionId?: string) {
-    // Find the target element by matching the provided ID with the ID of the question elements
-    const targetElement = this.questionElements.find((element) => element.nativeElement.id === questionId);
-    if (targetElement) {
-      // Scroll the target element into view with a smooth scroll effect
-      targetElement.nativeElement.scrollIntoView({behavior: 'smooth'});
-      // Trigger a click on the close button to close the drawer
-      // Close the drawer by clicking the close button
-      this.toggleDrawer()
-    }
+    this._scrollToQuestionService.scrollToQuestion(questionId, this.questionElements, this.toggleDrawer.bind(this));
   }
-
-  // A constant reference to globally defined BUTTONS, used in the template for button rendering
-  protected readonly BUTTONS = BUTTONS;
 
 }

@@ -1,5 +1,5 @@
 import {Component, ElementRef, inject, QueryList, ViewChildren} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {ButtonPublicComponent} from "../../../../../shared/components/button-public/button-public.component";
 import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
@@ -8,6 +8,7 @@ import {OrderService} from "../../../../../utils/local-storage/order-service";
 import {catchError, map, of} from "rxjs";
 import {Angular} from "../../../../../models/angular.model";
 import {VueService} from "../../../../../services/api/vue.service";
+import {ScrollToQuestionService} from "../../../../../services/scroll-to-question/scroll-to-question.service";
 
 @Component({
   selector: 'app-vue',
@@ -28,6 +29,8 @@ export class VueComponent {
 
   // Injecting TranslateService to handle translation of text and error messages
   private _translateService = inject(TranslateService);
+
+  private _scrollToQuestionService = inject(ScrollToQuestionService)
 
   // Property to store error messages, initialized to null
   error: string | null = null;
@@ -62,15 +65,7 @@ export class VueComponent {
    * @param questionId - The ID of the question element to scroll to
    */
   scrollToQuestion(questionId?: string) {
-    // Find the target element by matching the provided ID with the ID of the question elements
-    const targetElement = this.questionElements.find((element) => element.nativeElement.id === questionId);
-    if (targetElement) {
-      // Scroll the target element into view with a smooth scroll effect
-      targetElement.nativeElement.scrollIntoView({behavior: 'smooth'});
-      // Trigger a click on the close button to close the drawer
-      // Close the drawer by clicking the close button
-      this.toggleDrawer()
-    }
+    this._scrollToQuestionService.scrollToQuestion(questionId, this.questionElements, this.toggleDrawer.bind(this));
   }
 
 }
