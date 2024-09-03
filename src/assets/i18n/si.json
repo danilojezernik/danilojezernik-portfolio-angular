@@ -70,6 +70,7 @@
 		"questions": "Vsa vprašanja",
 		"read": "Beri",
 		"read-more": "Beri dalje",
+		"register": "Registriraj se",
 		"restore-order": "Povrni vrstni red",
 		"send-message": "Pošlji sporočilo",
 		"to-angular": "Angular FAQ",
@@ -121,6 +122,7 @@
 	"errors": {
 		"badRequest": "Neveljavna zahteva. Preverite svoje podatke.",
 		"emptypass": "Prosim vnesite svoje uporabniško ime in geslo.",
+		"emptyregister": "Prosim vnesite obvezna polja označena z *",
 		"forbidden": "Nimate dovoljenja za izvedbo tega dejanja.",
 		"internalServerError": "Prišlo je do notranje napake strežnika. Poskusite znova pozneje.",
 		"network": "Preverite internetno povezavo ali poizkusite znova kasneje.",
@@ -136,20 +138,24 @@
 		"_id": "ID",
 		"answer": "Odgovor",
 		"author": "Avtor",
+		"blog-notification": "Želite biti obveščeni o novi objavi bloga:",
 		"blog_id": "Blog ID",
 		"blog_notification": "Obvestila o blogu",
 		"buy_url": "Nakup",
+		"ceo-cofounder": "CEO/Soustanovitelj",
 		"company": "Podjetje",
 		"company_end": "Konec dela pri podjetju",
 		"company_start": "Začetek dela v podjetju",
 		"confirmed": "Potrjena prijava",
 		"content": "Vsebina",
+		"cto": "CTO (Glavni tehnološki direktor)",
 		"datum_vnosa": "Datum vnosa",
 		"description": "Opis",
 		"email": "E-mail",
 		"employee": "Zaposlen",
 		"framework": "Ogrodje",
 		"full_name": "Ime in priimek",
+		"get-newsletter": "Ali se želite prijaviti na e-novičke:",
 		"github": "Github",
 		"hashed_password": "Heširano geslo",
 		"image": "Slika",
@@ -161,8 +167,11 @@
 		"password": "Geslo",
 		"podnaslov": "Podnaslov",
 		"profession": "Poklic",
+		"profession-position": "Pozicija",
 		"programming_language": "Programski jezik",
 		"question": "Vprašanje",
+		"register-description": "Opišite sebe kot programerja/ko",
+		"register-technology": "S kakšno tehnologijo delate?",
 		"registered": "Registriran",
 		"required": "je obvezno polje",
 		"role": "Vloga",
@@ -267,6 +276,9 @@
 			"title": "Tehnologije"
 		}
 	},
+	"pending": {
+		"registration": "Registracija poteka..."
+	},
 	"selected": {
 		"allTechnology": "Vsa tehnologija",
 		"language": "Vsi jeziki",
@@ -275,6 +287,7 @@
 	"snack": {
 		"close": "Zapri",
 		"image-saved": "Shranjeno v odložišče",
+		"registration": "Uspešno ste se registrirali. Prosim potrdite svojo registracijo s potrditvijo vašega elektronskega naslova!",
 		"reordered": "Vrsni red je bil povrnjen v prvotnega"
 	},
 	"submitLabel": {

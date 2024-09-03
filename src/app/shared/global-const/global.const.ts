@@ -45,6 +45,7 @@ export const PAGINATION ={
 // Messages that are translated from snackbar
 export const SNACKBAR_MESSAGES = {
   reordered: 'snack.reordered',
+  registered: 'snack.registration',
   imageSaved: 'snack.image-saved',
   close: 'snack.close'
 }

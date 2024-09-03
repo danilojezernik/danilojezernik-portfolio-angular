@@ -70,6 +70,7 @@
 		"questions": "All questions",
 		"read": "Read",
 		"read-more": "Read more",
+		"register": "Register",
 		"restore-order": "Restore order",
 		"send-message": "Send message",
 		"to-angular": "Angular FAQ",
@@ -121,6 +122,7 @@
 	"errors": {
 		"badRequest": "Bad Request. Please check your input.",
 		"emptypass": "Please enter your username and password.",
+		"emptyregister": "Please fill in the required fields marked with *",
 		"forbidden": "You do not have permission to perform this action.",
 		"internalServerError": "An internal server error occurred. Please try again later.",
 		"network": "Check your network connection or try again later.",
@@ -136,20 +138,24 @@
 		"_id": "ID",
 		"answer": "Answer",
 		"author": "Author",
+		"blog-notification": "Do you want to be notified about new blog:",
 		"blog_id": "Blog ID",
 		"blog_notification": "Blog notification",
 		"buy_url": "Buy",
+		"ceo-cofounder": "CEO/Co-founder",
 		"company": "Company",
 		"company_end": "Ended up working for the company",
 		"company_start": "Starting work at the company",
 		"confirmed": "Confirmed subscription",
 		"content": "Content",
+		"cto": "CTO (Chief Technology Officer)",
 		"datum_vnosa": "Adding date",
 		"description": "Description",
 		"email": "E-mail",
 		"employee": "Employee",
 		"framework": "Framework",
 		"full_name": "Name and surname",
+		"get-newsletter": "You want to subscribe to newsletter:",
 		"github": "Github",
 		"hashed_password": "Hashed password",
 		"image": "Image",
@@ -161,8 +167,11 @@
 		"password": "Password",
 		"podnaslov": "Subtitle",
 		"profession": "Profession",
+		"profession-position": "Position",
 		"programming_language": "Programming language",
 		"question": "Question",
+		"register-description": "Describe yourself as a programmer",
+		"register-technology": "What technology do you work with?",
 		"registered": "Registered",
 		"required": "is required",
 		"role": "Role",
@@ -267,6 +276,9 @@
 			"title": "Technologies"
 		}
 	},
+	"pending": {
+		"registration": "Registration in progress..."
+	},
 	"selected": {
 		"allTechnology": "All technology",
 		"language": "All languages",
@@ -275,6 +287,7 @@
 	"snack": {
 		"close": "Close",
 		"image-saved": "Saved to clipboard",
+		"registration": "You have successfully registered. Please confirm your registration by verifying your email address!",
 		"reordered": "The order has been restored to its original state"
 	},
 	"submitLabel": {

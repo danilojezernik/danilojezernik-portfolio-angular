@@ -7,3 +7,8 @@
   color: $pulse-color-bulb;
 }
 
+.pulse-bulb-registering {
+  animation: pulseRestore 2.5s infinite!important;
+  color: $color-add-start;
+}
+

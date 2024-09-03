@@ -107,7 +107,7 @@ export const environment = {
   },
 
   // REGISTER NEW USER
-  registerUrl: 'http://localhost:3000/register/',
+  registerUrl: 'http://localhost:3000/register',
 
   // LOGIN API
   authUrl: 'http://localhost:3000/login',

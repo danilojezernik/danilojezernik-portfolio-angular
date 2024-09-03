@@ -1,72 +1,63 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RegisterService } from "../../../../services/api/register.service";
-import { User } from "../../../../models/user";
-import { FormsModule } from "@angular/forms";
+import {Component, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RegisterService} from "../../../../services/api/register.service";
+import {User} from "../../../../models/user";
+import {FormsModule} from "@angular/forms";
 import {ReusableFormAddComponent} from "../../../../shared/forms/reusable-form-add/reusable-form-add.component";
-import {TranslateModule} from "@ngx-translate/core";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
+import {formUserPublicConfig} from "../../../../shared/global-const/form-config";
+import {LoadingComponent} from "../../../../shared/components/loading/loading.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {SNACKBAR_MESSAGES} from "../../../../shared/global-const/global.const";
 
 @Component({
   selector: 'app-register-user',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReusableFormAddComponent, TranslateModule, HeroTitleComponent],
+  imports: [CommonModule, FormsModule, ReusableFormAddComponent, TranslateModule, HeroTitleComponent, LoadingComponent],
   templateUrl: './register-user.component.html'
 })
 export class RegisterUserComponent {
 
-  private _registerUser = inject(RegisterService)
+  private _registerUserService = inject(RegisterService)
+  private _translateService = inject(TranslateService); // Injecting TranslateService for translating error messages
+  private _snack = inject(MatSnackBar)
+  // Property to store error messages, initialized to null
+  error: string | null = null;
 
-  getUsername: string = ''
-  getEmail: string = ''
-  getFullName: string = ''
-  getProfession: string = ''
-  getTechnology: string = ''
-  getDescription: string = ''
-  chosePassword: string = ''
-  getConfirmed: boolean = false
-  getBlogNotification: boolean = false
-  error = ''
+  // Property to track loading state, initialized to false
+  loading: boolean = false;
 
-  registerNewUser() {
-    if(!this.getUsername || !this.getEmail || !this.chosePassword || !this.getFullName) {
-      this.error = 'errors.emptyregister'
-      return
-    }
+  registerNewUser(formValidator: User) {
 
-    console.log('Get blog notification', this.getBlogNotification)
-    console.log('Get newsletter', this.getConfirmed)
+    // Show spinner while loading
+    this.loading = true;
 
-    const newUser: User = {
-      username: this.getUsername,
-      email: this.getEmail,
-      full_name: this.getFullName,
-      profession: this.getProfession,
-      hashed_password: this.chosePassword,
-      technology: this.getTechnology,
-      description: this.getDescription,
-      confirmed: this.getConfirmed,
-      registered: false,
-      blog_notification: this.getBlogNotification,
-      datum_vnosa: new Date().toISOString()
-    }
-
-    console.log(newUser.confirmed)
-    console.log(newUser.blog_notification)
-
-    this._registerUser.registerNewUser(newUser).subscribe(() => {
-      this.getUsername = ''
-      this.chosePassword = ''
-      this.getFullName = ''
-      this.getEmail = ''
-      this.getConfirmed = false
-      this.getBlogNotification = false
+    this._registerUserService.registerNewUser(formValidator).subscribe(() => {
+      // Hide spinner after loading
+      this.loading = false;
+      this._translateService.get([SNACKBAR_MESSAGES.registered, SNACKBAR_MESSAGES.close]).subscribe((translation) => {
+        this._snack.open(translation[SNACKBAR_MESSAGES.registered], translation[SNACKBAR_MESSAGES.close], {
+          duration: 3000
+        })
+      })
     }, error => {
-      // Handle HTTP error
-      console.error('Login request failed', error);
-      this.error = 'errors.pass'
+      // Hide spinner after loading
+      this.loading = false;
+
+      // Extract the error message
+      const message = error.message;
+      // Translate the error message using the Translation service and set it to the error property
+      this._translateService.get(message).subscribe((translation) => {
+        this.error = translation;
+      });
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000)
     })
 
   }
 
+  protected readonly formUserPublicConfig = formUserPublicConfig;
 }

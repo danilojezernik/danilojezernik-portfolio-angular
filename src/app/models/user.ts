@@ -12,7 +12,7 @@ export interface User {
   hashed_password: string;
   role?: string;
   confirmed: boolean;
-  registered: boolean;
+  registered?: boolean;
   blog_notification?: boolean;
   datum_vnosa: string;
 }
