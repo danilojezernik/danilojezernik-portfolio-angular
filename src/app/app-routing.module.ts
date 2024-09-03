@@ -136,6 +136,12 @@ import {PythonComponent} from "./core/pages/public/technologies/python/python.co
 import {JavascriptComponent} from "./core/pages/public/technologies/javascript/javascript.component";
 import {TypescriptComponent} from "./core/pages/public/technologies/typescript/typescript.component";
 import {MongodbComponent} from "./core/pages/public/technologies/mongodb/mongodb.component";
+import {AngularMediaComponent} from "./core/pages/private/media/angular-media/angular-media.component";
+import {VueMediaComponent} from "./core/pages/private/media/vue-media/vue-media.component";
+import {PythonMediaComponent} from "./core/pages/private/media/python-media/python-media.component";
+import {MongodbMediaComponent} from "./core/pages/private/media/mongodb-media/mongodb-media.component";
+import {JavascriptMediaComponent} from "./core/pages/private/media/javascript-media/javascript-media.component";
+import {TypescriptMediaComponent} from "./core/pages/private/media/typescript-media/typescript-media.component";
 
 const routes: Routes = [
   {
@@ -432,6 +438,36 @@ const routes: Routes = [
   {
     path: 'media-projects',
     component: ProjectsMediaAdminComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'media-angular',
+    component: AngularMediaComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'media-vue',
+    component: VueMediaComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'media-python',
+    component: PythonMediaComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'media-mongodb',
+    component: MongodbMediaComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'media-javascript',
+    component: JavascriptMediaComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'media-typescript',
+    component: TypescriptMediaComponent,
     canActivate: [ AuthGuardService ]
   },
 

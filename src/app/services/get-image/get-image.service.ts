@@ -35,10 +35,31 @@ export class GetImageService {
   }
 
   /**
-   * Use function to get projects pictures
+   * Use function to get technologies pictures
    */
+
   public getAngularImageUrl(imageName: string): string {
     return `${environment.angularUrl.publicMedia}${imageName}`
+  }
+
+  public getVueImageUrl(imageName: string): string {
+    return `${environment.vueUrl.publicMedia}${imageName}`
+  }
+
+  public getPythonImageUrl(imageName: string): string {
+    return `${environment.pythonUrl.publicMedia}${imageName}`
+  }
+
+  public getJavaScriptImageUrl(imageName: string): string {
+    return `${environment.javascriptUrl.publicMedia}${imageName}`
+  }
+
+  public getTypeScriptImageUrl(imageName: string): string {
+    return `${environment.typescriptUrl.publicMedia}${imageName}`
+  }
+
+  public getMongoDbImageUrl(imageName: string): string {
+    return `${environment.mongodbUrl.publicMedia}${imageName}`
   }
 
 }
