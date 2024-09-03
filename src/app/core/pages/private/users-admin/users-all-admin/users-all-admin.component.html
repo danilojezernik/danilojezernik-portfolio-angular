@@ -3,7 +3,7 @@
 <!-- Button to navigate to the add user admin page - START -->
 <ng-container *ngIf="users$ && !loading && !error">
   <div class="flex justify-center pb-5">
-  <app-button-admin [width]="true" [routerLink]="'/add-user-admin'"/>
+    <app-button-admin [width]="true" [routerLink]="'/add-user-admin'"/>
   </div>
 </ng-container>
 <!-- Button to navigate to the add user admin page - END -->
@@ -11,41 +11,51 @@
 <!-- Container to check if users data is available, and show content or loading template accordingly - START -->
 <ng-container *ngIf="users$ | async as users">
 
-  <div class="container mx-auto px-4">
-    <div class="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+  <div cdkDropList class="container mx-auto px-4">
+    <div class="bg-background-menu shadow overflow-hidden sm:rounded-lg">
+      <ul class="divide-y divide-gray-200">
 
-      <!-- Loop through each user and display its information along with action buttons - START -->
-      <div class="flex bg-background-menu flex-col p-4 border border-gray-700 rounded-lg shadow-lg"
-           *ngFor="let user of users; let i = index">
+        <!-- Loop through each user and display its information along with action buttons - START -->
+        <li class="flex bg-background-menu items-center p-4"
+            *ngFor="let user of users; let i = index">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center">
+              <!-- Drag handle -->
+              <div class="cursor-move mr-4">
+                <div class="ms-2">
+                  <strong class="text-red-600">{{ i + 1 }}</strong>
+                </div>
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 6h.01M8 10h.01M8 14h.01M8 18h.01M12 6h.01M12 10h.01M12 14h.01M12 18h.01M16 6h.01M16 10h.01M16 14h.01M16 18h.01"></path>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <app-show-data
+                  [username]="user.username"
+                  [email]="user.email"
+                  [role]="user.role"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Component to display user data - END -->
+          <div class="ml-4 flex-shrink-0 flex space-x-2">
 
-        <!-- Component to display blog user - START -->
-        <div class="flex-1 overflow-x-auto ms-4 mb-4">
-          <app-show-data
-            [_id]="user._id"
-            [full_name]="user.full_name"
-            [username]="user.username"
-            [email]="user.email"
-            [technology]="user.technology"
-            [description]="user.description"
-            [blog_notification]="user.blog_notification"
-            [confirmed]="user.confirmed"
-            [registered]="user.registered"
-            [role]="user.role"
-          />
-        </div>
-        <!-- Component to display user data - END -->
-        <div class="flex justify-center">
+            <!-- Buttons for editing and deleting user, and opening a dialog - START -->
+            <app-button-admin
+              (dialogRead)="openDialog(user._id)"
+              [routerLinkId]="['/edit-user-admin', user._id ?? '']"
+              (delete)="deleteUser(user._id)"
+            />
+            <!-- Buttons for editing and deleting user, and opening a dialog - END -->
 
-          <!-- Buttons for editing and deleting user, and opening a dialog - START -->
-          <app-button-admin
-            (dialogRead)="openDialog(user._id)"
-            [routerLinkId]="['/edit-user-admin', user._id ?? '']"
-            (delete)="deleteUser(user._id)"
-          />
-          <!-- Buttons for editing and deleting user, and opening a dialog - END -->
+          </div>
+        </li>
+        <!-- Loop through each blog and display its information along with action buttons - END -->
 
-        </div>
-      </div>
+      </ul>
     </div>
   </div>
   <!-- Loop through each user and display its information along with action buttons - END -->

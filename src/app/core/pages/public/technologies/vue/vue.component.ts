@@ -52,7 +52,7 @@ export class VueComponent {
       return of([] as Angular[]);
     }),
     // Map the received Angular questions and apply any saved order using the OrderService
-    map(data => this._orderService.applySavedBlogOrder(data, 'vueOrder', '_id')),
+    map(data => this._orderService.applySavedOrder(data, 'vueOrder', '_id')),
   );
 
   // Open drawer functionality

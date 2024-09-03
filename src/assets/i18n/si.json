@@ -50,6 +50,7 @@
 		"users-edit": "Urejanje uporabnika"
 	},
 	"button": {
+		"about-public": "O meni pregled",
 		"add": "Dodaj",
 		"back": "Nazaj",
 		"blogs-admin": "Slike - Blogi",
@@ -59,15 +60,27 @@
 		"delete": "Izbriši",
 		"edit": "Uredi",
 		"github": "na GitHub",
+		"media-angular": "Slike - Angular",
+		"media-javascript": "Slike - JavaScript",
+		"media-mongodb": "Slike - MongoDB",
 		"media-projects": "Slike - projekti",
+		"media-python": "Slike - Python",
+		"media-typescript": "Slike - TypeScript",
+		"media-vue": "Slike - Vue",
 		"questions": "Vsa vprašanja",
 		"read": "Beri",
 		"read-more": "Beri dalje",
 		"restore-order": "Povrni vrstni red",
 		"send-message": "Pošlji sporočilo",
+		"to-angular": "Angular FAQ",
 		"to-blogs": "Pojdi na bloge",
 		"to-books": "Pojdi do knjige",
-		"to-projects": "Pojdi na projekte"
+		"to-javascript": "JavaScript FAQ",
+		"to-mongodb": "MongoDB FAQ",
+		"to-projects": "Pojdi na projekte",
+		"to-python": "Python FAQ",
+		"to-typescript": "TypeScript FAQ",
+		"to-vue": "Vue FAQ"
 	},
 	"description": {
 		"admin-menu": {
@@ -206,6 +219,9 @@
 		"users": "Uporabniki"
 	},
 	"pages": {
+		"about-me": {
+			"title": "O meni"
+		},
 		"angular": {
 			"description": "Angular je zmogljiv okvir, ki temelji na TypeScriptu, za izdelavo dinamičnih, prilagodljivih in vzdržljivih spletnih aplikacij.",
 			"drawer": "Vsa vprašanja na enem mestu.",
@@ -237,6 +253,13 @@
 		"login": {
 			"description": "Hvala, ker ste del te skupnosti. Za dostop do vašega računa, se prosimo prijavite s svojim uporabniškim imenom in geslom. Če imate kakršnakoli vprašanja ali težave pri prijavi, me lahko kontaktirate preko moje strani za kontakt.",
 			"title": "Vpis"
+		},
+		"media": {
+			"description": "Dodajaj in odstranjuj slike in kopiraj imena slik."
+		},
+		"register": {
+			"description": "Registriraj se, da si pogledaš zakulisje programa kot obiskovalec, ali se naroči na e-novičke in obvestila o novih blogih.",
+			"title": "Registracija uporabnika"
 		},
 		"technologies": {
 			"description": "Na tej strani so predstavljene ključne tehnologije: Angular, Vue, TypeScript, JavaScript, MongoDB in Python, z odgovori na pomembna vprašanja.",

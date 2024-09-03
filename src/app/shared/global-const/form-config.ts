@@ -134,8 +134,7 @@ export const formCommentConfig: FormFieldConfig[] = [
  * formContactConfig defines the configuration for the form fields used in the newsletter form.
  * */
 export const formContactConfig: FormFieldConfig[] = [
-  { name: 'name', label: 'name', type: 'text', validators: [ Validators.required ] },
-  { name: 'surname', label: 'surname', type: 'text', validators: [ Validators.required ] },
+  { name: 'full_name', label: 'full_name', type: 'text', validators: [ Validators.required ] },
   { name: 'email', label: 'Email', type: 'email', validators: [ Validators.required, Validators.email ] },
   { name: 'message', label: 'message', type: 'text', validators: [ Validators.required, Validators.min(10) ] }
 ]

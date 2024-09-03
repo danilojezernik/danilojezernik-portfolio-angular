@@ -50,6 +50,7 @@
 		"users-edit": "Edit user"
 	},
 	"button": {
+		"about-public": "About me overview",
 		"add": "Add",
 		"back": "Back",
 		"blogs-admin": "Media - Blogs",
@@ -59,15 +60,27 @@
 		"delete": "Delete",
 		"edit": "Edit",
 		"github": "to GitHub",
+		"media-angular": "Media - Angular",
+		"media-javascript": "Media - JavaScript",
+		"media-mongodb": "Media - MongoDB",
 		"media-projects": "Pictures - projects",
+		"media-python": "Media - Python",
+		"media-typescript": "Media - TypeScript",
+		"media-vue": "Media - Vue",
 		"questions": "All questions",
 		"read": "Read",
 		"read-more": "Read more",
 		"restore-order": "Restore order",
 		"send-message": "Send message",
+		"to-angular": "Angular FAQ",
 		"to-blogs": "Go to blogs",
 		"to-books": "Go to books",
-		"to-projects": "Go to projects"
+		"to-javascript": "JavaScript FAQ",
+		"to-mongodb": "MOngoDB FAQ",
+		"to-projects": "Go to projects",
+		"to-python": "Python FAQ",
+		"to-typescript": "TypeScript FAQ",
+		"to-vue": "Vue FAQ"
 	},
 	"description": {
 		"admin-menu": {
@@ -206,6 +219,9 @@
 		"users": "Users"
 	},
 	"pages": {
+		"about-me": {
+			"title": "About me"
+		},
 		"angular": {
 			"description": "Angular is a powerful, TypeScript-based framework for building dynamic, scalable, and maintainable web applications with robust features.",
 			"drawer": "All the questions in one place.",
@@ -237,6 +253,13 @@
 		"login": {
 			"description": "Thank you for being a part of this community. To access your account, please log in with your username and password. If you have any questions or encounter any issues while logging in, you can contact me through my contact page.",
 			"title": "Login"
+		},
+		"media": {
+			"description": "Add and remove images and copy image names."
+		},
+		"register": {
+			"description": "Sign up to get a behind-the-scenes look at the program as a visitor, or subscribe to newsletters and notifications about new blog posts.",
+			"title": "User registration"
 		},
 		"technologies": {
 			"description": "This page covers key technologies: Angular, Vue, TypeScript, JavaScript, MongoDB, and Python, with answers to important questions.",

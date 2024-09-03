@@ -4,8 +4,7 @@
 
 export interface Contact {
   '_id'?: string;
-  name: string;
-  surname: string;
+  full_name: string;
   email: string;
   message: string;
   datum_vnosa: string;

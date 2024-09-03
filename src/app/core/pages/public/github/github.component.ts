@@ -14,6 +14,7 @@ import { DropdownSelectComponent } from "../../../../shared/components/dropdown-
 import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
 import {ShorteningTextPipe} from "../../../../pipes/shortening-text/shortening-text.pipe";
 import {RouterLink} from "@angular/router";
+import {SlovenianDateTransformPipe} from "../../../../pipes/date-transform/slovenian-date-transform.pipe";
 
 /**
  * This component displays GitHub repositories fetched from the backend API.
@@ -21,7 +22,7 @@ import {RouterLink} from "@angular/router";
 @Component({
   selector: 'app-github',
   standalone: true,
-  imports: [CommonModule, TranslateModule, MatSelectModule, FormsModule, MatInputModule, LoadingComponent, DropdownSelectComponent, HeroTitleComponent, ShorteningTextPipe, RouterLink],
+  imports: [CommonModule, TranslateModule, MatSelectModule, FormsModule, MatInputModule, LoadingComponent, DropdownSelectComponent, HeroTitleComponent, ShorteningTextPipe, RouterLink, SlovenianDateTransformPipe],
   templateUrl: './github.component.html'
 })
 export class GithubComponent {

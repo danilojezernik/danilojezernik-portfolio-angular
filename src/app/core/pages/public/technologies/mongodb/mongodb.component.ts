@@ -52,7 +52,7 @@ export class MongodbComponent {
       return of([] as Angular[]);
     }),
     // Map the received Angular questions and apply any saved order using the OrderService
-    map(data => this._orderService.applySavedBlogOrder(data, 'mongodbOrder', '_id')),
+    map(data => this._orderService.applySavedOrder(data, 'mongodbOrder', '_id')),
   );
 
   // Open drawer functionality

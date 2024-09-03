@@ -89,7 +89,7 @@ export class JavascriptAllAdminComponent {
       finalize(() => this.loading = false)
     ).subscribe(items => {
       this.javascript = items
-      this._orderService.applySavedBlogOrder(this.javascript, 'javascriptOrder', '_id')
+      this._orderService.applySavedOrder(this.javascript, 'javascriptOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
       this._javascriptSubject.next(items); // Update the BehaviorSubject with the fetched blogs
     })

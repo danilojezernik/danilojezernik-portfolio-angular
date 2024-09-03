@@ -12,7 +12,7 @@ export class OrderService {
    * @param idKey The key to identify the unique ID in the item object.
    * @returns The reordered array.
    */
-  applySavedBlogOrder<T>(items: T[], storageKey: string, idKey: keyof T) {
+  applySavedOrder<T>(items: T[], storageKey: string, idKey: keyof T) {
     const savedOrder = localStorage.getItem(storageKey)
     if (savedOrder) {
       const itemOrder = JSON.parse(savedOrder) as { id: string, index: number }[]

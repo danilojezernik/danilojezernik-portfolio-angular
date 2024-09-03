@@ -94,7 +94,7 @@ export class MongodbAllAdminComponent {
       finalize(() => this.loading = false)
     ).subscribe(items => {
       this.mongodb = items
-      this._orderService.applySavedBlogOrder(this.mongodb, 'mongodbOrder', '_id')
+      this._orderService.applySavedOrder(this.mongodb, 'mongodbOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
       this._mongodbSubject.next(items); // Update the BehaviorSubject with the fetched MongoDB documents
     });

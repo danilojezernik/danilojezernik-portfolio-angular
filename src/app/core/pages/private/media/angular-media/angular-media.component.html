@@ -2,7 +2,7 @@
 
 <!-- Title and description of the book section - START -->
 <div class="md:pt-20 pt-4">
-  <app-hero-title title="pages.media.angular.title" subtitle="pages.media.angular.description"/>
+  <app-hero-title title="pages.angular.title" subtitle="pages.media.description"/>
 </div>
 <!-- Title and description of the book section - END -->
 
@@ -33,7 +33,7 @@
     <!-- Display images and provide delete buttons -->
     <ng-container *ngIf="images$ | async as imageData">
       <div *ngFor="let imgName of imageData.images" class="flex flex-col items-center">
-        <span (click)="copyToClipboard(imgName)">{{imgName}}</span>
+        <span class="hover:text-red-600 cursor-pointer" (click)="copyToClipboard(imgName)">{{imgName}}</span>
         <img [src]="_getImageService.getAngularImageUrl(imgName)" class="max-h-40 border border-red-600" alt="Image"/>
         <button (click)="deleteImage(imgName)" class="m-0 bg-red-500 text-white px-2 py-1 w-full">Delete</button>
       </div>

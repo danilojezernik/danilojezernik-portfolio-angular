@@ -1,15 +1,15 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ContactService } from "../../../../services/api/contact.service";
-import { GoBackComponent } from "../../../../shared/components/go-back/go-back.component";
-import { ShowDataComponent } from "../../../../shared/components/show-data/show-data.component";
-import { BehaviorSubject, catchError, finalize, Observable, of } from "rxjs";
-import { Contact } from "../../../../models/contact";
-import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
-import { ButtonAdminComponent } from "../../../../shared/components/button-admin/button-admin.component";
-import { openDialogUtil } from "../../../../utils/open-dialog.util";
-import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
+import {Component, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ContactService} from "../../../../services/api/contact.service";
+import {GoBackComponent} from "../../../../shared/components/go-back/go-back.component";
+import {ShowDataComponent} from "../../../../shared/components/show-data/show-data.component";
+import {BehaviorSubject, catchError, finalize, Observable, of} from "rxjs";
+import {Contact} from "../../../../models/contact";
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {ButtonAdminComponent} from "../../../../shared/components/button-admin/button-admin.component";
+import {openDialogUtil} from "../../../../utils/open-dialog.util";
+import {LoadingComponent} from "../../../../shared/components/loading/loading.component";
 import {BreadcrumbAdminComponent} from "../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 
 /**
@@ -21,7 +21,7 @@ import {BreadcrumbAdminComponent} from "../../../../shared/components/breadcrumb
 @Component({
   selector: 'app-emails-admin',
   standalone: true,
-    imports: [CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent],
+  imports: [CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent],
   templateUrl: './emails-admin.component.html'
 })
 export class EmailsAdminComponent {

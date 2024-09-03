@@ -3,35 +3,55 @@
 <!-- Button to navigate to the add books admin page - START -->
 <ng-container *ngIf="books$ && !loading && !error">
   <div class="flex justify-center pb-5">
-    <app-button-admin [width]="true" [routerLink]="'/add-books-admin'" />
+    <app-button-admin [width]="true" [routerLink]="'/add-books-admin'"/>
   </div>
 </ng-container>
 <!-- Button to navigate to the add books admin page - END -->
 
 <!-- Container to check if books data is available and show content or error template accordingly - START -->
 <ng-container *ngIf="books$ | async as books">
-  <!-- Container for the card grid -->
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <!-- Loop through each book and display its information along with action buttons -->
-      <div class="flex bg-background-menu flex-col p-4 border border-gray-700 rounded-lg shadow-lg" *ngFor="let book of books">
-        <div class="flex-1 overflow-x-auto ms-4 mb-4">
-          <app-show-data
-            [naslov]="book.naslov"
-            [podnaslov]="book.podnaslov"
-            [vsebina]="book.vsebina"
-            [imageName]="book.image"
-          />
-        </div>
-        <!-- Buttons for editing and deleting book, and opening a dialog -->
-        <div class="flex justify-center">
-          <app-button-admin
-            (dialogRead)="openDialog(book._id)"
-            [routerLinkId]="['/edit-books-admin', book._id ?? '']"
-            (delete)="deleteBook(book._id)"
-          />
-        </div>
-      </div>
+
+  <div cdkDropList class="container mx-auto px-4" (cdkDropListDropped)="drop($event)">
+    <div class="bg-background-menu shadow overflow-hidden sm:rounded-lg">
+      <ul class="divide-y divide-gray-200">
+
+
+        <!-- Loop through each book and display its information along with action buttons -->
+        <li class="flex bg-background-menu items-center p-4" *ngFor="let book of books; let i = index" cdkDrag>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center">
+              <!-- Drag handle -->
+              <div class="cursor-move mr-4">
+                <div class="ms-2">
+                  <strong class="text-red-600">{{ i + 1 }}</strong>
+                </div>
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 6h.01M8 10h.01M8 14h.01M8 18h.01M12 6h.01M12 10h.01M12 14h.01M12 18h.01M16 6h.01M16 10h.01M16 14h.01M16 18h.01"></path>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <app-show-data
+                  [naslov]="book.naslov"
+                  [podnaslov]="book.podnaslov"
+                  [imageName]="book.image"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Buttons for editing and deleting book, and opening a dialog -->
+          <div class="ml-4 flex-shrink-0 flex space-x-2">
+            <app-button-admin
+              (dialogRead)="openDialog(book._id)"
+              [routerLinkId]="['/edit-books-admin', book._id ?? '']"
+              (delete)="deleteBook(book._id)"
+            />
+          </div>
+        </li>
+        <!-- Loop through each blog and display its information along with action buttons - END -->
+
+      </ul>
     </div>
   </div>
 
@@ -51,5 +71,5 @@
 <!-- Loading spinner - END -->
 
 <!-- Button to navigate back to the previous page - START -->
-<app-go-back [booksAdmin]="true"/>
+<app-go-back [booksAdmin]="true" [inLocalStorage]="'bookOrder'" [removeBoolean]="true" (remove)="removeOrder()"/>
 <!-- Button to navigate back to the previous page - END -->

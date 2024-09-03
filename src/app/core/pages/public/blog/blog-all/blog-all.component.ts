@@ -40,7 +40,7 @@ export class BlogAllComponent {
       return of([] as BlogModel[])
     }),
     // Apply the saved blog order
-    map(blogs => this._orderService.applySavedBlogOrder(blogs, 'blogOrder', '_id'))
+    map(blogs => this._orderService.applySavedOrder(blogs, 'blogOrder', '_id'))
   )
 
 }

@@ -6,6 +6,7 @@ import {GetImageService} from "../../../../../services/get-image/get-image.servi
 import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 import {ClipboardCopyService} from "../../../../../services/clipboard-copy/clipboard-copy.service";
+import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
 
 /**
  * @Component AboutMeMediaAdminComponent
@@ -15,7 +16,7 @@ import {ClipboardCopyService} from "../../../../../services/clipboard-copy/clipb
 @Component({
   selector: 'app-media',
   standalone: true,
-  imports: [CommonModule, GoBackComponent, BreadcrumbAdminComponent],
+  imports: [CommonModule, GoBackComponent, BreadcrumbAdminComponent, HeroTitleComponent],
   templateUrl: './about-me-media-admin.component.html'
 })
 export class AboutMeMediaAdminComponent implements OnInit {

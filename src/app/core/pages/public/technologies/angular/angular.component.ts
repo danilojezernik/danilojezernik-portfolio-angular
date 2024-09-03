@@ -59,7 +59,7 @@ export class AngularComponent {
       return of([] as Angular[]);
     }),
     // Map the received Angular questions and apply any saved order using the OrderService
-    map(data => this._orderService.applySavedBlogOrder(data, 'angularOrder', '_id')),
+    map(data => this._orderService.applySavedOrder(data, 'angularOrder', '_id')),
   );
 
   // Open drawer functionality

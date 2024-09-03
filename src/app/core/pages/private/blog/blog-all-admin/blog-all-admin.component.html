@@ -2,7 +2,7 @@
 
 <!-- Button to navigate to the add blog admin page - START -->
 <ng-container *ngIf="blogs$ && !loading && !error">
-  <div class="flex pb-5">
+  <div class="flex justify-center pb-5">
     <app-button-admin [width]="true" [routerLink]="'/blog-admin/add'"/>
   </div>
 </ng-container>
@@ -19,21 +19,21 @@
         <li class="flex bg-background-menu items-center p-4" *ngFor="let blog of blogs; let i = index" cdkDrag>
           <div class="flex-1 min-w-0">
             <div class="flex items-center">
-              <!-- Drag handle (optional) -->
+              <!-- Drag handle -->
               <div class="cursor-move mr-4">
-                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 6h.01M8 10h.01M8 14h.01M8 18h.01M12 6h.01M12 10h.01M12 14h.01M12 18h.01M16 6h.01M16 10h.01M16 14h.01M16 18h.01"></path>
+                <div class="ms-2">
+                  <strong class="text-red-600">{{ i + 1 }}</strong>
+                </div>
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 6h.01M8 10h.01M8 14h.01M8 18h.01M12 6h.01M12 10h.01M12 14h.01M12 18h.01M16 6h.01M16 10h.01M16 14h.01M16 18h.01"></path>
                 </svg>
-              </div>
-              <!-- Blog details -->
-              <div class="my-auto">
-                {{i + 1}}
               </div>
               <div class="flex-1">
                 <app-show-data
                   [title]="blog.title"
                   [kategorija]="blog.kategorija"
-                  [podnaslov]="blog.podnaslov"
                   [imageName]="blog.image"
                 />
               </div>
@@ -71,5 +71,5 @@
 <!-- Loading spinner - END -->
 
 <!-- Button to navigate back to the previous page - START -->
-<app-go-back [blogsAdmin]="true" [removeBoolean]="true" (remove)="removeOrder()"/>
+<app-go-back [blogsAdmin]="true" [inLocalStorage]="'blogOrder'" [removeBoolean]="true" (remove)="removeOrder()"/>
 <!-- Button to navigate back to the previous page - END -->

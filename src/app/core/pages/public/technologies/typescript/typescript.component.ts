@@ -52,7 +52,7 @@ export class TypescriptComponent {
       return of([] as Angular[]);
     }),
     // Map the received Angular questions and apply any saved order using the OrderService
-    map(data => this._orderService.applySavedBlogOrder(data, 'typescriptOrder', '_id')),
+    map(data => this._orderService.applySavedOrder(data, 'typescriptOrder', '_id')),
   );
 
   // Open drawer functionality

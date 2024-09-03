@@ -10,11 +10,12 @@ import {ButtonAdminComponent} from "../../../../../shared/components/button-admi
 import {MatDialog} from "@angular/material/dialog";
 import {openDialogUtil} from "../../../../../utils/open-dialog.util";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
+import {CdkDropList} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-comments-all-admin',
   standalone: true,
-  imports: [CommonModule, TranslateModule, RouterLink, ShowDataComponent, ButtonAdminComponent, BreadcrumbAdminComponent],
+    imports: [CommonModule, TranslateModule, RouterLink, ShowDataComponent, ButtonAdminComponent, BreadcrumbAdminComponent, CdkDropList],
   templateUrl: './comments-all-admin.component.html'
 })
 export class CommentsAllAdminComponent {

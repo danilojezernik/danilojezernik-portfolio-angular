@@ -30,6 +30,13 @@
   {{ 'button.blogs-admin' | translate }}
 </button>
 
+<button *ngIf="aboutMeMediaAdmin"
+        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        class="btn-admin back"
+        routerLink="/about">
+  {{ 'button.about-public' | translate }}
+</button>
+
 <button *ngIf="projectsAdmin"
         style="position: fixed; bottom: 50px; right: 0; margin: 10px"
         class="btn-admin back"
@@ -105,7 +112,7 @@
 <button *ngIf="angularMediaAdmin"
         style="position: fixed; bottom: 50px; right: 0; margin: 10px"
         class="btn-admin back"
-        routerLink="/technologies-admin">
+        routerLink="/tech-all-angular">
   {{ 'button.to-angular' | translate }}
 </button>
 <!-- Buttons shown when on the media page, linking to the respective admin sections - END -->

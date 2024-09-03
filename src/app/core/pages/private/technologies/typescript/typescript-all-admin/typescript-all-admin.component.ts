@@ -94,7 +94,7 @@ export class TypescriptAllAdminComponent {
       finalize(() => this.loading = false)
     ).subscribe(items => {
       this.typescript = items
-      this._orderService.applySavedBlogOrder(this.typescript, 'typescriptOrder', '_id')
+      this._orderService.applySavedOrder(this.typescript, 'typescriptOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
       this._typescriptSubject.next(items); // Update the BehaviorSubject with the fetched TypeScript items
     });

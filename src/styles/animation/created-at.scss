@@ -1,0 +1,9 @@
+// IMPORT VARIABLES AND MIXIN
+@import "../abstract/variables";
+@import "../abstract/mixin";
+
+.pulse-bulb {
+  animation: pulseRestore 2.5s infinite!important;
+  color: $pulse-color-bulb;
+}
+

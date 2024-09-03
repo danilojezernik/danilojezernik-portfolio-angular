@@ -4,35 +4,51 @@
 <ng-container *ngIf="emails$ | async as emails">
 
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="bg-background-menu shadow overflow-hidden sm:rounded-lg">
+      <ul class="divide-y divide-gray-200">
 
-      <!-- Loop through each email and display its information along with action buttons - START -->
-      <div class="flex bg-background-menu flex-col p-4 border border-gray-700 rounded-lg shadow-lg" *ngFor="let email of emails">
+        <!-- Loop through each email and display its information along with action buttons - START -->
+        <li class="flex bg-background-menu items-center p-4" *ngFor="let email of emails; let i = index">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center">
 
+              <!-- Drag handle -->
+              <div class="cursor-move mr-4">
+                <div class="ms-2">
+                  <strong class="text-red-600">{{ i + 1 }}</strong>
+                </div>
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 6h.01M8 10h.01M8 14h.01M8 18h.01M12 6h.01M12 10h.01M12 14h.01M12 18h.01M16 6h.01M16 10h.01M16 14h.01M16 18h.01"></path>
+                </svg>
+              </div>
 
-        <!-- Component to display email data - START -->
-        <div class="flex-1 overflow-x-auto ms-4 mb-4">
+              <div class="flex-1">
+                <app-show-data
+                  [full_name]="email.full_name"
+                  [email]="email.email"
+                  [datum_vnosa]="email.datum_vnosa"
+                />
+              </div>
 
-          <app-show-data
-            [_id]="email._id"
-            [name]="email.name"
-            [surname]="email.surname"
-            [email]="email.email"
-            [datum_vnosa]="email.datum_vnosa"
-          />
-        </div>
-        <!-- Component to display email data - END -->
-        <div class="flex justify-center">
+            </div>
+          </div>
+          <!-- Component to display email data - END -->
+          <div class="ml-4 flex-shrink-0 flex space-x-2">
 
-          <!-- Buttons for editing and deleting email, and opening a dialog - START -->
-          <app-button-admin
-            (dialogRead)="openDialog(email._id)"
-            (delete)="deleteEmail(email._id)"
-          />
-          <!-- Buttons for editing and deleting email, and opening a dialog - END -->
+            <!-- Buttons for editing and deleting email, and opening a dialog - START -->
+            <app-button-admin
+              (dialogRead)="openDialog(email._id)"
+              (delete)="deleteEmail(email._id)"
+            />
+            <!-- Buttons for editing and deleting email, and opening a dialog - END -->
 
-        </div>
-      </div>
+          </div>
+        </li>
+        <!-- Loop through each blog and display its information along with action buttons - END -->
+
+      </ul>
     </div>
   </div>
   <!-- Loop through each email and display its information along with action buttons - END -->
@@ -53,5 +69,5 @@
 <!-- Loading spinner - END -->
 
 <!-- Button to navigate back to the previous page - START -->
-<app-go-back></app-go-back>
+<app-go-back/>
 <!-- Button to navigate back to the previous page - END -->

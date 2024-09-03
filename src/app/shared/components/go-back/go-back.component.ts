@@ -44,6 +44,9 @@ export class GoBackComponent {
   // Show button if in blogs media admin section
   @Input() blogsMediaAdmin?: boolean
 
+  // Show button if in blogs media admin section
+  @Input() aboutMeMediaAdmin?: boolean
+
   // Show button if in projects media admin section
   @Input() projectsMediaAdmin?: boolean
 

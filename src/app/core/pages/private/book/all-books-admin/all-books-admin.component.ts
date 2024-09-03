@@ -13,6 +13,8 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 import {ShowImageComponent} from "../../../../../shared/components/show-image/show-image.component";
+import {OrderService} from "../../../../../utils/local-storage/order-service";
+import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
 
 /**
  * @Component AllBooksAdminComponent
@@ -22,7 +24,7 @@ import {ShowImageComponent} from "../../../../../shared/components/show-image/sh
 @Component({
   selector: 'app-all-books-admin',
   standalone: true,
-  imports: [CommonModule, ButtonAdminComponent, GoBackComponent, ShowDataComponent, LoadingComponent, BreadcrumbAdminComponent, ShowImageComponent],
+  imports: [CommonModule, ButtonAdminComponent, GoBackComponent, ShowDataComponent, LoadingComponent, BreadcrumbAdminComponent, ShowImageComponent, CdkDropList, CdkDrag],
   templateUrl: './all-books-admin.component.html'
 })
 export class AllBooksAdminComponent {
@@ -32,6 +34,7 @@ export class AllBooksAdminComponent {
   private _dialog = inject(MatDialog); // Service to handle dialogs
   private _translateService = inject(TranslateService); // Service for translation
   protected _getImageByName = inject(GetImageService)
+  private _orderService = inject(OrderService)
 
   // Property to store error messages, initialized to null
   error: string | null = null;
@@ -46,9 +49,26 @@ export class AllBooksAdminComponent {
   // Observable to store a single book fetched by ID
   bookById$!: Observable<Book>;
 
+  book: Book[] = []
+
   // Constructor to initialize the component and fetch all books
   constructor() {
     this.getAllBooks();
+  }
+
+  /**
+   * Drag and drop functionality and save indexes to local storage so that when reorganized, position will be stored to localstorage.
+   */
+  drop(event: CdkDragDrop<Book[]>) {
+    moveItemInArray(this.book, event.previousIndex, event.currentIndex);
+    this._orderService.saveOrderToLocalStorage(this.book, 'bookOrder', '_id')
+  }
+
+  /**
+   * Remove order from local storage
+   */
+  removeOrder() {
+    this._orderService.clearBlogsFromLocalStorage('bookOrder')
   }
 
   /**
@@ -72,9 +92,11 @@ export class AllBooksAdminComponent {
       }),
       // Ensure loading state is set to false once the API call is complete
       finalize(() => this.loading = false)
-    ).subscribe(books => {
+    ).subscribe(items => {
+      this.book = items
+      this._orderService.applySavedOrder(this.book, 'bookOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
-      this.bookSubject.next(books); // Update the BehaviorSubject with the fetched books
+      this.bookSubject.next(items); // Update the BehaviorSubject with the fetched books
     });
   }
 

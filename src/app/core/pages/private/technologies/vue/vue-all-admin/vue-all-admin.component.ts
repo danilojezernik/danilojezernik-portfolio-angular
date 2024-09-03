@@ -95,7 +95,7 @@ export class VueAllAdminComponent {
       finalize(() => this.loading = false)
     ).subscribe(vue => {
       this.vue = vue;
-      this._orderService.applySavedBlogOrder(this.vue, 'vueOrder', '_id')
+      this._orderService.applySavedOrder(this.vue, 'vueOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
       this._vueSubject.next(vue); // Update the BehaviorSubject with the fetched Vue items
     });

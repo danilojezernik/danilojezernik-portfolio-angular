@@ -15,6 +15,7 @@ import {GetImageService} from "../../../../services/get-image/get-image.service"
 import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
 import {ShorteningTextPipe} from "../../../../pipes/shortening-text/shortening-text.pipe";
 import {RouterLink} from "@angular/router";
+import {OrderService} from "../../../../utils/local-storage/order-service";
 
 @Component({
   selector: 'app-book',
@@ -27,31 +28,44 @@ export class BookComponent {
   private _bookService = inject(BookService)
   private _translateService = inject(TranslateService)
   protected _getImageByName = inject(GetImageService)
+  private _orderService = inject(OrderService)
 
-  // Property to store error messages, initialized to null
+// Property to store any error messages encountered during data fetching
   error: string | null = null
 
+  // Subject to keep track of the selected technology for filtering books
   private selectedTechnologySubject = new BehaviorSubject<string>('selected.allTechnology')
 
+  // Observable that emits filtered and ordered books based on the selected technology
   filteredBooks$: Observable<{ all: Book[], length: number }> = this.selectedTechnologySubject.pipe(
+    // Switch to a new observable each time the selected technology changes
     switchMap(technology => {
+      // Fetch all books from the BookService
       return this._bookService.getAllBooks().pipe(
+        // Process the fetched books
         map(books => {
-          const filteredBooks = technology === 'selected.allTechnology' ? books : books.filter(book => book.tehnologija === technology)
+          // Filter books based on the selected technology
+          const filteredBooks = technology === 'selected.allTechnology'
+            ? books // If 'allTechnology' is selected, include all books
+            : books.filter(book => book.tehnologija === technology) // Filter books by technology
+
+          // Apply saved order to the filtered books using the OrderService
+          const orderedBooks = this._orderService.applySavedOrder(filteredBooks, 'bookOrder', '_id')
+
+          // Return the ordered books and their count
           return {
-            all: filteredBooks,
-            length: filteredBooks.length
+            all: orderedBooks,
+            length: orderedBooks.length
           }
         }),
-        // 'catchError' is used to handle any errors that occur during the fetching process
+        // Handle any errors during the data fetching or processing
         catchError((error) => {
-          // Extract the error message
+          // Extract the error message and translate it
           const message = error.message
-          // Translate the error message using the Translation service and set it to the error property
           this._translateService.get(message).subscribe((translation) => {
-            this.error = translation
+            this.error = translation // Set the translated error message
           })
-          // Return an observable of an empty array and length of 0 to handle errors gracefully
+          // Return an observable with an empty array and length of 0
           return of({all: [], length: 0})
         })
       )

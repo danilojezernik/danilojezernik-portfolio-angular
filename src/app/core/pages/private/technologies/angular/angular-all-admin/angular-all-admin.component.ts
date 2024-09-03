@@ -95,7 +95,7 @@ export class AngularAllAdminComponent {
       finalize(() => this.loading = false)
     ).subscribe(items => {
       this.angular = items
-      this._orderService.applySavedBlogOrder(this.angular, 'angularOrder', '_id')
+      this._orderService.applySavedOrder(this.angular, 'angularOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
       this._angularSubject.next(items); // Update the BehaviorSubject with the fetched Angular items
     });

@@ -1,44 +1,57 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-  <div class="flex flex-col" *ngIf="_id" (click)="copyToClipboard(_id)"><strong>ID: </strong> <span class="cursor-pointer hover:text-red-600">{{ _id }}</span></div>
-<div class="flex flex-col" *ngIf="title"><strong>Title: </strong> {{ title }}</div>
-<div class="flex flex-col" *ngIf="naslov"><strong>Naslov: </strong> {{ naslov }}</div>
-<div class="flex flex-col" *ngIf="kategorija"><strong>Kategorija: </strong> {{ kategorija }}</div>
-<div class="flex flex-col" *ngIf="podnaslov"><strong>Podnaslov: </strong> {{ podnaslov }}</div>
-<div class="flex flex-col" *ngIf="vsebina"><strong>Vsebina: </strong> {{ vsebina }}</div>
-<div class="flex flex-col" *ngIf="role"><strong>Vloga: </strong> <span class="text-red-600">{{ role }}</span></div>
-<div class="flex flex-col" *ngIf="datum_vnosa"><strong>Datum vnosa: </strong> {{ datum_vnosa | date:'short' }}</div>
-<div class="flex flex-col" *ngIf="stack"><strong>Stack: </strong> {{ stack }}</div>
-<div class="flex flex-col" *ngIf="framework"><strong>Framework: </strong> {{ framework }}</div>
-<div class="flex flex-col" *ngIf="programming_language"><strong>Programming Language: </strong> {{ programming_language }}</div>
-<div class="flex flex-col" *ngIf="company"><strong>Company: </strong> {{ company }}</div>
-<div class="flex flex-col" *ngIf="employee !== undefined"><strong>Employee: </strong> {{ employee }}</div>
-<div class="flex flex-col" *ngIf="tasks"><strong>Tasks: </strong> {{ tasks }}</div>
-<div class="flex flex-col" *ngIf="company_start"><strong>Company Start: </strong> {{ company_start | date }}</div>
-<div class="flex flex-col" *ngIf="company_end"><strong>Company End: </strong> {{ company_end | date }}</div>
-<div class="flex flex-col" *ngIf="blog_id" (click)="copyToClipboard(blog_id)"><strong>Blog ID: </strong> <span class="cursor-pointer hover:text-red-600">{{ blog_id }}</span></div>
-<div class="flex flex-col" *ngIf="content"><strong>Content: </strong> {{ content }}</div>
-<div class="flex flex-col" *ngIf="author"><strong>Author: </strong> {{ author }}</div>
-<div class="flex flex-col" *ngIf="name" (click)="copyToClipboard(name)"><strong>Name: </strong> <span class="cursor-pointer hover:text-red-600">{{ name }}</span></div>
-<div class="flex flex-col" *ngIf="surname" (click)="copyToClipboard(surname)"><strong>Surname: </strong> <span class="cursor-pointer hover:text-red-600">{{ surname }}</span></div>
-<div class="flex flex-col" *ngIf="email" (click)="copyToClipboard(email)"><strong>Email: </strong> <span class="cursor-pointer hover:text-red-600">{{ email }}</span></div>
-<div class="flex flex-col" *ngIf="message"><strong>Message: </strong> {{ message }}</div>
-<div class="flex flex-col" *ngIf="link"><strong>Link: </strong> <a [href]="link" target="_blank">{{ link }}</a></div>
-<div class="flex flex-col" *ngIf="subtitle"><strong>Subtitle: </strong> {{ subtitle }}</div>
-<div class="flex flex-col" *ngIf="category"><strong>Category: </strong> {{ category }}</div>
-<div class="flex flex-col" *ngIf="github"><strong>GitHub: </strong> {{ github }}</div>
-<div class="flex flex-col" *ngIf="website"><strong>Website: </strong> {{ website }}</div>
-<div class="flex flex-col" *ngIf="confirmed !== undefined"><strong>Confirmed: </strong> {{ confirmed }}</div>
-<div class="flex flex-col" *ngIf="username" (click)="copyToClipboard(username)"><strong>Username: </strong> <span class="cursor-pointer hover:text-red-600">{{ username }}</span></div>
-<div class="flex flex-col" *ngIf="full_name" (click)="copyToClipboard(full_name)"><strong>Full Name: </strong> <span class="cursor-pointer hover:text-red-600">{{ full_name }}</span></div>
-<div class="flex flex-col" *ngIf="profession"><strong>Profession: </strong> {{ profession }}</div>
-<div class="flex flex-col" *ngIf="technology"><strong>Technology: </strong> {{ technology }}</div>
-<div class="flex flex-col" *ngIf="description"><strong>Description: </strong> {{ description }}</div>
-<div class="flex flex-col" *ngIf="hashed_password"><strong>Hashed Password: </strong> {{ hashed_password }}</div>
-<div class="flex flex-col" *ngIf="registered !== undefined"><strong>Registered: </strong> {{ registered }}</div>
-<div class="flex flex-col" *ngIf="blog_notification !== undefined"><strong>Blog Notification: </strong> {{ blog_notification }}</div>
-<div class="flex flex-col" *ngIf="tehnologija"><strong>Tehnologija: </strong> {{ tehnologija }}</div>
-<div class="flex flex-col" *ngIf="question"><strong>Vprašanje: </strong> {{ question }}</div>
-<div class="flex flex-col" *ngIf="answer"><strong>Odgovor: </strong> {{ answer }}</div>
-<div class="flex flex-col" *ngIf="imageName" (click)="copyToClipboard(imageName)"><strong>Image: </strong> <span class="cursor-pointer hover:text-red-600">{{ imageName }}</span></div>
-<div class="flex flex-col" *ngIf="blogById && (blog_id && blog_id.length > 16)"><span class="cursor-pointer hover:text-red-600"><a [routerLink]="['/blog/', blog_id]">Go to blog</a></span></div>
+  <div class="flex flex-col" *ngIf="_id" (click)="copyToClipboard(_id)"><strong>ID: </strong> <span
+    class="cursor-pointer hover:text-red-600">{{ _id }}</span></div>
+  <div class="flex flex-col" *ngIf="title"><strong>Title: </strong> {{ title }}</div>
+  <div class="flex flex-col" *ngIf="username" (click)="copyToClipboard(username)"><strong>Username: </strong> <span
+    class="cursor-pointer hover:text-red-600">{{ username }}</span></div>
+  <div class="flex flex-col" *ngIf="full_name" (click)="copyToClipboard(full_name)"><strong>Full Name: </strong> <span
+    class="cursor-pointer hover:text-red-600">{{ full_name }}</span></div>
+  <div class="flex flex-col" *ngIf="naslov"><strong>Naslov: </strong> {{ naslov }}</div>
+  <div class="flex flex-col" *ngIf="kategorija"><strong>Kategorija: </strong> {{ kategorija }}</div>
+  <div class="flex flex-col" *ngIf="podnaslov"><strong>Podnaslov: </strong> {{ podnaslov }}</div>
+  <div class="flex flex-col" *ngIf="vsebina"><strong>Vsebina: </strong> {{ vsebina }}</div>
+  <div class="flex flex-col" *ngIf="email" (click)="copyToClipboard(email)"><strong>Email: </strong> <span
+    class="cursor-pointer hover:text-red-600">{{ email }}</span></div>
+  <div class="flex flex-col" *ngIf="role"><strong>Vloga: </strong> <span class="text-red-600">{{ role }}</span></div>
+  <div class="flex flex-col" *ngIf="datum_vnosa"><strong>Datum vnosa: </strong> {{ datum_vnosa | date:'short' }}</div>
+  <div class="flex flex-col" *ngIf="stack"><strong>Stack: </strong> {{ stack }}</div>
+  <div class="flex flex-col" *ngIf="framework"><strong>Framework: </strong> {{ framework }}</div>
+  <div class="flex flex-col" *ngIf="programming_language"><strong>Programming
+    Language: </strong> {{ programming_language }}
+  </div>
+  <div class="flex flex-col" *ngIf="company"><strong>Company: </strong> {{ company }}</div>
+  <div class="flex flex-col" *ngIf="employee !== undefined"><strong>Employee: </strong> {{ employee }}</div>
+  <div class="flex flex-col" *ngIf="tasks"><strong>Tasks: </strong> {{ tasks }}</div>
+  <div class="flex flex-col" *ngIf="company_start"><strong>Company Start: </strong> {{ company_start | date }}</div>
+  <div class="flex flex-col" *ngIf="company_end"><strong>Company End: </strong> {{ company_end | date }}</div>
+  <div class="flex flex-col" *ngIf="blog_id" (click)="copyToClipboard(blog_id)"><strong>Blog ID: </strong> <span
+    class="cursor-pointer hover:text-red-600">{{ blog_id }}</span></div>
+  <div class="flex flex-col" *ngIf="content"><strong>Content: </strong> {{ content }}</div>
+  <div class="flex flex-col" *ngIf="author"><strong>Author: </strong> {{ author }}</div>
+  <div class="flex flex-col" *ngIf="name" (click)="copyToClipboard(name)"><strong>Name: </strong> <span
+    class="cursor-pointer hover:text-red-600">{{ name }}</span></div>
+  <div class="flex flex-col" *ngIf="surname" (click)="copyToClipboard(surname)"><strong>Surname: </strong> <span
+    class="cursor-pointer hover:text-red-600">{{ surname }}</span></div>
+  <div class="flex flex-col" *ngIf="message"><strong>Message: </strong> {{ message }}</div>
+  <div class="flex flex-col" *ngIf="link"><strong>Link: </strong> <a [href]="link" target="_blank">{{ link }}</a></div>
+  <div class="flex flex-col" *ngIf="subtitle"><strong>Subtitle: </strong> {{ subtitle }}</div>
+  <div class="flex flex-col" *ngIf="category"><strong>Category: </strong> {{ category }}</div>
+  <div class="flex flex-col" *ngIf="github"><strong>GitHub: </strong> {{ github }}</div>
+  <div class="flex flex-col" *ngIf="website"><strong>Website: </strong> {{ website }}</div>
+  <div class="flex flex-col" *ngIf="confirmed !== undefined"><strong>Confirmed: </strong> {{ confirmed }}</div>
+  <div class="flex flex-col" *ngIf="profession"><strong>Profession: </strong> {{ profession }}</div>
+  <div class="flex flex-col" *ngIf="technology"><strong>Technology: </strong> {{ technology }}</div>
+  <div class="flex flex-col" *ngIf="description"><strong>Description: </strong> {{ description }}</div>
+  <div class="flex flex-col" *ngIf="hashed_password"><strong>Hashed Password: </strong> {{ hashed_password }}</div>
+  <div class="flex flex-col" *ngIf="registered !== undefined"><strong>Registered: </strong> {{ registered }}</div>
+  <div class="flex flex-col" *ngIf="blog_notification !== undefined"><strong>Blog
+    Notification: </strong> {{ blog_notification }}
+  </div>
+  <div class="flex flex-col" *ngIf="tehnologija"><strong>Tehnologija: </strong> {{ tehnologija }}</div>
+  <div class="flex flex-col" *ngIf="question"><strong>Vprašanje: </strong> {{ question }}</div>
+  <div class="flex flex-col" *ngIf="answer"><strong>Odgovor: </strong> {{ answer }}</div>
+  <div class="flex flex-col" *ngIf="imageName" (click)="copyToClipboard(imageName)"><strong>Image: </strong> <span
+    class="cursor-pointer hover:text-red-600">{{ imageName }}</span></div>
+  <div class="flex flex-col" *ngIf="blogById && (blog_id && blog_id.length > 16)"><span
+    class="cursor-pointer hover:text-red-600"><a [routerLink]="['/blog/', blog_id]">Go to blog</a></span></div>
 </div>

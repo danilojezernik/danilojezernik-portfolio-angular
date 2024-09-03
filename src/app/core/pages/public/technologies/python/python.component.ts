@@ -52,7 +52,7 @@ export class PythonComponent {
       return of([] as Python[]);
     }),
     // Map the received Angular questions and apply any saved order using the OrderService
-    map(data => this._orderService.applySavedBlogOrder(data, 'pythonOrder', '_id')),
+    map(data => this._orderService.applySavedOrder(data, 'pythonOrder', '_id')),
   );
 
   // Open drawer functionality

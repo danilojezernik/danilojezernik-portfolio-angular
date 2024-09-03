@@ -12,6 +12,7 @@ import { ButtonAdminComponent } from "../../../../../shared/components/button-ad
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
+import {CdkDropList} from "@angular/cdk/drag-drop";
 
 /**
  * @Component UsersAllAdminComponent
@@ -22,7 +23,7 @@ import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcr
 @Component({
   selector: 'app-users-admin',
   standalone: true,
-    imports: [CommonModule, GoBackComponent, RouterLink, MatDialogModule, ShowDataComponent, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent],
+    imports: [CommonModule, GoBackComponent, RouterLink, MatDialogModule, ShowDataComponent, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent, CdkDropList],
   templateUrl: './users-all-admin.component.html'
 })
 export class UsersAllAdminComponent {

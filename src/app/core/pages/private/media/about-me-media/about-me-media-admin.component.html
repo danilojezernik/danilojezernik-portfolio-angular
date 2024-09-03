@@ -1,9 +1,10 @@
 <app-breadcrumb-admin first="breadcrumb.media" firstLink="/media" second="breadcrumb.about"/>
 
-<div class="flex flex-col md:pt-20 pt-4 text-center">
-  <h2 class="md:text-3xl text-lg">O meni</h2>
-  <h2 class="md:text-3xl text-lg">Dodajanje in urejanje medijev</h2>
+<!-- Title and description of the book section - START -->
+<div class="md:pt-20 pt-4">
+  <app-hero-title title="pages.about-me.title" subtitle="pages.media.description"/>
 </div>
+<!-- Title and description of the book section - END -->
 
 <div class="flex md:flex-row flex-col md:p-20 p-2 gap-10">
 
@@ -32,7 +33,7 @@
     <!-- Display images and provide delete buttons -->
     <ng-container *ngIf="images$ | async as imageData">
       <div *ngFor="let imgName of imageData.images" class="flex flex-col items-center">
-        <span (click)="copyToClipboard(imgName)">{{imgName}}</span>
+        <span class="hover:text-red-600 cursor-pointer" (click)="copyToClipboard(imgName)">{{imgName}}</span>
         <img [src]="_getImageService.getImageUrl(imgName)" class="max-h-40 border border-red-600" alt="Image"/>
         <button (click)="deleteImage(imgName)" class="m-0 bg-red-500 text-white px-2 py-1 w-full">Delete</button>
       </div>
@@ -45,4 +46,4 @@
 
 </div>
 
-<app-go-back />
+<app-go-back [aboutMeMediaAdmin]="true"/>

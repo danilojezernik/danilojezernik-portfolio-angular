@@ -89,7 +89,7 @@ export class PythonAllAdminComponent {
       finalize(() => this.loading = false)
     ).subscribe(items => {
       this.python = items
-      this._orderService.applySavedBlogOrder(this.python, 'pythonOrder', '_id')
+      this._orderService.applySavedOrder(this.python, 'pythonOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
       this._pythonSubject.next(items); // Update the BehaviorSubject with the fetched blogs
     })

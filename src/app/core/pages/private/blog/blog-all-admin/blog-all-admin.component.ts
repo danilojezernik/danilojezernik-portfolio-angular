@@ -104,11 +104,11 @@ export class BlogAllAdminComponent {
       }),
       // Ensure loading state is set to false once the API call is complete
       finalize(() => this.loading = false)
-    ).subscribe(blog => {
-      this.blog = blog
-      this._orderService.applySavedBlogOrder(this.blog, 'blogOrder', '_id')
+    ).subscribe(items => {
+      this.blog = items
+      this._orderService.applySavedOrder(this.blog, 'blogOrder', '_id')
       this.loading = false;
-      this._blogSubject.next(blog); // Update the BehaviorSubject with the fetched blogs
+      this._blogSubject.next(items); // Update the BehaviorSubject with the fetched blogs
     })
   }
 
