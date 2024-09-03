@@ -242,6 +242,11 @@
 		"language": "All languages",
 		"optionTxt": "Choose an option"
 	},
+	"snack": {
+		"close": "Close",
+		"image-saved": "Saved to clipboard",
+		"reordered": "The order has been restored to its original state"
+	},
 	"submitLabel": {
 		"blog": "Add blog",
 		"book": "Book",

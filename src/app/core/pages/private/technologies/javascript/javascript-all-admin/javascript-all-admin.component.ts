@@ -13,11 +13,13 @@ import {TranslateService} from "@ngx-translate/core";
 import {BehaviorSubject, catchError, finalize, Observable, of} from "rxjs";
 import {JavaScript} from "../../../../../../models/javascript.model";
 import {JavascriptService} from "../../../../../../services/api/javascript.service";
+import {OrderService} from "../../../../../../utils/local-storage/order-service";
+import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-javascript-all-admin',
   standalone: true,
-  imports: [CommonModule, BreadcrumbAdminComponent, ButtonAdminComponent, GoBackComponent, LoadingComponent, ShowDataComponent],
+  imports: [CommonModule, BreadcrumbAdminComponent, ButtonAdminComponent, GoBackComponent, LoadingComponent, ShowDataComponent, CdkDropList, CdkDrag],
   templateUrl: './javascript-all-admin.component.html'
 })
 export class JavascriptAllAdminComponent {
@@ -26,6 +28,7 @@ export class JavascriptAllAdminComponent {
   protected _getImageByName = inject(GetImageService)
   private _openDialog = inject(DialogAdminService)
   private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
+  private _orderService = inject(OrderService)
 
   // Property to store error messages, initialized to null
   error: string | null = null
@@ -38,12 +41,29 @@ export class JavascriptAllAdminComponent {
 
   javascriptById$!: Observable<JavaScript>
 
+  javascript: JavaScript[] = []
+
   /**
    * Constructor to initialize the component.
    * Calls the getAllBlogs method to load all blog posts.
    */
   constructor() {
     this.getAllAngular()
+  }
+
+  /**
+   * Drag and drop functionality and save indexes to local storage so that when reorganized, position will be stored to localstorage.
+   */
+  drop(event: CdkDragDrop<JavaScript[]>) {
+    moveItemInArray(this.javascript, event.previousIndex, event.currentIndex);
+    this._orderService.saveOrderToLocalStorage(this.javascript, 'javascriptOrder', '_id')
+  }
+
+  /**
+   * Remove order from local storage
+   */
+  removeOrder() {
+    this._orderService.clearBlogsFromLocalStorage('javascriptOrder')
   }
 
   /**
@@ -67,9 +87,11 @@ export class JavascriptAllAdminComponent {
       }),
       // Ensure loading state is set to false once the API call is complete
       finalize(() => this.loading = false)
-    ).subscribe(blog => {
+    ).subscribe(items => {
+      this.javascript = items
+      this._orderService.applySavedBlogOrder(this.javascript, 'javascriptOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
-      this._javascriptSubject.next(blog); // Update the BehaviorSubject with the fetched blogs
+      this._javascriptSubject.next(items); // Update the BehaviorSubject with the fetched blogs
     })
   }
 

@@ -51,10 +51,17 @@
     @include button-hover-effect($color-back-start, $color-back-end);
   }
 
-  &.restore {
+  &.un-restore {
+    animation: pulseRestore 2.5s infinite;
     border-radius: $border-radius-button-admin;
     color: $black-text-color;
     @include button-hover-effect($color-add-start, $color-delete-end);
+  }
+
+  &.restore {
+    border-radius: $border-radius-button-admin;
+    color: $black-text-color;
+    @include button-hover-effect($color-edit-start, $color-edit-end);
   }
 
   @media (max-width: 575px) {

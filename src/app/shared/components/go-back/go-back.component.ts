@@ -1,7 +1,9 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { TranslateModule } from "@ngx-translate/core";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {RouterLink} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {SNACKBAR_MESSAGES} from "../../global-const/global.const";
 
 @Component({
   selector: 'app-go-back',
@@ -11,9 +13,10 @@ import {RouterLink} from "@angular/router";
 })
 export class GoBackComponent {
 
-// Injecting Location service to handle navigation back
-  _back = inject(Location)
-
+  // Injecting Location service to handle navigation back
+  private _back = inject(Location)
+  private _snack = inject(MatSnackBar)
+  private _translateService = inject(TranslateService)
   // Input properties to conditionally display buttons based on the admin section being viewed
 
   // Show button if in books admin
@@ -32,6 +35,8 @@ export class GoBackComponent {
   @Input() javascriptAdmin?: boolean
   @Input() typescriptAdmin?: boolean
   @Input() mongodbAdmin?: boolean
+
+  @Input() inLocalStorage?: string
 
   // Show button if in books media admin section
   @Input() booksMediaAdmin?: boolean
@@ -61,6 +66,11 @@ export class GoBackComponent {
   restoreLocalStorage() {
     if(this.remove) {
       this.remove.emit()
+      this._translateService.get([SNACKBAR_MESSAGES.reordered, SNACKBAR_MESSAGES.close]).subscribe((translation) => {
+        this._snack.open(translation[SNACKBAR_MESSAGES.reordered], translation[SNACKBAR_MESSAGES.close], {
+          duration: 3000
+        })
+      })
     }
   }
 
@@ -69,4 +79,7 @@ export class GoBackComponent {
     this._back.back()
   }
 
+  get isInLocalStorage(): boolean {
+    return !!localStorage.getItem(this.inLocalStorage || '');
+  }
 }

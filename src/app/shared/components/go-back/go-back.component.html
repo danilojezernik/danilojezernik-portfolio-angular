@@ -112,9 +112,15 @@
 
 <!-- Button show when one wants to reset order - START -->
 <button *ngIf="removeBoolean"
+        [ngClass]="{
+          'un-restore': isInLocalStorage,
+          'restore': !isInLocalStorage
+        }"
+        [disabled]="!isInLocalStorage"
         style="position: fixed; bottom: 100px; right: 0; margin: 10px"
-        class="btn-admin restore"
+        class="btn-admin"
         (click)="restoreLocalStorage()">
-  {{ 'button.restore-order' | translate }}
+  <span *ngIf="isInLocalStorage">{{ 'button.restore-order' | translate }}</span>
+  <span *ngIf="!isInLocalStorage">Vrstni red ni spremenjen</span>
 </button>
 <!-- Button show when one wants to reset order - END -->

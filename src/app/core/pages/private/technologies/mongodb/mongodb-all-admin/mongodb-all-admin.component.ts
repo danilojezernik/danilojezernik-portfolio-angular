@@ -13,11 +13,13 @@ import {TranslateService} from "@ngx-translate/core";
 import {BehaviorSubject, catchError, finalize, Observable, of} from "rxjs";
 import {MongodbService} from "../../../../../../services/api/mongodb.service";
 import {MongoDb} from "../../../../../../models/mongodb.model";
+import {OrderService} from "../../../../../../utils/local-storage/order-service";
+import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-mongodb-all-admin',
   standalone: true,
-  imports: [CommonModule, BreadcrumbAdminComponent, ButtonAdminComponent, GoBackComponent, LoadingComponent, ShowDataComponent],
+  imports: [CommonModule, BreadcrumbAdminComponent, ButtonAdminComponent, GoBackComponent, LoadingComponent, ShowDataComponent, CdkDropList, CdkDrag],
   templateUrl: './mongodb-all-admin.component.html'
 })
 export class MongodbAllAdminComponent {
@@ -27,6 +29,7 @@ export class MongodbAllAdminComponent {
   protected _getImageByName = inject(GetImageService); // Service for retrieving images by name
   private _openDialog = inject(DialogAdminService); // Service for opening dialog windows
   private _translateService = inject(TranslateService); // Service for translating error messages
+  private _orderService = inject(OrderService)
 
   // Property to store error messages; initially set to null
   error: string | null = null;
@@ -43,12 +46,29 @@ export class MongodbAllAdminComponent {
   // Observable to store a single MongoDB document fetched by ID
   mongodbById$!: Observable<MongoDb>;
 
+  mongodb: MongoDb[] = []
+
   /**
    * Constructor to initialize the component.
    * Automatically loads all MongoDB documents when the component is created.
    */
   constructor() {
     this.getAllMongoDb();
+  }
+
+  /**
+   * Drag and drop functionality and save indexes to local storage so that when reorganized, position will be stored to localstorage.
+   */
+  drop(event: CdkDragDrop<MongoDb[]>) {
+    moveItemInArray(this.mongodb, event.previousIndex, event.currentIndex);
+    this._orderService.saveOrderToLocalStorage(this.mongodb, 'mongodbOrder', '_id')
+  }
+
+  /**
+   * Remove order from local storage
+   */
+  removeOrder() {
+    this._orderService.clearBlogsFromLocalStorage('mongodbOrder')
   }
 
   /**
@@ -72,9 +92,11 @@ export class MongodbAllAdminComponent {
       }),
       // Ensure loading state is set to false once the API call is complete
       finalize(() => this.loading = false)
-    ).subscribe(mongodb => {
+    ).subscribe(items => {
+      this.mongodb = items
+      this._orderService.applySavedBlogOrder(this.mongodb, 'mongodbOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
-      this._mongodbSubject.next(mongodb); // Update the BehaviorSubject with the fetched MongoDB documents
+      this._mongodbSubject.next(items); // Update the BehaviorSubject with the fetched MongoDB documents
     });
   }
 

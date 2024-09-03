@@ -13,11 +13,13 @@ import {TranslateService} from "@ngx-translate/core";
 import {BehaviorSubject, catchError, finalize, Observable, of} from "rxjs";
 import {Python} from "../../../../../../models/python.mondel";
 import {PythonService} from "../../../../../../services/api/python.service";
+import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
+import {OrderService} from "../../../../../../utils/local-storage/order-service";
 
 @Component({
   selector: 'app-python-all-admin',
   standalone: true,
-  imports: [CommonModule, BreadcrumbAdminComponent, ButtonAdminComponent, GoBackComponent, LoadingComponent, ShowDataComponent],
+  imports: [CommonModule, BreadcrumbAdminComponent, ButtonAdminComponent, GoBackComponent, LoadingComponent, ShowDataComponent, CdkDropList, CdkDrag],
   templateUrl: './python-all-admin.component.html'
 })
 export class PythonAllAdminComponent {
@@ -26,6 +28,7 @@ export class PythonAllAdminComponent {
   protected _getImageByName = inject(GetImageService)
   private _openDialog = inject(DialogAdminService)
   private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
+  private _orderService = inject(OrderService)
 
   // Property to store error messages, initialized to null
   error: string | null = null
@@ -38,12 +41,29 @@ export class PythonAllAdminComponent {
 
   pythonById$!: Observable<Python>
 
+  python: Python[] = []
+
   /**
    * Constructor to initialize the component.
    * Calls the getAllBlogs method to load all blog posts.
    */
   constructor() {
     this.getAllPython()
+  }
+
+  /**
+   * Drag and drop functionality and save indexes to local storage so that when reorganized, position will be stored to localstorage.
+   */
+  drop(event: CdkDragDrop<Python[]>) {
+    moveItemInArray(this.python, event.previousIndex, event.currentIndex);
+    this._orderService.saveOrderToLocalStorage(this.python, 'pythonOrder', '_id')
+  }
+
+  /**
+   * Remove order from local storage
+   */
+  removeOrder() {
+    this._orderService.clearBlogsFromLocalStorage('pythonOrder')
   }
 
   /**
@@ -67,9 +87,11 @@ export class PythonAllAdminComponent {
       }),
       // Ensure loading state is set to false once the API call is complete
       finalize(() => this.loading = false)
-    ).subscribe(python => {
+    ).subscribe(items => {
+      this.python = items
+      this._orderService.applySavedBlogOrder(this.python, 'pythonOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
-      this._pythonSubject.next(python); // Update the BehaviorSubject with the fetched blogs
+      this._pythonSubject.next(items); // Update the BehaviorSubject with the fetched blogs
     })
   }
 

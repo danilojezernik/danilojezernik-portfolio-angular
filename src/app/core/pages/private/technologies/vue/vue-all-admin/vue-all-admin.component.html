@@ -23,7 +23,7 @@
               <!-- Drag handle (optional) -->
               <div class="cursor-move mr-4">
                 <div class="ms-2">
-                  <strong class="text-green-400">{{ i + 1 }}</strong>
+                  <strong class="text-green-600">{{ i + 1 }}</strong>
                 </div>
                 <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
@@ -75,5 +75,5 @@
 <!-- Loading spinner - END -->
 
 <!-- Button to navigate back to the previous page - START -->
-<app-go-back [vueAdmin]="true" [removeBoolean]="true" (remove)="removeOrder()"/>
+<app-go-back [vueAdmin]="true" [inLocalStorage]="'vueOrder'" [removeBoolean]="true" (remove)="removeOrder()"/>
 <!-- Button to navigate back to the previous page - END -->

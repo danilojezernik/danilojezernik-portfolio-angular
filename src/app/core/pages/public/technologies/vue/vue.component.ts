@@ -1,12 +1,76 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, inject, QueryList, ViewChildren} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {ButtonPublicComponent} from "../../../../../shared/components/button-public/button-public.component";
+import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
+import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {OrderService} from "../../../../../utils/local-storage/order-service";
+import {catchError, map, of} from "rxjs";
+import {Angular} from "../../../../../models/angular.model";
+import {VueService} from "../../../../../services/api/vue.service";
 
 @Component({
   selector: 'app-vue',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonPublicComponent, HeroTitleComponent, LoadingComponent, TranslateModule],
   templateUrl: './vue.component.html'
 })
 export class VueComponent {
+
+  // Captures references to all elements with the template reference variable 'questionElement'
+  @ViewChildren('questionElement') questionElements!: QueryList<ElementRef>;
+
+  // Injecting AngularService to fetch Angular-related data
+  private _vueService = inject(VueService);
+
+  // Injecting OrderService to manage and apply the order of the questions
+  private _orderService = inject(OrderService);
+
+  // Injecting TranslateService to handle translation of text and error messages
+  private _translateService = inject(TranslateService);
+
+  // Property to store error messages, initialized to null
+  error: string | null = null;
+
+  // Track drawer state
+  drawerOpen = false;
+
+  // Observable that fetches and processes the list of Angular questions
+  vue$ = this._vueService.getAllVue().pipe(
+    // 'catchError' is used to handle any errors that occur during the fetching process
+    catchError((error) => {
+      // Extract the error message from the caught error
+      const message = error.message;
+      // Translate the error message using the TranslateService and store it in the 'error' property
+      this._translateService.get(message).subscribe((translation) => {
+        this.error = translation;
+      });
+      // Return an observable of an empty array to gracefully handle errors in the pipeline
+      return of([] as Angular[]);
+    }),
+    // Map the received Angular questions and apply any saved order using the OrderService
+    map(data => this._orderService.applySavedBlogOrder(data, 'vueOrder', '_id')),
+  );
+
+  // Open drawer functionality
+  toggleDrawer() {
+    this.drawerOpen = !this.drawerOpen;
+  }
+
+  /**
+   * Scrolls to the question element with the specified ID and closes the drawer.
+   * @param questionId - The ID of the question element to scroll to
+   */
+  scrollToQuestion(questionId?: string) {
+    // Find the target element by matching the provided ID with the ID of the question elements
+    const targetElement = this.questionElements.find((element) => element.nativeElement.id === questionId);
+    if (targetElement) {
+      // Scroll the target element into view with a smooth scroll effect
+      targetElement.nativeElement.scrollIntoView({behavior: 'smooth'});
+      // Trigger a click on the close button to close the drawer
+      // Close the drawer by clicking the close button
+      this.toggleDrawer()
+    }
+  }
 
 }

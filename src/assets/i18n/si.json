@@ -242,6 +242,11 @@
 		"language": "Vsi jeziki",
 		"optionTxt": "Izberite možnost"
 	},
+	"snack": {
+		"close": "Zapri",
+		"image-saved": "Shranjeno v odložišče",
+		"reordered": "Vrsni red je bil povrnjen v prvotnega"
+	},
 	"submitLabel": {
 		"blog": "Dodaj blog",
 		"book": "Knjigo",

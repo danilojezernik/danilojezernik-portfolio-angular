@@ -26,21 +26,6 @@ export enum BUTTONS {
   back = 'button.back' // Label for the back button
 }
 
-// Language translations for the header component and Translate service
-// Enum for supported languages
-export enum TRANSLATE_LANGUAGE {
-  si = 'si', // Slovenian lowercase
-  SI = 'SI', // Slovenian uppercase
-  en = 'en', // English lowercase
-  EN = 'EN'  // English uppercase
-}
-
-// Exported object for language codes
-export const LANGUAGE = {
-  si: 'SI', // Slovenian language code
-  en: 'EN'  // English language code
-}
-
 // Select language options for the GitHub component
 export const SELECT_LANGUAGE = [
   'selected.language', 'TypeScript', 'JavaScript', 'Python', 'Vue', 'Kotlin', 'HTML'
@@ -55,4 +40,11 @@ export const SELECT_TECHNOLOGY = [
 export const PAGINATION ={
   commentLImit: 10,
   limitTextShortening: 200
+}
+
+// Messages that are translated from snackbar
+export const SNACKBAR_MESSAGES = {
+  reordered: 'snack.reordered',
+  imageSaved: 'snack.image-saved',
+  close: 'snack.close'
 }
