@@ -54,6 +54,7 @@
 		"edit": "Edit",
 		"github": "to GitHub",
 		"media-projects": "Pictures - projects",
+		"questions": "All questions",
 		"read": "Read",
 		"read-more": "Read more",
 		"restore-order": "Restore order",
@@ -232,6 +233,7 @@
 		},
 		"technologies": {
 			"description": "This page covers key technologies: Angular, Vue, TypeScript, JavaScript, MongoDB, and Python, with answers to important questions.",
+			"questions": "Questions",
 			"title": "Technologies"
 		}
 	},

@@ -46,6 +46,7 @@ export class VueAllAdminComponent {
   // Observable to store a single Vue item fetched by ID
   vueById$!: Observable<Vue>;
 
+  // To get _id from drag and drop CDK functionality
   vue: Vue[] = []
 
   /**

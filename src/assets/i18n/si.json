@@ -54,6 +54,7 @@
 		"edit": "Uredi",
 		"github": "na GitHub",
 		"media-projects": "Slike - projekti",
+		"questions": "Vsa vprašanja",
 		"read": "Beri",
 		"read-more": "Beri dalje",
 		"restore-order": "Povrni vrstni red",
@@ -232,6 +233,7 @@
 		},
 		"technologies": {
 			"description": "Na tej strani so predstavljene ključne tehnologije: Angular, Vue, TypeScript, JavaScript, MongoDB in Python, z odgovori na pomembna vprašanja.",
+			"questions": "Vprašanja",
 			"title": "Tehnologije"
 		}
 	},

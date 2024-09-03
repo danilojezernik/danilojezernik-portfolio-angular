@@ -2,10 +2,8 @@ import {
   Component,
   ElementRef,
   inject,
-  ViewChild,
   ViewChildren,
-  QueryList,
-  AfterViewInit,
+  QueryList
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AngularService} from "../../../../../services/api/angular.service";
@@ -17,20 +15,18 @@ import {HeroTitleComponent} from "../../../../../shared/components/hero-title/he
 import {BUTTONS} from "../../../../../shared/global-const/global.const";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
 import {RouterLink} from "@angular/router";
+import {ButtonPublicComponent} from "../../../../../shared/components/button-public/button-public.component";
 
 @Component({
   selector: 'app-angular',
   standalone: true,
-  imports: [CommonModule, HeroTitleComponent, TranslateModule, LoadingComponent, RouterLink],
+  imports: [CommonModule, HeroTitleComponent, TranslateModule, LoadingComponent, RouterLink, ButtonPublicComponent],
   templateUrl: './angular.component.html'
 })
-export class AngularComponent implements AfterViewInit {
+export class AngularComponent {
 
   // Captures references to all elements with the template reference variable 'questionElement'
   @ViewChildren('questionElement') questionElements!: QueryList<ElementRef>;
-
-  // Captures the reference to the drawer's close button using the template reference variable 'closeButton'
-  @ViewChild('closeButton') closeButton!: ElementRef<HTMLButtonElement>;
 
   // Injecting AngularService to fetch Angular-related data
   private _angularService = inject(AngularService);
@@ -49,7 +45,7 @@ export class AngularComponent implements AfterViewInit {
 
   // Observable that fetches and processes the list of Angular questions
   angular$ = this._angularService.getAllAngular().pipe(
-    // 'catchError' is used to handle any errors that occur during the fetching process
+  // 'catchError' is used to handle any errors that occur during the fetching process
     catchError((error) => {
       // Extract the error message from the caught error
       const message = error.message;
@@ -61,16 +57,12 @@ export class AngularComponent implements AfterViewInit {
       return of([] as Angular[]);
     }),
     // Map the received Angular questions and apply any saved order using the OrderService
-    map(angular => this._orderService.applySavedBlogOrder(angular, 'angularOrder', '_id'))
+    map(angular => this._orderService.applySavedBlogOrder(angular, 'angularOrder', '_id')),
   );
 
   // Open drawer functionality
   toggleDrawer() {
     this.drawerOpen = !this.drawerOpen;
-  }
-
-  ngAfterViewInit() {
-    this.drawerOpen = false;  // Close drawer after view is initialized
   }
 
   /**
@@ -82,17 +74,14 @@ export class AngularComponent implements AfterViewInit {
     const targetElement = this.questionElements.find((element) => element.nativeElement.id === questionId);
     if (targetElement) {
       // Scroll the target element into view with a smooth scroll effect
-      targetElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
+      targetElement.nativeElement.scrollIntoView({behavior: 'smooth'});
       // Trigger a click on the close button to close the drawer
-
       // Close the drawer by clicking the close button
-      if (this.closeButton) {
-        this.closeButton.nativeElement.click()
-        this.drawerOpen = false
-      }
+      this.toggleDrawer()
     }
   }
 
   // A constant reference to globally defined BUTTONS, used in the template for button rendering
   protected readonly BUTTONS = BUTTONS;
+
 }

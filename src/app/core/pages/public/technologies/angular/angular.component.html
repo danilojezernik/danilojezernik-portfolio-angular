@@ -1,20 +1,16 @@
 <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-
   <!-- Title and description of the blog section - START -->
   <app-hero-title title="pages.angular.title" subtitle="pages.angular.description"/>
   <!-- Title and description of the blog section - END -->
 
-  <!-- Button to open the drawer containing all questions - START -->
-  <div class="text-center">
-    <button (click)="toggleDrawer()" class="btn-public read" type="button" data-drawer-target="drawer-right-example"
-            data-drawer-show="drawer-right-example" data-drawer-placement="right" aria-controls="drawer-right-example">
-      All the questions
-    </button>
-  </div>
-  <!-- Button to open the drawer containing all questions - END -->
-
   <!-- Main container for displaying questions and answers related to Angular - START -->
   <ng-container *ngIf="angular$ | async as angular; else loadingData">
+
+    <!-- Button to open the drawer containing all questions - START -->
+    <div *ngIf="angular.length > 0 && !error" class="text-center">
+      <app-button-public (click)="toggleDrawer()" [questionsTechnologies]="true" />
+    </div>
+    <!-- Button to open the drawer containing all questions - END -->
 
     <!-- Check if there is no error and display questions and answers - START -->
     <ng-container *ngIf="!error">
@@ -55,7 +51,9 @@
 
     <!-- Error message display if the data fetching fails - START -->
     <ng-container *ngIf="error">
-      {{ error }}
+      <div class="text-center text-red-600 py-24 text-lg md:text-2xl">
+        {{ error }}
+      </div>
     </ng-container>
     <!-- Error message display if the data fetching fails - END -->
 
@@ -64,31 +62,32 @@
 
 </div>
 
+<!-- Backdrop element for dimming the rest of the screen when the drawer is open -->
+<div class="fixed inset-0 bg-black bg-opacity-50 z-30" *ngIf="drawerOpen" (click)="toggleDrawer()"></div>
+
 <!-- Drawer component that slides in from the right to display a list of all questions - START -->
-<div id="drawer-right-example" [ngClass]="{'translate-x-full': !drawerOpen, 'translate-x-0': drawerOpen}"
+<div [ngClass]="{'translate-x-full': !drawerOpen, 'translate-x-0': drawerOpen}"
      class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-background-menu w-80 dark:bg-gray-800"
-     tabindex="-1" aria-labelledby="drawer-right-label">
+     tabindex="-1">
 
   <!-- Drawer title - START -->
-  <h5 id="drawer-right-label"
-      class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400">
+  <h5 class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400">
     <svg class="w-4 h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
          viewBox="0 0 20 20">
       <path
         d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
     </svg>
-    Questions
+    {{ 'pages.technologies.questions' | translate }}
   </h5>
   <!-- Drawer title - END -->
 
   <!-- Close button for the drawer - START -->
-  <button #closeButton type="button" data-drawer-hide="drawer-right-example" aria-controls="drawer-right-example"
-          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white">
+  <button (click)="toggleDrawer()" type="button"
+          class="text-red-600 bg-transparent hover:bg-red-600 hover:text-white rounded-lg text-sm w-8 h-8 absolute top-2.5 right-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white">
     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
     </svg>
-    <span class="sr-only">Close menu</span>
   </button>
   <!-- Close button for the drawer - END -->
 
@@ -103,8 +102,7 @@
     <ng-container *ngIf="angular$ | async as angular">
       <div class="text-sm" *ngFor="let data of angular; let i = index">
         <a (click)="scrollToQuestion(data._id)" class="cursor-pointer hover:underline">
-
-        <strong>{{ i + 1 }}.</strong> {{ data.question }}
+          <strong>{{ i + 1 }}.</strong> {{ data.question }}
         </a>
       </div>
     </ng-container>
