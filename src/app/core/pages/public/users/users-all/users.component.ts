@@ -26,6 +26,11 @@ export class UsersComponent {
         _id: data._id,
         username: data.username,
         full_name: data.full_name,
+        facebook: data.facebook,
+        instagram: data.instagram,
+        twitter: data.twitter,
+        github: data.github,
+        www: data.www,
         profession: data.profession,
         datum_vnosa: data.datum_vnosa
       })
@@ -39,7 +44,7 @@ export class UsersComponent {
         this.error = translation
       })
       // Return an observable of an empty array to handle errors gracefully
-      return of([] as { _id: string, username: string, datum_vnosa: string, full_name: string, profession: string }[])
+      return of([] as { _id: string, username: string, datum_vnosa: string, full_name: string, profession: string, facebook: string, instagram: string, twitter: string, github: string, www: string }[])
     })
   )
 

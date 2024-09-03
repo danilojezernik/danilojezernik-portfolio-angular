@@ -11,6 +11,11 @@ export interface User {
   description: string;
   hashed_password: string;
   role?: string;
+  facebook?: string;
+  instagram?: string;
+  twitter?: string;
+  github?: string;
+  www?: string;
   confirmed: boolean;
   registered?: boolean;
   blog_notification?: boolean;
