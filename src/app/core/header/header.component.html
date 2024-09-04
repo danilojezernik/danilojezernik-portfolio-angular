@@ -33,6 +33,16 @@
               </ng-container>
             </ng-container>
 
+        <ng-container  *ngFor="let menu of MENU_TOP">
+          <ng-container *ngIf="menu.menu === 'menu.dashboard'">
+            <button [routerLink]="menu.path" *ngIf="localStorage.getItem('role')" type="button" class="flex text-sm bg-gray-800 rounded-full md:mr-4 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
+              <span class="sr-only">Open user menu</span>
+              <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+            </button>
+          </ng-container>
+        </ng-container>
+
+
             <a class="flex items-center cursor-pointer rounded-lg group"
                *ngIf="translate.currentLang === 'en'" (click)="useLanguage('si')">
               <svg class="rotate-in-center" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 50 50">
@@ -65,12 +75,13 @@
       <ul
         class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
         <li *ngFor="let menu of MENU_TOP">
-          <ng-container *ngIf="menu.menu !== 'menu.login' && menu.menu !== 'menu.logout'">
+          <ng-container *ngIf="menu.menu !== 'menu.login' && menu.menu !== 'menu.logout' && menu.menu !== 'menu.dashboard'">
             <a [routerLink]="menu.path"
                class="block py-2 px-3 cursor-pointer rounded md:bg-transparent md:p-0">{{ menu.menu | translate }}</a>
           </ng-container>
         </li>
       </ul>
     </div>
+
   </div>
 </nav>

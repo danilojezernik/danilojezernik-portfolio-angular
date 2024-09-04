@@ -23,7 +23,8 @@ export enum BUTTONS {
   edit = 'button.edit',   // Label for the edit button
   add = 'button.add',    // Label for the add button
   delete = 'button.delete',// Label for the delete button
-  back = 'button.back' // Label for the back button
+  back = 'button.back', // Label for the back button
+  backAdmin = 'button.back-admin' // Label for the back button
 }
 
 // Select language options for the GitHub component
@@ -46,6 +47,7 @@ export const PAGINATION ={
 export const SNACKBAR_MESSAGES = {
   reordered: 'snack.reordered',
   registered: 'snack.registration',
+  dataChanged: 'snack.dataChanged',
   imageSaved: 'snack.image-saved',
   close: 'snack.close'
 }

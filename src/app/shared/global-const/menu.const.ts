@@ -9,7 +9,8 @@ export const MENU_TOP: { menu: string, path: string }[] = [
   {menu: 'menu.users', path: '/users'},
   {menu: 'menu.technologies', path: '/technologies'},
   {menu: 'menu.register', path: '/register'},
-  {menu: 'menu.contact', path: '/contact'}
+  {menu: 'menu.contact', path: '/contact'},
+  {menu: 'menu.dashboard', path: '/dashboard'}
 ]
 
 // MENU ITEMS FOR LOGIN AND LOGOUT HEADER COMPONENT

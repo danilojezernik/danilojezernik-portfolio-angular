@@ -4,7 +4,6 @@ import {
   ActivatedRouteSnapshot,
   CanActivate,
   Router,
-  RouterStateSnapshot,
 } from "@angular/router";
 import {map, Observable} from "rxjs";
 
@@ -16,7 +15,7 @@ export class AuthGuardService implements CanActivate {
   private _auth = inject(AuthService)
   private _router = inject(Router)
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+  canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.authGuard(route)
   }
 
@@ -33,7 +32,7 @@ export class AuthGuardService implements CanActivate {
         // Check user role and determine if access is granted
         const allowedRoles = route.data['roles'] as Array<string>
         if (allowedRoles && !allowedRoles.includes(role)) {
-          this._router.navigate(['/not-authorized'])
+          this._router.navigate(['/dashboard'])
           return false
         }
 

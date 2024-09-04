@@ -32,6 +32,7 @@ export class BlogByIdComponent implements OnInit {
 
   // Property to store error messages, initialized to null
   error: string | null = null
+  role = localStorage.getItem('role')
 
   commentForm: FormGroup = new FormGroup({})
   blogId$!: Observable<BlogModel>
@@ -101,11 +102,20 @@ export class BlogByIdComponent implements OnInit {
         })
       )),
       catchError((error) => {
-        const message = error.message
-        this._translateService.get(message).subscribe((translation) => {
-          this.error = translation
-        })
-        return of([] as Comment[])
+        const role = localStorage.getItem('role')
+        if(!role) {
+          const message = 'errors.notRegistered'
+          this._translateService.get(message).subscribe((translation) => {
+            this.error = translation
+          })
+          return of(this.error)
+        } else {
+          const message = error.message
+          this._translateService.get(message).subscribe((translation) => {
+            this.error = translation
+          })
+          return of([] as Comment[])
+        }
       })
     ).subscribe(() => {
       this.commentForm.reset()

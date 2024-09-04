@@ -35,6 +35,9 @@ export class ReusableFormAddComponent implements OnInit {
    */
   @Input() submitLabel!: string;
 
+  // Adding rows to the textarea
+  @Input() rows?: number;
+
   /**
    * Output property to emit form data to the parent component upon form submission.
    * EventEmitter is used to emit custom events.

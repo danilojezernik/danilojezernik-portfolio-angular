@@ -101,7 +101,7 @@ export const formUserPublicConfig: FormFieldConfig[] = [
       { value: 'Business Analyst', label: 'business-analyst' }
     ], validators: [Validators.required] },
   { name: 'technology', label: 'register-technology', type: 'text', validators: [Validators.required] },
-  { name: 'description', label: 'register-description', type: 'text', validators: [ Validators.required ] },
+  { name: 'description', label: 'register-description', type: 'textarea', validators: [ Validators.required ] },
   { name: 'facebook', label: 'facebook', type: 'text', validators: [ ] },
   { name: 'instagram', label: 'instagram', type: 'text', validators: [ ] },
   { name: 'twitter', label: 'twitter', type: 'text', validators: [ ] },
@@ -112,6 +112,56 @@ export const formUserPublicConfig: FormFieldConfig[] = [
   { name: 'hashed_password', label: 'password', type: 'text', validators: [Validators.required] },
   { name: 'confirmed', label: 'get-newsletter', type: 'checkbox', validators: [] },
   { name: 'blog_notification', label: 'blog-notification', type: 'checkbox', validators: [] }
+]
+
+/**
+ * formUserDashboardConfig defines the configuration for the form fields used in the projects form.
+ */
+export const formUserDashboardConfig: FormFieldConfig[] = [
+  { name: 'full_name', label: 'full_name', type: 'text', validators: [ Validators.required ] },
+  { name: 'description', label: 'register-description', type: 'textarea', validators: [ ] },
+  { name: 'profession', label: 'profession-position', type: 'select',
+    options: [
+      { value: 'CEO/Co-founder', label: 'ceo-cofounder' },
+      { value: 'CTO (Chief Technology Officer)', label: 'cto' },
+      { value: 'SEO & Marketing Specialist', label: 'seo-marketing' },
+      { value: 'React Developer', label: 'react-developer' },
+      { value: 'Vue.js Developer', label: 'vuejs-developer' },
+      { value: 'Angular Developer', label: 'angular-developer' },
+      { value: 'Python Developer', label: 'python-developer' },
+      { value: 'Java Developer', label: 'java-developer' },
+      { value: 'Web Designer', label: 'web-designer' },
+      { value: 'Graphic Designer', label: 'graphic-designer' },
+      { value: 'UI/UX Designer', label: 'ui-ux-designer' },
+      { value: 'Frontend Developer', label: 'frontend-developer' },
+      { value: 'Backend Developer', label: 'backend-developer' },
+      { value: 'Full Stack Developer', label: 'fullstack-developer' },
+      { value: 'DevOps Engineer', label: 'devops-engineer' },
+      { value: 'Data Scientist', label: 'data-scientist' },
+      { value: 'Data Analyst', label: 'data-analyst' },
+      { value: 'Database Administrator (DBA)', label: 'database-administrator' },
+      { value: 'Cloud Architect', label: 'cloud-architect' },
+      { value: 'Cybersecurity Specialist', label: 'cybersecurity-specialist' },
+      { value: 'Mobile App Developer', label: 'mobile-app-developer' },
+      { value: 'Project Manager', label: 'project-manager' },
+      { value: 'Product Manager', label: 'product-manager' },
+      { value: 'IT Support Specialist', label: 'it-support-specialist' },
+      { value: 'QA (Quality Assurance) Engineer', label: 'qa-engineer' },
+      { value: 'Software Engineer', label: 'software-engineer' },
+      { value: 'Network Administrator', label: 'network-administrator' },
+      { value: 'System Administrator', label: 'system-administrator' },
+      { value: 'Scrum Master', label: 'scrum-master' },
+      { value: 'Business Analyst', label: 'business-analyst' }
+    ], validators: [] },
+  { name: 'facebook', label: 'facebook', type: 'text', validators: [ ] },
+  { name: 'instagram', label: 'instagram', type: 'text', validators: [ ] },
+  { name: 'twitter', label: 'twitter', type: 'text', validators: [ ] },
+  { name: 'github', label: 'github', type: 'text', validators: [ ] },
+  { name: 'www', label: 'www', type: 'text', validators: [ ] },
+  { name: 'username', label: 'username', type: 'text', validators: [ Validators.required ] },
+  { name: 'email', label: 'email', type: 'email', validators: [ Validators.required, Validators.email ] },
+  { name: 'blog_notification', label: 'blog-notification', type: 'checkbox', validators: [] },
+  { name: 'confirmed', label: 'get-newsletter', type: 'checkbox', validators: [] }
 ]
 
 /**

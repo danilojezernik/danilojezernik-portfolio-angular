@@ -19,6 +19,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { User } from "../../models/user";
 import { environment } from "../../../environments/environment";
+import {UserProfile} from "../../models/user-profile";
 
 @Injectable({
   providedIn: 'root'
@@ -92,4 +93,28 @@ export class UsersService {
   deleteUserById(id: string): Observable<any> {
     return this._http.delete<any>(`${environment.usersUrl.public}/${id}`)
   }
+
+  /**
+   * Dashboard for user me
+   * */
+
+  /**
+   * Fetch the current user's profile from the backend.
+   *
+   * @returns Observable<UserProfile> - An observable containing the user profile data.
+   */
+  getUserProfile(): Observable<any> {
+    return this._http.get<any>(`${environment.usersUrl.public}/me/profile`);
+  }
+
+  /**
+   * Update the current user's profile data.
+   *
+   * @param profileData - The updated profile data to be sent to the backend.
+   * @returns Observable<UserProfile> - An observable containing the updated user profile.
+   */
+  updateUserProfile(profileData: any): Observable<any> {
+    return this._http.put<any>(`${environment.usersUrl.public}/me/profile`, profileData);
+  }
+
 }

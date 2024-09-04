@@ -1,57 +1,57 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BlogAllComponent } from "./core/pages/public/blog/blog-all/blog-all.component";
-import { HomeComponent } from "./core/pages/public/home/home.component";
-import { GithubComponent } from "./core/pages/public/github/github.component";
-import { BiographyComponent } from "./core/pages/public/biography/biography.component";
-import { ExperiencesComponent } from "./core/pages/public/experiences/experiences.component";
-import { NotFoundComponent } from "./core/pages/public/not-found/not-found.component";
-import { ProjectsComponent } from "./core/pages/public/projects/projects.component";
-import { BookComponent } from "./core/pages/public/book/book.component";
-import { LinksComponent } from "./core/pages/public/links/links.component";
-import { ContactComponent } from "./core/pages/public/contact/contact.component";
-import { BlogByIdComponent } from "./core/pages/public/blog/blog-by-id/blog-by-id.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {BlogAllComponent} from "./core/pages/public/blog/blog-all/blog-all.component";
+import {HomeComponent} from "./core/pages/public/home/home.component";
+import {GithubComponent} from "./core/pages/public/github/github.component";
+import {BiographyComponent} from "./core/pages/public/biography/biography.component";
+import {ExperiencesComponent} from "./core/pages/public/experiences/experiences.component";
+import {NotFoundComponent} from "./core/pages/public/not-found/not-found.component";
+import {ProjectsComponent} from "./core/pages/public/projects/projects.component";
+import {BookComponent} from "./core/pages/public/book/book.component";
+import {LinksComponent} from "./core/pages/public/links/links.component";
+import {ContactComponent} from "./core/pages/public/contact/contact.component";
+import {BlogByIdComponent} from "./core/pages/public/blog/blog-by-id/blog-by-id.component";
 import {
   BlogEditByIdAdminComponent
 } from "./core/pages/private/blog/blog-edit-by-id-admin/blog-edit-by-id-admin.component";
-import { BlogAllAdminComponent } from "./core/pages/private/blog/blog-all-admin/blog-all-admin.component";
-import { LoginComponent } from "./core/pages/public/login/login.component";
-import { AuthGuardService } from "./auth/auth-guard.service";
-import { AdminComponent } from "./core/pages/private/admin/admin.component";
-import { RegisterUserComponent } from "./core/pages/public/register-user/register-user.component";
-import { UsersComponent } from "./core/pages/public/users/users-all/users.component";
-import { UsersAllAdminComponent } from "./core/pages/private/users-admin/users-all-admin/users-all-admin.component";
-import { EmailsAdminComponent } from "./core/pages/private/emails-admin/emails-admin.component";
+import {BlogAllAdminComponent} from "./core/pages/private/blog/blog-all-admin/blog-all-admin.component";
+import {LoginComponent} from "./core/pages/public/login/login.component";
+import {AuthGuardService} from "./auth/auth-guard.service";
+import {AdminComponent} from "./core/pages/private/admin/admin.component";
+import {RegisterUserComponent} from "./core/pages/public/register-user/register-user.component";
+import {UsersComponent} from "./core/pages/public/users/users-all/users.component";
+import {UsersAllAdminComponent} from "./core/pages/private/users-admin/users-all-admin/users-all-admin.component";
+import {EmailsAdminComponent} from "./core/pages/private/emails-admin/emails-admin.component";
 import {
   AllExperiencesAdminComponent
 } from "./core/pages/private/experiences-admin/all-experiences-admin/all-experiences-admin.component";
 import {
   ProjectsAllAdminComponent
 } from "./core/pages/private/projects-admin/projects-all-admin/projects-all-admin.component";
-import { AddBlogAdminComponent } from "./core/pages/private/blog/add-blog-admin/add-blog-admin.component";
-import { UserByIdComponent } from "./core/pages/public/users/user-by-id/user-by-id.component";
+import {AddBlogAdminComponent} from "./core/pages/private/blog/add-blog-admin/add-blog-admin.component";
+import {UserByIdComponent} from "./core/pages/public/users/user-by-id/user-by-id.component";
 import {
   UserEditByIdAdminComponent
 } from "./core/pages/private/users-admin/user-edit-by-id-admin/user-edit-by-id-admin.component";
 import {
   ProjectEditAdminComponent
 } from "./core/pages/private/projects-admin/project-edit-admin/project-edit-admin.component";
-import { UserAddAdminComponent } from "./core/pages/private/users-admin/user-add-admin/user-add-admin.component";
+import {UserAddAdminComponent} from "./core/pages/private/users-admin/user-add-admin/user-add-admin.component";
 import {
   ProjectAddAdminComponent
 } from "./core/pages/private/projects-admin/project-add-admin/project-add-admin.component";
-import { AllLinksComponent } from "./core/pages/private/links/all-links/all-links.component";
-import { AddLinksComponent } from "./core/pages/private/links/add-links/add-links.component";
-import { EditLinksComponent } from "./core/pages/private/links/edit-links/edit-links.component";
+import {AllLinksComponent} from "./core/pages/private/links/all-links/all-links.component";
+import {AddLinksComponent} from "./core/pages/private/links/add-links/add-links.component";
+import {EditLinksComponent} from "./core/pages/private/links/edit-links/edit-links.component";
 import {
   AddExperiencesAdminComponent
 } from "./core/pages/private/experiences-admin/add-experiences-admin/add-experiences-admin.component";
 import {
   EditExperiencesAdminComponent
 } from "./core/pages/private/experiences-admin/edit-experiences-admin/edit-experiences-admin.component";
-import { AllBooksAdminComponent } from "./core/pages/private/book/all-books-admin/all-books-admin.component";
-import { AddBooksAdminComponent } from "./core/pages/private/book/add-books-admin/add-books-admin.component";
-import { EditBooksAdminComponent } from "./core/pages/private/book/edit-books-admin/edit-books-admin.component";
+import {AllBooksAdminComponent} from "./core/pages/private/book/all-books-admin/all-books-admin.component";
+import {AddBooksAdminComponent} from "./core/pages/private/book/add-books-admin/add-books-admin.component";
+import {EditBooksAdminComponent} from "./core/pages/private/book/edit-books-admin/edit-books-admin.component";
 import {
   AllNewsletterAdminComponent
 } from "./core/pages/private/newsletter/all-newsletter-admin/all-newsletter-admin.component";
@@ -142,6 +142,7 @@ import {PythonMediaComponent} from "./core/pages/private/media/python-media/pyth
 import {MongodbMediaComponent} from "./core/pages/private/media/mongodb-media/mongodb-media.component";
 import {JavascriptMediaComponent} from "./core/pages/private/media/javascript-media/javascript-media.component";
 import {TypescriptMediaComponent} from "./core/pages/private/media/typescript-media/typescript-media.component";
+import {UserDashboardComponent} from "./core/pages/private/users-admin/user-dashboard/user-dashboard.component";
 
 const routes: Routes = [
   {
@@ -174,21 +175,27 @@ const routes: Routes = [
     component: AboutComponent
   },
 
+  {
+    path: 'dashboard',
+    component: UserDashboardComponent,
+    canActivate: [AuthGuardService]
+  },
+
   // PRIVATE
   {
     path: 'experiences-admin',
     component: AllExperiencesAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'add-experiences-admin',
     component: AddExperiencesAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'edit-experiences-admin/:id',
     component: EditExperiencesAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
 
   // ---------------------------
@@ -205,17 +212,17 @@ const routes: Routes = [
   {
     path: 'projects-admin',
     component: ProjectsAllAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'add-project-admin',
     component: ProjectAddAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'edit-projects-admin/:id',
     component: ProjectEditAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
 
   // --------------------
@@ -241,22 +248,22 @@ const routes: Routes = [
   // PRIVATE
   {
     path: 'blog-admin',
+    data: {roles: ['admin']},
     children: [
       {
         path: '',
         component: BlogAllAdminComponent,
-        canActivate: [ AuthGuardService ]
+        canActivate: [AuthGuardService]
       },
       {
         path: 'edit/:id',
         component: BlogEditByIdAdminComponent,
-        canActivate: [ AuthGuardService ]
+        canActivate: [AuthGuardService]
       },
       {
         path: 'add',
         component: AddBlogAdminComponent,
-        canActivate: [ AuthGuardService ],
-        data: { roles: ['admin'] }
+        canActivate: [AuthGuardService]
       }
     ]
 
@@ -305,103 +312,103 @@ const routes: Routes = [
   {
     path: 'technologies-admin',
     component: TechnologiesAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   // ANGULAR
   {
     path: 'tech-all-angular',
     component: AngularAllAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tech-add-angular',
     component: AngularAddAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tech-edit-angular/:id',
     component: AngularEditAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   // VUE
   {
     path: 'tech-all-vue',
     component: VueAllAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tech-add-vue',
     component: VueAddAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tech-edit-vue/:id',
     component: VueEditAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   // PYTHON
   {
     path: 'tech-all-python',
     component: PythonAllAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tech-add-python',
     component: PythonAddAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tech-edit-python/:id',
     component: PythonEditAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   // JAVASCRIPT
   {
     path: 'tech-all-javascript',
     component: JavascriptAllAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tech-add-javascript',
     component: JavascriptAddAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tech-edit-javascript/:id',
     component: JavascriptEditAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   // TYPESCRIPT
   {
     path: 'tech-all-typescript',
     component: TypescriptAllAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tech-add-typescript',
     component: TypescriptAddAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tech-edit-typescript/:id',
     component: TypescriptEditAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   // MONGODB
   {
     path: 'tech-all-mongodb',
     component: MongodbAllAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tech-add-mongodb',
     component: MongodbAddAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tech-edit-mongodb/:id',
     component: MongodbEditAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
 
   // ---------------------------
@@ -418,57 +425,57 @@ const routes: Routes = [
   {
     path: 'media',
     component: MediaAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'media-about-me',
     component: AboutMeMediaAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'media-books',
     component: BooksMediaAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'media-blogs',
     component: BlogsMediaAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'media-projects',
     component: ProjectsMediaAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'media-angular',
     component: AngularMediaComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'media-vue',
     component: VueMediaComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'media-python',
     component: PythonMediaComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'media-mongodb',
     component: MongodbMediaComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'media-javascript',
     component: JavascriptMediaComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'media-typescript',
     component: TypescriptMediaComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
 
   // ---------------------------
@@ -485,17 +492,17 @@ const routes: Routes = [
   {
     path: 'books-admin',
     component: AllBooksAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'add-books-admin',
     component: AddBooksAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'edit-books-admin/:id',
     component: EditBooksAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
 
   // ---------------------------
@@ -530,17 +537,17 @@ const routes: Routes = [
   {
     path: 'links-admin',
     component: AllLinksComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'add-links-admin',
     component: AddLinksComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'edit-links-admin/:id',
     component: EditLinksComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
 
   // ---------------------------
@@ -551,12 +558,12 @@ const routes: Routes = [
   {
     path: 'newsletter-admin',
     component: AllNewsletterAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'add-newsletter-admin',
     component: AddNewsletterAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
 
   // ---------------------------
@@ -567,17 +574,17 @@ const routes: Routes = [
   {
     path: 'subscriber-admin',
     component: AllSubscriberAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'add-subscriber-admin',
     component: AddSubscriberAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'edit-subscriber-admin/:id',
     component: EditSubscriberAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
 
   // ---------------------------
@@ -598,7 +605,8 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
 
   // ---------------------------
@@ -615,7 +623,8 @@ const routes: Routes = [
   {
     path: 'emails-admin',
     component: EmailsAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
 
   // ---------------------------
@@ -636,17 +645,20 @@ const routes: Routes = [
   {
     path: 'users-admin',
     component: UsersAllAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'add-user-admin',
     component: UserAddAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'edit-user-admin/:id',
     component: UserEditByIdAdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
 
   // ---------------------------
@@ -654,7 +666,7 @@ const routes: Routes = [
   // ---------------------------
   {
     path: 'not-authorized', component: NotAuthorizedComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
 
   // ---------------------------
@@ -673,8 +685,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { catchError, delay, Observable, retryWhen, scan, throwError } from 'rxjs';
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { TranslateService } from "@ngx-translate/core";
 
 /**
  * HttpErrorInterceptor is an Angular HTTP interceptor that intercepts HTTP requests
@@ -12,9 +10,6 @@ import { TranslateService } from "@ngx-translate/core";
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
-
-  constructor(private snackBar: MatSnackBar, private translate: TranslateService) {
-  }
 
   /**
    * Intercepts HTTP requests and responses.
@@ -55,6 +50,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         // Customize the error message based on the HTTP status code
         if (error.status === 0) {
           errorMessage = 'errors.network';
+        } else if (error.status === 204) {
+          errorMessage = 'errors.nochanges';
         } else if (error.status === 400) {
           errorMessage = 'errors.badRequest';
         } else if (error.status === 403) {

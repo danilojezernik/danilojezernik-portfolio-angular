@@ -5,6 +5,7 @@
   <!-- Title and description of the blog section - END -->
   <ng-container *ngIf="!error && !loading">
     <app-reusable-form
+      [rows]="10"
       [config]="formUserPublicConfig"
       [submitLabel]="'button.register' | translate"
       (formSubmit)="registerNewUser($event)"

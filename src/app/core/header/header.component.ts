@@ -53,4 +53,5 @@ export class HeaderComponent implements OnInit {
 
   protected readonly LOGIN_LOGOUT = LOGIN_LOGOUT;
   protected readonly MENU_TOP = MENU_TOP;
+  protected readonly localStorage = localStorage;
 }
