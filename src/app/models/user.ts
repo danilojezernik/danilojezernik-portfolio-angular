@@ -1,6 +1,3 @@
-/* tslint:disable */
-
-/* eslint-disable */
 export interface User {
   '_id'?: string;
   username: string;
@@ -13,6 +10,7 @@ export interface User {
   role?: string;
   facebook?: string;
   instagram?: string;
+  youtube?: string;
   twitter?: string;
   github?: string;
   www?: string;

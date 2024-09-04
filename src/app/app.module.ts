@@ -23,12 +23,15 @@ import localeSl from '@angular/common/locales/sl'
 import {registerLocaleData} from "@angular/common";
 import { NotAuthorizedComponent } from './core/pages/public/not-authorized/not-authorized.component';
 import { ShorteningTextPipe } from './pipes/shortening-text/shortening-text.pipe';
+import { DialogSendEmailComponent } from './shared/components/dialogs/dialog-send-email/dialog-send-email.component';
+import {ReusableFormAddComponent} from "./shared/forms/reusable-form-add/reusable-form-add.component";
 registerLocaleData(localeSl, 'sl-SI')
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotAuthorizedComponent
+    NotAuthorizedComponent,
+    DialogSendEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ registerLocaleData(localeSl, 'sl-SI')
         deps: [HttpClient]
       }
     }),
-    FooterComponent
+    FooterComponent,
+    ReusableFormAddComponent
 
   ],
   providers: [

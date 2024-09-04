@@ -1,5 +1,6 @@
 <!-- Binds the form to the formGroup instance and handles form submission. -->
-<form class="flex flex-col mx-auto md:w-1/2 w-full p-2" [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="flex flex-col mx-auto p-2 md:w-1/2 w-full"
+      [formGroup]="form" (ngSubmit)="onSubmit()">
 
   <!-- Iterates over each field in the config input property. -->
   <div *ngFor="let field of config">
@@ -65,5 +66,6 @@
   </div>
 
   <!-- Submit button with dynamic label and disabled state based on form validity. -->
-  <button class="btn-admin add rounded-lg mt-2 focus:bg-transparent" type="submit" [disabled]="form.invalid">{{ submitLabel | translate }}</button>
+  <button class="btn-admin add rounded-lg mt-2 focus:bg-transparent"
+          type="submit" [disabled]="form.invalid">{{ submitLabel | translate }}</button>
 </form>

@@ -221,7 +221,8 @@
 		"vuejs-developer": "Vue.js razvijalec",
 		"web-designer": "Spletni oblikovalec",
 		"website": "Spletna stran",
-		"www": "Website"
+		"www": "Website",
+		"youtube": "YouTube"
 	},
 	"loading": "Nalagam",
 	"menu": {
@@ -303,6 +304,10 @@
 		"media": {
 			"description": "Dodajaj in odstranjuj slike in kopiraj imena slik."
 		},
+		"not-found": {
+			"back-text": "Na prejšnjo stran se boste vrnili čez",
+			"title": "Upsss! Ta stran ne obstaja."
+		},
 		"register": {
 			"description": "Registriraj se, da si pogledaš zakulisje programa kot obiskovalec, ali se naroči na e-novičke in obvestila o novih blogih.",
 			"title": "Registracija uporabnika"
@@ -315,6 +320,14 @@
 		"user-dashboard": {
 			"description": "Spremeni svoje podatke ali naročnine.",
 			"title": "Uporabnikove nastavitve"
+		},
+		"users": {
+			"description": "Na tej strani se nahajajo vsi registrirani uporabniki. Vsak uporabnik ima svoj profil, kjer so vidni njegovi podatki, predstavitev in druge zanimive informacije. Moj cilj je povezati uporabnike in jim omogočiti enostaven dostop do nekaterih funkcionalnosti platforme. Pridružite se!",
+			"title": "Registrirani uporabniki"
+		},
+		"users-by-id": {
+			"created": "Registriran",
+			"message": "Sporočilo"
 		}
 	},
 	"pending": {

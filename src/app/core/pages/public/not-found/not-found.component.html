@@ -1,2 +1,13 @@
-<p>not-found works!</p>
-<h1>Te strani ne obstaja</h1>
+<section>
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <div class="mx-auto max-w-screen-md text-center">
+      <img src="assets/media/404/404.svg" alt="404 image" class="mx-auto mb-6">
+      <h1 class="mb-4 text-2xl tracking-tight font-extrabold lg:text-6xl text-red-600">
+        {{ 'pages.not-found.title' | translate }}
+      </h1>
+      <p class="text-sm text-gray-600 md:mt-16 mt-6">{{ 'pages.not-found.back-text' | translate }}
+        <span class="text-red-600">{{ count }}</span> s
+      </p>
+    </div>
+  </div>
+</section>

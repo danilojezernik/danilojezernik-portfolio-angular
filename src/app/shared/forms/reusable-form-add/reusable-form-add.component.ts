@@ -30,6 +30,7 @@ export class ReusableFormAddComponent implements OnInit {
    */
   @Input() config: FormFieldConfig[] = [];
 
+  @Input() email?: boolean
   /**
    * Input property to receive the label for the submit button from the parent component.
    */

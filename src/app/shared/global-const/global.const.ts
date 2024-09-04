@@ -2,19 +2,20 @@
 
 // Dimensions for the admin dialog
 const ADMIN_GET_BY_ID = {
-  height: '50%', // Set the height of the admin dialog to 50% of the viewport
-  width: '100%'   // Set the width of the admin dialog to 50% of the viewport
+  height: '50%',
+  width: '100%'
 }
 
-const ADMIN_GET_BY_ID_MOBILE = {
-  height: '100%', // Set the height of the admin dialog to 100% of the viewport
-  width: '100%'   // Set the width of the admin dialog to 100% of the viewport
+// Dimensions for the admin dialog
+const EMAIL_GET_BY_ID = {
+  height: '80%',
+  width: '100%'
 }
 
 // Exported dimensions object for dialogs
 export const DIALOG_DIMENSIONS = {
   admin: ADMIN_GET_BY_ID, // Dialog dimensions specifically for the admin component
-  adminMobile: ADMIN_GET_BY_ID_MOBILE // Dialog dimensions specifically for the admin component on mobile devices
+  email: EMAIL_GET_BY_ID, // Dialog dimensions specifically for the admin component
 }
 
 // Enum for button labels

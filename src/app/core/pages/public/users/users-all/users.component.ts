@@ -6,11 +6,13 @@ import {RouterLink} from "@angular/router";
 import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
 import {TranslateService} from "@ngx-translate/core";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
+import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
+
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, RouterLink, GoBackComponent, LoadingComponent],
+  imports: [CommonModule, RouterLink, GoBackComponent, LoadingComponent, HeroTitleComponent],
   templateUrl: './users.component.html'
 })
 export class UsersComponent {
@@ -28,6 +30,7 @@ export class UsersComponent {
         full_name: data.full_name,
         facebook: data.facebook,
         instagram: data.instagram,
+        youtube: data.youtube,
         twitter: data.twitter,
         github: data.github,
         www: data.www,
@@ -44,7 +47,19 @@ export class UsersComponent {
         this.error = translation
       })
       // Return an observable of an empty array to handle errors gracefully
-      return of([] as { _id: string, username: string, datum_vnosa: string, full_name: string, profession: string, facebook: string, instagram: string, twitter: string, github: string, www: string }[])
+      return of([] as {
+        _id: string,
+        username: string,
+        datum_vnosa: string,
+        full_name: string,
+        youtube: string,
+        profession: string,
+        facebook: string,
+        instagram: string,
+        twitter: string,
+        github: string,
+        www: string
+      }[])
     })
   )
 

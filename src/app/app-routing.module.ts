@@ -665,7 +665,8 @@ const routes: Routes = [
   //     NOT AUTHORIZED if not admin
   // ---------------------------
   {
-    path: 'not-authorized', component: NotAuthorizedComponent,
+    path: 'not-authorized',
+    component: NotAuthorizedComponent,
     canActivate: [AuthGuardService]
   },
 

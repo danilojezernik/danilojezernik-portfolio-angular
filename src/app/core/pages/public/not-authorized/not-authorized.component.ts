@@ -8,7 +8,7 @@ import {interval, Subscription} from "rxjs";
 })
 export class NotAuthorizedComponent implements OnInit, OnDestroy {
 
-  _back = inject(Location)
+  private _back = inject(Location)
 
   count: number = 5
   private countdownSubscription: Subscription = new Subscription()
@@ -20,7 +20,6 @@ export class NotAuthorizedComponent implements OnInit, OnDestroy {
         this.count--
       } else {
         this.goBack()
-        this.countdownSubscription.unsubscribe() // Stop the interval when countdown ends
       }
     })
   }

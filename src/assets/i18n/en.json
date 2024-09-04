@@ -221,7 +221,8 @@
 		"vuejs-developer": "Vue.js Developer",
 		"web-designer": "Web Designer",
 		"website": "Website",
-		"www": "Website"
+		"www": "Website",
+		"youtube": "YouTube"
 	},
 	"loading": "Loading",
 	"menu": {
@@ -303,6 +304,10 @@
 		"media": {
 			"description": "Add and remove images and copy image names."
 		},
+		"not-found": {
+			"back-text": "You will be redirected to the previous page in",
+			"title": "Whoops! That page doesn’t exist."
+		},
 		"register": {
 			"description": "Sign up to get a behind-the-scenes look at the program as a visitor, or subscribe to newsletters and notifications about new blog posts.",
 			"title": "User registration"
@@ -315,6 +320,14 @@
 		"user-dashboard": {
 			"description": "Change your data or your subscribtions.",
 			"title": "User settings"
+		},
+		"users": {
+			"description": "On this page, all registered users are listed. Each user has their own profile, where their information, introduction, and other interesting details are visible. My goal is to connect users and provide them with easy access to certain platform features. Join us!",
+			"title": "Registered users"
+		},
+		"users-by-id": {
+			"created": "Registered",
+			"message": "Message"
 		}
 	},
 	"pending": {

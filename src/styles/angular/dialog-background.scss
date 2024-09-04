@@ -2,18 +2,25 @@
 @import "../abstract/variables";
 @import "../abstract/mixin";
 
-.mat-mdc-dialog-container .mdc-dialog__surface {
+
+/*
+For admin dialogs
+*/
+.admin-dialog > .mat-mdc-dialog-container .mdc-dialog__surface {
   background: $dialog-bg !important;
-  box-shadow: 0 0 200px 20px $color-first-hex,
-  0 0 200px 20px $color-third-hex !important;
+}
+
+/*
+For email dialog
+*/
+.email-dialog > .mat-mdc-dialog-container .mdc-dialog__surface {
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .mat-dialog-content {
   display: grid;
-
   grid-template-columns: auto auto;
   grid-template-rows: auto;
   grid-column-gap: 16px;
-
-
 }

@@ -53,6 +53,7 @@ export const formUserConfig: FormFieldConfig[] = [
 ], validators: [] },
   { name: 'facebook', label: 'facebook', type: 'text', validators: [ ] },
   { name: 'instagram', label: 'instagram', type: 'text', validators: [ ] },
+  { name: 'youtube', label: 'youtube', type: 'text', validators: [ ] },
   { name: 'twitter', label: 'twitter', type: 'text', validators: [ ] },
   { name: 'github', label: 'github', type: 'text', validators: [ ] },
   { name: 'www', label: 'www', type: 'text', validators: [ ] },
@@ -104,6 +105,7 @@ export const formUserPublicConfig: FormFieldConfig[] = [
   { name: 'description', label: 'register-description', type: 'textarea', validators: [ Validators.required ] },
   { name: 'facebook', label: 'facebook', type: 'text', validators: [ ] },
   { name: 'instagram', label: 'instagram', type: 'text', validators: [ ] },
+  { name: 'youtube', label: 'youtube', type: 'text', validators: [ ] },
   { name: 'twitter', label: 'twitter', type: 'text', validators: [ ] },
   { name: 'github', label: 'github', type: 'text', validators: [ ] },
   { name: 'www', label: 'www', type: 'text', validators: [ ] },
@@ -155,6 +157,7 @@ export const formUserDashboardConfig: FormFieldConfig[] = [
     ], validators: [] },
   { name: 'facebook', label: 'facebook', type: 'text', validators: [ ] },
   { name: 'instagram', label: 'instagram', type: 'text', validators: [ ] },
+  { name: 'youtube', label: 'youtube', type: 'text', validators: [ ] },
   { name: 'twitter', label: 'twitter', type: 'text', validators: [ ] },
   { name: 'github', label: 'github', type: 'text', validators: [ ] },
   { name: 'www', label: 'www', type: 'text', validators: [ ] },
@@ -243,7 +246,15 @@ export const formCommentConfig: FormFieldConfig[] = [
 export const formContactConfig: FormFieldConfig[] = [
   { name: 'full_name', label: 'full_name', type: 'text', validators: [ Validators.required ] },
   { name: 'email', label: 'Email', type: 'email', validators: [ Validators.required, Validators.email ] },
-  { name: 'message', label: 'message', type: 'text', validators: [ Validators.required, Validators.min(10) ] }
+  { name: 'message', label: 'message', type: 'textarea', validators: [ Validators.required, Validators.min(10) ] }
+]
+/**
+ * formContactConfig defines the configuration for the form fields used in the newsletter form.
+ * */
+export const formEmailToRegisteredUserConfig: FormFieldConfig[] = [
+  { name: 'full_name', label: 'full_name', type: 'text', validators: [ Validators.required ] },
+  { name: 'email', label: 'email', type: 'email', validators: [ Validators.required, Validators.email ] },
+  { name: 'message', label: 'message', type: 'textarea', validators: [ Validators.required, Validators.min(10) ] }
 ]
 
 /**
