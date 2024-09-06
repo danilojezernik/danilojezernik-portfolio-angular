@@ -14,6 +14,7 @@ import {DIALOG_DIMENSIONS} from "../../../../../shared/global-const/global.const
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {ReusableFormAddComponent} from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
 import {formEmailToRegisteredUserConfig} from "../../../../../shared/global-const/form-config";
+import {AuthService} from "../../../../../auth/auth.service";
 
 export interface UserId {
   _id?: string;
@@ -45,15 +46,16 @@ export class UserByIdComponent implements OnInit {
   private _route = inject(ActivatedRoute)
   private _translateService = inject(TranslateService)
   private _dialog = inject(MatDialog)
+  private _authService = inject(AuthService);
 
   // Property to store error messages, initialized to null
   error: string | null = null
 
   userId$!: Observable<UserId>
-
-  role = localStorage.getItem('role')
+  userRole: string
 
   ngOnInit() {
+    this.userRole = this._authService.decodeRoleFromToken();
     const userId = this._route.snapshot.paramMap.get('id') || ''
 
     if (userId)

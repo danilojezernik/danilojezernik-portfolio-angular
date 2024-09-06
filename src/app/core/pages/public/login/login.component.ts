@@ -1,8 +1,8 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from "@angular/forms";
-import { AuthService } from "../../../../auth/auth.service";
-import { Router } from "@angular/router";
+import {Component, ElementRef, inject, ViewChild} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from "@angular/forms";
+import {AuthService} from "../../../../auth/auth.service";
+import {Router} from "@angular/router";
 import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
 import {TranslateModule} from "@ngx-translate/core";
 
@@ -70,26 +70,36 @@ export class LoginComponent {
    * On failure, logs the error message.
    */
   login(): void {
-
-    if(!this.getUsername ||!this.getPassword) {
-      this.error = 'errors.emptypass'
-      return
+    if (!this.getUsername || !this.getPassword) {
+      this.error = 'errors.emptypass';
+      return;
     }
 
     this._authService.login(this.getUsername, this.getPassword).subscribe(response => {
-      if (response.access_token && response.role) {
-        // Correctly set the access token and user role
-        this._authService.setAccessToken(response.access_token, response.role);
-        this._router.navigate(['/admin']);
+      if (response.access_token) {
+        // Store the token
+        this._authService.setAccessToken(response.access_token);
+
+        // Check the user's role and navigate accordingly
+        const userRole = this._authService.decodeRoleFromToken(); // Get role from the token
+        if (userRole === 'admin') {
+          this._router.navigate(['/admin']);
+        } else if(userRole === 'visitor') {
+
+          this._router.navigate(['/dashboard']);
+        } else {
+          this._router.navigate(['/not-authorized'])
+        }
+
       } else {
-        // Handle error or missing role/token scenario
+        // Handle error or missing token scenario
         console.error('Login failed: Invalid response data.');
-        this.error = 'errors.pass'
+        this.error = 'errors.pass';
       }
     }, error => {
       // Handle HTTP error
       console.error('Login request failed', error);
-      this.error = 'errors.pass'
+      this.error = 'errors.pass';
     });
   }
 }

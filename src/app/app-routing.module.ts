@@ -175,27 +175,24 @@ const routes: Routes = [
     component: AboutComponent
   },
 
-  {
-    path: 'dashboard',
-    component: UserDashboardComponent,
-    canActivate: [AuthGuardService]
-  },
-
   // PRIVATE
   {
     path: 'experiences-admin',
     component: AllExperiencesAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'add-experiences-admin',
     component: AddExperiencesAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'edit-experiences-admin/:id',
     component: EditExperiencesAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
 
   // ---------------------------
@@ -212,17 +209,20 @@ const routes: Routes = [
   {
     path: 'projects-admin',
     component: ProjectsAllAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'add-project-admin',
     component: ProjectAddAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'edit-projects-admin/:id',
     component: ProjectEditAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
 
   // --------------------
@@ -312,103 +312,122 @@ const routes: Routes = [
   {
     path: 'technologies-admin',
     component: TechnologiesAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   // ANGULAR
   {
     path: 'tech-all-angular',
     component: AngularAllAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'tech-add-angular',
     component: AngularAddAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'tech-edit-angular/:id',
     component: AngularEditAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   // VUE
   {
     path: 'tech-all-vue',
     component: VueAllAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'tech-add-vue',
     component: VueAddAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'tech-edit-vue/:id',
     component: VueEditAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   // PYTHON
   {
     path: 'tech-all-python',
     component: PythonAllAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'tech-add-python',
     component: PythonAddAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'tech-edit-python/:id',
     component: PythonEditAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   // JAVASCRIPT
   {
     path: 'tech-all-javascript',
     component: JavascriptAllAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'tech-add-javascript',
     component: JavascriptAddAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'tech-edit-javascript/:id',
     component: JavascriptEditAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   // TYPESCRIPT
   {
     path: 'tech-all-typescript',
     component: TypescriptAllAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'tech-add-typescript',
     component: TypescriptAddAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'tech-edit-typescript/:id',
     component: TypescriptEditAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   // MONGODB
   {
     path: 'tech-all-mongodb',
     component: MongodbAllAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'tech-add-mongodb',
     component: MongodbAddAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'tech-edit-mongodb/:id',
     component: MongodbEditAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
 
   // ---------------------------
@@ -425,57 +444,68 @@ const routes: Routes = [
   {
     path: 'media',
     component: MediaAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'media-about-me',
     component: AboutMeMediaAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'media-books',
     component: BooksMediaAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'media-blogs',
     component: BlogsMediaAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'media-projects',
     component: ProjectsMediaAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'media-angular',
     component: AngularMediaComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'media-vue',
     component: VueMediaComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'media-python',
     component: PythonMediaComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'media-mongodb',
     component: MongodbMediaComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'media-javascript',
     component: JavascriptMediaComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'media-typescript',
     component: TypescriptMediaComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
 
   // ---------------------------
@@ -492,17 +522,20 @@ const routes: Routes = [
   {
     path: 'books-admin',
     component: AllBooksAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'add-books-admin',
     component: AddBooksAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'edit-books-admin/:id',
     component: EditBooksAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
 
   // ---------------------------
@@ -520,7 +553,10 @@ const routes: Routes = [
   },
   {
     path: 'edit-comments-admin/:id',
-    component: EditCommentAdminComponent
+    component: EditCommentAdminComponent,
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
+
   },
 
   // ---------------------------
@@ -537,17 +573,20 @@ const routes: Routes = [
   {
     path: 'links-admin',
     component: AllLinksComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'add-links-admin',
     component: AddLinksComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'edit-links-admin/:id',
     component: EditLinksComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
 
   // ---------------------------
@@ -558,12 +597,14 @@ const routes: Routes = [
   {
     path: 'newsletter-admin',
     component: AllNewsletterAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'add-newsletter-admin',
     component: AddNewsletterAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
 
   // ---------------------------
@@ -574,17 +615,20 @@ const routes: Routes = [
   {
     path: 'subscriber-admin',
     component: AllSubscriberAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'add-subscriber-admin',
     component: AddSubscriberAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
   {
     path: 'edit-subscriber-admin/:id',
     component: EditSubscriberAdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
 
   // ---------------------------
@@ -608,7 +652,11 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     data: {roles: ['admin']}
   },
-
+  {
+    path: 'dashboard',
+    component: UserDashboardComponent,
+    canActivate: [AuthGuardService]
+  },
   // ---------------------------
   //     REGISTER ROUTES
   // ---------------------------
@@ -666,8 +714,7 @@ const routes: Routes = [
   // ---------------------------
   {
     path: 'not-authorized',
-    component: NotAuthorizedComponent,
-    canActivate: [AuthGuardService]
+    component: NotAuthorizedComponent
   },
 
   // ---------------------------

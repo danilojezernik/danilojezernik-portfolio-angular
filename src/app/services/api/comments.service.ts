@@ -46,7 +46,6 @@ export class CommentsService {
   }
 
   getCommentByIdAdmin(id: string): Observable<Comment> {
-    console.log(`${environment.commentUrl.admin}${id}`)
     return this._http.get<Comment>(`${environment.commentUrl.admin}${id}`)
   }
 

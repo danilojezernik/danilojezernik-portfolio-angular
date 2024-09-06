@@ -4,7 +4,7 @@
   <app-hero-title title="pages.user-dashboard.title" subtitle="pages.user-dashboard.description"/>
   <!-- Title and description of the blog section - END -->
 
-  <ng-container *ngIf="role === 'admin'">
+  <ng-container *ngIf="userRole === 'admin'">
     <div class="flex justify-center pb-5">
       <button class="btn-admin add" style="width: 300px" [routerLink]="'/admin'">
         {{ BUTTONS.backAdmin | translate }}

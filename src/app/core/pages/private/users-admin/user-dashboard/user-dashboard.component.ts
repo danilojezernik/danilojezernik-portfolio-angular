@@ -6,7 +6,7 @@ import {formUserDashboardConfig} from "../../../../../shared/global-const/form-c
 import {ReusableFormEditComponent} from "../../../../../shared/forms/reusable-form-edit/reusable-form-edit.component";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {UserProfile} from "../../../../../models/user-profile";
-import {catchError, filter, map, Observable, of, switchAll, switchMap, tap} from "rxjs";
+import {map, Observable, of, switchMap, tap} from "rxjs";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
@@ -16,8 +16,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {ButtonAdminComponent} from "../../../../../shared/components/button-admin/button-admin.component";
 import {RouterLink} from "@angular/router";
 import {User} from "../../../../../models/user";
-import {UserId} from "../../../public/users/user-by-id/user-by-id.component";
-import {log} from "three/src/nodes/math/MathNode";
+import {AuthService} from "../../../../../auth/auth.service";
 
 @Component({
   selector: 'app-user-dashboard',
@@ -31,9 +30,12 @@ export class UserDashboardComponent implements OnInit {
   private _userService = inject(UsersService); // Injected UsersService instance
   private _snack = inject(MatSnackBar)
   private _translateService = inject(TranslateService); // Injecting TranslateService for translating error messages
+  private _authService = inject(AuthService);
 
   // Property to store error messages, initialized to null
   error: string | null = null;
+
+  userRole: string
 
   // Property to track loading state, initialized to false
   loading: boolean = false;
@@ -43,11 +45,8 @@ export class UserDashboardComponent implements OnInit {
   formData: any = {};
   user$: Observable<User | null>;
 
-  role: string | null = null
-
   ngOnInit(): void {
     this.loading = true;
-
     // Use switchMap to first get the user profile, then get the user data based on the username
     this.user$ = this._userService.getUserProfile().pipe(
       switchMap((profile: UserProfile) => {
@@ -65,7 +64,8 @@ export class UserDashboardComponent implements OnInit {
       })
     );
 
-    this.role = localStorage.getItem('role')
+    this.userRole = this._authService.decodeRoleFromToken();
+
   }
 
 

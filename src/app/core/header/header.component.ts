@@ -16,6 +16,7 @@ import {LOGIN_LOGOUT, MENU_TOP} from "../../shared/global-const/menu.const";
 export class HeaderComponent implements OnInit {
 
   constructor(public translate: TranslateService) {
+    this.userRole = this._authService.decodeRoleFromToken(); // Get role from the token
     translate.setDefaultLang('en');
     translate.use('si');
   }
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnInit {
 
   // Observable to hold login status, will be populated in ngOnInit
   isLoggedIn$!: Observable<boolean>;
+  userRole: string
 
   // Lifecycle hook that is called after the component's view has been initialized
   ngOnInit() {
@@ -44,6 +46,7 @@ export class HeaderComponent implements OnInit {
     this._authService.clear();
     // Redirect a user to login route when logout
     this._router.navigate(['/login']);
+    this.userRole = ''
   }
 
   // Method to change the language of the application

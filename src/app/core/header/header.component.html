@@ -35,7 +35,7 @@
 
         <ng-container  *ngFor="let menu of MENU_TOP">
           <ng-container *ngIf="menu.menu === 'menu.dashboard'">
-            <button [routerLink]="menu.path" *ngIf="localStorage.getItem('role')" type="button" class="flex text-sm bg-gray-800 rounded-full md:mr-4 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
+            <button [routerLink]="menu.path" *ngIf="userRole" type="button" class="flex text-sm bg-gray-800 rounded-full md:mr-4 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
               <span class="sr-only">Open user menu</span>
               <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
             </button>

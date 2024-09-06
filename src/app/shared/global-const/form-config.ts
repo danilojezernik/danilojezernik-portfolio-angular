@@ -236,6 +236,7 @@ export const formNewsletterConfig: FormFieldConfig[] = [
  * formNewsletterConfig defines the configuration for the form fields used in the newsletter form.
  * */
 export const formCommentConfig: FormFieldConfig[] = [
+  { name: 'blog_id', label: 'blog_id', type: 'text', validators: [ Validators.required ] },
   { name: 'author', label: 'author', type: 'text', validators: [ Validators.required ] },
   { name: 'content', label: 'content', type: 'textarea', validators: [ Validators.required ] },
 ]
