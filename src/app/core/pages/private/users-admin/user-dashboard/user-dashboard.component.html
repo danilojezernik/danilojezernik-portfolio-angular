@@ -1,63 +1,61 @@
-<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+<ng-container *ngIf="user$ | async as user; else loadingData">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 
-  <!-- Title and description of the blog section - START -->
-  <app-hero-title title="pages.user-dashboard.title" subtitle="pages.user-dashboard.description"/>
-  <!-- Title and description of the blog section - END -->
+    <!-- Title and description of the blog section - START -->
+    <app-hero-title title="pages.user-dashboard.title" subtitle="pages.user-dashboard.description"/>
+    <!-- Title and description of the blog section - END -->
 
-  <ng-container *ngIf="userRole === 'admin'">
-    <div class="flex justify-center pb-5">
-      <button class="btn-admin add" style="width: 300px" [routerLink]="'/admin'">
-        {{ BUTTONS.backAdmin | translate }}
-      </button>
-    </div>
-  </ng-container>
+    <ng-container *ngIf="!user._id && error">
+      <div class="flex-1 text-center text-xl py-12">
+        {{ error }}
+      </div>
+    </ng-container>
 
-  <!-- This will display the user._id -->
-  <ng-container *ngIf="user$ | async as user">
+    <ng-container *ngIf="user._id">
+      <ng-container *ngIf="userRole === 'admin'">
+        <div class="flex justify-center pb-5">
+          <button class="btn-admin add" style="width: 300px" [routerLink]="'/admin'">
+            {{ BUTTONS.backAdmin | translate }}
+          </button>
+        </div>
+      </ng-container>
 
-    <img class="mx-auto mb-4 w-36 h-36 rounded-full bg-white" [src]="'https://robohash.org/' + user.username"
-         alt="Bonnie Avatar">
+      <!-- Display user's avatar and details -->
+      <img class="mx-auto mb-4 w-36 h-36 rounded-full bg-white" [src]="'https://robohash.org/' + user.username" alt="Bonnie Avatar">
 
-    <div class="flex justify-center pb-5">
-      <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
-        <svg viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="w-6 h-5 me-2 -ms-1 "><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 9l4 0l0 -4" /><path d="M3 3l6 6" /><path d="M5 15l4 0l0 4" /><path d="M3 21l6 -6" /><path d="M19 9l-4 0l0 -4" /><path d="M15 9l6 -6" /><path d="M19 15l-4 0l0 4" /><path d="M15 15l6 6" /></svg>
-        <a [routerLink]="['/user/', user._id]">{{ user.full_name }}</a>
-      </button>
-    </div>
-  </ng-container>
+      <div class="flex justify-center pb-5">
+        <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+          <svg viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="w-6 h-5 me-2 -ms-1 "><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 9l4 0l0 -4" /><path d="M3 3l6 6" /><path d="M5 15l4 0l0 4" /><path d="M3 21l6 -6" /><path d="M19 9l-4 0l0 -4" /><path d="M15 9l6 -6" /><path d="M19 15l-4 0l0 4" /><path d="M15 15l6 6" /></svg>
+          <a [routerLink]="['/user/', user._id]">{{ user.full_name }}</a>
+        </button>
+      </div>
 
-  <!-- Container to display the form and handle its submission - START -->
-  <ng-container *ngIf="!error && !loading && !changing">
+      <!-- Display the form and handle its submission -->
+      <ng-container *ngIf="!error && !loading && !changing">
+        <app-reusable-form-edit
+          [rows]="10"
+          [formConfig]="formUserDashboardConfig"
+          [formData]="formData"
+          (formSubmit)="onSubmit($event)"
+        />
+      </ng-container>
 
-    <app-reusable-form-edit
-      [rows]="10"
-      [formConfig]="formUserDashboardConfig"
-      [formData]="formData"
-      (formSubmit)="onSubmit($event)"
-    />
+      <!-- Show a spinner when data is being updated -->
+      <ng-container *ngIf="changing">
+        <div class="flex-1 text-center pulse-bulb-registering text-xl py-12">
+          {{ 'pending.change-user-dashboard' | translate }}
+        </div>
+      </ng-container>
 
-  </ng-container>
-  <!-- Container to display the form and handle its submission - END -->
+      <!-- Show a loading spinner when data is being fetched -->
+      <ng-container *ngIf="loading && !userRole">
+        <app-loading/>
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-container>
 
-  <!-- Template to show loading spinner and text while data is being fetched - START -->
-  <ng-container *ngIf="changing">
-    <div class="flex-1 text-center pulse-bulb-registering text-xl py-12">
-      {{ 'pending.change-user-dashboard' | translate }}
-    </div>
-  </ng-container>
-  <!-- Template to show loading spinner and text while data is being fetched - END -->
-
-  <!-- Template to show loading spinner and text while data is being fetched - START -->
-  <ng-container *ngIf="loading">
-    <app-loading/>
-  </ng-container>
-  <!-- Template to show loading spinner and text while data is being fetched - END -->
-
-  <!-- Template to show error messages - START -->
-  <ng-container *ngIf="error">
-    <div class="flex-1 text-center text-xl py-12">
-      {{ error }}
-    </div>
-  </ng-container>
-  <!-- Template to show error messages - END -->
-</div>
+<!-- Loading data template -->
+<ng-template #loadingData>
+  <app-loading/>
+</ng-template>

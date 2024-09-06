@@ -6,7 +6,7 @@ import {formUserDashboardConfig} from "../../../../../shared/global-const/form-c
 import {ReusableFormEditComponent} from "../../../../../shared/forms/reusable-form-edit/reusable-form-edit.component";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {UserProfile} from "../../../../../models/user-profile";
-import {map, Observable, of, switchMap, tap} from "rxjs";
+import {catchError, map, Observable, of, switchMap, tap} from "rxjs";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
@@ -17,6 +17,7 @@ import {ButtonAdminComponent} from "../../../../../shared/components/button-admi
 import {RouterLink} from "@angular/router";
 import {User} from "../../../../../models/user";
 import {AuthService} from "../../../../../auth/auth.service";
+import {BlogModel} from "../../../../../models/blog.model";
 
 @Component({
   selector: 'app-user-dashboard',
@@ -61,6 +62,16 @@ export class UserDashboardComponent implements OnInit {
           this.formData = {...this.formData, ...userData};
         }
         this.loading = false;
+      }),
+      catchError((error) => {
+        // Extract the error message
+        const message = error.message
+        // Translate the error message using the Translation service and set it to the error property
+        this._translateService.get(message).subscribe((translation) => {
+          this.error = translation
+        })
+        // Return an observable of an empty array to handle errors gracefully
+        return of({} as User)
       })
     );
 
