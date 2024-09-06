@@ -14,6 +14,7 @@ import {ReusableFormAddComponent} from "../../../../../shared/forms/reusable-for
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {PAGINATION} from "../../../../../shared/global-const/global.const";
 import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
+import {AuthService} from "../../../../../auth/auth.service";
 
 @Component({
   selector: 'app-blog-by-id',
@@ -29,10 +30,11 @@ export class BlogByIdComponent implements OnInit {
   private _blogService = inject(BlogService)
   private _translateService = inject(TranslateService)
   protected _getImageByName = inject(GetImageService)
+  private _authService = inject(AuthService);
 
   // Property to store error messages, initialized to null
   error: string | null = null
-  role = localStorage.getItem('role')
+  userRole: string
 
   commentForm: FormGroup = new FormGroup({})
   blogId$!: Observable<BlogModel>
@@ -56,6 +58,8 @@ export class BlogByIdComponent implements OnInit {
       this.getBlogById(blogId)
       this.getCommentOfBlog(blogId)
     }
+
+    this.userRole = this._authService.decodeRoleFromToken();
   }
 
   getBlogById(blogId: string) {

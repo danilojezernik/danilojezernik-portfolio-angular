@@ -1,9 +1,9 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 import {LoggedInService} from "../../services/communication/logged-in.service";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {LOGIN_LOGOUT, MENU_TOP} from "../../shared/global-const/menu.const";
 
@@ -13,10 +13,9 @@ import {LOGIN_LOGOUT, MENU_TOP} from "../../shared/global-const/menu.const";
   imports: [CommonModule, RouterLink, TranslateModule],
   templateUrl: './header.component.html'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(public translate: TranslateService) {
-    this.userRole = this._authService.decodeRoleFromToken(); // Get role from the token
     translate.setDefaultLang('en');
     translate.use('si');
   }
@@ -26,6 +25,7 @@ export class HeaderComponent implements OnInit {
 
   // Injecting LoggedInService to listen to log in status changes
   private _loggedInService = inject(LoggedInService);
+  private userRoleSubscription!: Subscription;
 
   // Inject router to navigate to different routes
   private _router = inject(Router)
@@ -38,6 +38,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     // Assign the Observable from LoggedInService to isLoggedIn$ to listen for login status changes
     this.isLoggedIn$ = this._loggedInService.isLoggedIn$;
+    // Update userRole based on login status
+    this.userRoleSubscription = this.isLoggedIn$.subscribe((isLoggedIn) => {
+      if (isLoggedIn) {
+        this.userRole = this._authService.decodeRoleFromToken();
+      } else {
+        this.userRole = '';  // Clear the role on logout
+      }
+    });
   }
 
   // Method to log out the user
@@ -46,12 +54,17 @@ export class HeaderComponent implements OnInit {
     this._authService.clear();
     // Redirect a user to login route when logout
     this._router.navigate(['/login']);
-    this.userRole = ''
   }
 
   // Method to change the language of the application
   useLanguage(language: string): void {
     this.translate.use(language);
+  }
+
+  ngOnDestroy() {
+    if (this.userRoleSubscription) {
+      this.userRoleSubscription.unsubscribe();
+    }
   }
 
   protected readonly LOGIN_LOGOUT = LOGIN_LOGOUT;

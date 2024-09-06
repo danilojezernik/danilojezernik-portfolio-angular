@@ -15,6 +15,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {ReusableFormAddComponent} from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
 import {formEmailToRegisteredUserConfig} from "../../../../../shared/global-const/form-config";
 import {AuthService} from "../../../../../auth/auth.service";
+import {SocialPlatformsComponent} from "../../../../../shared/components/social-platforms/social-platforms.component";
 
 export interface UserId {
   _id?: string;
@@ -37,7 +38,7 @@ export interface UserId {
 @Component({
   selector: 'app-user-by-id',
   standalone: true,
-  imports: [CommonModule, GoBackComponent, SlovenianDateTransformPipe, TranslateModule, MatSidenavModule, ReusableFormAddComponent],
+  imports: [CommonModule, GoBackComponent, SlovenianDateTransformPipe, TranslateModule, MatSidenavModule, ReusableFormAddComponent, SocialPlatformsComponent],
   templateUrl: './user-by-id.component.html'
 })
 export class UserByIdComponent implements OnInit {

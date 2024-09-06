@@ -204,6 +204,7 @@
 		"required": "is required",
 		"role": "Role",
 		"scrum-master": "Scrum Master",
+		"sender_email": "Your email",
 		"seo-marketing": "SEO & Marketing Specialist",
 		"software-engineer": "Software Engineer",
 		"stack": "Stack",

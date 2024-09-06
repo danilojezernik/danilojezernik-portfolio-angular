@@ -7,12 +7,13 @@ import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.
 import {TranslateService} from "@ngx-translate/core";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
 import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
+import {SocialPlatformsComponent} from "../../../../../shared/components/social-platforms/social-platforms.component";
 
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, RouterLink, GoBackComponent, LoadingComponent, HeroTitleComponent],
+  imports: [CommonModule, RouterLink, GoBackComponent, LoadingComponent, HeroTitleComponent, SocialPlatformsComponent],
   templateUrl: './users.component.html'
 })
 export class UsersComponent {
