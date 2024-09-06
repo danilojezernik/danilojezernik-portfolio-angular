@@ -25,6 +25,7 @@ import { NotAuthorizedComponent } from './core/pages/public/not-authorized/not-a
 import { ShorteningTextPipe } from './pipes/shortening-text/shortening-text.pipe';
 import { DialogSendEmailComponent } from './shared/components/dialogs/dialog-send-email/dialog-send-email.component';
 import {ReusableFormAddComponent} from "./shared/forms/reusable-form-add/reusable-form-add.component";
+import {AngularEditorModule} from "@kolkov/angular-editor";
 registerLocaleData(localeSl, 'sl-SI')
 
 @NgModule({
@@ -34,6 +35,7 @@ registerLocaleData(localeSl, 'sl-SI')
     DialogSendEmailComponent
   ],
   imports: [
+    AngularEditorModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
