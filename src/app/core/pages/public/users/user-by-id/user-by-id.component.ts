@@ -11,8 +11,12 @@ import {
   DialogSendEmailComponent
 } from "../../../../../shared/components/dialogs/dialog-send-email/dialog-send-email.component";
 import {DIALOG_DIMENSIONS} from "../../../../../shared/global-const/global.const";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {ReusableFormAddComponent} from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
+import {formEmailToRegisteredUserConfig} from "../../../../../shared/global-const/form-config";
 
 export interface UserId {
+  _id?: string;
   username: string;
   full_name: string;
   email: string;
@@ -32,7 +36,7 @@ export interface UserId {
 @Component({
   selector: 'app-user-by-id',
   standalone: true,
-  imports: [CommonModule, GoBackComponent, SlovenianDateTransformPipe, TranslateModule],
+  imports: [CommonModule, GoBackComponent, SlovenianDateTransformPipe, TranslateModule, MatSidenavModule, ReusableFormAddComponent],
   templateUrl: './user-by-id.component.html'
 })
 export class UserByIdComponent implements OnInit {
@@ -59,6 +63,7 @@ export class UserByIdComponent implements OnInit {
   getUserById(id: string) {
     this.userId$ = this._userService.getUserByIdPublic(id).pipe(
       map(data => ({
+        _id: data._id,
         username: data.username,
         full_name: data.full_name,
         email: data.email,
@@ -83,10 +88,10 @@ export class UserByIdComponent implements OnInit {
     )
   }
 
-  openDialog(email: string, user: string) {
+  openDialog(user_id: string, user: string) {
     this._dialog.open(DialogSendEmailComponent, {
       data: {
-        email: email,
+        user_id: user_id,
         user: user
       },
       panelClass: 'email-dialog', // Add this line for custom class
@@ -94,4 +99,5 @@ export class UserByIdComponent implements OnInit {
     })
   }
 
+  protected readonly formEmailToRegisteredUserConfig = formEmailToRegisteredUserConfig;
 }

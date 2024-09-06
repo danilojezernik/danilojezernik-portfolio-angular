@@ -6,7 +6,7 @@ import {formUserDashboardConfig} from "../../../../../shared/global-const/form-c
 import {ReusableFormEditComponent} from "../../../../../shared/forms/reusable-form-edit/reusable-form-edit.component";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {UserProfile} from "../../../../../models/user-profile";
-import {catchError, map, of} from "rxjs";
+import {catchError, filter, map, Observable, of, switchAll, switchMap, tap} from "rxjs";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
@@ -15,6 +15,9 @@ import {BUTTONS, SNACKBAR_MESSAGES} from "../../../../../shared/global-const/glo
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ButtonAdminComponent} from "../../../../../shared/components/button-admin/button-admin.component";
 import {RouterLink} from "@angular/router";
+import {User} from "../../../../../models/user";
+import {UserId} from "../../../public/users/user-by-id/user-by-id.component";
+import {log} from "three/src/nodes/math/MathNode";
 
 @Component({
   selector: 'app-user-dashboard',
@@ -38,32 +41,33 @@ export class UserDashboardComponent implements OnInit {
 
   // Object to hold the user data to be edited
   formData: any = {};
+  user$: Observable<User | null>;
 
   role: string | null = null
 
   ngOnInit(): void {
     this.loading = true;
 
-    this._userService.getUserProfile().pipe(
-      map(data => {
-        this.formData = data
-        this.loading = false; // Hide spinner after loading
+    // Use switchMap to first get the user profile, then get the user data based on the username
+    this.user$ = this._userService.getUserProfile().pipe(
+      switchMap((profile: UserProfile) => {
+        if (profile.username) {
+          return this._userService.getUserByUsernameAdmin(profile.username)
+        } else {
+          return of(null);  // Return null if no username is found
+        }
       }),
-      catchError((error) => {
-        this.loading = false; // Hide spinner after loading
-        // Extract the error message
-        const message = error.message;
-        // Translate the error message using the Translation service and set it to the error property
-        this._translateService.get(message).subscribe((translation) => {
-          this.error = translation;
-        });
-        // Return an observable of an empty array to handle errors gracefully
-        return of([] as UserProfile[]);
+      tap((userData: User | null) => {
+        if (userData) {
+          this.formData = {...this.formData, ...userData};
+        }
+        this.loading = false;
       })
-    ).subscribe();
+    );
 
     this.role = localStorage.getItem('role')
   }
+
 
   // Submit the updated profile data to the backend
   onSubmit(formValidator: UserProfile): void {
@@ -83,7 +87,8 @@ export class UserDashboardComponent implements OnInit {
 
         // Update data in inputs with new data
         this._userService.getUserProfile().pipe(
-          map(data => this.formData = data)
+          map(data => this.formData = data),
+          tap(data => console.log(data))
         ).subscribe()
       }, (error) => {
         this.loading = false;

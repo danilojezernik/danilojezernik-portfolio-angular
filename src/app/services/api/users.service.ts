@@ -71,6 +71,15 @@ export class UsersService {
   }
 
   /**
+   * Fetches a user by USERNAME from the admin API endpoint.
+   * @returns Observable<User> - An observable that emits the user object.
+   * @param username
+   */
+  getUserByUsernameAdmin(username: string): Observable<User> {
+    return this._http.get<User>(`${environment.usersUrl.admin}${username}`)
+  }
+
+  /**
    * Updates a user by ID using the public API endpoint.
    * @param id - The ID of the user to update.
    * @param newUser - The new user data to update.

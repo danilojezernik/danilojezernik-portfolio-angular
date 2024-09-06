@@ -12,6 +12,12 @@
     </div>
   </ng-container>
 
+  <!-- This will display the user._id -->
+  <ng-container *ngIf="user$ | async as user">
+    <img class="mx-auto mb-4 w-36 h-36 rounded-full bg-white" [src]="'https://robohash.org/' + user.username"
+         alt="Bonnie Avatar">
+  </ng-container>
+
   <!-- Container to display the form and handle its submission - START -->
   <ng-container *ngIf="!error && !loading && !changing">
 

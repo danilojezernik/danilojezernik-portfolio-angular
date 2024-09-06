@@ -253,7 +253,7 @@ export const formContactConfig: FormFieldConfig[] = [
  * */
 export const formEmailToRegisteredUserConfig: FormFieldConfig[] = [
   { name: 'full_name', label: 'full_name', type: 'text', validators: [ Validators.required ] },
-  { name: 'email', label: 'email', type: 'email', validators: [ Validators.required, Validators.email ] },
+  { name: 'sender_email', label: 'sender_email', type: 'email', validators: [ Validators.required, Validators.email ] },
   { name: 'message', label: 'message', type: 'textarea', validators: [ Validators.required, Validators.min(10) ] }
 ]
 

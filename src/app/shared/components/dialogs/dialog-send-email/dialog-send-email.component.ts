@@ -1,7 +1,9 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {formEmailToRegisteredUserConfig} from "../../../global-const/form-config";
-import {Contact} from "../../../../models/contact";
+import {Email} from "../../../../models/email";
+import {EmailService} from "../../../../services/api/email.service";
+import {DialogRef} from "@angular/cdk/dialog";
 
 @Component({
   selector: 'app-dialog-send-email',
@@ -9,12 +11,19 @@ import {Contact} from "../../../../models/contact";
 })
 export class DialogSendEmailComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { email: string, user: string }) {
+  private _emailService = inject(EmailService)
+  private _dialogRef = inject(DialogRef<DialogSendEmailComponent>)
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { user_id: string, user: string }) {
     console.log(data)
   }
 
-  sendEmail(formValidator: Contact) {
-    console.log(formValidator)
+  sendEmail(formValidator: Email) {
+
+    this._emailService.sendEMail(this.data.user_id, formValidator).subscribe(() => {
+
+    })
+    this._dialogRef.close()
   }
 
   protected readonly formEmailToRegisteredUserConfig = formEmailToRegisteredUserConfig;
