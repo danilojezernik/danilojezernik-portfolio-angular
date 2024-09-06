@@ -5,6 +5,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { BUTTONS } from "../../global-const/global.const";
 import { TranslateModule } from "@ngx-translate/core";
 import { ButtonAdminComponent } from "../../components/button-admin/button-admin.component";
+import {sharedEditorConfig} from "../editor-configs/textarea-config";
+import {AngularEditorConfig, AngularEditorModule} from "@kolkov/angular-editor";
+import {sharedEditorConfigClient} from "../editor-configs/email-config";
 
 /**
  * @Component ReusableFormEditComponent
@@ -13,13 +16,17 @@ import { ButtonAdminComponent } from "../../components/button-admin/button-admin
 @Component({
   selector: 'app-reusable-form-edit',
   standalone: true,
-  imports: [ CommonModule, ReactiveFormsModule, TranslateModule, ButtonAdminComponent ],
+  imports: [CommonModule, ReactiveFormsModule, TranslateModule, ButtonAdminComponent, AngularEditorModule],
   templateUrl: './reusable-form-edit.component.html'
 })
 export class ReusableFormEditComponent {
 
   // Injecting FormBuilder service to handle form creation
   private _formBuilder = inject(FormBuilder);
+
+  // Angular kolkov configs
+  editorTextareaConfig: AngularEditorConfig = sharedEditorConfig
+  editorEmailConfig: AngularEditorConfig = sharedEditorConfigClient
 
   // Input property to accept form configuration array
   @Input() formConfig: FormFieldConfig[] = [];

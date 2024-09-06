@@ -5,9 +5,8 @@
 html, body {
 
 }
-:root {
-  --main-bg-color: coral;
-}
+
+
 body {
   margin: 0;
   padding: 0;
@@ -32,4 +31,3 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s, color 600000s 0s;
 }
-

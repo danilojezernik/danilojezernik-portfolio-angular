@@ -1,0 +1,10 @@
+<span class="flex justify-center font-bold">
+  Send message to: {{data.user_email}}
+</span>
+<app-reusable-form
+  [email]="true"
+  [rows]="12"
+  [config]="formEmailToRegisteredUserConfig"
+  [submitLabel]="'button.send-message' | translate"
+  (formSubmit)="sendEmail(data.user_email, $event)"
+/>

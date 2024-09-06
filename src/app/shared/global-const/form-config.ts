@@ -19,7 +19,7 @@ export const formBlogConfig: FormFieldConfig[] = [
   { name: 'podnaslov', label: 'podnaslov', type: 'text', validators: [ Validators.required ] },
   { name: 'author', label: 'author', type: 'text', validators: [ Validators.required ] },
   { name: 'kategorija', label: 'kategorija', type: 'text', validators: [ Validators.required ] },
-  { name: 'vsebina', label: 'vsebina', type: 'textarea', validators: [ Validators.required, Validators.min(10) ] },
+  { name: 'vsebina', label: 'vsebina', type: 'angular-textarea', validators: [ Validators.required, Validators.min(10) ] },
   { name: 'image', label: 'image', type: 'text', validators: [ Validators.required ] }
 ]
 
@@ -30,7 +30,7 @@ export const formProjectsConfig: FormFieldConfig[] = [
   { name: 'title', label: 'title', type: 'text', validators: [ Validators.required ] },
   { name: 'subtitle', label: 'subtitle', type: 'text', validators: [ Validators.required ] },
   { name: 'category', label: 'category', type: 'text', validators: [ Validators.required ] },
-  { name: 'content', label: 'content', type: 'textarea', validators: [ Validators.required, Validators.minLength(10) ] },
+  { name: 'content', label: 'content', type: 'angular-textarea', validators: [ Validators.required, Validators.minLength(10) ] },
   { name: 'github', label: 'github', type: 'text', validators: [] },
   { name: 'website', label: 'website', type: 'text', validators: [] },
   { name: 'image', label: 'image', type: 'text', validators: [] }
@@ -45,7 +45,7 @@ export const formUserConfig: FormFieldConfig[] = [
   { name: 'email', label: 'email', type: 'email', validators: [ Validators.required, Validators.email ] },
   { name: 'profession', label: 'profession', type: 'text', validators: [] },
   { name: 'technology', label: 'technology', type: 'text', validators: [] },
-  { name: 'description', label: 'description', type: 'text', validators: [ Validators.required ] },
+  { name: 'description', label: 'description', type: 'angular-textarea', validators: [ Validators.required ] },
   { name: 'role', label: 'role', type: 'select',
   options: [
   { value: 'visitor', label: 'Visitor' },
@@ -102,7 +102,7 @@ export const formUserPublicConfig: FormFieldConfig[] = [
       { value: 'Business Analyst', label: 'business-analyst' }
     ], validators: [Validators.required] },
   { name: 'technology', label: 'register-technology', type: 'text', validators: [Validators.required] },
-  { name: 'description', label: 'register-description', type: 'textarea', validators: [ Validators.required ] },
+  { name: 'description', label: 'register-description', type: 'angular-textarea', validators: [ Validators.required ] },
   { name: 'facebook', label: 'facebook', type: 'text', validators: [ ] },
   { name: 'instagram', label: 'instagram', type: 'text', validators: [ ] },
   { name: 'youtube', label: 'youtube', type: 'text', validators: [ ] },
@@ -121,7 +121,7 @@ export const formUserPublicConfig: FormFieldConfig[] = [
  */
 export const formUserDashboardConfig: FormFieldConfig[] = [
   { name: 'full_name', label: 'full_name', type: 'text', validators: [ Validators.required ] },
-  { name: 'description', label: 'register-description', type: 'textarea', validators: [ ] },
+  { name: 'description', label: 'register-description', type: 'angular-textarea', validators: [ ] },
   { name: 'profession', label: 'profession-position', type: 'select',
     options: [
       { value: 'CEO/Co-founder', label: 'ceo-cofounder' },
@@ -174,7 +174,7 @@ export const formTechnologyConfig: FormFieldConfig[] = [
   { name: 'technology', label: 'technology', type: 'text', validators: [ Validators.required ] },
   { name: 'title', label: 'title', type: 'text', validators: [ Validators.required ] },
   { name: 'subtitle', label: 'subtitle', type: 'text', validators: [] },
-  { name: 'vsebina', label: 'vsebina', type: 'textarea', validators: [ Validators.required, Validators.minLength(10) ] },
+  { name: 'vsebina', label: 'vsebina', type: 'angular-textarea', validators: [ Validators.required, Validators.minLength(10) ] },
   { name: 'image', label: 'Image', type: 'text', validators: [] }
 ]
 
@@ -210,7 +210,7 @@ export const formBooksConfig: FormFieldConfig[] = [
   { name: 'author', label: 'author', type: 'text', validators: [ Validators.required ] },
   { name: 'podnaslov', label: 'podnaslov', type: 'text', validators: [] },
   { name: 'buy_url', label: 'buy_url', type: 'text', validators: [] },
-  { name: 'vsebina', label: 'vsebina', type: 'textarea', validators: [ Validators.required, Validators.minLength(10) ] },
+  { name: 'vsebina', label: 'vsebina', type: 'angular-textarea', validators: [ Validators.required, Validators.minLength(10) ] },
   { name: 'image', label: 'image', type: 'text', validators: [] },
 ]
 
@@ -229,7 +229,7 @@ export const formSubscriberConfig: FormFieldConfig[] = [
  * */
 export const formNewsletterConfig: FormFieldConfig[] = [
   { name: 'title', label: 'title', type: 'text', validators: [ Validators.required ] },
-  { name: 'content', label: 'content', type: 'textarea', validators: [ Validators.required ] },
+  { name: 'content', label: 'content', type: 'angular-textarea', validators: [ Validators.required ] },
 ]
 
 /**
@@ -249,13 +249,14 @@ export const formContactConfig: FormFieldConfig[] = [
   { name: 'email', label: 'Email', type: 'email', validators: [ Validators.required, Validators.email ] },
   { name: 'message', label: 'message', type: 'textarea', validators: [ Validators.required, Validators.min(10) ] }
 ]
+
 /**
  * formContactConfig defines the configuration for the form fields used in the newsletter form.
  * */
 export const formEmailToRegisteredUserConfig: FormFieldConfig[] = [
   { name: 'full_name', label: 'full_name', type: 'text', validators: [ Validators.required ] },
   { name: 'sender_email', label: 'sender_email', type: 'email', validators: [ Validators.required, Validators.email ] },
-  { name: 'message', label: 'message', type: 'textarea', validators: [ Validators.required, Validators.min(10) ] }
+  { name: 'message', label: 'message', type: 'angular-email', validators: [ Validators.required, Validators.min(10) ] }
 ]
 
 /**
@@ -263,6 +264,6 @@ export const formEmailToRegisteredUserConfig: FormFieldConfig[] = [
  * */
 export const formTechnologiesConfig: FormFieldConfig[] = [
   { name: 'question', label: 'question', type: 'text', validators: [ Validators.required ] },
-  { name: 'answer', label: 'answer', type: 'text', validators: [ Validators.required ] },
+  { name: 'answer', label: 'answer', type: 'angular-textarea', validators: [ Validators.required ] },
   { name: 'image', label: 'image', type: 'email', validators: [] },
 ]

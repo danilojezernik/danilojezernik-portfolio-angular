@@ -11,6 +11,12 @@ import {ButtonAdminComponent} from "../../../../shared/components/button-admin/b
 import {openDialogUtil} from "../../../../utils/open-dialog.util";
 import {LoadingComponent} from "../../../../shared/components/loading/loading.component";
 import {BreadcrumbAdminComponent} from "../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
+import {Email} from "../../../../models/email";
+import {EmailService} from "../../../../services/api/email.service";
+import {
+  DialogSendEmailAdminComponent
+} from "../../../../shared/components/dialogs/dialog-send-email-admin/dialog-send-email-admin.component";
+import {DIALOG_DIMENSIONS} from "../../../../shared/global-const/global.const";
 
 /**
  * @Component EmailsAdminComponent
@@ -30,6 +36,7 @@ export class EmailsAdminComponent {
   private _contactService = inject(ContactService);
   private _dialog = inject(MatDialog); // Inject the MatDialog service to open dialogs
   private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
+  private _emailService = inject(EmailService)
 
   // Property to store error messages, initialized to null
   error: string | null = null
@@ -88,6 +95,34 @@ export class EmailsAdminComponent {
     this.emailById$ = this._contactService.getEmailByIdAdmin(id);
   }
 
+  storeEmailShortened(email: string): string {
+    const atIndex = email.indexOf('@');
+    if (atIndex === -1) {
+      return '';
+    }
+    // Extract the part before the '@'
+    const localPart = email.slice(0, atIndex);
+
+    // Get the first letter
+    const firstLetter = localPart.charAt(0);
+
+    // Get the middle letter (handle even and odd lengths)
+    const middleIndex = Math.floor(localPart.length / 2);
+    const middleLetter = localPart.charAt(middleIndex);
+
+    // Get the last three characters
+    const lastThree = localPart.slice(-3);
+
+    // Concatenate the result: first + middle + last three
+    return firstLetter + middleLetter + lastThree;
+  }
+
+  isEmailSent(email: string): boolean {
+    const shortenedEmail = this.storeEmailShortened(email);
+    const sentEmails = JSON.parse(localStorage.getItem('_se') || '[]');
+    return sentEmails.includes(shortenedEmail);
+  }
+
   /**
    * @method deleteEmail
    * Deletes an email by its ID.
@@ -100,6 +135,16 @@ export class EmailsAdminComponent {
         this.loadEmails(); // Refresh the list of emails after deletion
       });
     }
+  }
+
+  openEmailDialog(user_email: string) {
+        this._dialog.open(DialogSendEmailAdminComponent, {
+      data: {
+        user_email: user_email
+      },
+      panelClass: 'email-dialog', // Add this line for custom class
+      ...DIALOG_DIMENSIONS.email
+    })
   }
 
   /**

@@ -57,7 +57,7 @@ export class AuthService {
   }
 
   clear() {
-    localStorage.clear();
+    localStorage.removeItem('token');
     this.loggedInSubject.next(false);
   }
 

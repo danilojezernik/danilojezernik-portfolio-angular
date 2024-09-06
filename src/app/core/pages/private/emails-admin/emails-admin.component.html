@@ -42,6 +42,11 @@
               (dialogRead)="openDialog(email._id)"
               (delete)="deleteEmail(email._id)"
             />
+            <span *ngIf="isEmailSent(email.email)" class="badge badge-success">Sent</span>
+
+            <button (click)="openEmailDialog(email.email)">
+              Pošlji email
+            </button>
             <!-- Buttons for editing and deleting email, and opening a dialog - END -->
 
           </div>

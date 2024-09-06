@@ -29,6 +29,7 @@
     "@types/three": "^0.167.2",
     "crypto-js": "^4.2.0",
     "flowbite": "^2.3.0",
+    "font-awesome": "^4.7.0",
     "jwt-decode": "^4.0.0",
     "ngx-device-detector": "^8.0.0",
     "rxjs": "~7.8.0",

@@ -3,6 +3,9 @@ import {CommonModule} from '@angular/common';
 import {FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn} from '@angular/forms';
 import {FormFieldConfig} from "../../../models/form-field-config.model";
 import {TranslateModule} from "@ngx-translate/core";
+import {sharedEditorConfigClient} from "../editor-configs/email-config";
+import {sharedEditorConfig} from "../editor-configs/textarea-config";
+import {AngularEditorConfig, AngularEditorModule} from "@kolkov/angular-editor";
 
 /*************************************************************************************************
  * This component represents a reusable form component that dynamically generates form controls
@@ -13,7 +16,7 @@ import {TranslateModule} from "@ngx-translate/core";
 @Component({
   selector: 'app-reusable-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, TranslateModule],
+  imports: [CommonModule, ReactiveFormsModule, TranslateModule, AngularEditorModule],
   templateUrl: './reusable-form-add.component.html'
 })
 export class ReusableFormAddComponent implements OnInit {
@@ -23,6 +26,10 @@ export class ReusableFormAddComponent implements OnInit {
    * FormBuilder helps in creating form controls.
    */
   private _formBuilder = inject(FormBuilder);
+
+  // Angular kolkov configs
+  editorTextareaConfig: AngularEditorConfig = sharedEditorConfig
+  editorEmailConfig: AngularEditorConfig = sharedEditorConfigClient
 
   /**
    * Input property to receive form configuration from parent component.
@@ -119,4 +126,5 @@ export class ReusableFormAddComponent implements OnInit {
       this.formSubmit.emit(processedFormValue);
     }
   }
+
 }

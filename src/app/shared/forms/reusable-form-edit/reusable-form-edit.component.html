@@ -49,6 +49,15 @@
       *ngIf="field.type === 'textarea'" [id]="field.name" [formControlName]="field.name" [rows]="rows">
     </textarea>
 
+    <ng-container *ngIf="field.type === 'angular-textarea'">
+      <angular-editor [formControlName]="field.name"  [id]="field.name" [config]="editorTextareaConfig" required></angular-editor>
+    </ng-container>
+
+    <ng-container *ngIf="field.type === 'angular-email'">
+      <angular-editor [formControlName]="field.name"  [id]="field.name" [config]="editorEmailConfig" required></angular-editor>
+    </ng-container>
+
+
     <!-- Add select element -->
     <div *ngIf="field.type === 'select'">
       <select

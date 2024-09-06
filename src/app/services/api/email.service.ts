@@ -14,4 +14,8 @@ export class EmailService {
   sendEMail(userId: string, emailData: Email): Observable<Email> {
     return this._http.post<Email>(`${environment.usersUrl.public}/send-email/${userId}`, emailData)
   }
+
+  sendEmailAdmin(user_to: string, emailData: Email): Observable<Email> {
+    return this._http.post<Email>(`${environment.contactUrl.public}/email-to/?email_from=${user_to}`, emailData)
+  }
 }

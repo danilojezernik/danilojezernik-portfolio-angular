@@ -15,7 +15,6 @@ export class DialogSendEmailComponent {
   private _dialogRef = inject(DialogRef<DialogSendEmailComponent>)
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { user_id: string, user: string }) {
-    console.log(data)
   }
 
   sendEmail(formValidator: Email) {
