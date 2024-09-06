@@ -42,11 +42,20 @@
               (dialogRead)="openDialog(email._id)"
               (delete)="deleteEmail(email._id)"
             />
-            <span *ngIf="isEmailSent(email.email)" class="badge badge-success">Sent</span>
-
-            <button (click)="openEmailDialog(email.email)">
-              Pošlji email
+            <button (click)="openEmailDialog(email.email)" type="button"
+                    class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              <svg viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                   class="w-6 h-6">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M10 14l11 -11"/>
+                <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"/>
+              </svg>
+              <div *ngIf="isEmailSent(email.email)"
+                   class="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+              </div>
             </button>
+
             <!-- Buttons for editing and deleting email, and opening a dialog - END -->
 
           </div>
