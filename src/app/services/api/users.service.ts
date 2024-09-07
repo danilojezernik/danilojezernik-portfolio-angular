@@ -19,7 +19,6 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { User } from "../../models/user";
 import { environment } from "../../../environments/environment";
-import {UserProfile} from "../../models/user-profile";
 
 @Injectable({
   providedIn: 'root'

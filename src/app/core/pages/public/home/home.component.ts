@@ -6,11 +6,13 @@ import {TranslateModule} from "@ngx-translate/core";
 import {LatestBlogsComponent} from "../../../../shared/components/latest-blogs/latest-blogs.component";
 import {MySkillsComponent} from "../../../../shared/components/my-skills/my-skills.component";
 import {RouterLink} from "@angular/router";
+import {UsedLanguagesComponent} from "../../../../shared/components/used-languages/used-languages.component";
+import {ChatComponent} from "../../../../shared/components/chat/chat.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, CanvasBoxComponent, BrandsComponent, TranslateModule, LatestBlogsComponent, MySkillsComponent, RouterLink],
+  imports: [CommonModule, CanvasBoxComponent, BrandsComponent, TranslateModule, LatestBlogsComponent, MySkillsComponent, RouterLink, UsedLanguagesComponent, ChatComponent],
   templateUrl: './home.component.html'
 })
 export class HomeComponent {

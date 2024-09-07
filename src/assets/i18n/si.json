@@ -305,6 +305,10 @@
 		"javascript": {
 			"title": "JavaScript"
 		},
+		"language-popularity": {
+			"description": "Ta graf prikazuje najbolj priljubljene programske jezike na podlagi števila vprašanj, označenih z vsakim jezikom na StackOverflow. Podatki odražajo skupno število oznak, povezanih z vsakim jezikom, in ponujajo vpogled v jezike, o katerih se največ razpravlja v razvijalski skupnosti.",
+			"title": "Najbolj priljubljeni programski jeziki"
+		},
 		"latest-blog": {
 			"description": "Moj programerski blog ponuja celovite vadnice, poglobljene nasvete, praktične primere kode in vodnike, ki vam pomagajo ostati v ospredju programiranja.",
 			"title": "Najnovejši blogi"

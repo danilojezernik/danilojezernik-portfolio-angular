@@ -305,6 +305,10 @@
 		"javascript": {
 			"title": "JavaScript"
 		},
+		"language-popularity": {
+			"description": "This chart shows the most popular programming languages based on the number of questions tagged with each language on StackOverflow. The data reflects the total number of tags associated with each language, providing insights into the languages most frequently discussed in the developer community.",
+			"title": "Top Programming Languages"
+		},
 		"latest-blog": {
 			"description": "My programming blog offers comprehensive tutorials, insightful tips, practical code examples, and guides to help you stay ahead in the coding world.",
 			"title": "Latest blogs"

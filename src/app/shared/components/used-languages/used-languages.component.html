@@ -1,0 +1,19 @@
+<div class="bg-[#1a1a1c] divider">
+  <div class="py-16 px-4 mx-auto max-w-screen-xl lg:pb-32 lg:px-6">
+
+    <!-- Title and description of the blog section - START -->
+    <app-hero-title title="pages.language-popularity.title" subtitle="pages.language-popularity.description"/>
+    <!-- Title and description of the blog section - END -->
+
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+      <div class="w-full h-[1000px]">
+        <canvas class="h-screen" baseChart
+                [data]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+        >
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,6 +26,13 @@ import { ShorteningTextPipe } from './pipes/shortening-text/shortening-text.pipe
 import { DialogSendEmailComponent } from './shared/components/dialogs/dialog-send-email/dialog-send-email.component';
 import {ReusableFormAddComponent} from "./shared/forms/reusable-form-add/reusable-form-add.component";
 import {AngularEditorModule} from "@kolkov/angular-editor";
+// @ts-ignore
+import { Chart } from 'chart.js';
+import { registerables } from 'chart.js';
+import { NgChartsModule } from 'ng2-charts';
+
+// Register chart types
+Chart.register(...registerables);
 registerLocaleData(localeSl, 'sl-SI')
 
 @NgModule({
@@ -35,6 +42,7 @@ registerLocaleData(localeSl, 'sl-SI')
     DialogSendEmailComponent
   ],
   imports: [
+    NgChartsModule,
     AngularEditorModule,
     BrowserModule,
     AppRoutingModule,

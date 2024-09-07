@@ -8,6 +8,9 @@ export const environment = {
     publicMedia: 'http://localhost:3000/projects/media/',
   },
 
+  languageUrl: 'http://localhost:3000/language/stackoverflow-tags',
+  chatUrl: 'http://localhost:3000/chat/',
+
   // BLOG API
   blogUrl: {
     public: 'http://localhost:3000/blog',
