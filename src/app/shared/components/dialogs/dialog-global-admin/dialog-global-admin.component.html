@@ -1,5 +1,5 @@
 <!-- START: Conditional Rendering based on data.allData existence -->
-<div>
+<div class="h-[calc(100%-1rem)]">
 
   <ng-container *ngIf="data.allData; else noData">
 
@@ -7,7 +7,7 @@
     <h2 class="text-center bg-white text-black py-2 text-md uppercase font-bold">{{ data.title }}</h2>
 
     <!-- START: Container for displaying data -->
-    <div class="p-2">
+    <div class="p-2 bg-background-menu h-full">
 
       <!-- START: Check if data.allData is a string -->
       <ng-container *ngIf="!isObject(data.allData)">
@@ -32,7 +32,7 @@
                 {{ data.allData[key] | date:'MMM dd, yyyy - HH:mm' }}
               </ng-container>
               <ng-template #normalValue>
-                {{ data.allData[key] }}
+                <span [innerHtml]="data.allData[key]"></span>
               </ng-template>
             </ng-container>
 

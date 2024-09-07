@@ -35,7 +35,7 @@ export class DialogAdminService {
             allData: data // Pass all data to the dialog
           },
           ...DIALOG_DIMENSIONS.admin, // Apply predefined dialog dimensions
-          panelClass: ['p-0', 'admin-dialog']
+          panelClass: 'admin-dialog'
         })
       })
     } else {

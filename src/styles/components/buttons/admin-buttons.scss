@@ -12,13 +12,19 @@
   color: $main-text-color;
   font-weight: $light-font-weight;
   letter-spacing: $letter-spacing-admin;
-  padding: $padding-button-admin;
 
   &.add {
+    padding: $padding-button-admin;
+    @include button-hover-effect($color-add-start, $color-add-end);
+  }
+
+  &.send {
+    padding: $padding-button-admin-send;
     @include button-hover-effect($color-add-start, $color-add-end);
   }
 
   &.restore {
+    padding: $padding-button-admin;
     @include button-hover-effect($color-delete-start, $color-delete-end);
   }
 
@@ -46,12 +52,14 @@
   }
 
   &.back {
+    padding: $padding-button-admin;
     border-radius: $border-radius-button-admin;
     color: $black-text-color;
     @include button-hover-effect($color-back-start, $color-back-end);
   }
 
   &.un-restore {
+    padding: $padding-button-admin;
     animation: pulseRestore 2.5s infinite;
     border-radius: $border-radius-button-admin;
     color: $black-text-color;
@@ -59,6 +67,7 @@
   }
 
   &.restore {
+    padding: $padding-button-admin;
     border-radius: $border-radius-button-admin;
     color: $black-text-color;
     @include button-hover-effect($color-edit-start, $color-edit-end);
