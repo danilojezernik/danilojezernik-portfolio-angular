@@ -1,16 +1,17 @@
-<p>my-gallery works!</p>
 <ng-container *ngIf="images$ | async as image">
 
-  <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
+  <div class="container mx-auto px-5 py-2 lg:pt-12">
     <div class="-m-1 flex flex-wrap md:-m-2">
-      <div class="flex w-1/4 flex-wrap"  *ngFor="let imgName of image.images">
+
+      <div class="flex w-full md:w-1/4 flex-wrap" *ngFor="let imgName of image.images">
         <div class="w-full p-1 md:p-2">
           <img
             [alt]="imgName"
             class="block h-full w-full rounded-lg object-cover object-center"
-            [src]="_getImageByName.getImageUrl(imgName)" />
+            [src]="_getImageByName.getImageUrl(imgName)"/>
         </div>
       </div>
+
     </div>
   </div>
 

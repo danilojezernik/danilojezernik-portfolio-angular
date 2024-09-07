@@ -7,6 +7,7 @@
   <!-- Container to display the form and handle its submission - START -->
   <ng-container *ngIf="!error && !loading">
     <app-reusable-form
+      [rows]="10"
       [config]="formContactConfig"
       [submitLabel]="'button.send-message'"
       (formSubmit)="sendEmail($event)">

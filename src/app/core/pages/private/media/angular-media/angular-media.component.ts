@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
 import {ClipboardCopyService} from "../../../../../services/clipboard-copy/clipboard-copy.service";
@@ -14,7 +14,7 @@ import {HeroTitleComponent} from "../../../../../shared/components/hero-title/he
   imports: [CommonModule, BreadcrumbAdminComponent, GoBackComponent, HeroTitleComponent],
   templateUrl: './angular-media.component.html'
 })
-export class AngularMediaComponent {
+export class AngularMediaComponent implements OnInit {
 
   // Inject MyGalleryService to interact with backend services for media management
   protected _angularService = inject(AngularService);

@@ -298,6 +298,9 @@
 			"repos": "Existing repositories",
 			"title": "GitHub"
 		},
+		"javascript": {
+			"title": "JavaScript"
+		},
 		"login": {
 			"description": "Thank you for being a part of this community. To access your account, please log in with your username and password. If you have any questions or encounter any issues while logging in, you can contact me through my contact page.",
 			"title": "Login"
@@ -318,6 +321,9 @@
 			"questions": "Questions",
 			"title": "Technologies"
 		},
+		"typescript": {
+			"title": "TypeScript"
+		},
 		"user-dashboard": {
 			"description": "Change your data or your subscribtions.",
 			"title": "User settings"
@@ -329,6 +335,9 @@
 		"users-by-id": {
 			"created": "Registered",
 			"message": "Message"
+		},
+		"vue": {
+			"title": "Vue 3"
 		}
 	},
 	"pending": {

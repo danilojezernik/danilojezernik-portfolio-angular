@@ -298,6 +298,9 @@
 			"repos": "Obstoječi repozitoriji",
 			"title": "GitHub"
 		},
+		"javascript": {
+			"title": "JavaScript"
+		},
 		"login": {
 			"description": "Hvala, ker ste del te skupnosti. Za dostop do vašega računa, se prosimo prijavite s svojim uporabniškim imenom in geslom. Če imate kakršnakoli vprašanja ali težave pri prijavi, me lahko kontaktirate preko moje strani za kontakt.",
 			"title": "Vpis"
@@ -318,6 +321,9 @@
 			"questions": "Vprašanja",
 			"title": "Tehnologije"
 		},
+		"typescript": {
+			"title": "TypeScript"
+		},
 		"user-dashboard": {
 			"description": "Spremeni svoje podatke ali naročnine.",
 			"title": "Uporabnikove nastavitve"
@@ -329,6 +335,9 @@
 		"users-by-id": {
 			"created": "Registriran",
 			"message": "Sporočilo"
+		},
+		"vue": {
+			"title": "Vue 3"
 		}
 	},
 	"pending": {
