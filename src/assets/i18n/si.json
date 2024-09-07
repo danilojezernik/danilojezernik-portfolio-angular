@@ -308,9 +308,15 @@
 		"media": {
 			"description": "Dodajaj in odstranjuj slike in kopiraj imena slik."
 		},
+		"mongodb": {
+			"title": "MongoDB"
+		},
 		"not-found": {
 			"back-text": "Na prejšnjo stran se boste vrnili čez",
 			"title": "Upsss! Ta stran ne obstaja."
+		},
+		"python": {
+			"title": "Python"
 		},
 		"register": {
 			"description": "Registriraj se, da si pogledaš zakulisje programa kot obiskovalec, ali se naroči na e-novičke in obvestila o novih blogih.",
