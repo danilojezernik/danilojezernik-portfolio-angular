@@ -53,6 +53,7 @@
 		"about-public": "O meni pregled",
 		"add": "Dodaj",
 		"add-comment": "Oddaj komentar",
+		"ask": "Vprašaj",
 		"back": "Nazaj",
 		"back-admin": "Nazaj na admin",
 		"blogs-admin": "Slike - Blogi",
@@ -289,6 +290,10 @@
 			"description": "Stran, kjer navajam knjige z zanimivo vsebino, ki bi morda koga zanimale. Prav tako vas popeljem do povezave, kjer lahko nakup knjige opravite.",
 			"title": "Knjige"
 		},
+		"chat": {
+			"loading": "Za vas pripravljam odgovor",
+			"title": "Klepet"
+		},
 		"contact": {
 			"contact-us": "Kontaktiraj me",
 			"text": "Hvala, da ste obiskali mojo spletno stran! Če imate kakršnakoli vprašanja ali potrebujete pomoč, me lahko kontaktirate preko spodnjega obrazca. Veselim se vaših sporočil!"
@@ -361,6 +366,9 @@
 	"pending": {
 		"change-user-dashboard": "Posodabljanje podatkov poteka...",
 		"registration": "Registracija poteka..."
+	},
+	"placeholder": {
+		"ask": "Postavi vprašanje..."
 	},
 	"selected": {
 		"allTechnology": "Vsa tehnologija",

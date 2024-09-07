@@ -30,6 +30,7 @@ import {AngularEditorModule} from "@kolkov/angular-editor";
 import { Chart } from 'chart.js';
 import { registerables } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
+import {ChatComponent} from "./shared/components/chat/chat.component";
 
 // Register chart types
 Chart.register(...registerables);
@@ -64,7 +65,8 @@ registerLocaleData(localeSl, 'sl-SI')
       }
     }),
     FooterComponent,
-    ReusableFormAddComponent
+    ReusableFormAddComponent,
+    ChatComponent
 
   ],
   providers: [

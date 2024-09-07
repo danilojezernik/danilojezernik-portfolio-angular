@@ -1,9 +1,8 @@
 import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {UsedLanguagesService} from "../../../services/api/used-languages.service";
-import {map} from "rxjs";
 import {NgChartsModule} from "ng2-charts";
-import {ChartConfiguration, ChartData, ChartType} from "chart.js";
+import {ChartConfiguration, ChartData} from "chart.js";
 import {HeroTitleComponent} from "../hero-title/hero-title.component";
 
 @Component({
@@ -66,8 +65,6 @@ export class UsedLanguagesComponent implements OnInit {
       }
     ]
   };
-
-  public barChartType: ChartType = 'bar';
 
   ngOnInit() {
     console.log('Component initialized');

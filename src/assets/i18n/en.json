@@ -53,6 +53,7 @@
 		"about-public": "About me overview",
 		"add": "Add",
 		"add-comment": "Add comment",
+		"ask": "Ask",
 		"back": "Back",
 		"back-admin": "Back to admin",
 		"blogs-admin": "Media - Blogs",
@@ -289,6 +290,10 @@
 			"description": "A page where I list books with interesting content that might appeal to others. I also provide a link where you can purchase the book.",
 			"title": "Books"
 		},
+		"chat": {
+			"loading": "I am preparing an answer for you",
+			"title": "Chat"
+		},
 		"contact": {
 			"contact-us": "Conntact me",
 			"text": "Thank you for visiting my website! If you have any questions or need assistance, feel free to reach out using the form below. I look forward to hearing from you!"
@@ -361,6 +366,9 @@
 	"pending": {
 		"change-user-dashboard": "Updating data in process...",
 		"registration": "Registration in progress..."
+	},
+	"placeholder": {
+		"ask": "Ask a question..."
 	},
 	"selected": {
 		"allTechnology": "All technology",

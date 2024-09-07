@@ -92,6 +92,12 @@
     @include button-hover-effect($color-add-start, $color-add-end);
   }
 
+  &.chat {
+    padding: 14px!important;
+    border-radius: 100%;
+    @include button-hover-effect($color-add-start, $color-add-end);
+  }
+
   &.read {
     @include button-hover-effect($color-read-start, $color-read-end);
   }
