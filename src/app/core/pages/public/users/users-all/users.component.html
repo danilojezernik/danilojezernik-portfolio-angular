@@ -17,7 +17,7 @@
             <img class="mx-auto mb-4 w-52 h-52 rounded-full bg-white" [src]="'https://robohash.org/' + user.username"
                  alt="Bonnie Avatar">
             <h3 class="mb-1 text-2xl font-bold tracking-tight text-white">
-              <a [routerLink]="['/user/', user._id]">{{ user.full_name }}</a>
+              <a class="hover:text-header transition-colors duration-500" [routerLink]="['/user/', user._id]">{{ user.full_name }}</a>
             </h3>
             <p>{{ user.profession }}</p>
 

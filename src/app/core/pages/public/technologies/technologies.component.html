@@ -10,7 +10,7 @@
 
       <!-- Looping through the blogs array and displaying its properties - START -->
       <article *ngFor="let data of TECHNOLOGIES_PUBLIC_MENU" [routerLink]="'/technologies' + data.path"
-               class="p-6 cursor-pointer bg-background-menu rounded-lg border shadow-md border-gray-700">
+               class="p-6 flicker-in hover:border-box-border transition-colors duration-700 cursor-pointer bg-background-menu rounded-lg border shadow-md border-gray-700">
 
         <!-- Blog image section - START -->
         <img [src]="data.img"

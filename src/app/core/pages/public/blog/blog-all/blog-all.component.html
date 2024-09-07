@@ -86,14 +86,16 @@
 
                 <!-- Author name - START -->
                 <span class="font-medium dark:text-white">
-                          {{ blog.author }}
+                  <a routerLink="/about" class=" hover:text-header transition-colors duration-500">
+                      {{ blog.author }}
+                  </a>
                       </span>
                 <!-- Author name - END -->
               </div>
 
               <!-- Read more link - START -->
               <a [routerLink]="['/blog/', blog._id]"
-                 class="inline-flex items-center font-medium text-primary-500 hover:text-red-600">
+                 class="inline-flex items-center font-medium text-primary-500 hover:text-header transition-colors duration-500">
                 <span class="pe-2">{{ 'button.read-more' | translate }}</span> &#11166;
               </a>
               <!-- Read more link - END -->
