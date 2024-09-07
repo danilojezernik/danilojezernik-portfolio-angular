@@ -11,11 +11,13 @@ import { ButtonAdminComponent } from "../../../../../shared/components/button-ad
 import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
+import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
+import {OrderService} from "../../../../../utils/local-storage/order-service";
 
 @Component({
   selector: 'app-experiences-admin',
   standalone: true,
-    imports: [CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent],
+  imports: [CommonModule, GoBackComponent, ShowDataComponent, MatDialogModule, TranslateModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent, CdkDropList, CdkDrag],
   templateUrl: './all-experiences-admin.component.html'
 })
 export class AllExperiencesAdminComponent {
@@ -24,6 +26,7 @@ export class AllExperiencesAdminComponent {
   private _experiencesService = inject(ExperiencesService)
   private _dialog = inject(MatDialog) // Inject the MatDialog service to open dialogs
   private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
+  private _orderService = inject(OrderService)
 
   // Property to store error messages, initialized to null
   error: string | null = null
@@ -38,6 +41,8 @@ export class AllExperiencesAdminComponent {
 
   // Observable to hold the experiences details fetched by ID
   experienceById$!: Observable<Experiences>
+
+  experiences: Experiences[] = []
 
   /**
    * Constructor to initialize the component.
@@ -68,12 +73,27 @@ export class AllExperiencesAdminComponent {
       }),
       // Ensure loading state is set to false once the API call is complete
       finalize(() => this.loading = false)
-    ).subscribe(experiences => {
+    ).subscribe(items => {
+      this.experiences = items
+      this._orderService.applySavedOrder(this.experiences, 'experiencesOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
-      this.experiencesSubject$.next(experiences)
+      this.experiencesSubject$.next(items)
     })
   }
+  /**
+   * Drag and drop functionality and save indexes to local storage so that when reorganized, position will be stored to localstorage.
+   */
+  drop(event: CdkDragDrop<Experiences[]>) {
+    moveItemInArray(this.experiences, event.previousIndex, event.currentIndex);
+    this._orderService.saveOrderToLocalStorage(this.experiences, 'experiencesOrder', '_id')
+  }
 
+  /**
+   * Remove order from local storage
+   */
+  removeOrder() {
+    this._orderService.clearBlogsFromLocalStorage('experiencesOrder')
+  }
   /**
    * @method getExperienceById
    * Fetches a single experiences by its ID from the ExperiencesService and assigns it to experienceById$.
@@ -83,17 +103,6 @@ export class AllExperiencesAdminComponent {
     this.experienceById$ = this._experiencesService.getExperienceById(id)
   }
 
-  /**
-   * @method openDialog
-   * Opens a dialog with experience details fetched by ID.
-   * @param id - ID of the experience to fetch and display in the dialog
-   */
-  openDialog(id?: string) {
-    if (id) {
-      this.experienceById$ = this._experiencesService.getExperienceById(id)
-      openDialogUtil(this._dialog, id, this.getExperienceById.bind(this), this.experienceById$, 'title', 'experience')
-    }
-  }
 
   /**
    * @method deleteExperience
@@ -109,4 +118,15 @@ export class AllExperiencesAdminComponent {
     }
   }
 
+  /**
+   * @method openDialog
+   * Opens a dialog with experience details fetched by ID.
+   * @param id - ID of the experience to fetch and display in the dialog
+   */
+  openDialog(id?: string) {
+    if (id) {
+      this.experienceById$ = this._experiencesService.getExperienceById(id)
+      openDialogUtil(this._dialog, id, this.getExperienceById.bind(this), this.experienceById$, 'title', 'experience')
+    }
+  }
 }

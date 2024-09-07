@@ -12,6 +12,8 @@ import { openDialogUtil } from "../../../../../utils/open-dialog.util";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
+import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
+import {OrderService} from "../../../../../utils/local-storage/order-service";
 
 /**
  * @Component AllLinksComponent
@@ -22,7 +24,7 @@ import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcr
 @Component({
   selector: 'app-all-links',
   standalone: true,
-    imports: [CommonModule, ShowDataComponent, TranslateModule, RouterLink, ButtonAdminComponent, GoBackComponent, MatDialogModule, LoadingComponent, BreadcrumbAdminComponent],
+  imports: [CommonModule, ShowDataComponent, TranslateModule, RouterLink, ButtonAdminComponent, GoBackComponent, MatDialogModule, LoadingComponent, BreadcrumbAdminComponent, CdkDropList, CdkDrag],
   templateUrl: './all-links.component.html'
 })
 export class AllLinksComponent {
@@ -31,6 +33,7 @@ export class AllLinksComponent {
   private _linksService = inject(LinksService);
   private _dialog = inject(MatDialog); // Inject the MatDialog service to open dialogs
   private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
+  private _orderService = inject(OrderService)
 
   // Property to store error messages, initialized to null
   error: string | null = null;
@@ -45,12 +48,29 @@ export class AllLinksComponent {
   // Observable to hold the link details fetched by ID
   linksById$!: Observable<Links>;
 
+  links: Links[] = []
+
   /**
    * Constructor to initialize the component.
    * Calls the loadLinks method to load all links.
    */
   constructor() {
     this.loadLinks();
+  }
+
+  /**
+   * Drag and drop functionality and save indexes to local storage so that when reorganized, position will be stored to localstorage.
+   */
+  drop(event: CdkDragDrop<Links[]>) {
+    moveItemInArray(this.links, event.previousIndex, event.currentIndex);
+    this._orderService.saveOrderToLocalStorage(this.links, 'linksOrder', '_id')
+  }
+
+  /**
+   * Remove order from local storage
+   */
+  removeOrder() {
+    this._orderService.clearBlogsFromLocalStorage('linksOrder')
   }
 
   /**
@@ -73,9 +93,11 @@ export class AllLinksComponent {
       }),
       // Ensure loading state is set to false once the API call is complete
       finalize(() => this.loading = false)
-    ).subscribe(links => {
+    ).subscribe(items => {
+      this.links = items
+      this._orderService.applySavedOrder(this.links, 'linksOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
-      this.linksSubject.next(links);
+      this.linksSubject.next(items);
     });
   }
 

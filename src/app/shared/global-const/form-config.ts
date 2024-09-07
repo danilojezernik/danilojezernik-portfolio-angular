@@ -188,8 +188,8 @@ export const formExperiencesConfig: FormFieldConfig[] = [
   { name: 'programming_language', label: 'programming_language', type: 'text', validators: [ Validators.required ] },
   { name: 'company', label: 'company', type: 'text', validators: [] },
   { name: 'tasks', label: 'tasks', type: 'text', validators: [] },
-  { name: 'company_start', label: 'company_start', type: 'text', validators: [] },
-  { name: 'company_end', label: 'company_end', type: 'text', validators: [] },
+  { name: 'company_start', label: 'company_start', type: 'date', validators: [] },
+  { name: 'company_end', label: 'company_end', type: 'date', validators: [] },
   { name: 'employee', label: 'employee', type: 'checkbox', validators: [ Validators.required ] },
 ]
 

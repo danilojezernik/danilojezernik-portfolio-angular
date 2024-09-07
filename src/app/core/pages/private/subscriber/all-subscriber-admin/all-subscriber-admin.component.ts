@@ -11,6 +11,7 @@ import { ShowDataComponent } from "../../../../../shared/components/show-data/sh
 import { TranslateService } from "@ngx-translate/core";
 import { LoadingComponent } from "../../../../../shared/components/loading/loading.component";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
+import {CdkDropList} from "@angular/cdk/drag-drop";
 
 /**
  * @Component AllSubscriberAdminComponent
@@ -21,7 +22,7 @@ import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcr
 @Component({
   selector: 'app-all-subscriber-admin',
   standalone: true,
-    imports: [CommonModule, ButtonAdminComponent, GoBackComponent, ShowDataComponent, LoadingComponent, BreadcrumbAdminComponent],
+  imports: [CommonModule, ButtonAdminComponent, GoBackComponent, ShowDataComponent, LoadingComponent, BreadcrumbAdminComponent, CdkDropList],
   templateUrl: './all-subscriber-admin.component.html'
 })
 export class AllSubscriberAdminComponent {

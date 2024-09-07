@@ -18,6 +18,10 @@ export class BlogService {
     return this._http.get<BlogModel[]>(`${environment.blogUrl.public}`)
   }
 
+  gesBlogsLimited(): Observable<BlogModel[]> {
+    return this._http.get<BlogModel[]>(`${environment.blogUrl.public}/limited/`)
+  }
+
   getBlogById(id: string): Observable<BlogModel> {
     return this._http.get<BlogModel>(`${environment.blogUrl.public}/${id}`)
   }

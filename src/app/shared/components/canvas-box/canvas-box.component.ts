@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 @Component({
   selector: 'app-canvas-box',
@@ -11,93 +13,91 @@ import * as THREE from 'three';
 export class CanvasBoxComponent implements OnInit {
 
   ngOnInit(): void {
-    this.createThreeJsBox();
+    this.createThreeJsScene();
   }
 
-  createThreeJsBox(): void {
+
+  createThreeJsScene(): void {
     const canvas = document.getElementById('canvas-box');
-
-    const scene = new THREE.Scene();
-
-    const material = new THREE.MeshToonMaterial();
-
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambientLight);
-
-    const pointLight = new THREE.PointLight(0xffffff, 0.5);
-    pointLight.position.x = 2;
-    pointLight.position.y = 2;
-    pointLight.position.z = 2;
-    scene.add(pointLight);
-
-    const box = new THREE.Mesh(new THREE.BoxGeometry(1.5, 1.5, 1.5), material);
-
-    const torus = new THREE.Mesh(
-      new THREE.TorusGeometry(5, 1.5, 16, 100),
-      material
-    );
-
-    scene.add(torus, box);
-
-    const canvasSizes = {
-      width: window.innerWidth,
-      height: window.innerHeight,
-    };
-
-    console.log(canvasSizes.width)
-
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      canvasSizes.width / canvasSizes.height,
-      0.001,
-      1000
-    );
-    camera.position.z = 60;
-    scene.add(camera);
 
     if (!canvas) {
       return;
     }
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvas,
-    });
-    renderer.setClearColor(0xe232222, 1);
-    renderer.setSize(canvasSizes.width, canvasSizes.height);
+    // Create scene
+    const scene = new THREE.Scene();
 
-    window.addEventListener('resize', () => {
-      canvasSizes.width = window.innerWidth;
-      canvasSizes.height = window.innerHeight;
+    // Create lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
+    scene.add(ambientLight);
 
-      camera.aspect = canvasSizes.width / canvasSizes.height;
-      camera.updateProjectionMatrix();
+    const pointLight = new THREE.PointLight(0xffffff, 1);
+    pointLight.position.set(0, 0, 10);
+    scene.add(pointLight);
 
-      renderer.setSize(canvasSizes.width, canvasSizes.height);
-      renderer.render(scene, camera);
-    });
-
-    const clock = new THREE.Clock();
-
-    const animateGeometry = () => {
-      const elapsedTime = clock.getElapsedTime();
-
-      // Update animaiton objects
-      box.rotation.x = elapsedTime;
-      box.rotation.y = elapsedTime;
-      box.rotation.z = elapsedTime;
-
-      torus.rotation.x = -elapsedTime;
-      torus.rotation.y = -elapsedTime;
-      torus.rotation.z = -elapsedTime;
-
-      // Render
-      renderer.render(scene, camera);
-
-      // Call tick again on the next frame
-      window.requestAnimationFrame(animateGeometry);
+    // Set canvas sizes manually or via CSS
+    const canvasSizes = {
+      width: 500, // Manually set width
+      height: 500 // Manually set height
     };
 
-    animateGeometry();
+    // Create camera
+    const camera = new THREE.PerspectiveCamera(
+      10,
+      canvasSizes.width / canvasSizes.height,
+      0.1,
+      1000
+    );
+    camera.position.set(5, 5, 10);
+    scene.add(camera);
+
+    // Create renderer with alpha (transparency)
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      antialias: true,
+      alpha: true // Enable transparency
+    });
+    renderer.setSize(canvasSizes.width, canvasSizes.height);
+
+    // Create OrbitControls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // Optional: smooth camera movement
+    controls.dampingFactor = 0.25; // Damping value
+    controls.enableZoom = false; // Allow zooming
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    });
+    // Load the GLTF model
+    const loader = new GLTFLoader();
+    loader.load('/assets/media/gltf/scene.gltf', (gltf) => {
+      const model = gltf.scene;
+      scene.add(model);
+
+      model.position.set(0, 0, 0);
+      model.scale.set(1, 1, 1);
+
+      // Animation loop
+      const animate = () => {
+        requestAnimationFrame(animate);
+
+        // Rotate model (optional)
+        model.rotation.y += 0.01;
+
+        // Update controls
+        controls.update();
+
+        // Render the scene with the camera
+        renderer.render(scene, camera);
+      };
+      animate();
+    }, undefined, (error) => {
+      console.error('An error occurred while loading the GLTF model', error);
+    });
   }
 
 }

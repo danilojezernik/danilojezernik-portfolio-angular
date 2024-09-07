@@ -29,6 +29,11 @@
       *ngIf="field.type === 'number'" [type]="field.type" [id]="field.name" [formControlName]="field.name"
     />
 
+    <input
+      class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      *ngIf="field.type === 'date'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
+    >
+
     <!-- Input field for number type -->
     <ng-container *ngIf="field.type === 'checkbox'">
       <div class="flex flex-row ">

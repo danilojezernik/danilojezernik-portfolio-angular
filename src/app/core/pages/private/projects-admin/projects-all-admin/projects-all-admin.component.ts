@@ -14,6 +14,8 @@ import { LoadingComponent } from "../../../../../shared/components/loading/loadi
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 import {GetImageService} from "../../../../../services/get-image/get-image.service";
 import {ShowImageComponent} from "../../../../../shared/components/show-image/show-image.component";
+import {OrderService} from "../../../../../utils/local-storage/order-service";
+import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
 
 /**
  * @Component ProjectsAllAdminComponent
@@ -24,7 +26,7 @@ import {ShowImageComponent} from "../../../../../shared/components/show-image/sh
 @Component({
   selector: 'app-projects-admin',
   standalone: true,
-  imports: [CommonModule, GoBackComponent, ShowDataComponent, RouterLink, MatDialogModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent, ShowImageComponent],
+  imports: [CommonModule, GoBackComponent, ShowDataComponent, RouterLink, MatDialogModule, ButtonAdminComponent, LoadingComponent, BreadcrumbAdminComponent, ShowImageComponent, CdkDropList, CdkDrag],
   templateUrl: './projects-all-admin.component.html'
 })
 export class ProjectsAllAdminComponent {
@@ -35,6 +37,7 @@ export class ProjectsAllAdminComponent {
   private _dialog = inject(MatDialog);
   private _translateService = inject(TranslateService); // Injected TranslateService instance for translations
   protected _getImageByName = inject(GetImageService)
+  private _orderService = inject(OrderService)
 
   // Property to store error messages, initialized to null
   error: string | null = null
@@ -49,8 +52,25 @@ export class ProjectsAllAdminComponent {
   // Observable holding project details for a specific project ID
   projectById$!: Observable<Projects>;
 
+  projects: Projects[] = []
+
   constructor() {
     this.getAllProjects()
+  }
+
+  /**
+   * Drag and drop functionality and save indexes to local storage so that when reorganized, position will be stored to localstorage.
+   */
+  drop(event: CdkDragDrop<Projects[]>) {
+    moveItemInArray(this.projects, event.previousIndex, event.currentIndex);
+    this._orderService.saveOrderToLocalStorage(this.projects, 'projectsOrder', '_id')
+  }
+
+  /**
+   * Remove order from local storage
+   */
+  removeOrder() {
+    this._orderService.clearBlogsFromLocalStorage('projectsOrder')
   }
 
   getAllProjects() {
@@ -69,9 +89,11 @@ export class ProjectsAllAdminComponent {
       }),
       // Ensure loading state is set to false once the API call is complete
       finalize(() => this.loading = false)
-    ).subscribe(project => {
+    ).subscribe(items => {
+      this.projects = items
+      this._orderService.applySavedOrder(this.projects, 'projectsOrder', '_id')
       this.loading = false; // Set loading state to false after receiving the response
-      this._projectSubject.next(project); // Update the BehaviorSubject with the fetched blogs
+      this._projectSubject.next(items); // Update the BehaviorSubject with the fetched blogs
     })
   }
 

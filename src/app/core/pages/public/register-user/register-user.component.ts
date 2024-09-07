@@ -52,9 +52,6 @@ export class RegisterUserComponent {
         this.error = translation;
       });
 
-      setTimeout(() => {
-        window.location.reload();
-      }, 3000)
     })
 
   }

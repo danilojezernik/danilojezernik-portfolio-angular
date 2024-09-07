@@ -28,7 +28,7 @@ export interface FormFieldConfig {
    * It is a union type that can be one of the following string literals: 'text', 'email', 'number', or 'textarea'.
    * This property determines the type of input element rendered in the form.
    */
-  type: 'text' | 'email' | 'number' | 'textarea' | 'password' | 'checkbox' | 'select' | 'angular-textarea' | 'angular-email';
+  type: 'text' | 'email' | 'date' | 'number' | 'textarea' | 'password' | 'checkbox' | 'select' | 'angular-textarea' | 'angular-email';
 
   /**
    * The validators property is an optional array of ValidatorFn functions.

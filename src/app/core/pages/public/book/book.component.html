@@ -30,7 +30,7 @@
 
             <!-- Looping through the books array and displaying its properties - START -->
             <article *ngFor="let book of books.all"
-                     class="p-6 bg-background-menu rounded-lg border shadow-md border-gray-700">
+                     class="p-6 bg-background-menu hover:border-box-border transition-colors duration-700 rounded-lg border shadow-md border-gray-700">
 
               <!-- book image section - START -->
               <img *ngIf="book.image" [src]="_getImageByName.getBookImageUrl(book.image)"

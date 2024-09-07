@@ -1,7 +1,7 @@
-<nav class="bg-background-menu border-opacity-10 border-white border md:mt-8">
+<nav class="container-width md:mx-auto md:mt-8">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a routerLink="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="assets/media/logo/logo-dj.png" class="h-12" alt="Danilo Jezernik Logo">
+      <img src="assets/media/logo/logo-dj.png" class="h-12 rotate-in-center" alt="Danilo Jezernik Logo">
     </a>
     <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
       <!-- drawer init and show -->
@@ -77,7 +77,7 @@
         <li *ngFor="let menu of MENU_TOP">
           <ng-container *ngIf="menu.menu !== 'menu.login' && menu.menu !== 'menu.logout' && menu.menu !== 'menu.dashboard'">
             <a [routerLink]="menu.path"
-               class="block py-2 px-3 cursor-pointer rounded md:bg-transparent md:p-0">{{ menu.menu | translate }}</a>
+               class="block hover:text-header transition-colors duration-500 py-2 px-3 cursor-pointer rounded md:bg-transparent md:p-0">{{ menu.menu | translate }}</a>
           </ng-container>
         </li>
       </ul>

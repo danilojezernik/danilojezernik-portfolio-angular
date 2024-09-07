@@ -62,6 +62,7 @@
 		"delete": "Delete",
 		"edit": "Edit",
 		"github": "to GitHub",
+		"know-more": "Know more",
 		"media-angular": "Media - Angular",
 		"media-javascript": "Media - JavaScript",
 		"media-mongodb": "Media - MongoDB",
@@ -298,8 +299,15 @@
 			"repos": "Existing repositories",
 			"title": "GitHub"
 		},
+		"home": {
+			"subtitle": "A platform for everyone passionate about programming and technologies. Discover in-depth insights into modern programming languages, technologies, and innovations shaping the future. Join a community dedicated to continuous learning and exploration of the digital world."
+		},
 		"javascript": {
 			"title": "JavaScript"
+		},
+		"latest-blog": {
+			"description": "My programming blog offers comprehensive tutorials, insightful tips, practical code examples, and guides to help you stay ahead in the coding world.",
+			"title": "Latest blogs"
 		},
 		"login": {
 			"description": "Thank you for being a part of this community. To access your account, please log in with your username and password. If you have any questions or encounter any issues while logging in, you can contact me through my contact page.",

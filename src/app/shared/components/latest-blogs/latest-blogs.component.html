@@ -5,11 +5,11 @@
   <ng-container *ngIf="!error">
 
     <!-- Section containing the main content of the blog page - START -->
-    <section>
-      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <section class="divider">
+      <div class="py-16 px-4 mx-auto max-w-screen-xl lg:py-32 lg:px-6">
 
         <!-- Title and description of the blog section - START -->
-        <app-hero-title title="pages.blog.title" subtitle="pages.blog.description"/>
+        <app-hero-title title="pages.latest-blog.title" subtitle="pages.latest-blog.description"/>
         <!-- Title and description of the blog section - END -->
 
         <!-- Grid container for displaying blog articles - START -->
@@ -17,7 +17,7 @@
 
           <!-- Looping through the blogs array and displaying its properties - START -->
           <article *ngFor="let blog of blogs"
-                   class="p-6 bg-background-menu rounded-lg hover:border-box-border transition-colors duration-700 border shadow-md border-gray-700">
+                   class="p-6 bg-background-menu hover:border-box-border transition-colors duration-700 rounded-lg border shadow-md border-gray-700">
 
             <!-- Blog image section - START -->
             <img *ngIf="blog.image" [src]="_getImageByName.getBlogImageUrl(blog.image)"

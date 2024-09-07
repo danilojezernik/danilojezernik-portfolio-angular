@@ -8,6 +8,12 @@ module.exports = {
     extend: {
       colors: {
         'background-menu': 'rgb(32, 26, 28)',
+      },
+      textColor: {
+        'header': '#f90f63'
+      },
+      borderColor: {
+        'box-border': '#f90f63'
       }
     },
   },

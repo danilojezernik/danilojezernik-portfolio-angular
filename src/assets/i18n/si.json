@@ -62,6 +62,7 @@
 		"delete": "Izbriši",
 		"edit": "Uredi",
 		"github": "na GitHub",
+		"know-more": "Izvedi več",
 		"media-angular": "Slike - Angular",
 		"media-javascript": "Slike - JavaScript",
 		"media-mongodb": "Slike - MongoDB",
@@ -298,8 +299,15 @@
 			"repos": "Obstoječi repozitoriji",
 			"title": "GitHub"
 		},
+		"home": {
+			"subtitle": "Stran za vse, ki jih zanima svet programiranja in tehnologij. Odkrijte poglobljene vpoglede v sodobne programske jezike, tehnologije in inovacije, ki oblikujejo prihodnost. Pridružite se skupnosti, ki stremi k nenehnemu učenju in raziskovanju digitalnega sveta."
+		},
 		"javascript": {
 			"title": "JavaScript"
+		},
+		"latest-blog": {
+			"description": "Moj programerski blog ponuja celovite vadnice, poglobljene nasvete, praktične primere kode in vodnike, ki vam pomagajo ostati v ospredju programiranja.",
+			"title": "Najnovejši blogi"
 		},
 		"login": {
 			"description": "Hvala, ker ste del te skupnosti. Za dostop do vašega računa, se prosimo prijavite s svojim uporabniškim imenom in geslom. Če imate kakršnakoli vprašanja ali težave pri prijavi, me lahko kontaktirate preko moje strani za kontakt.",
