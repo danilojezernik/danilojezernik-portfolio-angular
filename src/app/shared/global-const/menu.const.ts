@@ -20,10 +20,10 @@ export const LOGIN_LOGOUT: { menu: string, path: string, condition: string }[] =
 ]
 
 // LINK ITEMS FOR ABOUT ME PAGE COMPONENT
-export const ABOUT_ME: { menu: string, path: string }[] = [
-  {menu: 'menu.biography', path: '/biography'},
-  {menu: 'menu.experiences', path: '/experiences'},
-  {menu: 'menu.projects', path: '/projects'},
+export const ABOUT_ME: { menu: string, path: string, description: string }[] = [
+  {menu: 'menu.biography', path: '/biography', description: 'pages.my-data.biography'},
+  {menu: 'menu.experiences', path: '/experiences', description: 'pages.experiences.description'},
+  {menu: 'menu.projects', path: '/projects', description: 'pages.my-data.projects'},
 ]
 
 // LINK ITEMS FOR MY RESOURCES FOR ABOUT ME COMPONENT

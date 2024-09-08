@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import {MyGalleryService} from "../../../services/api/my-gallery.service";
 import {Observable} from "rxjs";
 import {GetImageService} from "../../../services/get-image/get-image.service";
+import {HeroTitleComponent} from "../hero-title/hero-title.component";
 
 @Component({
   selector: 'app-my-gallery',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeroTitleComponent],
   templateUrl: './my-gallery.component.html'
 })
 export class MyGalleryComponent implements OnInit {

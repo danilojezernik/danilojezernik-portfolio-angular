@@ -6,17 +6,20 @@ import {catchError, map, of} from "rxjs";
 import { Projects } from "../../../../models/projects";
 import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
 import {OrderService} from "../../../../utils/local-storage/order-service";
+import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
+import {GetImageService} from "../../../../services/get-image/get-image.service";
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [ CommonModule, LoadingComponent ],
+    imports: [CommonModule, LoadingComponent, HeroTitleComponent],
   templateUrl: './projects.component.html'
 })
 export class ProjectsComponent {
 
   private _projectService = inject(ProjectsService)
   private _translateService = inject(TranslateService)
+  protected _getImageByName = inject(GetImageService)
 
   // Injecting OrderService to manage and apply the order of the questions
   private _orderService = inject(OrderService);

@@ -143,6 +143,7 @@ import {MongodbMediaComponent} from "./core/pages/private/media/mongodb-media/mo
 import {JavascriptMediaComponent} from "./core/pages/private/media/javascript-media/javascript-media.component";
 import {TypescriptMediaComponent} from "./core/pages/private/media/typescript-media/typescript-media.component";
 import {UserDashboardComponent} from "./core/pages/private/users-admin/user-dashboard/user-dashboard.component";
+import {ChatRoomComponent} from "./core/pages/public/chat-room/chat-room.component";
 
 const routes: Routes = [
   {
@@ -266,6 +267,17 @@ const routes: Routes = [
         canActivate: [AuthGuardService]
       }
     ]
+
+  },
+
+  // --------------------
+  //    WEBSOCKET CHAT ROOM ROUTES
+  // --------------------
+
+  {
+    path: 'chat-room',
+    component: ChatRoomComponent,
+    canActivate: [AuthGuardService]
 
   },
 

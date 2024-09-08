@@ -17,7 +17,6 @@ import {ButtonAdminComponent} from "../../../../../shared/components/button-admi
 import {RouterLink} from "@angular/router";
 import {User} from "../../../../../models/user";
 import {AuthService} from "../../../../../auth/auth.service";
-import {BlogModel} from "../../../../../models/blog.model";
 
 @Component({
   selector: 'app-user-dashboard',
@@ -99,7 +98,6 @@ export class UserDashboardComponent implements OnInit {
         // Update data in inputs with new data
         this._userService.getUserProfile().pipe(
           map(data => this.formData = data),
-          tap(data => console.log(data))
         ).subscribe()
       }, (error) => {
         this.loading = false;

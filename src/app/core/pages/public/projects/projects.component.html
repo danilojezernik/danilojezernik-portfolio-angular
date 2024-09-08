@@ -1,39 +1,83 @@
-<p>projects works!</p>
-
 <!-- Container that uses Angular's async pipe to handle the observable projects$ - START -->
 <ng-container *ngIf="projects$ | async as projects; else loadingData">
 
-  <!-- Container to handle the scenario when there is no error - START -->
-  <ng-container *ngIf="!error">
+  <section>
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 
-    <!-- Looping through the projects array and displaying its properties - START -->
-    <div *ngFor="let project of projects">
-      {{ project.title }}<br>
-      {{ project.subtitle }}<br>
-      {{ project.content }}<br>
+      <!-- Title and description of the blog section - START -->
+      <app-hero-title title="pages.projects.title" subtitle="pages.projects.description"/>
+      <!-- Title and description of the blog section - END -->
 
-      <!-- Display project website if available - START -->
-      <ng-container *ngIf="project.website">{{ project.website }}<br></ng-container>
-      <!-- Display project website if available - END -->
+        <!-- Container to handle the scenario when there is no error - START -->
+        <ng-container *ngIf="!error">
 
-      <!-- Display project GitHub link if available - START -->
-      <ng-container *ngIf="project.github">{{ project.github }}<br></ng-container>
-      <!-- Display project GitHub link if available - END -->
+          <!-- Looping through the projects array and displaying its properties - START -->
+          <div *ngFor="let project of projects">
 
-      {{ project.category }}<br>
-      {{ project.datum_vnosa | date }}<br>
-    </div>
-    <!-- Looping through the projects array and displaying its properties - END -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+                <div>
+                  <img *ngIf="!project.image" src="https://via.placeholder.com/600x400" alt="Project Image" class="rounded-lg shadow-lg">
+                  <img *ngIf="project.image" [src]="_getImageByName.getProjectImageUrl(project.image)" [alt]="project.title" class="rounded-lg shadow-lg">
 
-  </ng-container>
-  <!-- Container to handle the scenario when there is no error - END -->
+                </div>
+                <div class="flex flex-col justify-center">
+                  <h3 class="text-3xl font-bold mb-2">Flowbite's dashboard</h3>
+                  <a href="#" class="text-blue-400 mb-4">https://flowbite.com</a>
+                  <p class="mb-4">Flowbite helps you connect with friends, family and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
+                  <div class="flex space-x-3 mb-4">
+                    <img [src]="_getImageByName.getProjectImageUrl(project.image)" alt="Icon" class="w-6 h-6">
+                    <img src="https://via.placeholder.com/30" alt="Icon" class="w-6 h-6">
+                    <img src="https://via.placeholder.com/30" alt="Icon" class="w-6 h-6">
+                  </div>
+                  <a href="#" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">View case study</a>
+                </div>
+              </div>
 
-  <!-- Error message display if the data fetching fails - START -->
-  <ng-container *ngIf="error">
-    {{ error }}
-  </ng-container>
-  <!-- Error message display if the data fetching fails - END -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {{ project.title }}<br>
+            {{ project.subtitle }}<br>
+            {{ project.content }}<br>
+
+            <!-- Display project website if available - START -->
+            <ng-container *ngIf="project.website">{{ project.website }}<br></ng-container>
+            <!-- Display project website if available - END -->
+
+            <!-- Display project GitHub link if available - START -->
+            <ng-container *ngIf="project.github">{{ project.github }}<br></ng-container>
+            <!-- Display project GitHub link if available - END -->
+
+            {{ project.category }}<br>
+            {{ project.datum_vnosa | date }}<br>
+          </div>
+          <!-- Looping through the projects array and displaying its properties - END -->
+
+        </ng-container>
+        <!-- Container to handle the scenario when there is no error - END -->
+
+        <!-- Error message display if the data fetching fails - START -->
+        <ng-container *ngIf="error">
+          {{ error }}
+        </ng-container>
+        <!-- Error message display if the data fetching fails - END -->
+      </div>
+  </section>
 </ng-container>
 <!-- Container that uses Angular's async pipe to handle the observable projects$ - END -->
 
@@ -42,3 +86,6 @@
   <app-loading/>
 </ng-template>
 <!-- Template to show loading spinner and text while data is being fetched - END -->
+<!-- Container -->
+
+

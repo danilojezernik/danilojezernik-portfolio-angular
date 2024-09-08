@@ -13,7 +13,6 @@ import {
 import {DIALOG_DIMENSIONS} from "../../../../../shared/global-const/global.const";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {ReusableFormAddComponent} from "../../../../../shared/forms/reusable-form-add/reusable-form-add.component";
-import {formEmailToRegisteredUserConfig} from "../../../../../shared/global-const/form-config";
 import {AuthService} from "../../../../../auth/auth.service";
 import {SocialPlatformsComponent} from "../../../../../shared/components/social-platforms/social-platforms.component";
 
@@ -102,5 +101,4 @@ export class UserByIdComponent implements OnInit {
     })
   }
 
-  protected readonly formEmailToRegisteredUserConfig = formEmailToRegisteredUserConfig;
 }

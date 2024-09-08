@@ -1,0 +1,15 @@
+<div *ngIf="!connected">
+  <h1>Enter your name</h1>
+  <input [(ngModel)]="username" placeholder="Enter your name" />
+  <button (click)="connect()">Join Chat</button>
+</div>
+
+<div *ngIf="connected">
+  <h1>Chat</h1>
+  <input [(ngModel)]="message" placeholder="Enter message" />
+  <button (click)="send()">Send</button>
+
+  <div *ngFor="let msg of messages">
+    {{ msg }}
+  </div>
+</div>

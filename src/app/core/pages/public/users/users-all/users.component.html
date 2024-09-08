@@ -6,11 +6,11 @@
 
     <section>
       <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
+        <button routerLink="/chat-room" class="btn-admin chat sticky right-0">ChatRoom</button>
 
         <!-- Title and description of the blog section - START -->
         <app-hero-title title="pages.users.title" subtitle="pages.users.description"/>
         <!-- Title and description of the blog section - END -->
-
         <div class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:mt-24 mt-12">
 
           <div class="text-center text-gray-500 dark:text-gray-400" *ngFor="let user of users">

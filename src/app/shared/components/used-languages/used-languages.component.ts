@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {UsedLanguagesService} from "../../../services/api/used-languages.service";
 import {NgChartsModule} from "ng2-charts";
 import {ChartConfiguration, ChartData} from "chart.js";
@@ -15,6 +15,9 @@ export class UsedLanguagesComponent implements OnInit {
 
   private _usedLanguagesService = inject(UsedLanguagesService)
   private cdr = inject(ChangeDetectorRef); // Injecting ChangeDetectorRef
+
+  message: string = '';
+  hasData: boolean = false;
 
   // Define the bar chart options with correct typing
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
@@ -67,55 +70,60 @@ export class UsedLanguagesComponent implements OnInit {
   };
 
   ngOnInit() {
-    console.log('Component initialized');
 
     // Subscribe to the service and update the chart data and labels dynamically
     this._usedLanguagesService.getLanguages().subscribe((response) => {
-      const languageTags = response.tags;
+      if(response && response.tags.length > 0) {
+        this.hasData = true
+        const languageTags = response;
 
-      // Log the fetched data for debugging
-      console.log('Fetched data:', languageTags);
+        // Extracting labels (tags) and data (counts) from the response
+        const labels = languageTags.tags.tag
+        const data = languageTags.tags.count
 
-      // Extracting labels (tags) and data (counts) from the response
-      const labels = languageTags.map((lang: any) => lang.tag);
-      const data = languageTags.map((lang: any) => lang.count);
+        // Update the chart labels and data
+        this.barChartLabels = labels;
+        this.barChartData = {
+          labels: this.barChartLabels,
+          datasets: [
+            {
+              data: data,
+              label: 'Programming Languages Popularity',
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+              ],
+              borderWidth: 1,
+              barThickness: 20, // Make bars thicker
+              categoryPercentage: 0.8 // Adjust space between bars
+            }
+          ]
+        };
+      } else {
+        this.hasData = false
+        this.message = 'No data'
+      }
 
-      // Update the chart labels and data
-      this.barChartLabels = labels;
-      this.barChartData = {
-        labels: this.barChartLabels,
-        datasets: [
-          {
-            data: data,
-            label: 'Programming Languages Popularity',
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-            ],
-            borderWidth: 1,
-            barThickness: 20, // Make bars thicker
-            categoryPercentage: 0.8 // Adjust space between bars
-          }
-        ]
-      };
+
 
       // Trigger change detection after data update
       this.cdr.detectChanges();
-
-      // Log to confirm the chart data is updated
-      console.log('Updated barChartData:', this.barChartData);
+    }, () => {
+      // Handle error in the request
+      this.hasData = false;
+      this.message = 'No data available right now';
     });
   }
 }

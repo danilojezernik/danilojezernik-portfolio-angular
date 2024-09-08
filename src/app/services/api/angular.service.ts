@@ -34,7 +34,6 @@ export class AngularService {
   }
 
   editAngularById(id: string, newData: Angular) {
-    console.log(newData)
     return this._http.put<Angular>(`${environment.angularUrl.public}/${id}`, newData)
   }
 

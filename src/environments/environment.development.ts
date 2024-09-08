@@ -17,7 +17,7 @@ export const environment = {
     admin: 'http://localhost:3000/blog/admin/',
     publicMedia: 'http://localhost:3000/blog/media/',
   },
-
+  websocketUrl: 'ws://localhost:3000/webchat/ws/chat',
   // COMMENT API
   commentUrl: {
     public: 'http://localhost:3000/comments',

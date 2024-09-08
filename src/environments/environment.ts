@@ -18,6 +18,8 @@ export const environment = {
     publicMedia: 'http://localhost:3000/blog/media/',
   },
 
+  websocketUrl: 'ws://localhost:3000/webchat/ws/chat',
+
   // COMMENT API
   commentUrl: {
     public: 'http://localhost:3000/comments',

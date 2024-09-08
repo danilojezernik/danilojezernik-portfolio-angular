@@ -13,4 +13,5 @@ export class UsedLanguagesService {
   getLanguages(): Observable<{ tags: any }> {
     return this._http.get<{ tags: any }>(`${environment.languageUrl}`)
   }
+
 }

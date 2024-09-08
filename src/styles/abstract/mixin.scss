@@ -35,3 +35,17 @@
     background: linear-gradient(90deg, darken($color-start, 10%) 0%, darken($color-end, 10%) 64%);
   }
 }
+
+
+/***********************************************************
+   4. Background chat room styles
+************************************************************/
+@mixin chat-room-background($color-start, $color-end) {
+  background: $color-start;
+  background: linear-gradient(90deg, $color-start 0%, $color-end 64%);
+  &:hover {
+    background: darken($color-start, 10%);
+    background: linear-gradient(90deg, darken($color-start, 10%) 0%, darken($color-end, 10%) 64%);
+  }
+}
+

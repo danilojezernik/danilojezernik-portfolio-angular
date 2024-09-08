@@ -1,0 +1,44 @@
+<ng-container *ngIf="experiences$ | async as experiences; else loadingData">
+  <div class="bg-[#1a1a1c] divider">
+    <div class="py-16 px-4 mx-auto max-w-screen-xl lg:py-32 lg:px-6">
+
+      <!-- Title and description of the blog section - START -->
+      <app-hero-title title="pages.experiences.title" subtitle="pages.experiences.description"/>
+      <!-- Title and description of the blog section - END -->
+
+      <div class="container mx-auto px-4 md:px-8 lg:px-12">
+        <!-- Container to handle the scenario when there is no error - START -->
+        <ng-container *ngIf="!error">
+          <div *ngFor="let experience of experiences">
+            {{ experience.title }}<br>
+            {{ experience.stack }}<br>
+            {{ experience.framework }}<br>
+            {{ experience.programming_language }}<br>
+            {{ experience.company }}<br>
+            {{ experience.employee }}<br>
+            {{ experience.tasks }}<br>
+            {{ experience.company_start | date }}<br>
+            {{ experience.company_end }}<br>
+            {{ experience.datum_vnosa | date }}<br>
+          </div>
+          <!-- Looping through the users array and displaying its properties - END -->
+
+        </ng-container>
+        <!-- Container to handle the scenario when there is no error - END -->
+
+        <!-- Error message display if the data fetching fails - START -->
+        <ng-container *ngIf="error">
+          {{ error }}
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <!-- Error message display if the data fetching fails - END -->
+</ng-container>
+<!-- Container that uses Angular's async pipe to handle the observable users$ - END -->
+
+<!-- Template to show loading spinner and text while data is being fetched - START -->
+<ng-template #loadingData>
+  <app-loading/>
+</ng-template>
+<!-- Template to show loading spinner and text while data is being fetched - END -->

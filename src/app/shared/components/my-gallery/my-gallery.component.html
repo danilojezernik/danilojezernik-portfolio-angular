@@ -1,14 +1,20 @@
 <ng-container *ngIf="images$ | async as image">
 
-  <div class="container mx-auto px-5 py-2 lg:pt-12">
-    <div class="-m-1 flex flex-wrap md:-m-2">
+  <div class="bg-[#1a1a1c]">
+    <div class="container mx-auto px-5 py-4 lg:py-16">
 
-      <div class="flex w-full md:w-1/4 flex-wrap" *ngFor="let imgName of image.images">
-        <div class="w-full p-1 md:p-2">
-          <img
-            [alt]="imgName"
-            class="block h-full w-full rounded-lg object-cover object-center"
-            [src]="_getImageByName.getImageUrl(imgName)"/>
+      <!-- Title and description of the blog section - START -->
+      <app-hero-title title="pages.about-me.gallery-title" subtitle="pages.about-me.gallery-descrition"/>
+      <!-- Title and description of the blog section - END -->
+
+      <div class="-m-1 flex flex-wrap md:-m-2">
+        <div class="flex w-full md:w-1/4 flex-wrap" *ngFor="let imgName of image.images">
+          <div class="w-full p-1 md:p-2">
+            <img
+              [alt]="imgName"
+              class="block h-full w-full rounded-lg object-cover object-center"
+              [src]="_getImageByName.getImageUrl(imgName)"/>
+          </div>
         </div>
       </div>
 

@@ -91,7 +91,7 @@ export class MongodbEditAdminComponent implements OnInit {
       // Navigate the user back to the MongoDB admin page after editing is complete
       this._router.navigate(['/tech-all-mongodb']);
     }, (error) => {
-      console.log('Error editing MongoDB: ', error);
+      console.error('Error editing MongoDB: ', error);
       // Set loading to false if an error occurs
       this.loading = false;
     });

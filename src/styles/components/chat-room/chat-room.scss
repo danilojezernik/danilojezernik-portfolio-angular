@@ -1,0 +1,7 @@
+// IMPORT VARIABLES AND MIXIN
+@import "../../abstract/variables";
+@import "../../abstract/mixin";
+
+.bg-chat {
+  @include chat-room-background($color-add-start, $color-add-end);
+}

@@ -270,6 +270,8 @@
 	},
 	"pages": {
 		"about-me": {
+			"gallery-descrition": "This is my gallery, where I share moments that reflect who I am. Each photo tells a story from my hobbies to travels, offering a peek into my life beyond coding.",
+			"gallery-title": "My gallery",
 			"title": "About me"
 		},
 		"angular": {
@@ -299,6 +301,10 @@
 			"text": "Thank you for visiting my website! If you have any questions or need assistance, feel free to reach out using the form below. I look forward to hearing from you!"
 		},
 		"drawer": "All the questions in one place.",
+		"experiences": {
+			"description": "Explore my professional journey through my resume, where you'll find my skills, experience, and accomplishments in the world of technology. From coding projects to collaborations, this document showcases my growth and dedication to the craft.",
+			"title": "My resume"
+		},
 		"github": {
 			"description": "A GitHub page showcasing my repositories and data, featuring code projects, documentation, and collaboration insights.",
 			"repos": "Existing repositories",
@@ -327,6 +333,11 @@
 		},
 		"mongodb": {
 			"title": "MongoDB"
+		},
+		"my-data": {
+			"biography": "Discover my journey as a developer, from learning to code to professional experience. This biography shares key milestones, challenges, and achievements that have shaped my career and personal growth.",
+			"experiences": "Explore my professional journey through my resume, where you'll find my skills, experience, and accomplishments in the world of technology. From coding projects to collaborations, this document showcases my growth and dedication to the craft.",
+			"projects": "Explore a selection of my projects that highlight my skills in problem-solving and innovation. From web development to software engineering, these projects reflect my passion for creating meaningful solutions through technology."
 		},
 		"not-found": {
 			"back-text": "You will be redirected to the previous page in",

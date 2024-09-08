@@ -94,7 +94,6 @@ export class UsersService {
    * @returns Observable<User> - An observable that emits the added user object.
    */
   addUserAdmin(newUser: User): Observable<User> {
-    console.log(newUser)
     return this._http.post<User>(`${environment.usersUrl.public}`, newUser)
   }
 

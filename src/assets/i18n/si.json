@@ -270,6 +270,8 @@
 	},
 	"pages": {
 		"about-me": {
+			"gallery-descrition": "To je moja galerija, kjer delim trenutke, ki odražajo, kdo sem. Vsaka slika pripoveduje svojo zgodbo od mojih hobijev do potovanj, kar vam ponuja vpogled v moje življenje izven programiranja.",
+			"gallery-title": "Moja galerija",
 			"title": "O meni"
 		},
 		"angular": {
@@ -299,6 +301,10 @@
 			"text": "Hvala, da ste obiskali mojo spletno stran! Če imate kakršnakoli vprašanja ali potrebujete pomoč, me lahko kontaktirate preko spodnjega obrazca. Veselim se vaših sporočil!"
 		},
 		"drawer": "Vsa vprašanja na enem mestu.",
+		"experiences": {
+			"description": "Oglejte si mojo profesionalno pot skozi življenjepis, kjer so predstavljene moje veščine, izkušnje in dosežki v svetu tehnologije. Od programerskih projektov do sodelovanj, ta dokument prikazuje moj razvoj in predanost poklicu.",
+			"title": "Moj življenjepis"
+		},
 		"github": {
 			"description": "GitHub stran z mojimi repozitoriji in podatki, vključno s projekti, dokumentacijo in vpogledi v sodelovanje.",
 			"repos": "Obstoječi repozitoriji",
@@ -328,6 +334,11 @@
 		"mongodb": {
 			"title": "MongoDB"
 		},
+		"my-data": {
+			"biography": "Spoznajte mojo pot razvijalca, od začetkov programiranja do profesionalnih izkušenj. Biografija prikazuje ključne mejnike, izzive in dosežke, ki so oblikovali mojo kariero.",
+			"experiences": "Oglejte si mojo profesionalno pot skozi življenjepis, kjer so predstavljene moje veščine, izkušnje in dosežki v svetu tehnologije. Od programerskih projektov do sodelovanj, ta dokument prikazuje moj razvoj in predanost poklicu.",
+			"projects": "Oglejte si izbor mojih projektov, ki poudarjajo moje sposobnosti reševanja problemov in inovacij. Od spletnega razvoja do programskega inženirstva, ti projekti odražajo mojo strast do ustvarjanja učinkovitih tehnoloških rešitev."
+		},
 		"not-found": {
 			"back-text": "Na prejšnjo stran se boste vrnili čez",
 			"title": "Upsss! Ta stran ne obstaja."
@@ -336,7 +347,7 @@
 			"title": "Python"
 		},
 		"register": {
-			"description": "Registriraj se, da si pogledaš zakulisje programa kot obiskovalec, ali se naroči na e-novičke in obvestila o novih blogih.",
+			"description": "Registriraj se, da boš lahko uporabljal vse funkcije strani, klepetalnice ali se naroči na e-novičke in obvestila o novih blogih.",
 			"title": "Registracija uporabnika"
 		},
 		"technologies": {
