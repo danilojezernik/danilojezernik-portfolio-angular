@@ -1,4 +1,6 @@
-<div class="fixed bottom-0 right-0 mb-4  mr-4">
+<div class="fixed inset-0 bg-black bg-opacity-50 z-30" *ngIf="isChatOpen" (click)="closeChat()"></div>
+
+<div class="fixed bottom-0 right-0 mb-12 mr-2">
   <button (click)="toggleChat()"
           class="bg-transparent text-white py-2 px-4 flex items-center">
     <svg height="40" width="40" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -13,12 +15,12 @@
   </button>
 </div>
 
-<div *ngIf="isChatOpen" id="chat-container" class="fixed bottom-16 shadow-lg right-4 mb-4 w-80">
+<div *ngIf="isChatOpen" id="chat-container" class="fixed bottom-16 shadow-lg z-40 right-4 mb-4 w-80">
   <div class="bg-white shadow-md max-w-lg w-full">
 
     <div class="p-4 bg-background-menu text-white flex justify-between items-center">
       <p class="text-lg font-semibold">
-        {{'pages.chat.title' |translate}}
+        {{ 'pages.chat.title' |translate }}
       </p>
       <button (click)="closeChat()" class="text-gray-300 hover:text-gray-400 focus:outline-none focus:text-gray-400">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -27,7 +29,7 @@
       </button>
     </div>
 
-    <!-- Prikaže se med čakanjem na odgovor -->
+    <!-- Message shows when waiting for an answer -->
     <div *ngIf="loading" class="p-4 h-80 bg-[#1a1a1c] text-white flex items-center justify-center">
       <span class="pulse-bulb text-center">
         {{ 'pages.chat.loading' | translate }}
@@ -35,7 +37,7 @@
     </div>
 
 
-    <!-- Prikaže odgovor, ko je na voljo -->
+    <!-- Shows a answer when it is available -->
     <div *ngIf="!loading && response" class="p-4 h-80 bg-[#1a1a1c] text-white overflow-y-auto">
       {{ response }}
     </div>

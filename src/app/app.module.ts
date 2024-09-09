@@ -31,6 +31,8 @@ import { Chart } from 'chart.js';
 import { registerables } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 import {ChatComponent} from "./shared/components/chat/chat.component";
+import {FormsModule} from "@angular/forms";
+import {ChatRoomComponent} from "./core/pages/public/chat-room/chat-room.component";
 
 // Register chart types
 Chart.register(...registerables);
@@ -66,7 +68,9 @@ registerLocaleData(localeSl, 'sl-SI')
     }),
     FooterComponent,
     ReusableFormAddComponent,
-    ChatComponent
+    ChatComponent,
+    FormsModule,
+    ChatRoomComponent
 
   ],
   providers: [

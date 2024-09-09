@@ -50,5 +50,6 @@ export const SNACKBAR_MESSAGES = {
   registered: 'snack.registration',
   dataChanged: 'snack.dataChanged',
   imageSaved: 'snack.image-saved',
+  userExists: 'snack.user-exists',
   close: 'snack.close'
 }

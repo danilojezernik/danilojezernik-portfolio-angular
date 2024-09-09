@@ -8,7 +8,7 @@ export class WebsocketService {
   socket: WebSocket;
 
   connect(username: string): void {
-    this.socket = new WebSocket(environment.websocketUrl);
+    this.socket = new WebSocket(`${environment.websocketUrl}`);
 
     this.socket.onopen = () => {
       console.log('WebSocket connection opened');
