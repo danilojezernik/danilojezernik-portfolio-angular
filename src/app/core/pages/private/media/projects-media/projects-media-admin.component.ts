@@ -6,11 +6,12 @@ import {GetImageService} from "../../../../../services/get-image/get-image.servi
 import {BehaviorSubject, catchError, finalize, of} from "rxjs";
 import {ProjectsService} from "../../../../../services/api/projects.service";
 import {ClipboardCopyService} from "../../../../../services/clipboard-copy/clipboard-copy.service";
+import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
 
 @Component({
   selector: 'app-projects-media',
   standalone: true,
-  imports: [CommonModule, BreadcrumbAdminComponent, GoBackComponent],
+    imports: [CommonModule, BreadcrumbAdminComponent, GoBackComponent, HeroTitleComponent],
   templateUrl: './projects-media-admin.component.html'
 })
 export class ProjectsMediaAdminComponent {

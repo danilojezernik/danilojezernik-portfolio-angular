@@ -72,14 +72,13 @@ export class UsedLanguagesComponent implements OnInit {
   ngOnInit() {
 
     // Subscribe to the service and update the chart data and labels dynamically
-    this._usedLanguagesService.getLanguages().subscribe((response) => {
-      if(response && response.tags.length > 0) {
+    this._usedLanguagesService.getLanguagesPeriodically().subscribe((response) => {
+      if(response && response.length > 0) {
         this.hasData = true
-        const languageTags = response;
 
         // Extracting labels (tags) and data (counts) from the response
-        const labels = languageTags.tags.tag
-        const data = languageTags.tags.count
+        const labels = response.map(lang => lang.tag);  // Extract tag names
+        const data = response.map(lang => lang.count);  // Extract counts
 
         // Update the chart labels and data
         this.barChartLabels = labels;

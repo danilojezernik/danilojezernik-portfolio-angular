@@ -144,6 +144,7 @@ import {JavascriptMediaComponent} from "./core/pages/private/media/javascript-me
 import {TypescriptMediaComponent} from "./core/pages/private/media/typescript-media/typescript-media.component";
 import {UserDashboardComponent} from "./core/pages/private/users-admin/user-dashboard/user-dashboard.component";
 import {ChatRoomComponent} from "./core/pages/public/chat-room/chat-room.component";
+import {LanguageDataComponent} from "./core/pages/private/language-data/language-data.component";
 
 const routes: Routes = [
   {
@@ -649,6 +650,16 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+
+  // ---------------------------
+  //     LANGUAGE ROUTES
+  // ---------------------------
+  {
+    path: 'language-admin',
+    component: LanguageDataComponent,
+    canActivate: [AuthGuardService],
+    data: {roles: ['admin']}
   },
 
   // ---------------------------

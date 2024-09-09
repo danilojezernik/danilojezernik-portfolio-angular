@@ -6,11 +6,12 @@ import {BookService} from "../../../../../services/api/book.service";
 import {GoBackComponent} from "../../../../../shared/components/go-back/go-back.component";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 import {ClipboardCopyService} from "../../../../../services/clipboard-copy/clipboard-copy.service";
+import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
 
 @Component({
   selector: 'app-books-media',
   standalone: true,
-  imports: [CommonModule, GoBackComponent, BreadcrumbAdminComponent],
+    imports: [CommonModule, GoBackComponent, BreadcrumbAdminComponent, HeroTitleComponent],
   templateUrl: './books-media-admin.component.html'
 })
 export class BooksMediaAdminComponent implements OnInit {

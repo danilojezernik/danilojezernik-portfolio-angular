@@ -6,11 +6,12 @@ import {BehaviorSubject, catchError, finalize, of} from "rxjs";
 import {BlogService} from "../../../../../services/api/blog.service";
 import {BreadcrumbAdminComponent} from "../../../../../shared/components/breadcrumb-admin/breadcrumb-admin.component";
 import {ClipboardCopyService} from "../../../../../services/clipboard-copy/clipboard-copy.service";
+import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
 
 @Component({
   selector: 'app-blogs-media',
   standalone: true,
-  imports: [CommonModule, GoBackComponent, BreadcrumbAdminComponent],
+    imports: [CommonModule, GoBackComponent, BreadcrumbAdminComponent, HeroTitleComponent],
   templateUrl: './blogs-media-admin.component.html'
 })
 export class BlogsMediaAdminComponent {

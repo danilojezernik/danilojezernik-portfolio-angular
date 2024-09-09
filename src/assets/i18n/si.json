@@ -25,7 +25,9 @@
 		"experiences": "Izkušnje",
 		"links": "Povezave",
 		"media": "Slike",
+		"media-about": "O meni media",
 		"media-angular": "Angular media",
+		"media-books": "Knjige media",
 		"media-javascript": "JasvaScript media",
 		"media-mongodb": "MongoDB media",
 		"media-python": "Python media",
@@ -342,6 +344,9 @@
 		"not-found": {
 			"back-text": "Na prejšnjo stran se boste vrnili čez",
 			"title": "Upsss! Ta stran ne obstaja."
+		},
+		"projects": {
+			"title": "Moji projekti"
 		},
 		"python": {
 			"title": "Python"

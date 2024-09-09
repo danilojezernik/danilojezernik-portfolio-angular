@@ -46,6 +46,7 @@ export const ADMIN_MENU: { menu: string, path: string, description: string }[] =
   {menu: 'menu.book', path: '/books-admin', description: 'description.admin-menu.book'},
   {menu: 'menu.newsletter', path: '/newsletter-admin', description: 'description.admin-menu.newsletter'},
   {menu: 'menu.subscriber', path: '/subscriber-admin', description: 'description.admin-menu.subscriber'},
+  {menu: 'menu.language', path: '/language-admin', description: 'description.admin-menu.language'},
 ]
 
 export const MEDIA_MENU = [

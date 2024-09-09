@@ -25,7 +25,9 @@
 		"experiences": "Experiences",
 		"links": "Links",
 		"media": "Media",
+		"media-about": "About me media",
 		"media-angular": "Angular media",
+		"media-books": "Books media",
 		"media-javascript": "JavaScript media",
 		"media-mongodb": "MongoDB media",
 		"media-python": "Python media",
@@ -342,6 +344,9 @@
 		"not-found": {
 			"back-text": "You will be redirected to the previous page in",
 			"title": "Whoops! That page doesn’t exist."
+		},
+		"projects": {
+			"title": "My projects"
 		},
 		"python": {
 			"title": "Python"

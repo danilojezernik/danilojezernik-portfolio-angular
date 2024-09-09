@@ -1,3 +1,5 @@
+<div class="container mx-auto">
+
 <app-breadcrumb-admin first="breadcrumb.media" firstLink="/media" second="breadcrumb.media-mongodb"/>
 
 <!-- Title and description of the book section - START -->
@@ -44,6 +46,7 @@
     <p *ngIf="error" class="w-full text-center text-red-500">{{ error }}</p>
   </div>
 
+</div>
 </div>
 
 <app-go-back [mongodbMediaAdmin]="true" />
