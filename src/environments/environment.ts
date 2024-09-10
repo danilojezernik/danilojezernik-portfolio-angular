@@ -88,6 +88,7 @@ export const environment = {
     publicMedia: 'http://localhost:3000/mongodb/media/'
   },
 
+  tech: 'http://localhost:3000/dev/',
   // CONTACT API
   contactUrl: {
     public: 'http://localhost:3000/contact',

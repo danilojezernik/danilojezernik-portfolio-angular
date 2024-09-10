@@ -1,0 +1,146 @@
+<div class="pt-8 mx-auto max-w-screen-xl lg:pt-16">
+  <!-- Title and description of the blog section - START -->
+  <app-hero-title title="pages.dev.cypress.title" subtitle="pages.dev.cypress.description"/>
+  <!-- Title and description of the blog section - END -->
+
+  <ng-container *ngIf="cypressDev$ | async as cypress; else loadingData">
+    <ng-container *ngIf="!error">
+
+      <section>
+        <div class="pb-8 mx-auto max-w-screen-xl lg:pb-16">
+
+          <!-- Grid container for displaying blog articles - START -->
+          <div class="grid gap-8 lg:grid-cols-3">
+
+            <!-- Looping through the blogs array and displaying its properties - START -->
+            <article *ngFor="let data of cypress"
+                     class="p-6 hover:border-box-border transition-colors duration-700 bg-background-menu rounded-lg border shadow-md border-gray-700 flex flex-col justify-between">
+
+              <!-- Blog image section - START -->
+              <img *ngIf="data.cover_image" [src]="data.cover_image"
+                   class="w-full h-48 object-cover object-center rounded-lg mb-4"
+                   [alt]="data.cover_image"/>
+
+              <img *ngIf="!data.cover_image" src="/assets/media/dev/noimage.png"
+                   class="w-full h-48 object-cover object-center rounded-lg mb-4"
+                   [alt]="data.cover_image"/>
+              <!-- Blog image section - END -->
+
+              <!-- Blog category and date section - START -->
+              <div class="flex flex-row justify-between align-top mb-5 text-gray-500">
+
+                <div>
+                  Published at
+                </div>
+
+                <div>
+                  <span class="flex flex-row text-sm">
+                    <svg viewBox="0 0 512 512" width="15" height="15" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                         class="me-1 pulse-bulb" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+                      id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g
+                      id="SVGRepo_iconCarrier"> <title>to-be-published</title> <g id="Page-1" stroke="none"
+                                                                                  stroke-width="1" fill="none"
+                                                                                  fill-rule="evenodd"> <g id="icon"
+                                                                                                          fill="#ffffff"
+                                                                                                          transform="translate(42.666667, 33.830111)"> <path
+                      d="M213.333333,8.836556 C227.766286,8.836556 241.864482,10.2698242 255.493353,13.0017939 L216.953821,51.5408633 C215.750015,51.5158108 214.543144,51.5032227 213.333333,51.5032227 C119.076736,51.5032227 42.6666667,127.913292 42.6666667,222.169889 C42.6666667,316.426487 119.076736,392.836556 213.333333,392.836556 C307.531589,392.695856 383.8593,316.368145 384,222.169889 C384,193.800589 377.078116,167.047981 364.831101,143.508819 L396.162832,112.178528 C415.526764,144.296536 426.666667,181.932281 426.666667,222.169889 C426.490792,339.917709 331.081153,435.327348 213.333333,435.503223 C95.5125867,435.503223 3.55271368e-14,339.990636 3.55271368e-14,222.169889 C3.55271368e-14,104.349143 95.5125867,8.836556 213.333333,8.836556 Z M298.666667,7.10542736e-15 L388.418278,89.7516113 L358.248389,119.921501 L319.999,81.683 L320,222.169889 C320,267.870058 284.075339,305.179572 238.925661,307.398789 L149.333333,307.503223 L149.333333,264.836556 L234.666667,264.836556 C257.159718,264.836556 275.587523,247.431163 277.216304,225.354153 L277.333333,222.169889 L277.333,81.683 L239.084945,119.921501 L208.915055,89.7516113 L298.666667,7.10542736e-15 Z"
+                      id="Combined-Shape"> </path> </g> </g> </g></svg>
+                    {{ data.published_at | date }}
+              </span>
+                </div>
+
+              </div>
+              <!-- Blog category and date section - END -->
+
+              <!-- Blog title and content section - START -->
+              <h2 class="mb-2 text-2xl font-bold tracking-tight text-white">
+                <a [href]="data.url" target="_blank">{{ data.title }}</a>
+              </h2>
+              <p class="mb-5 font-light text-gray-400">
+                {{ data.description | shorteningText: 120 }}
+              </p>
+              <!-- Blog title and content section - END -->
+
+              <!-- Blog author and read more section - START -->
+              <div class="flex justify-between items-center mt-auto">
+                <div class="flex items-center space-x-4">
+                  <!-- Author avatar - START -->
+                  <svg class="w-7 h-7 rounded-full" viewBox="0 0 32 32" id="user" xmlns="http://www.w3.org/2000/svg"
+                       fill="#000000">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <defs>
+                        <style>.cls-1 {
+                          fill: #f16145;
+                        }
+
+                        .cls-2 {
+                          fill: #f68f71;
+                        }</style>
+                      </defs>
+                      <title></title>
+                      <path class="cls-1"
+                            d="M16,15A15,15,0,0,0,1,30a1,1,0,0,0,1,1H30a1,1,0,0,0,1-1A15,15,0,0,0,16,15Z"></path>
+                      <circle class="cls-2" cx="16" cy="9" r="8"></circle>
+                    </g>
+                  </svg>
+                  <!-- Author avatar - END -->
+
+                  <!-- Author name - START -->
+                  <span class="font-medium dark:text-white">
+                  <a *ngIf="data.user.website_url" [href]="data.user.website_url"
+                     class=" hover:text-header transition-colors duration-500">
+                      {{ data.user.name }}
+                  </a>
+                <span *ngIf="!data.user.website_url">
+                  {{ data.user.name }}
+                </span>
+                      </span>
+                  <!-- Author name - END -->
+                </div>
+
+                <!-- Read more link - START -->
+                <a [href]="data.url" target="_blank"
+                   class="inline-flex items-center font-medium text-primary-500 hover:text-header transition-colors duration-500">
+                  <span class="pe-2">{{ 'button.read-more' | translate }}</span> &#11166;
+                </a>
+                <!-- Read more link - END -->
+
+              </div>
+              <!-- Blog author and read more section - END -->
+              <div class="flex flex-row p-0 mt-5 text-gray-500">
+
+                <div>
+                    <span *ngFor="let tag of data.tag_list"
+                          class="text-xs me-2 font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-red-200 text-primary-800">
+                      <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
+                           xmlns="http://www.w3.org/2000/svg"><path
+                        d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                      </svg>
+                      {{ tag }}
+                  </span>
+                </div>
+              </div>
+            </article>
+            <!-- Looping through the blogs array and displaying its properties - END -->
+
+          </div>
+          <!-- Grid container for displaying blog articles - END -->
+
+        </div>
+      </section>
+      <!-- Section containing the main content of the blog page - END -->
+    </ng-container>
+    <!-- Error message display if the data fetching fails - START -->
+    <ng-container *ngIf="error">
+      {{ error }}
+    </ng-container>
+    <!-- Error message display if the data fetching fails - END -->
+  </ng-container>
+</div>
+<!-- Template to show loading spinner and text while data is being fetched - START -->
+<ng-template #loadingData>
+  <app-loading/>
+</ng-template>
+<!-- Template to show loading spinner and text while data is being fetched - END -->

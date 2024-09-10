@@ -127,6 +127,38 @@
 			"vue": "Vue is a progressive JavaScript framework for building user interfaces. It’s designed for flexibility, making it easy to integrate into projects."
 		}
 	},
+	"dev": {
+		"ai": "AI Trends",
+		"ai-desc": "Discover the latest trends and insights in artificial intelligence and machine learning.",
+		"algorithms": "Algorithm Insights",
+		"algorithms-desc": "Explore algorithms, data structures, and problem-solving techniques for developers.",
+		"angular": "Angular Updates",
+		"angular-desc": "Stay up-to-date with the latest news, tutorials, and best practices for Angular development.",
+		"backend": "Backend Essentials",
+		"backend-desc": "Find articles on backend development, covering databases, APIs, and server-side technologies.",
+		"css": "CSS Techniques",
+		"css-desc": "Explore creative styling techniques and advanced CSS practices for modern web design.",
+		"cypress": "Cypress Testing",
+		"cypress-desc": "Learn about Cypress, the powerful testing tool for end-to-end testing in JavaScript.",
+		"frontend": "Frontend News",
+		"frontend-desc": "Get the latest updates, tips, and tutorials on frontend development and UI/UX design.",
+		"github": "GitHub Mastery",
+		"github-desc": "Master version control and collaboration with GitHub through expert articles and tips.",
+		"javascript": "JavaScript News",
+		"javascript-desc": "Discover the latest developments, techniques, and best practices in JavaScript programming.",
+		"mongodb": "MongoDB Guide",
+		"mongodb-desc": "Learn about MongoDB, the popular NoSQL database, and how to use it effectively.",
+		"python": "Python Tips",
+		"python-desc": "Stay informed with Python tutorials, tips, and insights for web development, data science, and more.",
+		"sql": "SQL Expertise",
+		"sql-desc": "Find expert advice and tutorials on SQL, database management, and query optimization.",
+		"typescript": "TypeScript News",
+		"typescript-desc": "Explore the powerful features of TypeScript and how to use it to enhance your JavaScript code.",
+		"vue": "Vue Insights",
+		"vue-desc": "Stay updated with the latest news, guides, and best practices for developing with Vue.js.",
+		"webdesign": "Web Design Tips",
+		"webdesign-desc": "Explore web design trends, tips, and resources for creating modern, user-friendly websites."
+	},
 	"errors": {
 		"badRequest": "Bad Request. Please check your input.",
 		"emptypass": "Please enter your username and password.",
@@ -241,6 +273,7 @@
 		"books": "Books",
 		"comments": "Comments",
 		"contact": "Contact",
+		"dev": "DevNews",
 		"email": "Emails",
 		"experiences": "Experiences",
 		"github": "GitHub",
@@ -304,6 +337,36 @@
 			"contact-us": "Conntact me",
 			"text": "Thank you for visiting my website! If you have any questions or need assistance, feel free to reach out using the form below. I look forward to hearing from you!"
 		},
+		"dev": {
+			"angular": {
+				"description": "Stay up-to-date with the latest news, tutorials, and insights from the Angular community. Our Angular News page curates the most recent articles from Dev.to, featuring expert tips, best practices, and the newest Angular developments. Whether you're a seasoned Angular developer or just getting started, you'll find valuable content to help you build better, faster, and more scalable applications.",
+				"title": "DEV.to Angular"
+			},
+			"javascript": {
+				"description": "Explore the latest JavaScript trends, tutorials, and insights. Our JavaScript News page brings you up-to-date articles from Dev.to, offering expert advice, coding techniques, and the latest developments in JavaScript. Perfect for both beginner and advanced developers aiming to enhance their skills and build dynamic web applications.",
+				"title": "DEV.to JavaScript"
+			},
+			"mongodb": {
+				"description": "Get the latest news, tutorials, and insights on MongoDB. Our MongoDB News page features articles from Dev.to, focusing on database management, performance optimization, and real-world use cases for MongoDB. Ideal for developers and database administrators looking to improve their skills with this popular NoSQL database.",
+				"title": "DEV.to Mongo DB"
+			},
+			"python": {
+				"description": "Discover the latest Python news, tips, and tutorials. Our Python News page compiles the most recent articles from Dev.to, offering everything from beginner guides to advanced programming techniques. Whether you're into web development, data science, or automation, our page keeps you connected with the Python community.",
+				"title": "DEV.to Python"
+			},
+			"typescript": {
+				"description": "Stay informed with the latest updates and tutorials in TypeScript. Our TypeScript News page curates insightful articles from Dev.to, covering best practices, advanced features, and new developments in the TypeScript world. Whether you're transitioning from JavaScript or mastering TypeScript, this page has something for everyone.",
+				"title": "DEV.to TypeScript"
+			},
+			"vue": {
+				"description": "Stay up-to-date with the latest Vue news, tutorials, and best practices. Our Vue News page brings you articles from Dev.to, covering everything from component-based architecture to the latest features in Vue. Whether you're just starting with Vue or you're an experienced Vue.js developer, this page has valuable insights for you.",
+				"title": "DEV.to Vue"
+			}
+		},
+		"dev-news": {
+			"description": "Explore curated content from the Dev.to community right here! Our page brings you the latest articles, tutorials, and insights from developers around the world, covering a wide range of topics from frontend frameworks like Angular and Vue, to backend technologies like Python, MongoDB, and beyond. Stay up-to-date with the latest trends, best practices, and deep dives shared by industry experts—all in one place!",
+			"title": "DEV.to News"
+		},
 		"drawer": "All the questions in one place.",
 		"experiences": {
 			"description": "Explore my professional journey through my resume, where you'll find my skills, experience, and accomplishments in the world of technology. From coding projects to collaborations, this document showcases my growth and dedication to the craft.",
@@ -326,7 +389,7 @@
 		},
 		"latest-blog": {
 			"description": "My programming blog offers comprehensive tutorials, insightful tips, practical code examples, and guides to help you stay ahead in the coding world.",
-			"title": "Latest blogs"
+			"title": "Latest blogs on DaniloJezernik.com"
 		},
 		"login": {
 			"description": "Thank you for being a part of this community. To access your account, please log in with your username and password. If you have any questions or encounter any issues while logging in, you can contact me through my contact page.",

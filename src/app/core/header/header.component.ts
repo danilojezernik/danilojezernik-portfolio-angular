@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   // Lifecycle hook that is called after the component's view has been initialized
   ngOnInit() {
+
     // Assign the Observable from LoggedInService to isLoggedIn$ to listen for login status changes
     this.isLoggedIn$ = this._loggedInService.isLoggedIn$;
     // Update userRole based on login status

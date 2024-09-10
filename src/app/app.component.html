@@ -29,7 +29,7 @@
 
     <!-- Drawer toggle button (visible at all times) -->
     <div class="relative ">
-      <div class="p-4 cursor-pointer bg-chat absolute top-0 left-0 text-center right-0  z-50"
+      <div class="pt-4 pb-2 cursor-pointer bg-chat absolute top-0 left-0 text-center right-0  z-50"
            (click)="toggleDrawer()" data-drawer-toggle="drawer-swipe">
         <!-- Centered toggle bar -->
         <span class="absolute w-8 h-1 -translate-x-1/2 top-0 left-1/2 bg-white"></span>
@@ -49,7 +49,7 @@
     <!-- Drawer content below the toggle button -->
     <div class="flex flex-col mx-auto p-4 mt-12" *ngIf="!connected">
       <h1 class="text-lg font-semibold text-center text-white mb-4">Vnesi svoje ime:</h1>
-      <input [(ngModel)]="username"
+      <input [(ngModel)]="username" (keyup.enter)="connect()"
              class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       />
       <button (click)="connect()" class="btn-public read mt-4 rounded-md">
@@ -105,8 +105,11 @@
 
         <!-- Input field for sending a message -->
         <div class="w-full pl-3 pr-1 py-1 rounded-3xl border border-gray-200 items-center gap-2 inline-flex justify-between">
-          <div class="flex items-center gap-2">
-            <input [(ngModel)]="message" class="grow shrink basis-0 text-black text-xs font-medium leading-4 focus:outline-none" placeholder="Type here..." />
+          <div class="flex items-center gap-2 w-full">
+            <input autofocus [(ngModel)]="message"
+
+                   class="grow bg-background-menu basis-0 text-white w-full text-xs font-medium leading-4 focus:outline-none"
+            />
           </div>
           <div class="flex items-center gap-2">
             <button class="items-center flex px-3 py-2 bg-indigo-600 rounded-full shadow " (click)="send()">

@@ -5,6 +5,7 @@ export const MENU_TOP: { menu: string, path: string }[] = [
   {menu: 'menu.about', path: '/about'},
   {menu: 'menu.blog', path: '/blog'},
   {menu: 'menu.github', path: '/github'},
+  {menu: 'menu.dev', path: '/dev'},
   {menu: 'menu.books', path: '/books'},
   {menu: 'menu.users', path: '/users'},
   {menu: 'menu.technologies', path: '/technologies'},
@@ -62,7 +63,7 @@ export const MEDIA_MENU = [
   {menu: 'menu.media-mongodb', path: '/media-mongodb', description: 'description.media-menu.mongodb'},
 ]
 
-export const TECHNOLOGIES_ADMIN_MENU: {menu: string, path: string, description: string}[] = [
+export const TECHNOLOGIES_ADMIN_MENU: { menu: string, path: string, description: string }[] = [
   {menu: 'menu.tech-angular', path: '/tech-all-angular', description: 'description.tech-menu.angular'},
   {menu: 'menu.tech-vue', path: '/tech-all-vue', description: 'description.tech-menu.vue'},
   {menu: 'menu.tech-python', path: '/tech-all-python', description: 'description.tech-menu.python'},
@@ -71,11 +72,60 @@ export const TECHNOLOGIES_ADMIN_MENU: {menu: string, path: string, description: 
   {menu: 'menu.tech-mongodb', path: '/tech-all-mongodb', description: 'description.tech-menu.mongodb'},
 ]
 
-export const TECHNOLOGIES_PUBLIC_MENU: {menu: string, path: string, description: string, img: string}[] = [
-  {menu: 'menu.tech-angular', path: '/angular', description: 'description.tech-menu.angular', img: '/assets/media/technologies/angular.png'},
-  {menu: 'menu.tech-vue', path: '/vue', description: 'description.tech-menu.vue', img: '/assets/media/technologies/vue.png'},
-  {menu: 'menu.tech-python', path: '/python', description: 'description.tech-menu.python', img: '/assets/media/technologies/python.png'},
-  {menu: 'menu.tech-javascript', path: '/javascript', description: 'description.tech-menu.javascript', img: '/assets/media/technologies/javascript.png'},
-  {menu: 'menu.tech-typescript', path: '/typescript', description: 'description.tech-menu.typescript', img: '/assets/media/technologies/typescript.png'},
-  {menu: 'menu.tech-mongodb', path: '/mongodb', description: 'description.tech-menu.mongodb', img: '/assets/media/technologies/mongodb.png'},
+
+
+export const TECH_DEV_API_MENU = [
+  {menu: 'dev.angular', path: '/dev/angular', description: 'dev.angular-desc', img: '/assets/media/dev/angular.png'},
+  {menu: 'dev.vue', path: '/dev/vue', description: 'dev.vue-desc', img: '/assets/media/dev/vue.png'},
+  {menu: 'dev.mongodb', path: '/dev/mongodb', description: 'dev.mongodb-desc', img: '/assets/media/dev/mongodb.png'},
+  {menu: 'dev.python', path: '/dev/python', description: 'dev.python-desc', img: '/assets/media/dev/python.png'},
+  {menu: 'dev.javascript', path: '/dev/javascript', description: 'dev.javascript-desc', img: '/assets/media/dev/javascript.png'},
+  {menu: 'dev.typescript', path: '/dev/typescript', description: 'dev.typescript-desc', img: '/assets/media/dev/typescript.png'},
+  {menu: 'dev.css', path: '/dev/css', description: 'dev.css-desc', img: '/assets/media/dev/css.png'},
+  {menu: 'dev.frontend', path: '/dev/frontend', description: 'dev.frontend-desc', img: '/assets/media/dev/frontend.png'},
+  {menu: 'dev.backend', path: '/dev/backend', description: 'dev.backend-desc', img: '/assets/media/dev/backend.png'},
+  {menu: 'dev.ai', path: '/dev/ai', description: 'dev.ai-desc', img: '/assets/media/dev/ai.png'},
+  {menu: 'dev.github', path: '/dev/github', description: 'dev.github-desc', img: '/assets/media/dev/github.png'},
+  {menu: 'dev.sql', path: '/dev/sql', description: 'dev.sql-desc', img: '/assets/media/dev/sql.png'},
+  {menu: 'dev.cypress', path: '/dev/cypress', description: 'dev.cypress-desc', img: '/assets/media/dev/cypress.png'},
+  {menu: 'dev.algorithms', path: '/dev/algorithms', description: 'dev.algorithms-desc', img: '/assets/media/dev/algorithms.png'},
+]
+
+export const TECHNOLOGIES_PUBLIC_MENU: { menu: string, path: string, description: string, img: string }[] = [
+  {
+    menu: 'menu.tech-angular',
+    path: '/angular',
+    description: 'description.tech-menu.angular',
+    img: '/assets/media/technologies/angular.png'
+  },
+  {
+    menu: 'menu.tech-vue',
+    path: '/vue',
+    description: 'description.tech-menu.vue',
+    img: '/assets/media/technologies/vue.png'
+  },
+  {
+    menu: 'menu.tech-python',
+    path: '/python',
+    description: 'description.tech-menu.python',
+    img: '/assets/media/technologies/python.png'
+  },
+  {
+    menu: 'menu.tech-javascript',
+    path: '/javascript',
+    description: 'description.tech-menu.javascript',
+    img: '/assets/media/technologies/javascript.png'
+  },
+  {
+    menu: 'menu.tech-typescript',
+    path: '/typescript',
+    description: 'description.tech-menu.typescript',
+    img: '/assets/media/technologies/typescript.png'
+  },
+  {
+    menu: 'menu.tech-mongodb',
+    path: '/mongodb',
+    description: 'description.tech-menu.mongodb',
+    img: '/assets/media/technologies/mongodb.png'
+  },
 ]

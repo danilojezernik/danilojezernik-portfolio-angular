@@ -145,6 +145,21 @@ import {TypescriptMediaComponent} from "./core/pages/private/media/typescript-me
 import {UserDashboardComponent} from "./core/pages/private/users-admin/user-dashboard/user-dashboard.component";
 import {ChatRoomComponent} from "./core/pages/public/chat-room/chat-room.component";
 import {LanguageDataComponent} from "./core/pages/private/language-data/language-data.component";
+import {DevAngularComponent} from "./core/pages/public/dev-news/dev-angular/dev-angular.component";
+import {DevVueComponent} from "./core/pages/public/dev-news/dev-vue/dev-vue.component";
+import {DevPythonComponent} from "./core/pages/public/dev-news/dev-python/dev-python.component";
+import {DevJavascriptComponent} from "./core/pages/public/dev-news/dev-javascript/dev-javascript.component";
+import {DevTypescriptComponent} from "./core/pages/public/dev-news/dev-typescript/dev-typescript.component";
+import {DevMongodbComponent} from "./core/pages/public/dev-news/dev-mongodb/dev-mongodb.component";
+import {DevCssComponent} from "./core/pages/public/dev-news/dev-css/dev-css.component";
+import {DevFrontendComponent} from "./core/pages/public/dev-news/dev-frontend/dev-frontend.component";
+import {DevBackendComponent} from "./core/pages/public/dev-news/dev-backend/dev-backend.component";
+import {DevAiComponent} from "./core/pages/public/dev-news/dev-ai/dev-ai.component";
+import {DevGithubComponent} from "./core/pages/public/dev-news/dev-github/dev-github.component";
+import {DevSqlComponent} from "./core/pages/public/dev-news/dev-sql/dev-sql.component";
+import {DevCypressComponent} from "./core/pages/public/dev-news/dev-cypress/dev-cypress.component";
+import {DevAlgorithmsComponent} from "./core/pages/public/dev-news/dev-algorithms/dev-algorithms.component";
+import {DevNewsComponent} from "./core/pages/public/dev-news/dev-news.component";
 
 const routes: Routes = [
   {
@@ -651,6 +666,77 @@ const routes: Routes = [
     path: 'contact',
     component: ContactComponent
   },
+
+  // ---------------------------
+  //     DEV ROUTES
+  // ---------------------------
+  // PUBLIC
+  {
+    path: 'dev',
+    children: [
+      {
+        path: '',
+        component: DevNewsComponent,
+      },
+      {
+        path: 'angular',
+        component: DevAngularComponent,
+      },
+      {
+        path: 'vue',
+        component: DevVueComponent,
+      },
+      {
+        path: 'python',
+        component: DevPythonComponent,
+      },
+      {
+        path: 'javascript',
+        component: DevJavascriptComponent,
+      },
+      {
+        path: 'typescript',
+        component: DevTypescriptComponent,
+      },
+      {
+        path: 'mongodb',
+        component: DevMongodbComponent,
+      },
+      {
+        path: 'css',
+        component: DevCssComponent,
+      },
+      {
+        path: 'frontend',
+        component: DevFrontendComponent,
+      },
+      {
+        path: 'backend',
+        component: DevBackendComponent,
+      },
+      {
+        path: 'ai',
+        component: DevAiComponent,
+      },
+      {
+        path: 'github',
+        component: DevGithubComponent,
+      },
+      {
+        path: 'sql',
+        component: DevSqlComponent,
+      },
+      {
+        path: 'cypress',
+        component: DevCypressComponent,
+      },
+      {
+        path: 'algorithms',
+        component: DevAlgorithmsComponent,
+      }
+    ]
+  },
+
 
   // ---------------------------
   //     LANGUAGE ROUTES

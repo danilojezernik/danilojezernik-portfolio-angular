@@ -42,7 +42,8 @@ registerLocaleData(localeSl, 'sl-SI')
   declarations: [
     AppComponent,
     NotAuthorizedComponent,
-    DialogSendEmailComponent
+    DialogSendEmailComponent,
+
   ],
   imports: [
     NgChartsModule,

@@ -1,7 +1,3 @@
-/* tslint:disable */
-
-/* eslint-disable */
-
 export interface Comment {
   '_id'?: string;
   blog_id: string;

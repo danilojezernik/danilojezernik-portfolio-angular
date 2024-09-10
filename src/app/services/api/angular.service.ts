@@ -61,4 +61,6 @@ export class AngularService {
 
     return this._http.post<any>(`${environment.angularUrl.publicMedia}`, formData)
   }
+
+
 }

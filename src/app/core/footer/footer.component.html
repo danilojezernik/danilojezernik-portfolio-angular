@@ -6,7 +6,7 @@
     </span>
     <ul class="flex justify-center flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
       <li  *ngFor="let menu of MENU_TOP">
-        <ng-container *ngIf="menu.menu !== 'menu.login' && menu.menu !== 'menu.logout'">
+        <ng-container *ngIf="menu.menu !== 'menu.login' && menu.menu !== 'menu.logout' && menu.menu !== 'menu.dashboard'">
           <a [routerLink]="menu.path"
              class="hover:underline me-4 md:me-6">{{ menu.menu | translate }}</a>
         </ng-container>

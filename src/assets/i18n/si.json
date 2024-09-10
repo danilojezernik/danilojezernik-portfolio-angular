@@ -127,6 +127,38 @@
 			"vue": "Vue je progresiven JavaScript okvir za gradnjo uporabniških vmesnikov. Namenjen je prilagodljivosti in je enostaven za integracijo v projekte."
 		}
 	},
+	"dev": {
+		"ai": "Trendi AI",
+		"ai-desc": "Odkrijte najnovejše trende in vpoglede v umetno inteligenco in strojno učenje.",
+		"algorithms": "Vpogledi v algoritme",
+		"algorithms-desc": "Raziščite algoritme, podatkovne strukture in tehnike reševanja problemov za razvijalce.",
+		"angular": "Posodobitve Angularja",
+		"angular-desc": "Ostanite na tekočem z najnovejšimi novicami, vajami in najboljšimi praksami za razvoj v Angularju.",
+		"backend": "Osnove backenda",
+		"backend-desc": "Najdite članke o razvoju backenda, ki pokrivajo baze podatkov, API-je in strežniške tehnologije.",
+		"css": "Tehnike CSS",
+		"css-desc": "Raziščite ustvarjalne tehnike oblikovanja in napredne prakse CSS za sodobno spletno oblikovanje.",
+		"cypress": "Cypress testiranje",
+		"cypress-desc": "Spoznajte Cypress, zmogljivo orodje za končno testiranje v JavaScriptu.",
+		"frontend": "Novosti frontenda",
+		"frontend-desc": "Prejemajte najnovejše posodobitve, nasvete in vaje o razvoju frontenda in oblikovanju uporabniške izkušnje.",
+		"github": "Mojstrstvo GitHuba",
+		"github-desc": "Obvladajte nadzor različic in sodelovanje z GitHubom skozi strokovne članke in nasvete.",
+		"javascript": "JavaScript novice",
+		"javascript-desc": "Odkrijte najnovejši razvoj, tehnike in najboljše prakse v JavaScript programiranju.",
+		"mongodb": "Vodnik po MongoDB",
+		"mongodb-desc": "Spoznajte MongoDB, priljubljeno NoSQL bazo podatkov, in kako jo učinkovito uporabljati.",
+		"python": "Nasveti za Python",
+		"python-desc": "Ostanite obveščeni z vajami, nasveti in vpogledi o Pythonu za spletni razvoj, podatkovno znanost in več.",
+		"sql": "Strokovnost SQL",
+		"sql-desc": "Najdite strokovne nasvete in vaje o SQL, upravljanju baz podatkov in optimizaciji poizvedb.",
+		"typescript": "Typescript novice",
+		"typescript-desc": "Raziščite zmogljive funkcije TypeScripta in kako ga uporabiti za izboljšanje JavaScript kode.",
+		"vue": "Vpogledi v Vue",
+		"vue-desc": "Ostanite na tekočem z najnovejšimi novicami, vodiči in najboljšimi praksami za razvoj z Vue.js.",
+		"webdesign": "Nasveti za spletno oblikovanje",
+		"webdesign-desc": "Raziščite trende spletnega oblikovanja, nasvete in vire za ustvarjanje sodobnih, uporabniku prijaznih spletnih strani."
+	},
 	"errors": {
 		"badRequest": "Neveljavna zahteva. Preverite svoje podatke.",
 		"emptypass": "Prosim vnesite svoje uporabniško ime in geslo.",
@@ -241,6 +273,7 @@
 		"books": "Knjige",
 		"comments": "Komentarji",
 		"contact": "Kontakt",
+		"dev": "DevNews",
 		"email": "E-sporočila",
 		"experiences": "Izkušnje",
 		"github": "GitHub",
@@ -304,6 +337,36 @@
 			"contact-us": "Kontaktiraj me",
 			"text": "Hvala, da ste obiskali mojo spletno stran! Če imate kakršnakoli vprašanja ali potrebujete pomoč, me lahko kontaktirate preko spodnjega obrazca. Veselim se vaših sporočil!"
 		},
+		"dev": {
+			"angular": {
+				"description": "Bodite na tekočem z najnovejšimi novicami, vajami in vpogledi iz skupnosti Angular. Naša stran z Angular novicami združuje najnovejše članke iz Dev.to, ki vključujejo strokovne nasvete, najboljše prakse in najnovejši razvoj v svetu Angularja. Ne glede na to, ali ste izkušen razvijalec Angularja ali šele začenjate, boste našli dragoceno vsebino, ki vam bo pomagala pri gradnji boljših, hitrejših in bolj skalabilnih aplikacij.",
+				"title": "DEV.to Angular"
+			},
+			"javascript": {
+				"description": "Spoznajte najnovejše trende, vaje in vpoglede v JavaScript. Naša stran z JavaScript novicami vam prinaša posodobljene članke iz Dev.to, ki vključujejo strokovne nasvete, tehnike kodiranja in najnovejši razvoj v svetu JavaScripta. Idealno za začetnike in napredne razvijalce, ki želijo izpopolniti svoje znanje in graditi dinamične spletne aplikacije.",
+				"title": "DEV.to JavaScript"
+			},
+			"mongodb": {
+				"description": "Prejemajte najnovejše novice, vaje in vpoglede o MongoDB. Naša stran z MongoDB novicami vključuje članke iz Dev.to, ki se osredotočajo na upravljanje baz podatkov, optimizacijo zmogljivosti in primere uporabe MongoDB v resničnem svetu. Popolno za razvijalce in skrbnike baz podatkov, ki želijo izboljšati svoje znanje o tej priljubljeni NoSQL bazi podatkov.",
+				"title": "DEV.to Mongo DB"
+			},
+			"python": {
+				"description": "Odkrijte najnovejše novice, nasvete in vaje o Pythonu. Naša stran z novicami o Pythonu združuje najnovejše članke iz Dev.to, ki ponujajo vse od začetniških vodičev do naprednih tehnik programiranja. Ne glede na to, ali vas zanima spletni razvoj, podatkovna znanost ali avtomatizacija, boste ostali povezani s skupnostjo Python.",
+				"title": "DEV.to Python"
+			},
+			"typescript": {
+				"description": "Ostanite obveščeni o najnovejših posodobitvah in vajah v TypeScriptu. Naša stran z novicami o TypeScriptu zbira vpogledne članke iz Dev.to, ki pokrivajo najboljše prakse, napredne funkcije in novosti v svetu TypeScripta. Ne glede na to, ali prehajate iz JavaScripta ali obvladujete TypeScript, boste tu našli nekaj zase.",
+				"title": "DEV.to TypeScript"
+			},
+			"vue": {
+				"description": "Ostanite na tekočem z najnovejšimi novicami, vajami in najboljšimi praksami o Vue. Naša stran z Vue novicami vam prinaša članke iz Dev.to, ki pokrivajo vse od arhitekture komponent do najnovejših funkcij v Vue. Ne glede na to, ali šele začenjate z Vue ali ste izkušen razvijalec Vue.js, boste tu našli dragocene vpoglede.",
+				"title": "DEV.to Vue"
+			}
+		},
+		"dev-news": {
+			"description": "Raziščite izbrane vsebine iz skupnosti Dev.to kar tukaj! Naša stran vam prinaša najnovejše članke, vaje in vpoglede razvijalcev z vsega sveta, ki pokrivajo širok spekter tem, od frontend okvirjev, kot sta Angular in Vue, do backend tehnologij, kot sta Python in MongoDB. Ostanite na tekočem z najnovejšimi trendi, najboljšimi praksami in poglobljenimi analizami, ki jih delijo strokovnjaki iz industrije – vse na enem mestu!",
+			"title": "DEV.to novice"
+		},
 		"drawer": "Vsa vprašanja na enem mestu.",
 		"experiences": {
 			"description": "Oglejte si mojo profesionalno pot skozi življenjepis, kjer so predstavljene moje veščine, izkušnje in dosežki v svetu tehnologije. Od programerskih projektov do sodelovanj, ta dokument prikazuje moj razvoj in predanost poklicu.",
@@ -326,7 +389,7 @@
 		},
 		"latest-blog": {
 			"description": "Moj programerski blog ponuja celovite vadnice, poglobljene nasvete, praktične primere kode in vodnike, ki vam pomagajo ostati v ospredju programiranja.",
-			"title": "Najnovejši blogi"
+			"title": "Najnovejši blogi na DaniloJezernik.com"
 		},
 		"login": {
 			"description": "Hvala, ker ste del te skupnosti. Za dostop do vašega računa, se prosimo prijavite s svojim uporabniškim imenom in geslom. Če imate kakršnakoli vprašanja ali težave pri prijavi, me lahko kontaktirate preko moje strani za kontakt.",
