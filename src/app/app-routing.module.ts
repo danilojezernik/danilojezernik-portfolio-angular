@@ -160,6 +160,7 @@ import {DevSqlComponent} from "./core/pages/public/dev-news/dev-sql/dev-sql.comp
 import {DevCypressComponent} from "./core/pages/public/dev-news/dev-cypress/dev-cypress.component";
 import {DevAlgorithmsComponent} from "./core/pages/public/dev-news/dev-algorithms/dev-algorithms.component";
 import {DevNewsComponent} from "./core/pages/public/dev-news/dev-news.component";
+import {StackDataComponent} from "./core/pages/public/stack-data/stack-data.component";
 
 const routes: Routes = [
   {
@@ -741,11 +742,21 @@ const routes: Routes = [
   // ---------------------------
   //     LANGUAGE ROUTES
   // ---------------------------
+
+  // PRIVATE
+
   {
     path: 'language-admin',
     component: LanguageDataComponent,
     canActivate: [AuthGuardService],
     data: {roles: ['admin']}
+  },
+
+  // PUBLIC
+
+  {
+    path: 'stack-data',
+    component: StackDataComponent,
   },
 
   // ---------------------------

@@ -1,20 +1,26 @@
-import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {UsedLanguagesService} from "../../../services/api/used-languages.service";
 import {NgChartsModule} from "ng2-charts";
 import {ChartConfiguration, ChartData} from "chart.js";
 import {HeroTitleComponent} from "../hero-title/hero-title.component";
+import {LanguageData} from "../../../models/language-data";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-used-languages',
   standalone: true,
-  imports: [CommonModule, NgChartsModule, HeroTitleComponent],
+  imports: [CommonModule, NgChartsModule, HeroTitleComponent, TranslateModule],
   templateUrl: './used-languages.component.html'
 })
 export class UsedLanguagesComponent implements OnInit {
 
-  private _usedLanguagesService = inject(UsedLanguagesService)
+  private _dataService = inject(UsedLanguagesService);
   private cdr = inject(ChangeDetectorRef); // Injecting ChangeDetectorRef
+
+  @Input() title: string = ''; // Dynamic title for the chart
+  @Input() description: string = ''; // Dynamic description for the chart
+  @Input() endpoint: string = ''; // Dynamic endpoint to fetch data
 
   message: string = '';
   hasData: boolean = false;
@@ -22,7 +28,7 @@ export class UsedLanguagesComponent implements OnInit {
   // Define the bar chart options with correct typing
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
-    maintainAspectRatio: false, // Disable aspect ratio to allow full width/height
+    maintainAspectRatio: false,
     indexAxis: 'y', // This makes the bar chart horizontal
     scales: {
       x: {
@@ -44,7 +50,7 @@ export class UsedLanguagesComponent implements OnInit {
     datasets: [
       {
         data: [],
-        label: 'Programming Languages Popularity',
+        label: 'Popularity',
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -52,7 +58,6 @@ export class UsedLanguagesComponent implements OnInit {
           'rgba(75, 192, 192, 0.2)',
           'rgba(153, 102, 255, 0.2)',
           'rgba(255, 159, 64, 0.2)',
-          // Add more colors if needed for more data points
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
@@ -63,22 +68,22 @@ export class UsedLanguagesComponent implements OnInit {
           'rgba(255, 159, 64, 1)',
         ],
         borderWidth: 1,
-        barThickness: 20, // Set a fixed bar thickness (e.g., 40px)
-        categoryPercentage: 0.8, // Control the space between bars
+        barThickness: 20, // Set a fixed bar thickness
+        categoryPercentage: 0.8 // Control the space between bars
       }
     ]
   };
 
   ngOnInit() {
-
     // Subscribe to the service and update the chart data and labels dynamically
-    this._usedLanguagesService.getLanguagesPeriodically().subscribe((response) => {
-      if(response && response.length > 0) {
-        this.hasData = true
+    // @ts-ignore
+    this._dataService.getDataByEndpoint(this.endpoint).subscribe((response) => {
+      if (response && response.length > 0) {
+        this.hasData = true;
 
         // Extracting labels (tags) and data (counts) from the response
-        const labels = response.map(lang => lang.tag);  // Extract tag names
-        const data = response.map(lang => lang.count);  // Extract counts
+        const labels = response.map((lang: LanguageData) => lang.tag);
+        const data = response.map((lang: LanguageData) => lang.count);
 
         // Update the chart labels and data
         this.barChartLabels = labels;
@@ -87,7 +92,7 @@ export class UsedLanguagesComponent implements OnInit {
           datasets: [
             {
               data: data,
-              label: 'Programming Languages Popularity',
+              label: 'Popularity',
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -111,11 +116,9 @@ export class UsedLanguagesComponent implements OnInit {
           ]
         };
       } else {
-        this.hasData = false
-        this.message = 'No data'
+        this.hasData = false;
+        this.message = 'No data';
       }
-
-
 
       // Trigger change detection after data update
       this.cdr.detectChanges();

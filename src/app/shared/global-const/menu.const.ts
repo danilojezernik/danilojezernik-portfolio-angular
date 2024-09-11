@@ -6,6 +6,7 @@ export const MENU_TOP: { menu: string, path: string }[] = [
   {menu: 'menu.blog', path: '/blog'},
   {menu: 'menu.github', path: '/github'},
   {menu: 'menu.dev', path: '/dev'},
+  {menu: 'menu.stack', path: '/stack-data'},
   {menu: 'menu.books', path: '/books'},
   {menu: 'menu.users', path: '/users'},
   {menu: 'menu.technologies', path: '/technologies'},

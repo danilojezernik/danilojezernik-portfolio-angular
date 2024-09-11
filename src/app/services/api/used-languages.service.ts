@@ -15,8 +15,13 @@ export class UsedLanguagesService {
     return this._http.get<LanguageData[]>(`${environment.languageUrl}`)
   }
 
-  getLanguagesPeriodically(): Observable<LanguageData[]> {
+  getLanguagesData(): Observable<LanguageData[]> {
     return this._http.get<LanguageData[]>(`${environment.languageUrl}/tags`)
+  }
+
+  // General method to fetch data by endpoint
+  getDataByEndpoint(endpoint: string): Observable<LanguageData[]> {
+    return this._http.get<LanguageData[]>(`${environment.languageUrl}/${endpoint}`);
   }
 
 }

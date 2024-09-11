@@ -1,4 +1,4 @@
-<section class="py-10 overflow-hidden md:py-0 sm:py-16 2xl:py-16">
+<section class="pt-10 overflow-hidden sm:pt-16 2xl:pt-16">
   <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
     <div class="grid items-center grid-cols-1 md:grid-cols-2">
 
@@ -12,18 +12,49 @@
           Exercitation veniam consequat sunt nostrud amet.
         </p>
 
-        <p class="mt-4 text-xl text-gray-600 dark:text-gray-300 md:mt-8">
-                    <span class="relative inline-block">
-                        <span class="absolute inline-block w-full bottom-0.5 h-2 bg-yellow-300 dark:bg-gray-900"></span>
-                    <span class="relative"> Have a question? </span>
-                    </span>
-          <br class="block sm:hidden"/>Ask me on <a href="#" title=""
-                                                    class="transition-all duration-200 text-sky-500 dark:text-sky-400 hover:text-sky-600 dark:hover:text-sky-500 hover:underline">Twitter</a>
-        </p>
+        <div class="flex flex-col mb-8 lg:mb-16 mt-4 space-y-4 sm:flex-row sm:justify-start sm:space-y-0 sm:space-x-4">
+          <a routerLink="/projects"
+             class="inline-flex justify-center btn-public add items-center text-center rounded">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"
+                 class="mr-2 -ml-1 w-5 h-5">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <defs>
+                  <style>.cls-1 {
+                    fill: none;
+                    stroke: #ffffff;
+                    stroke-miterlimit: 10;
+                    stroke-width: 1.92px;
+                  }</style>
+                </defs>
+                <g id="presentation_standing" data-name="presentation standing">
+                  <line class="cls-1" x1="0.5" y1="1.48" x2="23.5" y2="1.48"></line>
+                  <line class="cls-1" x1="0.5" y1="16.81" x2="23.5" y2="16.81"></line>
+                  <rect class="cls-1" x="2.42" y="1.48" width="19.17" height="15.33"></rect>
+                  <line class="cls-1" x1="12" y1="16.81" x2="12" y2="23.52"></line>
+                  <polyline class="cls-1" points="8.17 23.52 8.17 22.56 12 19.69"></polyline>
+                  <polyline class="cls-1" points="15.83 23.52 15.83 22.56 12 19.69"></polyline>
+                </g>
+              </g>
+            </svg>
+            {{ 'button.projects' | translate }}
+          </a>
+          <a routerLink="/biography"
+             class="inline-flex justify-center btn-public register border items-center py-3 px-5 text-base font-medium text-center text-white rounded bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 focus:ring-primary-900">
+            {{ 'button.biography' | translate }}
+            <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+            </svg>
+          </a>
+
+        </div>
       </div>
 
       <div class="relative">
-        <img class="absolute inset-x-0 bottom-0 -mb-48 -translate-x-1/2 left-1/2"
+        <img class="absolute inset-x-0 bottom-0  -translate-x-1/2 left-1/2"
              src="https://cdn.rareblocks.xyz/collection/celebration/images/team/1/blob-shape.svg" alt=""/>
 
         <img class="relative w-full xl:max-w-lg xl:mx-auto 2xl:origin-bottom 2xl:scale-110"
@@ -34,21 +65,4 @@
   </div>
 </section>
 
-<section>
-  <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-
-    <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
-
-      <div
-        class="cursor-pointer shadow-lg flex flex-col justify-center bg-background-menu p-4 border border-white border-opacity-10 text-center"
-        *ngFor="let data of ABOUT_ME" [routerLink]="data.path">
-        <h3 class="mb-2 text-xl font-bold text-white">{{ data.menu | translate }}</h3>
-        <p class="text-gray-500">
-          {{ data.description | translate }}
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
 <app-my-gallery/>

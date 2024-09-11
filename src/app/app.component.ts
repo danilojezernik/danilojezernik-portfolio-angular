@@ -118,7 +118,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     const drops: number[] = []; // Array of drops - one per column
 
     for (let x = 0; x < columns; x++) {
-      drops[x] = 1; // Y-coordinate of each drop
+      drops[x] = Math.floor(Math.random() * c.height / font_size); // Start from random Y positions
     }
 
     // Drawing the characters
@@ -128,7 +128,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         ctx.fillStyle = "rgba(0, 0, 0, 0.04)"; // Black BG for the canvas
         ctx.fillRect(0, 0, c.width, c.height);
 
-        ctx.fillStyle = "#f4427d"; // Color for the text
+        ctx.fillStyle = "#700428"; // Color for the text
         ctx.font = font_size + "px arial";
 
         for (let i = 0; i < drops.length; i++) {
@@ -145,7 +145,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         }
       }
     }
-
+    draw();
     setInterval(draw, 35);
   }
 
