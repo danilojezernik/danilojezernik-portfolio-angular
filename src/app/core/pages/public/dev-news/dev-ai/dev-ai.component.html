@@ -1,4 +1,4 @@
-<div class="pt-8 mx-auto max-w-screen-xl lg:pt-16">
+<div class="pt-8 px-4 mx-auto max-w-screen-xl lg:pt-16">
   <!-- Title and description of the blog section - START -->
   <app-hero-title title="pages.dev.ai.title" subtitle="pages.dev.ai.description"/>
   <!-- Title and description of the blog section - END -->
@@ -7,7 +7,7 @@
     <ng-container *ngIf="!error">
 
       <section>
-        <div class="pb-8 mx-auto max-w-screen-xl lg:pb-16">
+        <div class="pb-8 lg:pb-16">
 
           <!-- Grid container for displaying blog articles - START -->
           <div class="grid gap-8 lg:grid-cols-3">
@@ -102,7 +102,7 @@
 
                 <!-- Read more link - START -->
                 <a [href]="data.url" target="_blank"
-                   class="inline-flex items-center font-medium text-primary-500 hover:text-header transition-colors duration-500">
+                   class="inline-flex items-center font-medium hover:text-header transition-colors duration-500">
                   <span class="pe-2">{{ 'button.read-more' | translate }}</span> &#11166;
                 </a>
                 <!-- Read more link - END -->

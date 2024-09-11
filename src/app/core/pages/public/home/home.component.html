@@ -1,4 +1,4 @@
-<section>
+<section class="divider lg:h-screen pb-20">
   <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
 
     <h1
@@ -19,7 +19,7 @@
         </svg>
       </a>
       <a routerLink="/register"
-         class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center rounded-lg border focus:ring-4 text-white border-gray-700 hover:bg-gray-700 focus:ring-gray-800">
+         class="inline-flex justify-center btn-public register items-center text-center rounded-lg border">
         <svg fill="#ffffff" version="1.1" id="Capa_1"
              class="mr-2 -ml-1 mb-2 w-5 h-5"
              viewBox="0 0 461.759 461.759" xml:space="preserve"
@@ -30,10 +30,12 @@
         {{ 'button.register' | translate }}
       </a>
     </div>
-    <div class="my-16">
+    <div class="lg:mt-32 mt-4 hidden md:block">
       <app-my-skills/>
     </div>
-    <app-brands [wh]="16" [angular]="true" [tailwind]="true" [python]="true" [mongodb]="true" [docker]="true"/>
+    <div class="md:pt-14 pt-o">
+      <app-brands [wh]="16" [angular]="true" [tailwind]="true" [python]="true" [mongodb]="true" [docker]="true"/>
+    </div>
   </div>
 </section>
 

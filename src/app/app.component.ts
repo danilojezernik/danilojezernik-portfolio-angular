@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {AfterViewInit, Component, inject, OnInit} from '@angular/core';
 import {initFlowbite} from "flowbite";
 import {AuthService} from "./auth/auth.service";
 import {Observable, Subscription} from "rxjs";
@@ -13,7 +13,7 @@ import {SNACKBAR_MESSAGES} from "./shared/global-const/global.const";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
   private _loggedInService = inject(LoggedInService);
   private _authService = inject(AuthService);
@@ -97,5 +97,56 @@ export class AppComponent implements OnInit {
   }
 
 
+  ngAfterViewInit() {
+    this.initializeMatrixRain();
+  }
+
+  initializeMatrixRain() {
+    // Getting the canvas
+    const c = document.getElementById("x") as HTMLCanvasElement;
+    const ctx = c.getContext("2d");
+
+    // Making the canvas full screen
+    c.height = window.innerHeight;
+    c.width = window.innerWidth;
+
+    // Characters (asserting matrix is an array of strings)
+    let matrix: string[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}".split("");
+
+    const font_size = 10;
+    const columns = c.width / font_size; // Number of columns for the rain
+    const drops: number[] = []; // Array of drops - one per column
+
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1; // Y-coordinate of each drop
+    }
+
+    // Drawing the characters
+    function draw() {
+      // Check if ctx is not null
+      if (ctx) {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.04)"; // Black BG for the canvas
+        ctx.fillRect(0, 0, c.width, c.height);
+
+        ctx.fillStyle = "#f4427d"; // Color for the text
+        ctx.font = font_size + "px arial";
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = matrix[Math.floor(Math.random() * matrix.length)];
+          ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+          // Reset drop randomly after it has crossed the screen
+          if (drops[i] * font_size > c.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+
+          // Increment Y coordinate
+          drops[i]++;
+        }
+      }
+    }
+
+    setInterval(draw, 35);
+  }
 
 }

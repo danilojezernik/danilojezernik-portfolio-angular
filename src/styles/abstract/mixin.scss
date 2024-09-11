@@ -36,6 +36,16 @@
   }
 }
 
+/***********************************************************
+   3. Transparent hover effect styles
+************************************************************/
+@mixin button-hover-register-effect($color-start, $color-end) {
+  background: $color-start;
+  &:hover {
+    background: darken($color-end, 40%);
+  }
+}
+
 
 /***********************************************************
    4. Background chat room styles

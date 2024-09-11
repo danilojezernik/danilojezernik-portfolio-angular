@@ -92,6 +92,10 @@
     @include button-hover-effect($color-add-start, $color-add-end);
   }
 
+  &.register {
+    @include button-hover-register-effect(transparent, #000000);
+  }
+
   &.chat {
     padding: 14px!important;
     border-radius: 100%;
