@@ -4,17 +4,14 @@ export const MENU_TOP: { menu: string, path: string }[] = [
   {menu: 'menu.home', path: '/'},
   {menu: 'menu.about', path: '/about'},
   {menu: 'menu.blog', path: '/blog'},
+  {menu: 'menu.books', path: '/books'},
   {menu: 'menu.github', path: '/github'},
+  {menu: 'menu.dev', path: '/dev'},
+  {menu: 'menu.stack', path: '/stack-data'},
   {menu: 'menu.users', path: '/users'},
   {menu: 'menu.register', path: '/register'},
   {menu: 'menu.contact', path: '/contact'},
-  {menu: 'menu.dashboard', path: '/dashboard'}
-]
-
-export const MENU_MEGA = [
-  {menu: 'menu.dev', path: '/dev'},
-  {menu: 'menu.stack', path: '/stack-data'},
-  {menu: 'menu.books', path: '/books'},
+  {menu: 'menu.dashboard', path: '/dashboard'},
   {menu: 'menu.technologies', path: '/technologies'},
 ]
 

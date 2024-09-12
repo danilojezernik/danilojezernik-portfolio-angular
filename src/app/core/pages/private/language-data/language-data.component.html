@@ -1,6 +1,7 @@
-<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+<app-breadcrumb-admin first="breadcrumb.language"/>
+<div class="container py-8 mx-auto">
 
-<mat-form-field>
+<mat-form-field class="w-full text-black">
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. javascript" #input>
 </mat-form-field>

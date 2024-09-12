@@ -1,11 +1,11 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 import {LoggedInService} from "../../services/communication/logged-in.service";
 import {Observable, Subscription} from "rxjs";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
-import {LOGIN_LOGOUT, MENU_MEGA, MENU_TOP} from "../../shared/global-const/menu.const";
+import {LOGIN_LOGOUT, MENU_TOP} from "../../shared/global-const/menu.const";
 
 @Component({
   selector: 'app-header',
@@ -20,6 +20,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     translate.use('si');
   }
 
+  @ViewChild('sidebar') sidebar!: ElementRef;
+  @ViewChild('openSidebarButton') openSidebarButton!: ElementRef;
+  sidebarOpened: boolean = false
   // Injecting AuthService to handle authentication related operations
   private _authService = inject(AuthService);
 
@@ -68,8 +71,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+// Toggles the sidebar visibility
+  toggleSidebar(event: Event): void {
+    event.stopPropagation(); // Prevents the event from propagating to the document
+    this.sidebar.nativeElement.classList.toggle('-translate-x-full');
+    this.sidebarOpened = !this.sidebarOpened
+  }
+
+  // Close the sidebar if clicking outside of it
+  closeSidebarIfClickedOutside(event: Event): void {
+    if (
+      this.sidebar.nativeElement.contains(event.target) ||
+      this.openSidebarButton.nativeElement.contains(event.target)
+    ) {
+      return;
+    }
+
+    this.sidebar.nativeElement.classList.add('-translate-x-full'); // Close the sidebar
+  }
+
   protected readonly LOGIN_LOGOUT = LOGIN_LOGOUT;
   protected readonly MENU_TOP = MENU_TOP;
-  protected readonly localStorage = localStorage;
-  protected readonly MENU_MEGA = MENU_MEGA;
 }
