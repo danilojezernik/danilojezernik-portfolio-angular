@@ -6,6 +6,7 @@ import {ChartConfiguration, ChartData} from "chart.js";
 import {HeroTitleComponent} from "../hero-title/hero-title.component";
 import {LanguageData} from "../../../models/language-data";
 import {TranslateModule} from "@ngx-translate/core";
+import {LABEL_MAP} from "../../../models/maping-labels-languages";
 
 @Component({
   selector: 'app-used-languages',
@@ -82,7 +83,7 @@ export class UsedLanguagesComponent implements OnInit {
         this.hasData = true;
 
         // Extracting labels (tags) and data (counts) from the response
-        const labels = response.map((lang: LanguageData) => lang.tag);
+        const labels = response.map((lang: LanguageData) => LABEL_MAP[lang.tag] || lang.tag);
         const data = response.map((lang: LanguageData) => lang.count);
 
         // Update the chart labels and data

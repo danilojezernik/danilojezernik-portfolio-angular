@@ -1,6 +1,6 @@
 <!-- Back button that appears fixed at the bottom right, used when not in blogByIdPublic - START -->
 <button *ngIf="!blogByIdPublic"
-        style="position: fixed; bottom: 0; right: 0; margin: 10px"
+        style="position: fixed; bottom: 40px; right: 70px; margin: 10px"
         class="btn-admin back"
         (click)="goBack()">
   {{ 'button.back' | translate }}
@@ -17,70 +17,70 @@
 
 <!-- Buttons shown when adding something (e.g., books, blogs, projects) - START -->
 <button *ngIf="booksAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/media-books">
   {{ 'button.books-admin' | translate }}
 </button>
 
 <button *ngIf="blogsAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/media-blogs">
   {{ 'button.blogs-admin' | translate }}
 </button>
 
 <button *ngIf="aboutMeMediaAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/about">
   {{ 'button.about-public' | translate }}
 </button>
 
 <button *ngIf="projectsAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/media-projects">
   {{ 'button.media-projects' | translate }}
 </button>
 
 <button *ngIf="angularAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/media-angular">
   {{ 'button.media-angular' | translate }}
 </button>
 
 <button *ngIf="vueAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/media-vue">
   {{ 'button.media-vue' | translate }}
 </button>
 
 <button *ngIf="pythonAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/media-python">
   {{ 'button.media-python' | translate }}
 </button>
 
 <button *ngIf="javascriptAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/media-javascript">
   {{ 'button.media-javascript' | translate }}
 </button>
 
 <button *ngIf="typescriptAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/media-typescript">
   {{ 'button.media-typescript' | translate }}
 </button>
 
 <button *ngIf="mongodbAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/media-mongodb">
   {{ 'button.media-mongodb' | translate }}
@@ -89,56 +89,56 @@
 
 <!-- Buttons shown when on the media page, linking to the respective admin sections - START -->
 <button *ngIf="booksMediaAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/books-admin">
   {{ 'button.to-books' | translate }}
 </button>
 
 <button *ngIf="blogsMediaAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/blog-admin">
   {{ 'button.to-blogs' | translate }}
 </button>
 
 <button *ngIf="projectsMediaAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/projects-admin">
   {{ 'button.to-projects' | translate }}
 </button>
 
 <button *ngIf="angularMediaAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/tech-all-angular">
   {{ 'button.to-angular' | translate }}
 </button>
 
 <button *ngIf="vueMediaAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/tech-all-vue">
   {{ 'button.to-vue' | translate }}
 </button>
 
 <button *ngIf="typescriptMediaAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/tech-all-typescript">
   {{ 'button.to-typescript' | translate }}
 </button>
 
 <button *ngIf="pythonMediaAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/tech-all-python">
   {{ 'button.to-python' | translate }}
 </button>
 
 <button *ngIf="mongodbMediaAdmin"
-        style="position: fixed; bottom: 50px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 90px; right: 20px; margin: 10px"
         class="btn-admin back"
         routerLink="/tech-all-mongodb">
   {{ 'button.to-mongodb' | translate }}
@@ -152,7 +152,7 @@
           'restore': !isInLocalStorage
         }"
         [disabled]="!isInLocalStorage"
-        style="position: fixed; bottom: 100px; right: 0; margin: 10px"
+        style="position: fixed; bottom: 140px; right: 20px; margin: 10px"
         class="btn-admin"
         (click)="restoreLocalStorage()">
   <span *ngIf="isInLocalStorage">{{ 'button.restore-order' | translate }}</span>

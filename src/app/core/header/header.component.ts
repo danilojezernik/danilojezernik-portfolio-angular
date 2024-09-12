@@ -5,7 +5,7 @@ import {AuthService} from "../../auth/auth.service";
 import {LoggedInService} from "../../services/communication/logged-in.service";
 import {Observable, Subscription} from "rxjs";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
-import {LOGIN_LOGOUT, MENU_TOP} from "../../shared/global-const/menu.const";
+import {LOGIN_LOGOUT, MENU_MEGA, MENU_TOP} from "../../shared/global-const/menu.const";
 
 @Component({
   selector: 'app-header',
@@ -71,4 +71,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
   protected readonly LOGIN_LOGOUT = LOGIN_LOGOUT;
   protected readonly MENU_TOP = MENU_TOP;
   protected readonly localStorage = localStorage;
+  protected readonly MENU_MEGA = MENU_MEGA;
 }
