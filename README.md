@@ -130,3 +130,55 @@ Now you can start using Flowbite components in your Angular project. Check the F
 Project has various documentations for different components and utilities. You can find them in the `src/assets/documentation` folder.
 
 [Documentation](https://github.com/danilojezernik/danilojezernik-portfolio-angular/tree/master/src/assets/documentation)
+
+# Adding Swiper to project
+
+
+First install swiper
+
+```bash
+npm install swiper
+```
+
+To `main.ts` add:
+
+```typescript
+import {register as registerSwiperElements} from 'swiper/element/bundle'
+
+// Register swiper before bootstrapping
+registerSwiperElements()
+```
+
+Because working with standalone component there has to be some changes made in app.component.ts where swiper will be used. One has to import `CUSTOM_ELEMENTS_SCHEMA` and added to schema in Component. With that we tell Angular that this component will be using custom schema.
+
+```typescript
+import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+export class AppComponent {
+  title = 'swiperjs-angular';
+}
+```
+
+Now add Swiper markup to file
+
+https://swiperjs.com/element
+
+for an example:
+
+```html
+<swiper-container>
+  <swiper-slide>Slide 1</swiper-slide>
+  <swiper-slide>Slide 2</swiper-slide>
+  <swiper-slide>Slide 3</swiper-slide>
+  ...
+</swiper-container>
+```
