@@ -8,7 +8,7 @@
       <li *ngFor="let menu of MENU_TOP">
         <ng-container
           *ngIf="menu.menu !== 'menu.login' && menu.menu !== 'menu.logout' && menu.menu !== 'menu.dashboard'">
-        <a [routerLink]="menu.path" class="block py-2 hover:text-header transition-colors duration-500" (click)="toggleSidebar($event)">
+        <a data-cy="open-route" [routerLink]="menu.path" class="block py-2 hover:text-header transition-colors duration-500" (click)="toggleSidebar($event)">
           {{ menu.menu | translate }}
         </a>
         </ng-container>
@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<div class="fixed inset-0 bg-black bg-opacity-50 z-30" *ngIf="sidebarOpened" (click)="toggleSidebar($event)"></div>
+<div data-cy="close-menu" class="fixed inset-0 bg-black bg-opacity-50 z-30" *ngIf="sidebarOpened" (click)="toggleSidebar($event)"></div>
 <!-- Content -->
 <div class="flex-1 flex flex-col overflow-hidden" (click)="closeSidebarIfClickedOutside($event)">
   <!-- Navbar -->
@@ -29,7 +29,6 @@
       <div class="flex justify-between items-center py-4 px-2">
         <div>
           <a routerLink="/">
-
             <img src="assets/media/logo/logo-dj.png" class="h-12 rotate-in-center" alt="Danilo Jezernik Logo">
           </a>
         </div>
@@ -75,7 +74,7 @@
             </ng-container>
           </ng-container>
 
-          <button class="text-white hover:text-gray-600" (click)="toggleSidebar($event)" #openSidebarButton>
+          <button data-cy="main-header" class="text-white hover:text-gray-600" (click)="toggleSidebar($event)" #openSidebarButton>
             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>

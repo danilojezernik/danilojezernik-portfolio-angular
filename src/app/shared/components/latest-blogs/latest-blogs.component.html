@@ -3,14 +3,14 @@
 
   <!-- Container to handle the scenario when there is no error - START -->
   <ng-container *ngIf="!error">
-
+    <!-- Title and description of the blog section - START -->
+    <app-hero-title title="pages.latest-blog.title" subtitle="pages.latest-blog.description"/>
+    <!-- Title and description of the blog section - END -->
     <!-- Section containing the main content of the blog page - START -->
-    <section class="bg-[#1a1a1c]">
-      <div class="pb-16 px-4 mx-auto max-w-screen-xl lg:pb-32 lg:px-6">
+    <section>
+      <div class="py-16 px-4 mx-auto max-w-screen-xl lg:py-32 lg:px-6">
 
-        <!-- Title and description of the blog section - START -->
-        <app-hero-title title="pages.latest-blog.title" subtitle="pages.latest-blog.description"/>
-        <!-- Title and description of the blog section - END -->
+
 
         <!-- Grid container for displaying blog articles - START -->
         <div class="grid gap-8 lg:grid-cols-3">
