@@ -6,7 +6,7 @@ describe('Sidebar Links', () => {
     cy.intercept('GET', '**/blog/limited/', { statusCode: 200, body: [] }).as('getBlogLimited');
 
     // Visit the homepage
-    cy.visit('http://localhost:3030/')
+    cy.visit('http://localhost:3000/')
   });
 
   it('should open main page and close it', () => {
