@@ -3,35 +3,35 @@ on: [ push ]
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-22.04  # Specifies the operating system for the job to run on
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3  # Checks out the repository code to the GitHub Actions runner
+        uses: actions/checkout@v3
 
       # Install dependencies
       - name: Install dependencies
-        run: npm install --force  # Installs project dependencies using npm
+        run: npm ci --legacy-peer-deps
 
       # Start the application server using the dev script
       - name: Start application server
-        run: npm run start &  # Runs the application server in the background
+        run: npm run start &
         env:
-          CI: true  # Sets the CI environment variable to true, optimizing Cypress for CI environments
+          CI: true
 
       # Run Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v5  # Runs Cypress end-to-end tests using the official GitHub Action
+        uses: cypress-io/github-action@v5
 
       # Upload screenshots (if any)
       - uses: actions/upload-artifact@v3
         if: failure()  # Uploads screenshots only if the tests fail
         with:
-          name: cypress-screenshots  # Name of the artifact to upload
-          path: cypress/screenshots  # Directory path for screenshots
+          name: cypress-screenshots
+          path: cypress/screenshots
 
       # Upload videos (always)
       - uses: actions/upload-artifact@v3
-        if: failure()  # Always uploads the videos, whether tests pass or fail
+        if: failure()
         with:
-          name: cypress-videos  # Name of the artifact to upload
-          path: cypress/videos  # Directory path for videos
+          name: cypress-videos
+          path: cypress/videos
