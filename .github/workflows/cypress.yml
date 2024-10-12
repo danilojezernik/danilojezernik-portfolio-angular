@@ -10,11 +10,11 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: npm install  # Installs project dependencies using npm
+        run: npm install --force  # Installs project dependencies using npm
 
       # Start the application server using the dev script
       - name: Start application server
-        run: npm run dev &  # Runs the application server in the background
+        run: npm run start &  # Runs the application server in the background
         env:
           CI: true  # Sets the CI environment variable to true, optimizing Cypress for CI environments
 
