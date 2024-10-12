@@ -1,33 +1,37 @@
-name: Cypress Tests
-on: [push]
+name: End-to-end tests
+on: [ push ]
+
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
-    # Runs tests in parallel with matrix strategy https://docs.cypress.io/guides/guides/parallelization
-    # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
-    # Also see warning here https://github.com/cypress-io/github-action#parallel
-    strategy:
-      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
-      matrix:
-        containers: [1, 2] # Uses 2 parallel instances
+    runs-on: ubuntu-22.04  # Specifies the operating system for the job to run on
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: Cypress run
-        # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v6
-        with:
-          # Starts web server for E2E tests - replace with your own server invocation
-          # https://docs.cypress.io/guides/continuous-integration/introduction#Boot-your-server
-          start: npm start
-          wait-on: 'http://localhost:3000' # Waits for above
-          # Records to Cypress Cloud
-          # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
-          record: true
-          parallel: true # Runs test in parallel using settings above
+        uses: actions/checkout@v3  # Checks out the repository code to the GitHub Actions runner
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install  # Installs project dependencies using npm
+
+      # Start the application server using the dev script
+      - name: Start application server
+        run: npm run dev &  # Runs the application server in the background
         env:
-          # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
-          # in GitHub repo → Settings → Secrets → Actions
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          CI: true  # Sets the CI environment variable to true, optimizing Cypress for CI environments
+
+      # Run Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v5  # Runs Cypress end-to-end tests using the official GitHub Action
+
+      # Upload screenshots (if any)
+      - uses: actions/upload-artifact@v3
+        if: failure()  # Uploads screenshots only if the tests fail
+        with:
+          name: cypress-screenshots  # Name of the artifact to upload
+          path: cypress/screenshots  # Directory path for screenshots
+
+      # Upload videos (always)
+      - uses: actions/upload-artifact@v3
+        if: failure()  # Always uploads the videos, whether tests pass or fail
+        with:
+          name: cypress-videos  # Name of the artifact to upload
+          path: cypress/videos  # Directory path for videos
