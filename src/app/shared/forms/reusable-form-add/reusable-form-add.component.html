@@ -6,22 +6,22 @@
   <div *ngFor="let field of config">
 
     <!-- Label for the form control with dynamic 'for' attribute and content. -->
-    <label *ngIf="field.type !== 'checkbox'" class="block mb-2 mt-4 text-sm font-medium dark:text-white"
+    <label *ngIf="field.type !== 'checkbox'" class="block mb-2 mt-4 text-sm font-medium"
            [for]="field.name">{{ ('labels.' + field.label.toLowerCase()) | translate }}</label>
 
     <!-- Conditionally renders input elements based on the field type. -->
     <input
-      class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      class="input-global text-sm rounded-lg block w-full placeholder-gray-400 focus:ring-gray-400 focus:border-white"
       *ngIf="field.type === 'text'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
     >
 
     <input
-      class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      class="input-global text-sm rounded-lg block w-full placeholder-gray-400 focus:ring-gray-400 focus:border-white"
       *ngIf="field.type === 'email'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
     >
 
     <input
-      class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      class="input-global text-sm rounded-lg block w-full placeholder-gray-400 focus:ring-gray-400 focus:border-white"
       *ngIf="field.type === 'number'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
     >
 
@@ -30,41 +30,41 @@
         <label *ngIf="field.type === 'checkbox'" class="block mb-2 mt-4 text-sm font-medium dark:text-white"
                [for]="field.name">{{ ('labels.' + field.label.toLowerCase()) | translate }}</label>
         <input
-          class="bg-background-menu my-auto ms-4 w-4 h-4 border border-gray-300 rounded focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+          class="my-auto ms-4 w-4 h-4 border border-gray-300 rounded focus:ring-1 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
           *ngIf="field.type === 'checkbox'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
         >
       </div>
     </ng-container>
 
     <input
-      class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      class="input-global text-sm rounded-lg block w-full placeholder-gray-400 focus:ring-gray-400 focus:border-white"
       *ngIf="field.type === 'password'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
     >
 
     <input
-      class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      class="input-global text-sm rounded-lg block w-full placeholder-gray-400 focus:ring-gray-400 focus:border-white"
       *ngIf="field.type === 'date'" [id]="field.name" [formControlName]="field.name" [type]="field.type"
     >
 
     <!-- Renders a textarea element if the field type is 'textarea'. -->
     <textarea
-      class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      class="input-global text-sm rounded-lg block w-full placeholder-gray-400 focus:ring-gray-400 focus:border-white"
       *ngIf="field.type === 'textarea'" [id]="field.name" [formControlName]="field.name" [rows]="rows"></textarea>
 
     <ng-container *ngIf="field.type === 'angular-textarea'">
-      <angular-editor class="bg-background-menu text-white" [formControlName]="field.name"  [id]="field.name" [config]="editorTextareaConfig" required></angular-editor>
+      <angular-editor [formControlName]="field.name"  [id]="field.name" [config]="editorTextareaConfig" required></angular-editor>
     </ng-container>
 
     <ng-container *ngIf="field.type === 'angular-email'">
-      <angular-editor class="bg-background-menu text-white" [formControlName]="field.name"  [id]="field.name" [config]="editorEmailConfig" required></angular-editor>
+      <angular-editor [formControlName]="field.name"  [id]="field.name" [config]="editorEmailConfig" required></angular-editor>
     </ng-container>
 
     <!-- Add select element -->
     <div *ngIf="field.type === 'select'">
       <select
-        class="bg-background-menu border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        class="input-global text-sm rounded-lg block w-full placeholder-gray-400 focus:ring-gray-400 focus:border-white"
         [id]="field.name" [formControlName]="field.name">
-        <option *ngFor="let option of field.options" [value]="option.value">{{ ('labels.' + option.label.toLowerCase()) | translate }}</option>
+        <option class="text-black" *ngFor="let option of field.options" [value]="option.value">{{ ('labels.' + option.label.toLowerCase()) | translate }}</option>
       </select>
     </div>
 

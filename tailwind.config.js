@@ -13,7 +13,7 @@ module.exports = {
         'header': '#f90f63'
       },
       borderColor: {
-        'box-border': '#f90f63'
+        'box-border': '#ffffff'
       }
     },
   },

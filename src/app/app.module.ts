@@ -45,35 +45,34 @@ registerLocaleData(localeSl, 'sl-SI')
     DialogSendEmailComponent,
 
   ],
-  imports: [
-    NgChartsModule,
-    AngularEditorModule,
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    HeaderComponent,
-    BrowserAnimationsModule,
-    MatSnackBarModule,
-    MatDialogModule,
-    CopyrightDirective,
-    SlovenianDateTransformPipe,
-    ShorteningTextPipe,
+    imports: [
+        NgChartsModule,
+        AngularEditorModule,
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        HeaderComponent,
+        BrowserAnimationsModule,
+        MatSnackBarModule,
+        MatDialogModule,
+        CopyrightDirective,
+        SlovenianDateTransformPipe,
+        ShorteningTextPipe,
 
-    // ngx-translate and the loader module
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    FooterComponent,
-    ReusableFormAddComponent,
-    ChatComponent,
-    FormsModule,
-    ChatRoomComponent
-
-  ],
+        // ngx-translate and the loader module
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        FooterComponent,
+        ReusableFormAddComponent,
+        ChatComponent,
+        FormsModule,
+        ChatRoomComponent
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

@@ -12,7 +12,7 @@
         <!-- Title and description of the blog section - END -->
         <div class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:mt-24 mt-12">
 
-          <div class="text-center text-gray-500 dark:text-gray-400" *ngFor="let user of users">
+          <div class="text-center cards-global" *ngFor="let user of users">
             <img class="mx-auto mb-4 w-52 h-52 rounded-full bg-white" [src]="'https://robohash.org/' + user.username"
                  alt="Bonnie Avatar">
             <h3 class="mb-1 text-2xl font-bold tracking-tight text-white">

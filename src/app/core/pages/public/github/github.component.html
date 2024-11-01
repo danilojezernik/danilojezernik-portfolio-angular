@@ -30,12 +30,12 @@
           <div class="grid gap-8 lg:grid-cols-3">
 
             <article *ngFor="let repo of githubData.repos"
-                     class="p-6 hover:border-box-border transition-colors duration-700 bg-background-menu rounded-lg border shadow-md border-gray-700 flex flex-col justify-between">
+                     class=" cards-github-popularity">
 
               <!-- github category and date section - START -->
               <div class="flex justify-between items-center mb-5 text-gray-500">
                 <span
-                  class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-red-200 text-primary-800">
+                  class="category-global">
                     <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
                          xmlns="http://www.w3.org/2000/svg"><path
                       d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
@@ -54,10 +54,10 @@
               <!-- github category and date section - END -->
 
               <!-- github title and content section - START -->
-              <h2 class="mb-2 text-2xl font-bold tracking-tight text-white">
+              <h2 class="title-global">
                 <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
               </h2>
-              <p class="mb-5 font-light text-gray-400" [innerHtml]="repo.description | shorteningText"></p>
+              <p class="content-global" [innerHtml]="repo.description | shorteningText"></p>
               <!-- github title and content section - END -->
 
               <!-- github author and read more section - START -->
