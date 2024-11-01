@@ -10,8 +10,9 @@ html, body {
 body {
   margin: 0;
   padding: 0;
-  color: $main-text-color;
-  background-color: $color-zero-hex;
+  height: 100vh;
+  background: linear-gradient(135deg, #f3f4f6, #e2e8f0) no-repeat fixed;
+  color: $black-text-color;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 

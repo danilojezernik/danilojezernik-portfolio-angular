@@ -17,7 +17,7 @@
 
           <!-- Looping through the blogs array and displaying its properties - START -->
           <article *ngFor="let blog of blogs"
-                   class="p-6 bg-background-menu hover:border-box-border transition-colors duration-700 rounded-lg border shadow-md border-gray-700">
+                   class="p-6 hover:border-box-border transition-colors duration-700 rounded-lg border shadow-md border-gray-700">
 
             <!-- Blog image section - START -->
             <img *ngIf="blog.image" [src]="_getImageByName.getBlogImageUrl(blog.image)"

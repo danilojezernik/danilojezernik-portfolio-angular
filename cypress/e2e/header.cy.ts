@@ -3,7 +3,7 @@ describe('Sidebar Links', () => {
   beforeEach(() => {
 
     // Intercept the API request and prevent it from being made
-    cy.intercept('GET', '**/blog/limited/', { statusCode: 200, body: [] }).as('getBlogLimited');
+    cy.intercept('GET', '/blog/limited/', { statusCode: 200, body: [] }).as('getBlogLimited');
 
     // Visit the homepage
     cy.visit('http://localhost:3000/')
