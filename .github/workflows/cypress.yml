@@ -10,7 +10,7 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: npm ci --force
+        run: npm install
 
       # Start the application server using the dev script
       - name: Start application server
