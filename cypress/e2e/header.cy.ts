@@ -11,7 +11,7 @@ describe('Sidebar Links', () => {
       .should('be.visible')
 
     cy.get('[data-cy="close-menu"]')
-      .click()
+      .click({force: true})
   });
 
   it('should open main page and go to about me page', () => {
