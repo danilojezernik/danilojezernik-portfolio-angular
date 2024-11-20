@@ -1,23 +1,33 @@
 name: End-to-end tests
-on: [ push ]
+on: [push]
 
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       # Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # Start the application server using the dev script
+      # Start the application server using the start script
       - name: Start application server
         run: npm run start &
         env:
           CI: true
 
+      # Wait for the application to be ready
+      - name: Wait for application to be ready
+        uses: jakejarvis/wait-action@v2
+        with:
+          url: 'http://localhost:3030' # Adjust to match your app's default port
+
       # Run Cypress tests
-      - name: Cypress run
+      - name: Run Cypress
         uses: cypress-io/github-action@v5
+        with:
+          record: false
+          start: npm run start
