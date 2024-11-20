@@ -89,7 +89,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.sidebar.nativeElement.classList.add('-translate-x-full'); // Close the sidebar
   }
+  isMenuOpen = false;
 
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
   protected readonly LOGIN_LOGOUT = LOGIN_LOGOUT;
   protected readonly MENU_TOP = MENU_TOP;
 }

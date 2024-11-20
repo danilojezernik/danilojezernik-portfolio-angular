@@ -43,7 +43,6 @@ registerLocaleData(localeSl, 'sl-SI')
     AppComponent,
     NotAuthorizedComponent,
     DialogSendEmailComponent,
-
   ],
     imports: [
         NgChartsModule,
@@ -89,11 +88,11 @@ registerLocaleData(localeSl, 'sl-SI')
       useValue: 'sl-SI'
     }
   ],
-  exports: [
-    CopyrightDirective,
-    SlovenianDateTransformPipe,
-    ShorteningTextPipe
-  ],
+    exports: [
+        CopyrightDirective,
+        SlovenianDateTransformPipe,
+        ShorteningTextPipe,
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

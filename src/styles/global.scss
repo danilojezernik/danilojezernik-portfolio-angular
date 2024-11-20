@@ -6,17 +6,29 @@ html, body {
 
 }
 
-
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #f3f4f6, #e2e8f0, #ffffff) no-repeat fixed;
-  background-size: 200% 200%;
-  animation: smoothRotateGradient 10s infinite linear;
-  color: $black-text-color;
+  background: radial-gradient(circle,rgba(255, 236, 236, 0.7), #e2e8f0, #ffffff) no-repeat fixed;
+  background-size: 400% 400%;
+  animation: smoothRotateGradient 16s ease infinite;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+@keyframes smoothRotateGradient {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
+
 
 input, option, select, textarea {
   color: white;

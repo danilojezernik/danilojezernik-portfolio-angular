@@ -18,11 +18,11 @@
 <div *ngIf="isChatOpen" id="chat-container" class="fixed bottom-16 shadow-lg z-40 right-4 mb-4 w-80">
   <div class="bg-white shadow-md max-w-lg w-full">
 
-    <div class="p-4 bg-background-menu text-white flex justify-between items-center">
+    <div class="p-4 bg-faq flex justify-between items-center">
       <p class="text-lg font-semibold">
         {{ 'pages.chat.title' |translate }}
       </p>
-      <button (click)="closeChat()" class="text-gray-300 hover:text-gray-400 focus:outline-none focus:text-gray-400">
+      <button (click)="closeChat()" class="text-red-600 hover:bg-red-600 hover:text-white rounded focus:outline-none focus:text-gray-400">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
@@ -30,7 +30,7 @@
     </div>
 
     <!-- Message shows when waiting for an answer -->
-    <div *ngIf="loading" class="p-4 h-80 bg-[#1a1a1c] text-white flex items-center justify-center">
+    <div *ngIf="loading" class="p-4 h-80 bg-faq text-black flex items-center justify-center">
       <span class="pulse-bulb text-center">
         {{ 'pages.chat.loading' | translate }}
       </span>
@@ -38,14 +38,14 @@
 
 
     <!-- Shows a answer when it is available -->
-    <div *ngIf="!loading && response" class="p-4 h-80 bg-[#1a1a1c] text-white overflow-y-auto">
+    <div *ngIf="!loading && response" class="p-4 h-80 bg-faq overflow-y-auto">
       {{ response }}
     </div>
 
-    <div class="p-4 flex bg-[#1a1a1c]">
+    <div class="p-4 flex bg-faq">
       <input [(ngModel)]="userInput" id="user-input" type="text" [placeholder]="'placeholder.ask' | translate"
-             class="bg-background-menu border border-gray-300 text-sm rounded-l-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-      <button (click)="sendQuestion()" class="btn-public add text-white px-4 py-2 rounded-r-md transition duration-300">
+             class="bg-white border border-gray-300 text-black text-sm rounded-l-md focus:ring-red-200 focus:border-white block w-full p-2.5">
+      <button (click)="sendQuestion()" class="btn-public add px-4 py-2 text-black rounded-r-md transition duration-300">
         {{ 'button.ask' | translate }}
       </button>
     </div>

@@ -93,7 +93,7 @@
   }
 
   &.register {
-    @include button-hover-register-effect(transparent, #000000);
+    @include button-hover-register-effect(#000000, #353535);
   }
 
   &.chat {

@@ -11,14 +11,15 @@ export const MENU_TOP: { menu: string, path: string }[] = [
   {menu: 'menu.users', path: '/users'},
   {menu: 'menu.register', path: '/register'},
   {menu: 'menu.contact', path: '/contact'},
-  {menu: 'menu.dashboard', path: '/dashboard'},
   {menu: 'menu.technologies', path: '/technologies'},
 ]
 
 // MENU ITEMS FOR LOGIN AND LOGOUT HEADER COMPONENT
-export const LOGIN_LOGOUT: { menu: string, path: string, condition: string }[] = [
+export const LOGIN_LOGOUT: { menu: string, path: string, condition?: string }[] = [
   {menu: 'menu.login', path: '/login', condition: 'loggedOut'},
   {menu: 'menu.logout', path: '/logout', condition: 'loggedIn'},
+  {menu: 'menu.dashboard', path: '/dashboard'},
+
 ]
 
 // LINK ITEMS FOR ABOUT ME PAGE COMPONENT
@@ -72,8 +73,6 @@ export const TECHNOLOGIES_ADMIN_MENU: { menu: string, path: string, description:
   {menu: 'menu.tech-typescript', path: '/tech-all-typescript', description: 'description.tech-menu.typescript'},
   {menu: 'menu.tech-mongodb', path: '/tech-all-mongodb', description: 'description.tech-menu.mongodb'},
 ]
-
-
 
 export const TECH_DEV_API_MENU = [
   {menu: 'dev.angular', path: '/dev/angular', description: 'dev.angular-desc', img: '/assets/media/dev/angular.png'},

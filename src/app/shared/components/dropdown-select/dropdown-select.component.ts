@@ -10,7 +10,7 @@ import { TranslateModule } from "@ngx-translate/core";
   templateUrl: './dropdown-select.component.html'
 })
 export class DropdownSelectComponent {
-  
+
   // Input property to accept an array of options for the dropdown
   @Input() options: any[] = [];
 

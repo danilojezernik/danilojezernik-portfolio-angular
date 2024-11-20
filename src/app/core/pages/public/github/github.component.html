@@ -27,10 +27,10 @@
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 
           <!-- Grid container for displaying github articles - START -->
-          <div class="grid gap-8 lg:grid-cols-3">
+          <div class="grid cards-container gap-8 lg:grid-cols-3">
 
             <article *ngFor="let repo of githubData.repos"
-                     class=" cards-github-popularity">
+                     class=" cards-global flex flex-col justify-between">
 
               <!-- github category and date section - START -->
               <div class="flex justify-between items-center mb-5 text-gray-500">

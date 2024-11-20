@@ -14,6 +14,7 @@ export class BrandsComponent {
   @Input() mongodb?: boolean
   @Input() python?: boolean
   @Input() docker?: boolean
+  @Input() cypress?: boolean
 
   // Number to set a size of the icon
   @Input() wh?: number = 10
