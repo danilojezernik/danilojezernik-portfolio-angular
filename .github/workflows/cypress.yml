@@ -21,7 +21,7 @@ jobs:
 
       # Wait for the application to be ready
       - name: Wait for application to start
-        run: npm wait-on http://localhost:3030
+        run: npx wait-on http://localhost:3030
 
       # Run Cypress tests
       - name: Run Cypress
