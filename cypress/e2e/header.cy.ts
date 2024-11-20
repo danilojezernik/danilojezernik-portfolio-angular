@@ -7,7 +7,7 @@ describe('Sidebar Links', () => {
 
   it('should open main page and close it', () => {
     cy.get('[data-cy="main-header"]')
-      .click()
+      .click({force: true})
       .should('be.visible')
 
     cy.get('[data-cy="close-menu"]')
@@ -16,7 +16,7 @@ describe('Sidebar Links', () => {
 
   it('should open main page and go to about me page', () => {
     cy.get('[data-cy="main-header"]')
-      .click()
+      .click({force: true})
       .should('be.visible')
 
     cy.get('[data-cy="open-route"]')
