@@ -81,11 +81,9 @@ export class UsedLanguagesComponent implements OnInit {
     this._dataService.getDataByEndpoint(this.endpoint).subscribe((response) => {
       if (response && response.length > 0) {
         this.hasData = true;
-
         // Extracting labels (tags) and data (counts) from the response
         const labels = response.map((lang: LanguageData) => LABEL_MAP[lang.tag] || lang.tag);
         const data = response.map((lang: LanguageData) => lang.count);
-
         // Update the chart labels and data
         this.barChartLabels = labels;
         this.barChartData = {

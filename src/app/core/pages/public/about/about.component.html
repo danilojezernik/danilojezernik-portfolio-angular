@@ -42,12 +42,31 @@
           </a>
           <a routerLink="/biography"
              class="inline-flex justify-center btn-public register border items-center py-3 px-5 text-base font-medium text-center text-white rounded bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 focus:ring-primary-900">
-            {{ 'button.biography' | translate }}
-            <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"></path>
+            <svg class="mr-2 -ml-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M13 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/>
+              <path d="M7 21l3 -4"/>
+              <path d="M16 21l-2 -4l-3 -3l1 -6"/>
+              <path d="M6 12l2 -3l4 -1l3 3l3 1"/>
             </svg>
+            {{ 'button.biography' | translate }}
+          </a>
+          <a routerLink="/learning"
+             class="inline-flex justify-center btn-public register border items-center py-3 px-5 text-base font-medium text-center text-white rounded bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 focus:ring-primary-900">
+            <svg class="mr-2 -ml-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M12 20m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>
+              <path d="M10 20h-6"/>
+              <path d="M14 20h6"/>
+              <path d="M12 15l-2 -2h-3a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-3l-2 2z"/>
+              <path d="M12 6v2"/>
+              <path d="M12 11v.01"/>
+            </svg>
+            {{ 'button.learning-path' | translate }}
           </a>
 
         </div>

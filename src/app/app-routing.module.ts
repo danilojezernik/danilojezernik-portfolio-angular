@@ -161,6 +161,8 @@ import {DevCypressComponent} from "./core/pages/public/dev-news/dev-cypress/dev-
 import {DevAlgorithmsComponent} from "./core/pages/public/dev-news/dev-algorithms/dev-algorithms.component";
 import {DevNewsComponent} from "./core/pages/public/dev-news/dev-news.component";
 import {StackDataComponent} from "./core/pages/public/stack-data/stack-data.component";
+import {DocumentationComponent} from "./core/pages/public/documentation/documentation.component";
+import {LearningPathComponent} from "./core/pages/public/learning-path/learning-path.component";
 
 const routes: Routes = [
   {
@@ -170,6 +172,10 @@ const routes: Routes = [
   {
     path: 'biography',
     component: BiographyComponent
+  },
+  {
+    path: 'learning',
+    component: LearningPathComponent
   },
 
   // ---------------------------
@@ -335,6 +341,11 @@ const routes: Routes = [
         component: MongodbComponent,
       }
     ]
+  },
+
+  {
+    path: 'documentation',
+    component: DocumentationComponent
   },
 
   // PRIVATE

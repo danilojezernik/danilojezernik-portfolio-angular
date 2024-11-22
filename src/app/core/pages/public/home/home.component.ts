@@ -17,11 +17,14 @@ import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-
 import {
   DocumentationHomeComponent
 } from "../../../../shared/components/documentation-home/documentation-home.component";
+import {
+  SubscribeNewsletterComponent
+} from "../../../../shared/components/subscribe-newsletter/subscribe-newsletter.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, CanvasBoxComponent, BrandsComponent, TranslateModule, LatestBlogsComponent, MySkillsComponent, RouterLink, UsedLanguagesComponent, ChatComponent, CtaHomeComponent, SvgHomeMainComponent, TechnologiesUsedSvgComponent, HeroTitleComponent, DocumentationHomeComponent],
+  imports: [CommonModule, CanvasBoxComponent, BrandsComponent, TranslateModule, LatestBlogsComponent, MySkillsComponent, RouterLink, UsedLanguagesComponent, ChatComponent, CtaHomeComponent, SvgHomeMainComponent, TechnologiesUsedSvgComponent, HeroTitleComponent, DocumentationHomeComponent, SubscribeNewsletterComponent],
   templateUrl: './home.component.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
