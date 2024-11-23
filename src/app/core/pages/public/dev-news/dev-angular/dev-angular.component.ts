@@ -8,11 +8,14 @@ import {ShorteningTextPipe} from "../../../../../pipes/shortening-text/shortenin
 import {RouterLink} from "@angular/router";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
+import {
+  DevNewsComponentComponent
+} from "../../../../../shared/components/dev-news-component/dev-news-component.component";
 
 @Component({
   selector: 'app-dev-angular',
   standalone: true,
-  imports: [CommonModule, HeroTitleComponent, ShorteningTextPipe, RouterLink, TranslateModule, LoadingComponent],
+  imports: [CommonModule, HeroTitleComponent, ShorteningTextPipe, RouterLink, TranslateModule, LoadingComponent, DevNewsComponentComponent],
   templateUrl: './dev-angular.component.html'
 })
 export class DevAngularComponent {

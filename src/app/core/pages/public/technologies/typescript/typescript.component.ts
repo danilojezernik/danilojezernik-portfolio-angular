@@ -1,4 +1,4 @@
-import {Component, ElementRef, inject, QueryList, ViewChildren} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {OrderService} from "../../../../../utils/local-storage/order-service";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
@@ -8,18 +8,15 @@ import {TypescriptService} from "../../../../../services/api/typescript.service"
 import {ButtonPublicComponent} from "../../../../../shared/components/button-public/button-public.component";
 import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
-import {ScrollToQuestionService} from "../../../../../services/scroll-to-question/scroll-to-question.service";
+import {FaqListComponent} from "../../../../../shared/components/faq-list/faq-list.component";
 
 @Component({
   selector: 'app-typescript',
   standalone: true,
-  imports: [CommonModule, ButtonPublicComponent, HeroTitleComponent, LoadingComponent, TranslateModule],
+  imports: [CommonModule, ButtonPublicComponent, HeroTitleComponent, LoadingComponent, TranslateModule, FaqListComponent],
   templateUrl: './typescript.component.html'
 })
 export class TypescriptComponent {
-
-  // Captures references to all elements with the template reference variable 'questionElement'
-  @ViewChildren('questionElement') questionElements!: QueryList<ElementRef>;
 
   // Injecting AngularService to fetch Angular-related data
   private _typescriptService = inject(TypescriptService);
@@ -29,8 +26,6 @@ export class TypescriptComponent {
 
   // Injecting TranslateService to handle translation of text and error messages
   private _translateService = inject(TranslateService);
-
-  private _scrollToQuestionService = inject(ScrollToQuestionService)
 
   // Property to store error messages, initialized to null
   error: string | null = null;
@@ -58,13 +53,5 @@ export class TypescriptComponent {
   // Open drawer functionality
   toggleDrawer() {
     this.drawerOpen = !this.drawerOpen;
-  }
-
-  /**
-   * Scrolls to the question element with the specified ID and closes the drawer.
-   * @param questionId - The ID of the question element to scroll to
-   */
-  scrollToQuestion(questionId?: string) {
-    this._scrollToQuestionService.scrollToQuestion(questionId, this.questionElements, this.toggleDrawer.bind(this));
   }
 }

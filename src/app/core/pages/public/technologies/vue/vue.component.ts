@@ -1,4 +1,4 @@
-import {Component, ElementRef, inject, QueryList, ViewChildren} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ButtonPublicComponent} from "../../../../../shared/components/button-public/button-public.component";
 import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
@@ -6,20 +6,17 @@ import {LoadingComponent} from "../../../../../shared/components/loading/loading
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {OrderService} from "../../../../../utils/local-storage/order-service";
 import {catchError, map, of} from "rxjs";
-import {Angular} from "../../../../../models/angular.model";
 import {VueService} from "../../../../../services/api/vue.service";
-import {ScrollToQuestionService} from "../../../../../services/scroll-to-question/scroll-to-question.service";
+import {FaqListComponent} from "../../../../../shared/components/faq-list/faq-list.component";
+import {Vue} from "../../../../../models/vue.model";
 
 @Component({
   selector: 'app-vue',
   standalone: true,
-  imports: [CommonModule, ButtonPublicComponent, HeroTitleComponent, LoadingComponent, TranslateModule],
+  imports: [CommonModule, ButtonPublicComponent, HeroTitleComponent, LoadingComponent, TranslateModule, FaqListComponent],
   templateUrl: './vue.component.html'
 })
 export class VueComponent {
-
-  // Captures references to all elements with the template reference variable 'questionElement'
-  @ViewChildren('questionElement') questionElements!: QueryList<ElementRef>;
 
   // Injecting AngularService to fetch Angular-related data
   private _vueService = inject(VueService);
@@ -30,7 +27,6 @@ export class VueComponent {
   // Injecting TranslateService to handle translation of text and error messages
   private _translateService = inject(TranslateService);
 
-  private _scrollToQuestionService = inject(ScrollToQuestionService)
 
   // Property to store error messages, initialized to null
   error: string | null = null;
@@ -49,7 +45,7 @@ export class VueComponent {
         this.error = translation;
       });
       // Return an observable of an empty array to gracefully handle errors in the pipeline
-      return of([] as Angular[]);
+      return of([] as Vue[]);
     }),
     // Map the received Angular questions and apply any saved order using the OrderService
     map(data => this._orderService.applySavedOrder(data, 'vueOrder', '_id')),
@@ -58,14 +54,6 @@ export class VueComponent {
   // Open drawer functionality
   toggleDrawer() {
     this.drawerOpen = !this.drawerOpen;
-  }
-
-  /**
-   * Scrolls to the question element with the specified ID and closes the drawer.
-   * @param questionId - The ID of the question element to scroll to
-   */
-  scrollToQuestion(questionId?: string) {
-    this._scrollToQuestionService.scrollToQuestion(questionId, this.questionElements, this.toggleDrawer.bind(this));
   }
 
 }

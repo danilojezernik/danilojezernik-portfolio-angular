@@ -1,9 +1,6 @@
 import {
   Component,
-  ElementRef,
-  inject,
-  ViewChildren,
-  QueryList
+  inject
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AngularService} from "../../../../../services/api/angular.service";
@@ -15,18 +12,15 @@ import {HeroTitleComponent} from "../../../../../shared/components/hero-title/he
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
 import {RouterLink} from "@angular/router";
 import {ButtonPublicComponent} from "../../../../../shared/components/button-public/button-public.component";
-import {ScrollToQuestionService} from "../../../../../services/scroll-to-question/scroll-to-question.service";
+import {FaqListComponent} from "../../../../../shared/components/faq-list/faq-list.component";
 
 @Component({
   selector: 'app-angular',
   standalone: true,
-  imports: [CommonModule, HeroTitleComponent, TranslateModule, LoadingComponent, RouterLink, ButtonPublicComponent],
+  imports: [CommonModule, HeroTitleComponent, TranslateModule, LoadingComponent, RouterLink, ButtonPublicComponent, FaqListComponent],
   templateUrl: './angular.component.html'
 })
 export class AngularComponent {
-
-  // Captures references to all elements with the template reference variable 'questionElement'
-  @ViewChildren('questionElement') questionElements!: QueryList<ElementRef>;
 
   // Injecting AngularService to fetch Angular-related data
   private _angularService = inject(AngularService);
@@ -36,8 +30,6 @@ export class AngularComponent {
 
   // Injecting TranslateService to handle translation of text and error messages
   private _translateService = inject(TranslateService);
-
-  private _scrollToQuestionService = inject(ScrollToQuestionService)
 
   // Property to store error messages, initialized to null
   error: string | null = null;
@@ -65,14 +57,6 @@ export class AngularComponent {
   // Open drawer functionality
   toggleDrawer() {
     this.drawerOpen = !this.drawerOpen;
-  }
-
-  /**
-   * Scrolls to the question element with the specified ID and closes the drawer.
-   * @param questionId - The ID of the question element to scroll to
-   */
-  scrollToQuestion(questionId?: string) {
-    this._scrollToQuestionService.scrollToQuestion(questionId, this.questionElements, this.toggleDrawer.bind(this));
   }
 
 }

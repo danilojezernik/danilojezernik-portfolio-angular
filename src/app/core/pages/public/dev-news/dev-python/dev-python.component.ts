@@ -7,11 +7,14 @@ import {DevToArticle} from "../../../../../models/dev-api";
 import {HeroTitleComponent} from "../../../../../shared/components/hero-title/hero-title.component";
 import {LoadingComponent} from "../../../../../shared/components/loading/loading.component";
 import {ShorteningTextPipe} from "../../../../../pipes/shortening-text/shortening-text.pipe";
+import {
+  DevNewsComponentComponent
+} from "../../../../../shared/components/dev-news-component/dev-news-component.component";
 
 @Component({
   selector: 'app-dev-python',
   standalone: true,
-  imports: [CommonModule, HeroTitleComponent, LoadingComponent, TranslateModule, ShorteningTextPipe],
+  imports: [CommonModule, HeroTitleComponent, LoadingComponent, TranslateModule, ShorteningTextPipe, DevNewsComponentComponent],
   templateUrl: './dev-python.component.html'
 })
 export class DevPythonComponent {

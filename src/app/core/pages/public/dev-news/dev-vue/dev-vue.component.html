@@ -1,26 +1,4 @@
-<div class="pt-8 px-4 mx-auto max-w-screen-xl lg:pt-16">
-  <!-- Title and description of the blog section - START -->
+<div class="pt-8 px-4 mx-auto container lg:pt-16">
   <app-hero-title title="pages.dev.vue.title" subtitle="pages.dev.vue.description"/>
-  <!-- Title and description of the blog section - END -->
-
-  <ng-container *ngIf="vueDev$ | async as vue; else loadingData">
-    <ng-container *ngIf="!error">
-      <section>
-        <!-- Looping through the blogs array and displaying its properties - START -->
-        <app-dev-news-component [newsData]="vueDev$ | async" [error]="error"></app-dev-news-component>
-        <!-- Looping through the blogs array and displaying its properties - END -->
-      </section>
-      <!-- Section containing the main content of the blog page - END -->
-    </ng-container>
-    <!-- Error message display if the data fetching fails - START -->
-    <ng-container *ngIf="error">
-      {{ error }}
-    </ng-container>
-    <!-- Error message display if the data fetching fails - END -->
-  </ng-container>
+  <app-dev-news-component [newsData]="vueDev$ | async" [error]="error"/>
 </div>
-<!-- Template to show loading spinner and text while data is being fetched - START -->
-<ng-template #loadingData>
-  <app-loading/>
-</ng-template>
-<!-- Template to show loading spinner and text while data is being fetched - END -->
