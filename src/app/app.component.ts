@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {initFlowbite} from "flowbite";
 import {AuthService} from "./auth/auth.service";
 import {Observable, Subscription} from "rxjs";

@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Angular Fundamentals",
+    "year": 2021,
+    "description": "Learn the basics of Angular framework and how to build modern web applications."
+  },
+  {
+    "title": "Advanced TypeScript",
+    "year": 2022,
+    "description": "Deep dive into advanced features of TypeScript for large-scale application development."
+  },
+  {
+    "title": "Web Development Trends",
+    "year": 2020,
+    "description": "An overview of the latest trends and technologies in web development."
+  }
+]

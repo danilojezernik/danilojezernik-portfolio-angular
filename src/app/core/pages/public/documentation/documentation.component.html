@@ -1,1 +1,190 @@
-<p>documentation works!</p>
+<!-- Main Container -->
+<div class="container mx-auto flex flex-col">
+
+  <!-- Header -->
+  <div class="container mx-auto px-4 py-6">
+    <app-hero-title title="Documentation" subtitle="Frontend and backend documentation"/>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="flex flex-1">
+
+    <!-- Sidebar Navigation -->
+    <aside class="hidden md:block md:w-64 p-4">
+      <nav>
+        <ul class="space-y-2">
+          <li *ngFor="let section of sections">
+            <p
+              class="block py-2 px-4 rounded hover:bg-gray-300"
+              [ngClass]="{'bg-gray-300': selectedSection === section}"
+              (click)="selectSection(section)"
+            >
+              {{ section }}
+            </p>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Documentation Content  Introduction -->
+    <main class="flex-1 p-6">
+      <ng-container *ngIf="selectedSection === 'Introduction'">
+        <!-- Content -->
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold text-gray-800">Welcome to the Documentation for be</h2>
+          <p class="text-gray-600">
+            Explore the sections below to learn more about my projects and how to use them.
+          </p>
+        </div>
+
+        <!-- Example Documentation Section -->
+        <section class="mb-8">
+          <h3 class="text-xl font-semibold mb-4">Getting Started</h3>
+          <p class="text-gray-700 mb-4">
+            To get started with my project, clone the repository and install the dependencies.
+          </p>
+
+          <!-- First Code Block -->
+          <div class="text-white p-4 rounded">
+            <pre><code class="language-shell">git clone https://github.com/yourusername/yourproject.git
+cd yourproject
+npm install</code></pre>
+          </div>
+
+          <!-- Second Code Block with ngNonBindable -->
+          <div class="text-white p-4 rounded" ngNonBindable>
+          <pre><code class="language-javascript">
+const data = () => &#123;
+  return &#123;
+    message: "Hello World"
+  &#125;;
+&#125;;
+</code></pre>
+          </div>
+
+        </section>
+      </ng-container>
+
+      <!-- Documentation Content  Getting Started -->
+      <ng-container *ngIf="selectedSection === 'Getting Started'">
+
+        <!-- Content -->
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold text-gray-800">Welcome to the Documentation for be</h2>
+          <p class="text-gray-600">
+            Explore the sections below to learn more about my projects and how to use them.
+          </p>
+        </div>
+
+        <!-- Example Documentation Section -->
+        <section class="mb-8">
+          <h3 class="text-xl font-semibold mb-4">Getting Started</h3>
+          <p class="text-gray-700 mb-4">
+            To get started with my project, clone the repository and install the dependencies.
+          </p>
+
+          <!-- First Code Block -->
+          <div class="text-white p-4 rounded">
+          <pre><code class="language-bash">git clone https://github.com/yourusername/yourproject.git
+cd yourproject
+npm install</code></pre>
+          </div>
+
+          <!-- Second Code Block with ngNonBindable -->
+          <div class="text-white p-4 rounded" ngNonBindable>
+          <pre><code class="language-javascript">
+const data = () => &#123;
+  return &#123;
+    message: "Hello World"
+  &#125;;
+&#125;;
+</code></pre>
+          </div>
+
+        </section>
+
+      </ng-container>
+
+      <!-- Documentation Content  API Reference -->
+      <ng-container *ngIf="selectedSection === 'API Reference'">
+
+
+        <!-- Content -->
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold text-gray-800">Welcome to the Documentation for be</h2>
+          <p class="text-gray-600">
+            Explore the sections below to learn more about my projects and how to use them.
+          </p>
+        </div>
+
+        <!-- Example Documentation Section -->
+        <section class="mb-8">
+          <h3 class="text-xl font-semibold mb-4">Getting Started</h3>
+          <p class="text-gray-700 mb-4">
+            To get started with my project, clone the repository and install the dependencies.
+          </p>
+
+          <!-- First Code Block -->
+          <div class="text-white p-4 rounded">
+          <pre><code class="language-bash">git clone https://github.com/yourusername/yourproject.git
+cd yourproject
+npm install</code></pre>
+          </div>
+
+          <!-- Second Code Block with ngNonBindable -->
+          <div class="text-white p-4 rounded" ngNonBindable>
+          <pre><code class="language-javascript">
+const data = () => &#123;
+  return &#123;
+    message: "Hello World"
+  &#125;;
+&#125;;
+</code></pre>
+          </div>
+
+        </section>
+      </ng-container>
+
+      <!-- Documentation Content  Examples -->
+      <ng-container *ngIf="selectedSection === 'Examples'">
+
+        <!-- Content -->
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold text-gray-800">Welcome to the Documentation for be</h2>
+          <p class="text-gray-600">
+            Explore the sections below to learn more about my projects and how to use them.
+          </p>
+        </div>
+
+        <!-- Example Documentation Section -->
+        <section class="mb-8">
+          <h3 class="text-xl font-semibold mb-4">Getting Started</h3>
+          <p class="text-gray-700 mb-4">
+            To get started with my project, clone the repository and install the dependencies.
+          </p>
+
+          <!-- First Code Block -->
+          <div class="text-white p-4 rounded">
+          <pre><code class="language-bash">git clone https://github.com/yourusername/yourproject.git
+cd yourproject
+npm install</code></pre>
+          </div>
+
+          <!-- Second Code Block with ngNonBindable -->
+          <div class="text-white p-4 rounded" ngNonBindable>
+          <pre><code class="language-javascript">
+const data = () => &#123;
+  return &#123;
+    message: "Hello World"
+  &#125;;
+&#125;;
+</code></pre>
+          </div>
+
+        </section>
+      </ng-container>
+    </main>
+
+  </div>
+
+</div>

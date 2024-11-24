@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
+import {LearningService} from "../../../../services/api/learning.service";
+import {LearningModel} from "../../../../models/learning.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-learning-path',
@@ -9,5 +12,9 @@ import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-
   templateUrl: './learning-path.component.html'
 })
 export class LearningPathComponent {
+
+  private learningDataService = inject(LearningService)
+
+  item: Observable<LearningModel[]>= this.learningDataService.getLearningData()
 
 }

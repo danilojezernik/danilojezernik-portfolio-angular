@@ -1,40 +1,22 @@
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+  <div class="py-8 px-4 mx-auto container lg:py-16 lg:px-6">
 
     <!-- Title and description of the blog section - START -->
     <app-hero-title title="pages.dev-news.title" subtitle="pages.dev-news.description" />
     <!-- Title and description of the blog section - END -->
 
-    <!-- Grid container for displaying blog articles - START -->
-    <div class="grid gap-8 lg:grid-cols-3">
-
-      <!-- Looping through the blogs array and displaying its properties - START -->
-      <article *ngFor="let data of TECH_DEV_API_MENU" [routerLink]="data.path"
-               class="relative cards-global">
-
-        <h2 class="title-global">
-          <a [routerLink]="'/technologies' + data.path">{{ data.menu | translate }}</a>
-        </h2>
-
-        <!-- DEV LOGO ABSOLUTE -->
-        <img src="/assets/media/dev/dev-logo.png" alt="dev-logo" class="absolute md:-top-5 md:-left-5 -left-3 -top-3 md:w-10 md:h-10 w-8 h-8 rounded shadow-lg">
-
-        <!-- Blog image section - START -->
-        <img [src]="data.img"
-             class="w-full h-80 object-cover object-center rounded-lg mb-4"
-             [alt]="data.menu"/>
-        <!-- Blog image section - END -->
-
-        <!-- Blog title and content section - START -->
-
-        <p class="content-global" [innerHtml]="data.description | shorteningText | translate">
-        </p>
-        <!-- Blog title and content section - END -->
-
-      </article>
-      <!-- Looping through the blogs array and displaying its properties - END -->
-
-    </div>
-    <!-- Grid container for displaying blog articles - END -->
+    <section class="">
+      <div class="gap-8 items-center py-8 px-4 xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6" *ngFor="let data of TECH_DEV_API_MENU">
+        <img class="w-96" [src]="data.img" alt="dashboard image">
+        <div class="mt-4 md:mt-0">
+          <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">{{ data.menu | translate }}</h2>
+          <p class="mb-6 font-light text-gray-500 md:text-lg" [innerHtml]="data.description | shorteningText | translate"></p>
+          <a [routerLink]="data.path" class="inline-flex items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            {{ data.menu | translate }}
+            <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
 
   </div>
 <!-- Section containing the main content of the blog page - END -->

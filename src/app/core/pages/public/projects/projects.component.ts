@@ -8,11 +8,12 @@ import { LoadingComponent } from "../../../../shared/components/loading/loading.
 import {OrderService} from "../../../../utils/local-storage/order-service";
 import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-title.component";
 import {GetImageService} from "../../../../services/get-image/get-image.service";
+import {SlovenianDateTransformPipe} from "../../../../pipes/date-transform/slovenian-date-transform.pipe";
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-    imports: [CommonModule, LoadingComponent, HeroTitleComponent],
+  imports: [CommonModule, LoadingComponent, HeroTitleComponent, SlovenianDateTransformPipe],
   templateUrl: './projects.component.html'
 })
 export class ProjectsComponent {

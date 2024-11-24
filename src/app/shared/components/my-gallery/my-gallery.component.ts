@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MyGalleryService} from "../../../services/api/my-gallery.service";
 import {Observable} from "rxjs";
@@ -9,7 +9,8 @@ import {HeroTitleComponent} from "../hero-title/hero-title.component";
   selector: 'app-my-gallery',
   standalone: true,
   imports: [CommonModule, HeroTitleComponent],
-  templateUrl: './my-gallery.component.html'
+  templateUrl: './my-gallery.component.html',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MyGalleryComponent implements OnInit {
 
