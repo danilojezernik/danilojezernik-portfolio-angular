@@ -6,6 +6,15 @@ html, body {
 
 }
 
+pre[class*="language-"] {
+  overflow-x: auto !important;
+  white-space: pre !important;
+}
+
+code[class*="language-"] {
+  white-space: pre !important;
+}
+
 body {
   margin: 0;
   padding: 0;

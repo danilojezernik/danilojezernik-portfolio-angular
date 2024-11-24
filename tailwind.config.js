@@ -24,6 +24,9 @@ module.exports = {
           '50%': { transform: 'translateY(-10px)' },
         },
       },
+      maxHeight: {
+        '300px': '300px',
+      },
     },
   },
   plugins: [

@@ -98,7 +98,7 @@ Below is an example of how to use the `ButtonAdminComponent` in a parent compone
     <app-show-data
       [_id]="user._id"
     <!-- And other data fields as needed -->
-    ></app-show-data>
+    />
 
     <app-button-admin
       (dialogRead)="openDialog(user._id)"

@@ -1,60 +1,161 @@
 <!-- Main Container -->
 <div class="container mx-auto flex flex-col">
-
   <!-- Header -->
   <div class="container mx-auto px-4 py-6">
-    <app-hero-title title="Documentation" subtitle="Frontend and backend documentation"/>
+    <app-hero-title
+      title="Documentation"
+      subtitle="Frontend and backend documentation"
+    ></app-hero-title>
   </div>
 
-  <!-- Main Content Area -->
-  <div class="flex flex-1">
+  <!-- Mobile Toggle Button and Dropdown Menu -->
+  <div class="md:hidden px-4 relative  z-20">
+    <!-- Toggle Button -->
+    <button
+      aria-haspopup="true"
+      aria-controls="mobile-menu"
+      [attr.aria-expanded]="isSidebarOpen"
+      class="w-full flex items-center justify-between bg-gray-200 text-gray-800 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+      (click)="toggleSidebar()"
+    >
+      <span>Table of Contents</span>
+      <svg
+        [ngClass]="{ 'transform rotate-180': isSidebarOpen }"
+        class="w-5 h-5 transition-transform"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
+    </button>
 
-    <!-- Sidebar Navigation -->
-    <aside class="hidden md:block md:w-64 p-4">
+    <!-- Dropdown Menu -->
+    <div
+      id="mobile-menu"
+      role="menu"
+      class="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg overflow-y-auto max-h-300px z-20"
+      [ngClass]="{ 'hidden': !isSidebarOpen }"
+    >
       <nav>
-        <ul class="space-y-2">
-          <li *ngFor="let section of sections">
+        <!-- Frontend Sections -->
+        <h4 class="font-semibold px-4 pt-4">Frontend</h4>
+        <ul class="space-y-2 px-4 pb-4">
+          <li *ngFor="let section of frontend">
             <p
-              class="block py-2 px-4 rounded hover:bg-gray-300"
-              [ngClass]="{'bg-gray-300': selectedSection === section}"
-              (click)="selectSection(section)"
+              class="block py-2 px-2 rounded hover:bg-gray-300 cursor-pointer"
+              [ngClass]="{
+                'bg-gray-300':
+                  selectedSection.category === 'frontend' &&
+                  selectedSection.name === section
+              }"
+              (click)="selectSection('frontend', section); closeSidebarOnMobile()"
+            >
+              {{ section }}
+            </p>
+          </li>
+        </ul>
+
+        <!-- Backend Sections -->
+        <h4 class="font-semibold px-4 pt-2">Backend</h4>
+        <ul class="space-y-2 px-4 pb-4">
+          <li *ngFor="let section of backend">
+            <p
+              class="block py-2 px-2 rounded hover:bg-gray-300 cursor-pointer"
+              [ngClass]="{
+                'bg-gray-300':
+                  selectedSection.category === 'backend' &&
+                  selectedSection.name === section
+              }"
+              (click)="selectSection('backend', section); closeSidebarOnMobile()"
             >
               {{ section }}
             </p>
           </li>
         </ul>
       </nav>
+    </div>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="flex flex-1">
+    <!-- Sidebar Navigation for Desktop -->
+    <aside class="hidden md:block md:w-64 p-4">
+      <nav>
+        <!-- Frontend Sections -->
+        <h4 class="font-semibold mb-2">Frontend</h4>
+        <ul class="space-y-2">
+          <li *ngFor="let section of frontend">
+            <button
+              class="block py-2 px-4 rounded hover:bg-gray-300 cursor-pointer"
+              [ngClass]="{
+                'bg-gray-300':
+                  selectedSection.category === 'frontend' &&
+                  selectedSection.name === section
+              }"
+              (click)="selectSection('frontend', section)"
+            >
+              {{ section }}
+            </button>
+          </li>
+        </ul>
+
+        <!-- Backend Sections -->
+        <h4 class="font-semibold mt-4 mb-2">Backend</h4>
+        <ul class="space-y-2">
+          <li *ngFor="let section of backend">
+            <button
+              class="block py-2 px-4 rounded hover:bg-gray-300 cursor-pointer"
+              [ngClass]="{
+                'bg-gray-300':
+                  selectedSection.category === 'backend' &&
+                  selectedSection.name === section
+              }"
+              (click)="selectSection('backend', section)"
+            >
+              {{ section }}
+            </button>
+          </li>
+        </ul>
+      </nav>
     </aside>
 
-    <!-- Documentation Content  Introduction -->
-    <main class="flex-1 p-6">
-      <ng-container *ngIf="selectedSection === 'Introduction'">
-        <!-- Content -->
-        <div class="mb-6">
-          <h2 class="text-2xl font-semibold text-gray-800">Welcome to the Documentation for be</h2>
-          <p class="text-gray-600">
-            Explore the sections below to learn more about my projects and how to use them.
-          </p>
-        </div>
-
-        <!-- Example Documentation Section -->
-        <section class="mb-8">
+    <!-- Documentation Content -->
+    <main class="flex-1 p-2">
+      <!-- Frontend Sections -->
+      <ng-container *ngIf="selectedSection.category === 'frontend'">
+        <!-- Example for Frontend Documentation -->
+        <ng-container *ngIf="selectedSection.name === 'documentation'">
+          <div class="mb-6">
+            <h2 class="text-2xl font-semibold text-gray-800">
+              Frontend Documentation
+            </h2>
+            <p class="text-gray-600">
+              Explore the frontend documentation sections to learn more.
+            </p>
+          </div>
           <h3 class="text-xl font-semibold mb-4">Getting Started</h3>
           <p class="text-gray-700 mb-4">
             To get started with my project, clone the repository and install the dependencies.
           </p>
 
+
           <!-- First Code Block -->
-          <div class="text-white p-4 rounded">
+          <div class="md:max-w-screen-xl max-w-80 text-white rounded">
             <pre><code class="language-shell">git clone https://github.com/yourusername/yourproject.git
 cd yourproject
 npm install</code></pre>
           </div>
 
           <!-- Second Code Block with ngNonBindable -->
-          <div class="text-white p-4 rounded" ngNonBindable>
-          <pre><code class="language-javascript">
-const data = () => &#123;
+          <div class="md:max-w-screen-xl max-w-80 text-white rounded">
+          <pre><code class="language-javascript">const data = () => &#123;
   return &#123;
     message: "Hello World"
   &#125;;
@@ -62,129 +163,58 @@ const data = () => &#123;
 </code></pre>
           </div>
 
-        </section>
+
+        </ng-container>
+
+        <!-- Example for Add Logs -->
+        <ng-container *ngIf="selectedSection.name === 'add-logs'">
+          <div class="mb-6">
+            <h2 class="text-2xl font-semibold text-gray-800">Add Logs</h2>
+            <p class="text-gray-600">
+              Details about the add-logs feature...
+            </p>
+            <!-- Add your content here -->
+          </div>
+        </ng-container>
+
+        <!-- Continue with other frontend sections -->
       </ng-container>
 
-      <!-- Documentation Content  Getting Started -->
-      <ng-container *ngIf="selectedSection === 'Getting Started'">
-
-        <!-- Content -->
-        <div class="mb-6">
-          <h2 class="text-2xl font-semibold text-gray-800">Welcome to the Documentation for be</h2>
-          <p class="text-gray-600">
-            Explore the sections below to learn more about my projects and how to use them.
-          </p>
-        </div>
-
-        <!-- Example Documentation Section -->
-        <section class="mb-8">
-          <h3 class="text-xl font-semibold mb-4">Getting Started</h3>
-          <p class="text-gray-700 mb-4">
-            To get started with my project, clone the repository and install the dependencies.
-          </p>
-
-          <!-- First Code Block -->
-          <div class="text-white p-4 rounded">
-          <pre><code class="language-bash">git clone https://github.com/yourusername/yourproject.git
-cd yourproject
-npm install</code></pre>
+      <!-- Backend Sections -->
+      <ng-container *ngIf="selectedSection.category === 'backend'">
+        <!-- Example for Backend Architecture -->
+        <ng-container *ngIf="selectedSection.name === 'arhitecture'">
+          <div class="mb-6">
+            <h2 class="text-2xl font-semibold text-gray-800">
+              Backend Architecture
+            </h2>
+            <p class="text-gray-600">
+              Overview of the backend architecture...
+            </p>
+            <!-- Add your content here -->
           </div>
+        </ng-container>
 
-          <!-- Second Code Block with ngNonBindable -->
-          <div class="text-white p-4 rounded" ngNonBindable>
-          <pre><code class="language-javascript">
-const data = () => &#123;
-  return &#123;
-    message: "Hello World"
-  &#125;;
-&#125;;
-</code></pre>
+        <!-- Example for Authentication -->
+        <ng-container *ngIf="selectedSection.name === 'auth'">
+          <div class="mb-6">
+            <h2 class="text-2xl font-semibold text-gray-800">Authentication</h2>
+            <p class="text-gray-600">
+              Information about backend authentication...
+            </p>
+            <!-- Add your content here -->
           </div>
+        </ng-container>
 
-        </section>
-
-      </ng-container>
-
-      <!-- Documentation Content  API Reference -->
-      <ng-container *ngIf="selectedSection === 'API Reference'">
-
-
-        <!-- Content -->
-        <div class="mb-6">
-          <h2 class="text-2xl font-semibold text-gray-800">Welcome to the Documentation for be</h2>
-          <p class="text-gray-600">
-            Explore the sections below to learn more about my projects and how to use them.
-          </p>
-        </div>
-
-        <!-- Example Documentation Section -->
-        <section class="mb-8">
-          <h3 class="text-xl font-semibold mb-4">Getting Started</h3>
-          <p class="text-gray-700 mb-4">
-            To get started with my project, clone the repository and install the dependencies.
-          </p>
-
-          <!-- First Code Block -->
-          <div class="text-white p-4 rounded">
-          <pre><code class="language-bash">git clone https://github.com/yourusername/yourproject.git
-cd yourproject
-npm install</code></pre>
-          </div>
-
-          <!-- Second Code Block with ngNonBindable -->
-          <div class="text-white p-4 rounded" ngNonBindable>
-          <pre><code class="language-javascript">
-const data = () => &#123;
-  return &#123;
-    message: "Hello World"
-  &#125;;
-&#125;;
-</code></pre>
-          </div>
-
-        </section>
-      </ng-container>
-
-      <!-- Documentation Content  Examples -->
-      <ng-container *ngIf="selectedSection === 'Examples'">
-
-        <!-- Content -->
-        <div class="mb-6">
-          <h2 class="text-2xl font-semibold text-gray-800">Welcome to the Documentation for be</h2>
-          <p class="text-gray-600">
-            Explore the sections below to learn more about my projects and how to use them.
-          </p>
-        </div>
-
-        <!-- Example Documentation Section -->
-        <section class="mb-8">
-          <h3 class="text-xl font-semibold mb-4">Getting Started</h3>
-          <p class="text-gray-700 mb-4">
-            To get started with my project, clone the repository and install the dependencies.
-          </p>
-
-          <!-- First Code Block -->
-          <div class="text-white p-4 rounded">
-          <pre><code class="language-bash">git clone https://github.com/yourusername/yourproject.git
-cd yourproject
-npm install</code></pre>
-          </div>
-
-          <!-- Second Code Block with ngNonBindable -->
-          <div class="text-white p-4 rounded" ngNonBindable>
-          <pre><code class="language-javascript">
-const data = () => &#123;
-  return &#123;
-    message: "Hello World"
-  &#125;;
-&#125;;
-</code></pre>
-          </div>
-
-        </section>
+        <!-- Continue with other backend sections -->
       </ng-container>
     </main>
-
   </div>
-
 </div>
+<!-- Backdrop -->
+<div
+  *ngIf="isSidebarOpen"
+  class="fixed inset-0 bg-black opacity-50 z-10"
+  (click)="toggleSidebar()"
+></div>
+
