@@ -44,8 +44,26 @@
       [ngClass]="{ 'hidden': !isSidebarOpen }"
     >
       <nav>
+        <!-- Starting Sections -->
+        <h4 class="font-semibold px-4 pt-4">Getting started</h4>
+        <ul class="space-y-2 px-4 pb-4">
+          <li *ngFor="let section of starting">
+            <p
+              class="block py-2 px-2 rounded hover:bg-gray-300 cursor-pointer"
+              [ngClass]="{
+                'bg-gray-300':
+                  selectedSection.category === 'starting' &&
+                  selectedSection.name === section
+              }"
+              (click)="selectSection('starting', section); closeSidebarOnMobile()"
+            >
+              {{ section }}
+            </p>
+          </li>
+        </ul>
+
         <!-- Frontend Sections -->
-        <h4 class="font-semibold px-4 pt-4">Frontend</h4>
+        <h4 class="font-semibold px-4 pt-2">Frontend</h4>
         <ul class="space-y-2 px-4 pb-4">
           <li *ngFor="let section of frontend">
             <p
@@ -88,6 +106,25 @@
     <!-- Sidebar Navigation for Desktop -->
     <aside class="hidden md:block md:w-64 p-4">
       <nav>
+
+        <!-- Frontend Sections -->
+        <h4 class="font-semibold mb-2">Documentation</h4>
+        <ul class="space-y-2">
+          <li *ngFor="let section of starting">
+            <button
+              class="block py-2 px-4 rounded hover:bg-gray-300 cursor-pointer"
+              [ngClass]="{
+                'bg-gray-300':
+                  selectedSection.category === 'starting' &&
+                  selectedSection.name === section
+              }"
+              (click)="selectSection('starting', section)"
+            >
+              {{ section }}
+            </button>
+          </li>
+        </ul>
+
         <!-- Frontend Sections -->
         <h4 class="font-semibold mb-2">Frontend</h4>
         <ul class="space-y-2">
@@ -128,8 +165,23 @@
 
     <!-- Documentation Content -->
     <main class="flex-1 p-2">
+      <ng-container *ngIf="selectedSection.category === 'starting'">
+
+        <ng-container *ngIf="selectedSection.name === 'Getting started'">
+          <div class="mb-6">
+            <h2 class="text-2xl font-semibold text-gray-800">
+              Frontend Documentation
+            </h2>
+            <p class="text-gray-600">
+              Explore the frontend documentation sections to learn more.
+            </p>
+          </div>        </ng-container>
+
+      </ng-container>
+
       <!-- Frontend Sections -->
       <ng-container *ngIf="selectedSection.category === 'frontend'">
+
         <!-- Example for Frontend Documentation -->
         <ng-container *ngIf="selectedSection.name === 'documentation'">
           <div class="mb-6">

@@ -12,8 +12,13 @@ import {HeroTitleComponent} from "../../../../shared/components/hero-title/hero-
 })
 export class DocumentationComponent implements AfterViewInit {
 
-  selectedSection = { category: 'frontend', name: 'documentation' };
+  selectedSection = { category: 'starting', name: 'Getting started' };
   isSidebarOpen = false;
+
+  starting = [
+    'Getting started',
+    'Documentation'
+  ]
 
   frontend = [
     'documentation',
