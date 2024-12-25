@@ -41,7 +41,7 @@ export class AddSubscriberAdminComponent {
     // Show spinner while loading
     this.loading = true;
 
-    this._subscriberService.addSubscriber(formValidator).subscribe(() => {
+    this._subscriberService.subscribeClient(formValidator).subscribe(() => {
       // Hide spinner after loading
       this.loading = false;
 

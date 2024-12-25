@@ -10,7 +10,6 @@ import {
   providedIn: 'root'
 })
 export class AuthGuardService implements CanActivate {
-
   private _auth = inject(AuthService);
   private _router = inject(Router);
 
@@ -30,14 +29,14 @@ export class AuthGuardService implements CanActivate {
     const requiredRoles = route.data['roles'] as Array<string>;
 
     if (!requiredRoles || requiredRoles.length === 0) {
-      return true;
+      return true; // No roles required
     }
 
     if (requiredRoles.includes(userRole)) {
-      return true;
+      return true; // User has required role
     }
 
-    // If the user doesn't have the required role, redirect to "not-authorized"
+    // Redirect to "not-authorized" if user doesn't have the required role
     this._router.navigate(['/not-authorized']);
     return false;
   }

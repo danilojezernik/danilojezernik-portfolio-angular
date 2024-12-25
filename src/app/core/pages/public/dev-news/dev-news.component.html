@@ -4,19 +4,52 @@
     <app-hero-title title="pages.dev-news.title" subtitle="pages.dev-news.description" />
     <!-- Title and description of the blog section - END -->
 
-    <section class="">
-      <div class="gap-8 items-center py-8 px-4 xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6" *ngFor="let data of TECH_DEV_API_MENU">
-        <img class="w-96" [src]="data.img" alt="dashboard image">
-        <div class="mt-4 md:mt-0">
-          <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">{{ data.menu | translate }}</h2>
-          <p class="mb-6 font-light text-gray-500 md:text-lg" [innerHtml]="data.description | shorteningText | translate"></p>
-          <a [routerLink]="data.path" class="inline-flex items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-            {{ data.menu | translate }}
-            <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-          </a>
-        </div>
+    <section>
+      <div
+        class="flex flex-col md:flex-row gap-8 items-center py-8 px-4 sm:py-16 lg:px-6"
+        *ngFor="let data of TECH_DEV_API_MENU; let i = index"
+        [class.md:flex-row-reverse]="i % 2 !== 0"
+      >
+      <!-- Text: Always on top for mobile -->
+      <div
+        class="mt-4 md:mt-0 md:w-2/3 flex flex-col text-center md:text-left items-center md:items-start order-1 md:order-none"
+      >
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">
+          {{ data.menu | translate }}
+        </h2>
+        <p
+          class="mb-6 font-light text-gray-500 md:text-lg"
+          [innerHtml]="data.description | shorteningText | translate"
+        ></p>
+        <a
+          [routerLink]="data.path"
+          class="inline-flex items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 text-white hover:bg-blue-700"
+        >
+          {{ data.menu | translate }}
+          <svg
+            class="ml-2 -mr-1 w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </a>
       </div>
-    </section>
+
+      <!-- Image: Always below the text for mobile -->
+      <img
+        class="w-full md:w-1/3 order-2 md:order-none"
+        [src]="data.img"
+        alt="dashboard image"
+      />
+  </div>
+  </section>
+
 
   </div>
 <!-- Section containing the main content of the blog page - END -->

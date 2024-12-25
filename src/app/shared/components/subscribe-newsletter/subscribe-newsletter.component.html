@@ -3,18 +3,73 @@
     <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
       <div class="max-w-xl lg:max-w-lg">
         <h2 class="text-4xl font-semibold tracking-tight">Subscribe to our newsletter</h2>
-        <p class="mt-4 text-lg">Nostrud amet eu ullamco nisi aute in ad minim nostrud adipisicing velit quis. Duis
-          tempor incididunt dolore.</p>
-        <div class="mt-6 flex max-w-md gap-x-4">
-          <label for="email-address" class="sr-only">Email address</label>
-          <input id="email-address" name="email" type="email" autocomplete="email" required
-                 class="input-global text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 focus:ring-gray-400 focus:border-white"
-                 placeholder="Enter your email">
-          <button type="submit"
-                  class="inline-flex justify-center btn-public add items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 focus:ring-primary-900">
-            Subscribe
-          </button>
-        </div>
+        <p class="mt-4 text-lg">Nostrud amet eu ullamco nisi aute in ad minim nostrud adipisicing velit quis. Duis tempor incididunt dolore.</p>
+        <!-- Form Starts Here -->
+        <form (ngSubmit)="onSubmit()" #subscriberForm="ngForm" novalidate>
+          <div class="mt-6 mx-auto space-y-6">
+            <!-- Name and Surname Row -->
+            <div class="flex gap-x-4">
+              <!-- Name Input -->
+              <div class="flex-1">
+                <label for="name" class="block text-sm font-medium text-gray-700">Ime</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  [(ngModel)]="subscriber.name"
+                  class="input-global text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 focus:ring-gray-400 focus:border-white"
+                  placeholder="Vnesi svoje ime"
+                />
+                <div *ngIf="subscriberForm.submitted && !subscriber.name" class="text-red-500 text-xs mt-1">
+                  Ime je obvezno.
+                </div>
+              </div>
+              <!-- Surname Input -->
+              <div class="flex-1">
+                <label for="surname" class="block text-sm font-medium text-gray-700">Priimek</label>
+                <input
+                  id="surname"
+                  name="surname"
+                  type="text"
+                  required
+                  [(ngModel)]="subscriber.surname"
+                  class="input-global text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 focus:ring-gray-400 focus:border-white"
+                  placeholder="Vnesi svoj priimek"
+                />
+                <div *ngIf="subscriberForm.submitted && !subscriber.surname" class="text-red-500 text-xs mt-1">
+                  Priimek je obvezen.
+                </div>
+              </div>
+            </div>
+            <!-- Email Input Full Width -->
+            <div>
+              <label for="email-address" class="block text-sm font-medium text-gray-700">Email naslov</label>
+              <input
+                id="email-address"
+                name="email"
+                type="email"
+                required
+                [(ngModel)]="subscriber.email"
+                class="input-global text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 focus:ring-gray-400 focus:border-white"
+                placeholder="Vnesi svoj email"
+              />
+              <div *ngIf="subscriberForm.submitted && !subscriber.email" class="text-red-500 text-xs mt-1">
+                Email naslov je obvezen.
+              </div>
+            </div>
+            <!-- Subscribe Button Full Width -->
+            <button
+              type="submit"
+              [disabled]="loading"
+              class="w-full btn-public add inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 focus:ring-primary-900"
+            >
+              {{ loading ? 'Subscribing...' : 'Subscribe' }}
+            </button>
+            <!-- Error Message -->
+            <div *ngIf="error" class="text-red-500 text-sm mt-4">{{ error }}</div>
+          </div>
+        </form>
       </div>
       <dl class="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
         <div class="flex flex-col items-start">
@@ -45,5 +100,6 @@
         </div>
       </dl>
     </div>
+
   </div>
 </div>

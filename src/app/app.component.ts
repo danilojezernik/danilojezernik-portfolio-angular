@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, Inject, inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {initFlowbite} from "flowbite";
 import {AuthService} from "./auth/auth.service";
 import {Observable, Subscription} from "rxjs";
@@ -7,6 +7,7 @@ import {WebsocketService} from "./services/websocket/websocket.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 import {SNACKBAR_MESSAGES} from "./shared/global-const/global.const";
+import {isPlatformBrowser} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,8 @@ export class AppComponent implements OnInit {
   private _websocketService = inject(WebsocketService)
   private _snack = inject(MatSnackBar)
   private _translateService = inject(TranslateService)
+
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
 
   isDrawerOpen = false
 
@@ -33,7 +36,11 @@ export class AppComponent implements OnInit {
   connected: boolean = false;
 
   ngOnInit(): void {
-    initFlowbite();
+
+    if (isPlatformBrowser(this.platformId)) {
+      initFlowbite(); // Initialize Flowbite only in the browser
+    }
+
     this.isLoggedIn$ = this._loggedInService.isLoggedIn$;
     this.time = new Date().toISOString()
     this.userRoleSubscription = this.isLoggedIn$.subscribe((isLoggedIn) => {

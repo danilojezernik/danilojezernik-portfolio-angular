@@ -23,7 +23,7 @@
               "vendor": false
             },
             "allowedCommonJsDependencies": ["prismjs"],
-            "outputPath": "dist/danilojezernik-app",
+            "outputPath": "dist/danilojezernik-app/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -51,8 +51,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2.5mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -134,6 +134,78 @@
               "src/**/*.html"
             ]
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/danilojezernik-app/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "sourceMap": {
+              "scripts": true,
+              "styles": true,
+              "vendor": false
+            },
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ],
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "danilojezernik-app:build:development",
+              "serverTarget": "danilojezernik-app:server:development"
+            },
+            "production": {
+              "browserTarget": "danilojezernik-app:build:production",
+              "serverTarget": "danilojezernik-app:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "danilojezernik-app:build:production",
+              "serverTarget": "danilojezernik-app:server:production"
+            },
+            "development": {
+              "browserTarget": "danilojezernik-app:build:development",
+              "serverTarget": "danilojezernik-app:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

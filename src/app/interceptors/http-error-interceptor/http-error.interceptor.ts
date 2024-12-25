@@ -80,7 +80,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
 
         // Throw the error so it can be handled by other parts of the application if necessary
-        return throwError(() => new Error(errorMessage));
+        // Attach errorMessage dynamically to the error object
+        (error as any).errorMessage = errorMessage;
+
+        // Re-throw the error with the enhanced object
+        return throwError(() => error);
       })
     )
   }

@@ -163,6 +163,9 @@ import {DevNewsComponent} from "./core/pages/public/dev-news/dev-news.component"
 import {StackDataComponent} from "./core/pages/public/stack-data/stack-data.component";
 import {DocumentationComponent} from "./core/pages/public/documentation/documentation.component";
 import {LearningPathComponent} from "./core/pages/public/learning-path/learning-path.component";
+import {
+  SuccessSubscriptionToNewsletterComponent
+} from "./core/pages/public/success-subscription-to-newsletter/success-subscription-to-newsletter.component";
 
 const routes: Routes = [
   {
@@ -849,6 +852,15 @@ const routes: Routes = [
   },
 
   // ---------------------------
+  // Successful subscription
+  // ---------------------------
+
+  {
+    path: 'success-subscribe',
+    component: SuccessSubscriptionToNewsletterComponent
+  },
+
+  // ---------------------------
   //     404 ROUTE
   // ---------------------------
   {
@@ -864,7 +876,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabledBlocking'
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

@@ -1,5 +1,5 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, provideClientHydration} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -44,6 +44,8 @@ registerLocaleData(localeSl, 'sl-SI')
     DialogSendEmailComponent,
   ],
   imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }), // Add this line
+
     NgChartsModule,
     AngularEditorModule,
     BrowserModule,
@@ -71,6 +73,7 @@ registerLocaleData(localeSl, 'sl-SI')
     ChatRoomComponent
   ],
   providers: [
+    [ provideClientHydration() ],
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
