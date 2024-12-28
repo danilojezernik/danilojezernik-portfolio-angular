@@ -9,8 +9,10 @@
     <div class="grid gap-8 lg:grid-cols-3">
 
       <!-- Looping through the blogs array and displaying its properties - START -->
-      <article *ngFor="let data of TECHNOLOGIES_PUBLIC_MENU" [routerLink]="'/technologies' + data.path"
-               class="cards-global flicker-in">
+      <article *ngFor="let data of TECHNOLOGIES_PUBLIC_MENU"
+               [routerLink]="'/technologies' + data.path"
+               [class.flicker-in]="isFirstVisit"
+               class="cards-global">
 
         <!-- Blog image section - START -->
         <img [src]="data.img"
@@ -19,13 +21,14 @@
         <!-- Blog image section - END -->
 
         <!-- Blog title and content section - START -->
-        <h2 class="mb-2 text-2xl font-bold tracking-tight"><a
-          [routerLink]="'/technologies' + data.path">{{ data.menu | translate }}</a></h2>
-        <p class="font-light" [innerHtml]="data.description | shorteningText | translate">
-        </p>
+        <h2 class="mb-2 text-2xl font-bold tracking-tight">
+          <a [routerLink]="'/technologies' + data.path">{{ data.menu | translate }}</a>
+        </h2>
+        <p class="font-light" [innerHtml]="data.description | shorteningText | translate"></p>
         <!-- Blog title and content section - END -->
 
       </article>
+
       <!-- Looping through the blogs array and displaying its properties - END -->
 
     </div>
