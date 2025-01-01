@@ -27,9 +27,10 @@
 
   <!-- Navbar -->
   <div class="bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-300">
-    <div class="container mx-auto">
-
-      <div class="flex justify-between items-center py-4 px-2">
+    <div [class]="isHeaderShrunk ? 'bg-gray-900 h-12' : 'bg-gray-800 h-16'"
+         class="fixed top-0 w-full z-10 transition-all duration-300 ease-in-out shadow-md flex items-center">
+      <div class="container mx-auto flex justify-between items-center px-4">
+      <div class="container mx-auto flex justify-between items-center px-4">
         <div>
           <a routerLink="/">
             <img src="assets/media/logo/logo-dj.png" class="h-12 rotate-in-center" alt="Danilo Jezernik Logo">
@@ -108,4 +109,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

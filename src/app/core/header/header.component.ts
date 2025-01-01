@@ -1,4 +1,4 @@
-import {Component, ElementRef, inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   @ViewChild('sidebar') sidebar!: ElementRef;
   @ViewChild('openSidebarButton') openSidebarButton!: ElementRef;
+  isHeaderShrunk: boolean = false; // Track header state
   sidebarOpened: boolean = false
   // Injecting AuthService to handle authentication related operations
   private _authService = inject(AuthService);
@@ -36,6 +37,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // Observable to hold login status, will be populated in ngOnInit
   isLoggedIn$!: Observable<boolean>;
   userRole: string
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isHeaderShrunk = window.scrollY > 50; // Shrink header after 50px of scrolling
+  }
 
   // Lifecycle hook that is called after the component's view has been initialized
   ngOnInit() {
@@ -89,11 +95,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.sidebar.nativeElement.classList.add('-translate-x-full'); // Close the sidebar
   }
+
   isMenuOpen = false;
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+
   protected readonly LOGIN_LOGOUT = LOGIN_LOGOUT;
   protected readonly MENU_TOP = MENU_TOP;
 }
